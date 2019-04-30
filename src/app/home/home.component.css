@@ -1,0 +1,32 @@
+.background-home{
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    background: linear-gradient(#44c1c3, #fff 75%);
+    padding-top: 100px;
+}
+.first-section h3{
+    font-size: 25px;
+    color: #fff;
+    font-weight: 300;
+    font-family: verdana;
+}
+.first-section{
+    width: 300px;
+}
+.container{
+    padding: 0 100px;
+}
+.cad-button{
+    padding: 10px 20px;
+    color: #fff;
+    border: 0;
+    margin-right: 10px;
+    background: rgba(63, 192, 194, 1);
+}
+.ent-button{
+    padding: 10px 20px;
+    color: #fff;
+    border: 0;
+    background: rgba(45, 175, 126, 1);
+}
