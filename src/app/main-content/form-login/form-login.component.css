@@ -1,0 +1,13 @@
+.content-background{
+    display: block;
+    position: relative;
+    height: 100%;
+}
+
+.content-principal{
+    display: block;
+    position: absolute;
+    background: white;
+    width: 60%;
+    height: 40%;
+}

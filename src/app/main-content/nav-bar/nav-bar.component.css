@@ -1,0 +1,14 @@
+.nav-bar{
+    box-shadow: 0 0 9px 4px #cccccc;
+    height: 70px;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+}
+.nav-bar-content{
+    display: flex;
+    width: 40%;
+    justify-content: space-around;
+    flex-direction: row;
+}
+
