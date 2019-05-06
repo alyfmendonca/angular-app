@@ -9,7 +9,7 @@ const routes: Routes = [
   { path: 'home', component: HomeComponent, pathMatch: 'full'},
   { path: 'content', component: MainContentComponent, children: [
     {
-      path: 'login', component: FormLoginComponent
+      path: '', component: FormLoginComponent
     }
   ]}
   
