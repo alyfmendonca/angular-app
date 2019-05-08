@@ -6,6 +6,7 @@ import { RouterModule } from '@angular/router';
 import { MainContentComponent } from './main-content.component';
 import { AppRoutingModule } from '../app-routing.module';
 import { FormCadastroComponent } from './form-cadastro/form-cadastro.component';
+import { FormsModule }   from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -16,7 +17,8 @@ import { FormCadastroComponent } from './form-cadastro/form-cadastro.component';
   ],
   imports: [
     CommonModule,
-    AppRoutingModule
+    AppRoutingModule,
+    FormsModule
   ],
   exports: [
     FormLoginComponent
