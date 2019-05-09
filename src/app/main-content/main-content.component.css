@@ -3,3 +3,17 @@
     width: 100%;
     height: 100%;
 }
+.main-content::after{
+    background-image: url("src\assets\bg-icon.png");
+    background-repeat: no-repeat;
+    background-size: contain;
+    content: "";
+    opacity: 0.1;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    margin-top: 20px;
+    position: absolute;
+    z-index: -1; 
+}
