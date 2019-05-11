@@ -7,13 +7,15 @@ import { MainContentComponent } from './main-content.component';
 import { AppRoutingModule } from '../app-routing.module';
 import { FormCadastroComponent } from './form-cadastro/form-cadastro.component';
 import { FormsModule }   from '@angular/forms';
+import { ProfileComponent } from './profile/profile.component';
 
 @NgModule({
   declarations: [
     NavBarComponent,
     FormLoginComponent,
     MainContentComponent,
-    FormCadastroComponent 
+    FormCadastroComponent,
+    ProfileComponent 
   ],
   imports: [
     CommonModule,

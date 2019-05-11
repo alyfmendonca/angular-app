@@ -11,5 +11,11 @@ export class FormLoginComponent implements OnInit {
 
   ngOnInit() {
   }
+  txtLogin ="";
+  txtPass = "";
+
+  submitForm(){
+    console.log(this.txtLogin, this.txtPass);
+  }
 
 }

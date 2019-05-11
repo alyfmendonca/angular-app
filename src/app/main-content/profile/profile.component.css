@@ -1,10 +1,3 @@
-.content-background{
-    display: flex;
-    justify-content: center;
-}
-.content-conteudo.page-login{
-    max-height: 400px;
-}
 .esqu{
     width: 100%;
     display: flex;
@@ -22,32 +15,24 @@
     color: #cccccc;
     font-weight: 300;
 }
-
-.img-esq{
-    height: 100%;
-    margin: 0 auto;
-}
 .dir{
     display: flex;
     flex-direction: column;
     width: 100%;
 }
-.form-dir{
+.img-esq{
     height: 100%;
-    width: 80%;
-    display: flex;
-    flex-direction: column;
-    justify-content: start;
-    margin-left: 20px;
-    margin-top: 60px;
+    margin: 0 auto;
 }
+
 .bot-dir{
     height: 100%;
     display: flex;
     flex-direction: row;
-    justify-content: space-around;
+    justify-content: flex-end;
     align-items: baseline;
-    padding-right: 15px;
+    padding-right: 70px;
+    padding-top: 50px;
 }
 label{
     align-self: flex-start;
@@ -61,7 +46,7 @@ label{
     margin-top: 11px;
 }
 
-.form-dir input{
+.form-dir input, .form-esq input{
     background: transparent !important;
     border: 1px solid #ccc;
     border-radius: 3px;
@@ -69,7 +54,7 @@ label{
     color: #ccc;
     margin-top: 5px;
 }
-.form-dir label{
+.form-dir label, .form-esq label{
     color: #ccc;
     font-weight: 500;
     margin-top: 20px;
@@ -93,4 +78,21 @@ label{
 .concluir-button:hover{
     background: transparent;
     color: rgba(45, 175, 126, 1);
+}
+.form-dir{
+    height: auto;
+    width: 80%;
+    display: flex;
+    flex-direction: column;
+    justify-content: start;
+    margin-left: 20px;
+    margin-top: 120px;
+}
+.form-esq{
+    height: 100%;
+    width: 70%;
+    display: flex;
+    flex-direction: column;
+    justify-content: start;
+    margin: 0 0 100px 110px;
 }
