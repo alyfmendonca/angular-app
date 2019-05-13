@@ -15,7 +15,7 @@ import { MainContentModule } from './main-content/main-content.module';
   imports: [ 
     BrowserModule,
     AppRoutingModule,
-    MainContentModule 
+    MainContentModule,
   ],
   providers: [],
   bootstrap: [AppComponent]
