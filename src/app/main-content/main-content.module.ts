@@ -8,6 +8,8 @@ import { AppRoutingModule } from '../app-routing.module';
 import { FormCadastroComponent } from './form-cadastro/form-cadastro.component';
 import { FormsModule }   from '@angular/forms';
 import { ProfileComponent } from './profile/profile.component';
+import { TussTableComponent } from './tuss-table/tuss-table.component';
+
 
 @NgModule({
   declarations: [
@@ -15,12 +17,14 @@ import { ProfileComponent } from './profile/profile.component';
     FormLoginComponent,
     MainContentComponent,
     FormCadastroComponent,
-    ProfileComponent 
+    ProfileComponent,
+    TussTableComponent,
+    
   ],
   imports: [
     CommonModule,
     AppRoutingModule,
-    FormsModule
+    FormsModule,
   ],
   exports: [
     FormLoginComponent

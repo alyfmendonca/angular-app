@@ -8,6 +8,7 @@ import { FormCadastroComponent } from './main-content/form-cadastro/form-cadastr
 import { SurgeryRequestModule } from './main-content/surgery-request/surgery-request.module';
 import { RequestOrientationComponent } from './main-content/surgery-request/request-orientation/request-orientation.component';
 import { RequestStepperComponent } from './main-content/surgery-request/request-stepper/request-stepper.component';
+import { TussTableComponent } from './main-content/tuss-table/tuss-table.component';
 
 const routes: Routes = [
   { path: '', redirectTo: 'home', pathMatch: 'full'},
@@ -27,8 +28,12 @@ const routes: Routes = [
     },
     {
       path:'stepper', component: RequestStepperComponent
+    },
+    {
+      path: 'tabela-tuss', component: TussTableComponent
     }
-  ]}
+  ]
+  }
   
 ];
 

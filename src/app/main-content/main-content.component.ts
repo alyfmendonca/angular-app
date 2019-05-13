@@ -21,6 +21,12 @@ export class MainContentComponent implements OnInit {
     {label: "Solicitar Cirurgia", url:"/content/surgery-request"}, 
     {label:"Minha Conta", url:"/content/profile"}
   ];
+  navBarAdmin:any = 
+  [
+    {label: "Tabela TUSS", url:"/content/tabela-tuss"},
+    {label:"Minha Conta", url:"/content/profile"},
+
+  ];
 
   navBarAtual:any = [];
 
@@ -33,8 +39,11 @@ export class MainContentComponent implements OnInit {
   alterarPercepcao(){
     if(this.navBarAtual[0].label == "Sobre nós"){
       this.navBarAtual = this.navBarCir;
+    }else if(this.navBarAtual[0].label == "Cirurgias Solicitadas e Aprovadas"){
+      this.navBarAtual = this.navBarAdmin;
     }else{
       this.navBarAtual = this.navBarUn;
+  
     }
   }
 }
