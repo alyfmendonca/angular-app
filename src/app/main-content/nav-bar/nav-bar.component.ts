@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 
 @Component({  
   selector: 'nav-bar',
@@ -7,9 +7,19 @@ import { Component, OnInit } from '@angular/core';
 })
 export class NavBarComponent implements OnInit {
 
+  @Input()
+  navBarAtual:any
+
+  @Output()
+  alterarParent = new EventEmitter<String>();
+
   constructor() { }
 
   ngOnInit() {
+  }
+
+  alterarChild(){
+    this.alterarParent.emit();
   }
 
 }

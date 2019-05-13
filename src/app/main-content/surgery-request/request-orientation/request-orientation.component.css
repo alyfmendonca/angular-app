@@ -1,0 +1,75 @@
+.content-background{
+    display: flex;
+    justify-content: center;
+}
+.content-request{
+    background: white;
+    box-shadow: -1px 3px 7px 0px lightgrey;
+    position: relative;
+    display: flex;
+    flex-direction: row;
+    margin-top: 100px;
+    width: 60%;
+    height: 300px;
+}
+
+.content-request p {
+    color: #cccccc;
+    font-size: 17px;
+    margin: 0;
+    margin-bottom: 50px;
+}
+
+.content-request h3 {
+    margin: 0;
+}
+
+.cont-esq{
+    width: 60%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.cont-esq .topo{
+    width: 65%;
+    align-self: center;
+}
+
+.cont-esq button{
+    margin-left: 60px;
+    padding: 10px 20px;
+    color: #fff;
+    border: 0;
+    border-radius: 2px;
+    background: rgba(45, 175, 126, 1);
+    cursor: pointer;
+    transition: .2s ease-in-out all;
+    border: 1px solid rgba(45, 175, 126, 1);
+}
+
+.cont-esq button:hover{
+    background: transparent;
+    color: rgba(45, 175, 126, 1);
+}
+
+.cont-dir{
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+}
+
+.cont-dir .one{
+    background: yellow;
+    width: 100%;
+}
+
+.cont-dir .two{
+    background: black;
+    width: 100%;
+}
+
+.cont-dir .three{
+    background: blue;
+    width: 100%;
+}

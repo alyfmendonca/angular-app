@@ -1,9 +1,6 @@
 <div class="nav-bar">
+    <button (click)="alterarChild();">Alterar Percepção</button>
     <div class="nav-bar-content">
-        <a routerLink="/home"><button>Sobre Nós</button></a> 
-        <a routerLink="/home"><button>Contato</button></a> 
-        <a routerLink="/content/profile"><button>Minha Conta</button></a> 
-        <a routerLink="/content/cadastro"><button>Cadastro</button></a> 
-        <a routerLink="/content/login"><button>Entrar</button></a>
+        <a *ngFor="let botao of navBarAtual" routerLink={{botao.url}}><button>{{botao.label}}</button></a>
     </div>
 </div> 

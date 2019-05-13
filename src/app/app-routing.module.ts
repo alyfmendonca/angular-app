@@ -5,6 +5,9 @@ import { MainContentComponent } from './main-content/main-content.component';
 import { ProfileComponent } from './main-content/profile/profile.component';
 import { FormLoginComponent } from './main-content/form-login/form-login.component';
 import { FormCadastroComponent } from './main-content/form-cadastro/form-cadastro.component'; 
+import { SurgeryRequestModule } from './main-content/surgery-request/surgery-request.module';
+import { RequestOrientationComponent } from './main-content/surgery-request/request-orientation/request-orientation.component';
+import { RequestStepperComponent } from './main-content/surgery-request/request-stepper/request-stepper.component';
 
 const routes: Routes = [
   { path: '', redirectTo: 'home', pathMatch: 'full'},
@@ -18,13 +21,23 @@ const routes: Routes = [
     },
     {
       path: 'profile', component: ProfileComponent
+    },
+    {
+      path: 'surgery-request', component: RequestOrientationComponent
+    },
+    {
+      path:'stepper', component: RequestStepperComponent
     }
   ]}
   
 ];
 
 @NgModule({
-  imports: [RouterModule.forRoot(routes)],
+  imports: 
+  [
+    RouterModule.forRoot(routes),
+    SurgeryRequestModule
+  ],
   exports: [RouterModule]
 })
 export class AppRoutingModule { }
