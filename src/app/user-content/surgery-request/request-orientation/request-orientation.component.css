@@ -11,6 +11,7 @@
     margin-top: 100px;
     width: 60%;
     height: 300px;
+    padding: 20px 0;
 }
 
 .content-request p {
@@ -18,6 +19,7 @@
     font-size: 17px;
     margin: 0;
     margin-bottom: 50px;
+    font-weight: 300;
 }
 
 .content-request h3 {
@@ -46,6 +48,7 @@
     cursor: pointer;
     transition: .2s ease-in-out all;
     border: 1px solid rgba(45, 175, 126, 1);
+    font-size: 12px;
 }
 
 .cont-esq button:hover{
@@ -57,19 +60,55 @@
     width: 100%;
     display: flex;
     flex-direction: row;
+    position: relative;
 }
 
-.cont-dir .one{
-    background: yellow;
+.cont-dir .one, .cont-dir .two, .cont-dir .three{
     width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
 }
-
-.cont-dir .two{
-    background: black;
-    width: 100%;
+.round-number{
+    padding: 15px;
+    width: 40px;
+    border: 6px solid #3fc0c2;
+    border-radius: 50%;
+    height: 40px;
+    text-align: center;
+    color: #b6b5b5;
+    background: #fff;
+    z-index: 2;
 }
-
-.cont-dir .three{
-    background: blue;
-    width: 100%;
+.round-number h3{
+    font-size: 40px;
+    font-weight: 500;
+    margin-top: -3px;
+}
+.content-request .cont-dir p {
+    margin-top: 20px;
+    text-align: center;
+}
+.two .round-number{
+    margin-top: 22px;
+}
+.cont-dir:before {
+    content: '';
+    height: 4px;
+    /* color: #000; */
+    width: 66%;
+    position: absolute;
+    top: 31%;
+    font-size: 30px;
+    right: 17%;
+    z-index: 1;
+    background-image: linear-gradient(to right, #9f9f9f 33%, rgba(255,255,255,0) 0%);
+    background-size: 11px 10px;
+    background-repeat: repeat-x;
+}
+.cont-dir .conteudo {
+    display: flex;
+    width: 80%;
+    margin: auto;
 }

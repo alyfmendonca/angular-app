@@ -7,17 +7,20 @@ import { MaterialComponentsModule } from '../material-components/material-compon
 import { CoreModule } from '../core/core.module';
 import { NavBarComponent } from './nav-bar/nav-bar.component';
 import { MainContentComponent } from './main-content/main-content.component';
+import { AllHospitalsComponent } from './all-hospitals/all-hospitals.component';
 
 @NgModule({
   declarations: [
     TussTableComponent,
     NavBarComponent,
-    MainContentComponent
+    MainContentComponent,
+    AllHospitalsComponent
   ],
   imports: [
     CommonModule,
     AdminContentRoutingModule,
-    CoreModule
+    CoreModule,
+    MaterialComponentsModule
   ]
 })
 export class AdminContentModule { }

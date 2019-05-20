@@ -11,6 +11,7 @@ import {MatSelectModule} from '@angular/material/select';
 import {MatIconModule} from '@angular/material/icon';
 import {MatCardModule} from '@angular/material/card';
 import { MatToolbarModule } from '@angular/material/toolbar';
+import {MatTableModule} from '@angular/material/table';
    
 
       
@@ -29,6 +30,7 @@ import { MatToolbarModule } from '@angular/material/toolbar';
     MatSelectModule,
     MatIconModule,
     MatCardModule, 
+    MatTableModule,
   ],
   exports: [
     MatCheckboxModule,
@@ -42,6 +44,7 @@ import { MatToolbarModule } from '@angular/material/toolbar';
     MatSelectModule,
     MatIconModule,
     MatCardModule,
+    MatTableModule,
   ]
 })
 export class MaterialComponentsModule { }
