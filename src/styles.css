@@ -1,0 +1,32 @@
+/* You can add global styles to this file, and also import other style files */
+@import url('https://fonts.googleapis.com/css?family=Roboto:300,400,500,700,900');
+
+body{
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    width: 100%;
+    background: #f3f2f2;
+    font-family: Roboto;
+}
+app-home{
+    height: 100%;
+    width: 100%;
+}
+.content-conteudo{
+    background: white;
+    box-shadow: -1px 3px 7px 0px lightgrey;
+    width: 60%;
+    margin-top: 100px;
+    display: flex;
+    flex-direction: row;
+    overflow: hidden;
+}
+.content-background{
+    display: flex;
+    justify-content: center;
+}
+h3.dark{
+    font-size: 28px;
+    color: rgba(45, 175, 126, 1);
+}

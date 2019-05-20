@@ -1,0 +1,32 @@
+<div class="content-background">
+  <div class="content-conteudo page-login">
+    <div class="esqu">
+      <div class="entrar-esq">
+        <h3 class="dark">Entrar</h3>
+        <p>Coloque seu login e senha para iniciar sua sessão no Smart Surgery!</p>
+      </div>
+      <div class="img-esq">
+        <img src="../../assets/bg-icon.png">
+      </div>
+    </div>
+    <div class="dir">
+      <form #form="ngForm">
+        <div class="form-dir">
+          <label for='txtLogin'>Login</label>
+          <input [(ngModel)]='txtLogin' type='text' id='txtLogin' name='txtLogin' placeholder="Digite o login" #nameVerify="ngModel" required>
+
+          <label for='txtPass'>Senha</label>
+          <input [(ngModel)]='txtPass' type='password' id='txtPass' name='txtPass' placeholder="Digite a Senha" #nameVerify="ngModel" required>
+
+          <a href="#" class="forg-pass">Esqueci a senha</a>
+        </div>
+        <div class="bot-dir">
+          <div>
+              <input type="checkbox"> Lembrar de mim 
+          </div>
+          <button class="concluir-button" (click)="submitForm();">Concluir</button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>

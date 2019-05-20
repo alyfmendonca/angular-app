@@ -1,0 +1,17 @@
+.page-cadastro .form-dir label{
+    margin-top: 15px;
+}
+.page-cadastro .img-esq img{
+    margin-top: 153px;
+}
+.page-cadastro .bot-dir{
+    justify-content: flex-end;
+    padding-right: 70px;
+    margin-top: 40px;
+}
+.page-cadastro.page-cadastro{
+    max-height: 550px;
+}
+.page-cadastro .dir{
+    display: block;
+}
