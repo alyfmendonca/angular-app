@@ -4,21 +4,21 @@ import { Component, OnInit } from '@angular/core';
 export interface PeriodicElement {
   name: string;
   position: number;
-  weight: number;
+  weight: string;
   symbol: string;
 }
 
 const ELEMENT_DATA: PeriodicElement[] = [
-  {position: 1, name: 'Casa de Saúde São José', weight: 1.0079, symbol: 'H'},
-  {position: 2, name: 'Casa de Saúde São José', weight: 4.0026, symbol: 'He'},
-  {position: 3, name: 'Casa de Saúde São José', weight: 6.941, symbol: 'Li'},
-  {position: 4, name: 'Casa de Saúde São José', weight: 9.0122, symbol: 'Be'},
-  {position: 5, name: 'Casa de Saúde São José', weight: 10.811, symbol: 'B'},
-  {position: 6, name: 'Casa de Saúde São José', weight: 12.0107, symbol: 'C'},
-  {position: 7, name: 'Casa de Saúde São José', weight: 14.0067, symbol: 'N'},
-  {position: 8, name: 'Casa de Saúde São José', weight: 15.9994, symbol: 'O'},
-  {position: 9, name: 'Casa de Saúde São José', weight: 18.9984, symbol: 'F'},
-  {position: 10, name: 'Casa de Saúde São José', weight: 20.1797, symbol: 'Ne'},
+  {position: 1, name: 'Casa de Saúde São José', weight: 'casadesaudesaojose@contato.com', symbol: '+55 (21) 23456789'},
+  {position: 2, name: 'Casa de Saúde São José', weight: 'casadesaudesaojose@contato.com', symbol: '+55 (21) 23456789'},
+  {position: 3, name: 'Casa de Saúde São José', weight: 'casadesaudesaojose@contato.com', symbol: '+55 (21) 23456789'},
+  {position: 4, name: 'Casa de Saúde São José', weight: 'casadesaudesaojose@contato.com', symbol: '+55 (21) 23456789'},
+  {position: 5, name: 'Casa de Saúde São José', weight: 'casadesaudesaojose@contato.com', symbol: '+55 (21) 23456789'},
+  {position: 6, name: 'Casa de Saúde São José', weight: 'casadesaudesaojose@contato.com', symbol: '+55 (21) 23456789'},
+  {position: 7, name: 'Casa de Saúde São José', weight: 'casadesaudesaojose@contato.com', symbol: '+55 (21) 23456789'},
+  {position: 8, name: 'Casa de Saúde São José', weight: 'casadesaudesaojose@contato.com', symbol: '+55 (21) 23456789'},
+  {position: 9, name: 'Casa de Saúde São José', weight: 'casadesaudesaojose@contato.com', symbol: '+55 (21) 23456789'},
+  {position: 10, name: 'Casa de Saúde São José', weight: 'casadesaudesaojose@contato.com', symbol: '+55 (21) 23456789'},
 ];
 
 @Component({
@@ -34,6 +34,9 @@ export class AllHospitalsComponent implements OnInit {
   constructor() { }
   
   ngOnInit() {
+  }
+  mostraId(id){
+    console.log(id);
   }
 
 }

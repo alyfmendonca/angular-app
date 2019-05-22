@@ -8,13 +8,17 @@ import { CoreModule } from '../core/core.module';
 import { NavBarComponent } from './nav-bar/nav-bar.component';
 import { MainContentComponent } from './main-content/main-content.component';
 import { AllHospitalsComponent } from './all-hospitals/all-hospitals.component';
+import { HospitalDetailsComponent } from './hospital-details/hospital-details.component';
+import { AllSurgeonsComponent } from './all-surgeons/all-surgeons.component';
 
 @NgModule({
   declarations: [
     TussTableComponent,
     NavBarComponent,
     MainContentComponent,
-    AllHospitalsComponent
+    AllHospitalsComponent,
+    HospitalDetailsComponent,
+    AllSurgeonsComponent
   ],
   imports: [
     CommonModule,
