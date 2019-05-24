@@ -5,21 +5,15 @@
 
       <mat-step [stepControl]="firstFormGroup">
           <form [formGroup]="firstFormGroup">
-            <ng-template matStepLabel></ng-template>
+            <ng-template matStepLabel>1</ng-template>
             <mat-form-field>
-              <input matInput placeholder="Last name, First name" formControlName="firstCtrl" required>
-                <div class="content-first">
-                  <div class="menu-esq">
-
-                  </div>
-                  <div class="menu-dir">
-
-                  </div>
-                </div>
+          
+                    <input matInput placeholder="Last name, First name" formControlName="firstCtrl" required>
+              
             </mat-form-field>
-            <div>
+            
               <button mat-button matStepperNext>Next</button>
-            </div>
+          
           </form>
       </mat-step>
 

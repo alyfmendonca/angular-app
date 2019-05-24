@@ -1,48 +1,65 @@
 <div class="content-background">
-    <div class="content-conteudo page-profile">
-      <div class="left-grid">
-        <h3 class="dark">Tabela TUSS</h3>
-        <table>
-          <thead>
-            <th>Código</th>
-            <th>Procedimento</th>
-          </thead>
-          <tbody>
-            <tr>
-              <td>31005489</td>
-              <td>Colecistectomia com fístula biliodigestiva</td>
-            </tr>
-            <tr>
-              <td>31005489</td>
-              <td>Colecistectomia com fístula biliodigestiva</td>
-            </tr>
-            <tr>
-              <td>31005489</td>
-              <td>Colecistectomia com fístula biliodigestiva</td>
-            </tr>    
-            <tr>
-              <td>31005489</td>
-              <td>Colecistectomia com fístula biliodigestiva</td>
-            </tr>
-            <tr>
-              <td>31005489</td>
-              <td>Colecistectomia com fístula biliodigestiva</td>
-            </tr>
-            <tr>
-              <td>31005489</td>
-              <td>Colecistectomia com fístula biliodigestiva</td>
-            </tr>
-            <tr>
-              <td>31005489</td>
-              <td>Colecistectomia com fístula biliodigestiva</td>
-            </tr>
-            <tr>
-              <td>31005489</td>
-              <td>Colecistectomia com fístula biliodigestiva</td>
-            </tr>
-          </tbody>
-        </table>
+  <div class="content-conteudo page-profile">
+    <div class="conteudo">
+      <div>
+        <div class="cont-header">
+            <h3 class="dark">Tabela TUSS</h3>
+        </div>
+        
+        <div>
+            <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
+
+                <!--- Note that these columns can be defined in any order.
+                      The actual rendered columns are set as a property on the row definition" -->
+              
+                <!-- Position Column -->
+                <ng-container matColumnDef="position">
+                  <th mat-header-cell *matHeaderCellDef> Código </th>
+                  <td mat-cell *matCellDef="let element"> {{element.name}} </td>
+                </ng-container>
+              
+                <!-- Name Column -->
+                <ng-container matColumnDef="name">
+                  <th mat-header-cell *matHeaderCellDef> Procedimento </th>
+                  <td mat-cell *matCellDef="let element"> {{element.symbol}} </td>
+                </ng-container>
+
+                <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+                <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+              </table>
+        </div>
       </div>
-    
+      <div>
+        <div class="cont-header">
+            <h3 class="dark">Hospitais Associados</h3>
+        </div>
+        
+        <div class="hospitalsBox">
+            <p>Casa de Saúde São José</p>
+            <p>Casa de Saúde São José</p>
+            <p>Casa de Saúde São José</p>
+            <p>Casa de Saúde São José</p>
+            <p>Casa de Saúde São José</p>
+            <p>Casa de Saúde São José</p>
+        </div>
+      </div>
+
+      <div>
+          <div class="cont-header">
+              <h3 class="dark">Cirurgiões Associados</h3>
+          </div>
+          
+          <div class="hospitalsBox">
+              <p>Casa de Saúde São José</p>
+              <p>Casa de Saúde São José</p>
+              <p>Casa de Saúde São José</p>
+              <p>Casa de Saúde São José</p>
+              <p>Casa de Saúde São José</p>
+              <p>Casa de Saúde São José</p>
+          </div>
+        </div>
+        
     </div>
+  
   </div>
+</div>
