@@ -1,44 +1,114 @@
 <div class="content-background">  
   <div class="content-conteudo">
-    <mat-horizontal-stepper class="stepper" [linear]="!isLinear" #stepper>
-
+    <mat-horizontal-stepper class="stepper" [linear]="isLinear" #stepper>
 
       <mat-step [stepControl]="firstFormGroup">
-          <form [formGroup]="firstFormGroup">
-            <ng-template matStepLabel>1</ng-template>
-            <mat-form-field>
-          
-                    <input matInput placeholder="Last name, First name" formControlName="firstCtrl" required>
-              
-            </mat-form-field>
-            
-              <button mat-button matStepperNext>Next</button>
-          
+          <form class="form-stepper" [formGroup]="firstFormGroup">
+            <div class="content-first">
+              <div class="menu-esq">
+                <div>
+                  <h3 class="dark">Procedimentos (TUSS)</h3>
+                  <p class="">Selecione os procedimentos que serão realizados na cirurgia</p>
+                </div>
+                <div class="list-scroll-esq">
+                    <mat-selection-list>
+                        <mat-list-option (click)="selectionClick(procedimento);" *ngFor="let procedimento of listProcedimentosMock">
+                          {{procedimento.id}} - {{procedimento.descricao}}
+                        </mat-list-option>
+                      </mat-selection-list>
+                </div>
+              </div>
+              <div class="menu-dir">
+                  <div>
+                      <h3 class="dark">Procedimentos (TUSS) Selecionados</h3>
+                  </div>
+                    <div class="list-scroll-dir">
+                        <mat-selection-list>
+                            <mat-list-option (click)="selectionClick(procedimento);" *ngFor="let procedimento of listSelected">
+                              {{procedimento.id}} - {{procedimento.descricao}}
+                            </mat-list-option>
+                          </mat-selection-list>
+                    </div>
+                <div class="btn-next">
+                  <button class="dark-button" mat-button matStepperNext>Próximo</button>
+                </div>
+              </div>
+            </div>
           </form>
       </mat-step>
 
-
       <mat-step [stepControl]="secondFormGroup">
-        <form [formGroup]="secondFormGroup">
-          <ng-template matStepLabel></ng-template>
-          <mat-form-field>
-            <input matInput placeholder="Address" formControlName="secondCtrl" required>
-          </mat-form-field>
-          <div>
-            <button mat-button matStepperPrevious>Back</button>
-            <button mat-button matStepperNext>Next</button>
-          </div>
+        <form class="form-stepper" [formGroup]="secondFormGroup">
+            <div class="content-first form2">
+                <div class="menu-esq"> 
+                <div>
+                  <h3>Informações do paciente</h3>
+                  <p>Insira as informações do paciente nos campos seguintes</p>
+                </div>
+                  <div class="inputsForm2">
+                    <label class="labelForm" for='txtNome'>Nome</label>
+                    <input [(ngModel)]='txtNome' [ngModelOptions]="{standalone: true}" type='text' id='txtNome' name='txtNome' placeholder="Alberto Pacheco" #nameVerify="ngModel" required>
+                      <br>
+                    <label class="labelForm" for='txtCpf'>CPF</label>
+                    <input [(ngModel)]='txtCpf' [ngModelOptions]="{standalone: true}" type='text' id='txtCpf' name='txtCpf' placeholder="470.054.938-69" #nameVerify="ngModel" required> 
+                    <br>
+                    <label class="labelForm" for='dtNasc'>Data de Nascimento</label>
+                    <input [(ngModel)]='dtNasc' [ngModelOptions]="{standalone: true}" type='date' id='dtNasc' name='dtNasc' placeholder="" #nameVerify="ngModel" required> 
+                  </div>
+                </div> 
+                <div class="menu-dir">
+                 <h3 class="dark">Comorbidades</h3><span>(Selecione quantos necessários)</span>
+                 <div class="list-scroll-esq listForm2">
+                    <mat-selection-list>
+                        <mat-list-option *ngFor="let comorbidades of listComorbidadesMock">
+                          {{comorbidades.descricao}}
+                        </mat-list-option>
+                      </mat-selection-list>
+                  </div>
+                  <div class="btn-next">
+                      <button class="dark-button" mat-button matStepperNext>Próximo</button>
+                  </div>
+                </div>
+              </div>
         </form>
       </mat-step>
 
-
-      <mat-step>
-        <ng-template matStepLabel></ng-template>
-        You are now done.
-        <div>
-          <button mat-button matStepperPrevious>Back</button>
-          <button mat-button (click)="stepper.reset()">Reset</button>
-        </div>
+      <mat-step [stepControl]="thirdFormGroup">
+          <form class="form-stepper" [formGroup]="thirdFormGroup"> 
+              <div class="content-first form2">
+                  <div class="menu-esq"> 
+                  <div>
+                    <h3>Avaliação da cirurgia</h3>
+                    <p>Insira as informações solicitadas nos campos seguintes</p>
+                  </div>
+                    <div class="inputsForm2">
+                      <label class="labelForm" for='txtDur'>Duração da cirurgia</label>
+                      <input [(ngModel)]='txtDur' [ngModelOptions]="{standalone: true}" type='text' id='txtDur' name='txtDur' placeholder="2h e 30m" #nameVerify="ngModel" required>
+                      <br>
+                    </div>
+                  <div class="esq-baixo">
+                    <p>Essa cirurgia é de alta complexidade?</p>
+                    <mat-radio-group class="rdBtnComp" [(ngModel)] = "complexidade" aria-label="Select an option">
+                        <mat-radio-button value="1">Sim</mat-radio-button>
+                        <mat-radio-button value="2">Não</mat-radio-button>
+                    </mat-radio-group>
+                  </div>
+                </div> 
+                  <div class="menu-dir">
+                   <h3 class="dark">Comorbidades</h3><span>(Selecione quantos necessários)</span>
+                   <div class="list-scroll-esq listForm2">
+                      <mat-selection-list>
+                          <mat-list-option *ngFor="let necessidades of listNecessidadesMock">
+                            {{necessidades.descricao}}
+                          </mat-list-option>
+                        </mat-selection-list>
+                    </div>
+                    <div class="btn-next">
+                        <button class="dark-button" mat-button matStepperNext>Finalizar</button>
+                    </div>
+                  </div>
+                </div>
+          </form>
       </mat-step>
     </mat-horizontal-stepper>
   </div>
