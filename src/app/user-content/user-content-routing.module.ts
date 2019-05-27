@@ -4,6 +4,7 @@ import { RequestOrientationComponent } from './surgery-request/request-orientati
 import { RequestStepperComponent } from './surgery-request/request-stepper/request-stepper.component';
 import { ProfileComponent } from '../core/profile/profile.component';
 import { MainContentComponent } from './main-content/main-content.component';
+import { AprovadasSolicitadasComponent } from './aprovadas-solicitadas/aprovadas-solicitadas.component';
 
 const routes: Routes = [
   { path: '', redirectTo: 'main', pathMatch: 'full' },
@@ -11,7 +12,8 @@ const routes: Routes = [
     { path: '', redirectTo: 'profile', pathMatch: 'full' },
     { path: 'profile', component: ProfileComponent },
     { path:'request-orientation', component:RequestOrientationComponent },
-    { path:'request-stepper', component: RequestStepperComponent }
+    { path:'request-stepper', component: RequestStepperComponent },
+    { path:'aprovadas-solicitadas', component: AprovadasSolicitadasComponent },
   ] }
 ];
 

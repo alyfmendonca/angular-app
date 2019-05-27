@@ -10,6 +10,8 @@ import { MainContentComponent } from './main-content/main-content.component';
 import { AllHospitalsComponent } from './all-hospitals/all-hospitals.component';
 import { HospitalDetailsComponent } from './hospital-details/hospital-details.component';
 import { AllSurgeonsComponent } from './all-surgeons/all-surgeons.component';
+import { AprovadasComponent } from './aprovadas/aprovadas.component';
+import { SolicitacoesComponent } from './solicitacoes/solicitacoes.component';
 
 @NgModule({
   declarations: [
@@ -18,7 +20,9 @@ import { AllSurgeonsComponent } from './all-surgeons/all-surgeons.component';
     MainContentComponent,
     AllHospitalsComponent,
     HospitalDetailsComponent,
-    AllSurgeonsComponent
+    AllSurgeonsComponent,
+    AprovadasComponent,
+    SolicitacoesComponent
   ],
   imports: [
     CommonModule,

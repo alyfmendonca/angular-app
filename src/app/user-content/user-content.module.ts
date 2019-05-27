@@ -9,13 +9,15 @@ import { CoreModule } from '../core/core.module';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { NavBarComponent } from './nav-bar/nav-bar.component';
 import { MainContentComponent } from './main-content/main-content.component';
+import { AprovadasSolicitadasComponent } from './aprovadas-solicitadas/aprovadas-solicitadas.component';
 
 @NgModule({
   declarations: [
     RequestOrientationComponent,
     RequestStepperComponent,
     NavBarComponent,
-    MainContentComponent
+    MainContentComponent,
+    AprovadasSolicitadasComponent
   ],
   imports: [
     CommonModule,

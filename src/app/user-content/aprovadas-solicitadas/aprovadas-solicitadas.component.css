@@ -1,0 +1,62 @@
+.image-details{
+    width: 30px;
+    cursor: pointer;
+    float: right;
+}
+.box{
+    border: 1px solid #ccc;
+    width: 95%;
+    display: flex;
+    justify-content: space-between;
+    padding: 10px;
+    float: left;
+    margin: 1%;
+}
+.conteudo{
+    padding: 15px 40px;
+    width: 100%;
+    padding-left: 25px;
+}
+.content-conteudo{
+    width: 35%;
+}
+.content-conteudo.cirurgioes{
+    margin-left: 20px;
+}
+.light-dark{
+    margin: 0;
+    font-size: 15px;
+}
+.name-dr{
+    color: #9f9f9f;
+    font-weight: 500;
+    margin: 0;
+    font-size: 15px;
+}
+.paciente-name{
+    color: #9f9f9f;
+    font-weight: 300;
+    margin: 0;
+    font-size: 13px;
+}
+.right-block{
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    justify-content: space-between;
+}
+.complexidade{
+    margin: 0;
+    font-size: 14px;
+}
+.green{
+    color: rgba(45, 175, 126, 1);
+}
+.red{
+    color: red;
+}
+.cont-header{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}

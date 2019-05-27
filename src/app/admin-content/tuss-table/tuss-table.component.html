@@ -15,13 +15,13 @@
                 <!-- Position Column -->
                 <ng-container matColumnDef="position">
                   <th mat-header-cell *matHeaderCellDef> Código </th>
-                  <td mat-cell *matCellDef="let element"> {{element.name}} </td>
+                  <td mat-cell *matCellDef="let element" (click)="chamaAssociados(element.position)"> {{element.name}} </td>
                 </ng-container>
               
                 <!-- Name Column -->
                 <ng-container matColumnDef="name">
                   <th mat-header-cell *matHeaderCellDef> Procedimento </th>
-                  <td mat-cell *matCellDef="let element"> {{element.symbol}} </td>
+                  <td mat-cell *matCellDef="let element" (click)="chamaAssociados(element.position)"> {{element.symbol}} </td>
                 </ng-container>
 
                 <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
@@ -35,12 +35,7 @@
         </div>
         
         <div class="hospitalsBox">
-            <p>Casa de Saúde São José</p>
-            <p>Casa de Saúde São José</p>
-            <p>Casa de Saúde São José</p>
-            <p>Casa de Saúde São José</p>
-            <p>Casa de Saúde São José</p>
-            <p>Casa de Saúde São José</p>
+            <p *ngFor="let hospital of hospitals">{{hospital.name}}</p>
         </div>
       </div>
 
@@ -50,12 +45,7 @@
           </div>
           
           <div class="hospitalsBox">
-              <p>Casa de Saúde São José</p>
-              <p>Casa de Saúde São José</p>
-              <p>Casa de Saúde São José</p>
-              <p>Casa de Saúde São José</p>
-              <p>Casa de Saúde São José</p>
-              <p>Casa de Saúde São José</p>
+              <p *ngFor="let surgeon of surgeons">{{surgeon.name}}</p>
           </div>
         </div>
         

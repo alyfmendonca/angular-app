@@ -22,6 +22,27 @@ const ELEMENT_DATA: PeriodicElement[] = [
   {position: 10, name: '31005489', weight: 'Colecistectomia com fistula biliodigestiva', symbol: 'Colecistectomia com fistula biliodigestiva'},
 ];
 
+export interface HospitalAssociado {
+  name: string;
+}
+
+const ELEMENT_DATA2: HospitalAssociado[] = [
+  {name: 'Casa de Saúde São José'},
+  {name: 'Casa de Saúde São José'},
+  {name: 'Casa de Saúde São José'},
+  {name: 'Casa de Saúde São José'},
+];
+
+export interface SurgeonAssociado {
+  name: string;
+}
+
+const ELEMENT_DATA3: SurgeonAssociado[] = [
+  {name: 'Casa de Saúde São José'},
+  {name: 'Casa de Saúde São José'},
+];
+
+
 
 @Component({
   selector: 'app-tuss-table',
@@ -31,10 +52,16 @@ const ELEMENT_DATA: PeriodicElement[] = [
 export class TussTableComponent implements OnInit {
   displayedColumns: string[] = ['position', 'name'];
   dataSource = ELEMENT_DATA;
+
+  hospitals: any;
+  surgeons: any;
   
   constructor() { }
 
   ngOnInit() {
   }
-
+  chamaAssociados(id){
+    this.hospitals = ELEMENT_DATA2;
+    this.surgeons = ELEMENT_DATA3;
+  }
 }

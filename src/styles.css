@@ -41,6 +41,7 @@ app-home{
     margin-right: 10px;
     background: rgba(63, 192, 194, 1);
     cursor: pointer;
+    border-radius: 3px;
 }
 .dark-button{
     padding: 10px 20px;
@@ -48,4 +49,5 @@ app-home{
     border: 0;
     background: rgba(45, 175, 126, 1);
     cursor: pointer;
+    border-radius: 3px;
 }

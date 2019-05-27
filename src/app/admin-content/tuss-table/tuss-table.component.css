@@ -45,8 +45,7 @@ td.mat-footer-cell:last-of-type,
 th.mat-header-cell:last-of-type{
     padding-left: 20px;
 }
-table th:hover, 
-table td:hover{
+table tr:hover td{
     cursor: pointer;
-    color: rgba(63, 192, 194, 1);;
+    color: rgba(63, 192, 194, 1);
 } 
