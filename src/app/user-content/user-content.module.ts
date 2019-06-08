@@ -10,6 +10,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { NavBarComponent } from './nav-bar/nav-bar.component';
 import { MainContentComponent } from './main-content/main-content.component';
 import { AprovadasSolicitadasComponent } from './aprovadas-solicitadas/aprovadas-solicitadas.component';
+import { SurgeryDetailsComponent } from './surgery-details/surgery-details.component';
 
 @NgModule({
   declarations: [
@@ -17,7 +18,8 @@ import { AprovadasSolicitadasComponent } from './aprovadas-solicitadas/aprovadas
     RequestStepperComponent,
     NavBarComponent,
     MainContentComponent,
-    AprovadasSolicitadasComponent
+    AprovadasSolicitadasComponent,
+    SurgeryDetailsComponent
   ],
   imports: [
     CommonModule,

@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { AdminService } from '../admin.service'
 
 
 export interface PeriodicElement {
@@ -31,9 +32,14 @@ export class AllHospitalsComponent implements OnInit {
   displayedColumns: string[] = ['position', 'name', 'weight', 'symbol'];
   dataSource = ELEMENT_DATA;
 
-  constructor() { }
+  constructor(private adminService : AdminService) { }
   
   ngOnInit() {
+    let teste; 
+    this.adminService.getHospitals().subscribe(response => {
+      console.log(response);
+    })
+    
   }
   mostraId(id){
     console.log(id);
