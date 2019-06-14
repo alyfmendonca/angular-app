@@ -10,6 +10,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { NavBarComponent } from './nav-bar/nav-bar.component';
 import { MainContentComponent } from './main-content/main-content.component';
 import { AprovadasSolicitadasComponent } from './aprovadas-solicitadas/aprovadas-solicitadas.component';
+import {ScrollDispatchModule} from '@angular/cdk/scrolling';
 
 @NgModule({
   declarations: [
@@ -25,7 +26,8 @@ import { AprovadasSolicitadasComponent } from './aprovadas-solicitadas/aprovadas
     MaterialComponentsModule,
     CoreModule,
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    ScrollDispatchModule
   ]
 })
 export class UserContentModule { }

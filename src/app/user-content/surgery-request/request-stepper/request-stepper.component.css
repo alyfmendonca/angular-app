@@ -30,6 +30,8 @@
     margin-left: 6px;
     border: 2px solid #3fc0c2;
     border-radius: 50%;
+    padding: 6px;
+    color: #b6b5b5;
 }
 
 ::ng-deep .mat-stepper-horizontal-line {
@@ -43,8 +45,8 @@
 }
 
 ::ng-deep .mat-step-header {
-    height: 30px !important;
-    width: 40px !important;
+    height: 40px !important;
+    width: 50px !important;
 }
 
 ::ng-deep .mat-horizontal-stepper-header {
@@ -71,10 +73,14 @@
 }
 
 .list-scroll-esq{
-    overflow-y:scroll;
-    overflow-x: hidden;
-    height:471px;
+    height: 70%;
+    width: 80%;
 }
+
+.virtualScroll{
+    height: 75%;
+}
+
 
 .list-scroll-dir{
     overflow-y:scroll;
@@ -131,8 +137,8 @@ p {
 }
 
 ::ng-deep .list-scroll-esq .mat-pseudo-checkbox {
-    width: 15px !important;
-    height: 14px !important;
+    width: 4.5% !important;
+    height: 55% !important;
     border: 1px solid #3fc0c2 !important;
     border-radius: 2px !important;
     cursor: pointer !important;
@@ -162,7 +168,7 @@ p {
     flex-shrink: 0;
     transition: border-color 90ms cubic-bezier(0,0,.2,.1),background-color 90ms cubic-bezier(0,0,.2,.1);
     background-image: url("src\assets\excluir.png");
-    background-size: cover;
+    background-size: contain;
 }
 
 ::ng-deep .list-scroll-dir .mat-list-base .mat-list-item .mat-list-item-content-reverse, .list-scroll-esq .mat-list-base .mat-list-option .mat-list-item-content-reverse {
@@ -180,6 +186,11 @@ p {
     height: 32px !important;
 } 
 
+::ng-deep .mat-step-icon-state-number.mat-step-icon.mat-step-icon-selected {
+    background-color: #3fc0c2 !important;
+    color: white !important;
+}
+
 h3{
     font-size: 16px;
     color: #3fc0c2;
@@ -188,7 +199,7 @@ h3{
 .btn-next{
     align-self: flex-end;
     margin-right: 94px;
-    margin-top: 70px;
+    margin-top: 10px;
 }
 
 .labelForm{
@@ -276,4 +287,10 @@ span{
     border-style: unset !important;
     border-radius: unset !important;
     border: 1px solid #3fc0c2 !important;
+}
+.checkBoxGroup{
+    display: flex;
+    flex-direction: column;
+    height: 60px;
+    justify-content: space-evenly;
 }
