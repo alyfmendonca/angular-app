@@ -14,6 +14,9 @@ import { MatToolbarModule } from '@angular/material/toolbar';
 import {MatTableModule} from '@angular/material/table';
 import { MatListModule } from '@angular/material/list';
 import { MatRadioModule } from '@angular/material/radio';
+import { MatNativeDateModule } from '@angular/material';
+
+
 
    
 
@@ -36,6 +39,7 @@ import { MatRadioModule } from '@angular/material/radio';
     MatTableModule,
     MatListModule,
     MatRadioModule,
+    MatNativeDateModule,
   ],
   exports: [
     MatCheckboxModule,
@@ -52,6 +56,7 @@ import { MatRadioModule } from '@angular/material/radio';
     MatTableModule,
     MatListModule,
     MatRadioModule,
+    MatNativeDateModule,
   ]
 })
 export class MaterialComponentsModule { }

@@ -5,6 +5,7 @@ import { RequestStepperComponent } from './surgery-request/request-stepper/reque
 import { ProfileComponent } from '../core/profile/profile.component';
 import { MainContentComponent } from './main-content/main-content.component';
 import { AprovadasSolicitadasComponent } from './aprovadas-solicitadas/aprovadas-solicitadas.component';
+import { SurgeryDetailsComponent } from './surgery-details/surgery-details.component';
 
 const routes: Routes = [
   { path: '', redirectTo: 'main', pathMatch: 'full' },
@@ -14,6 +15,7 @@ const routes: Routes = [
     { path:'request-orientation', component:RequestOrientationComponent },
     { path:'request-stepper', component: RequestStepperComponent },
     { path:'aprovadas-solicitadas', component: AprovadasSolicitadasComponent },
+    { path:'surgery', component: SurgeryDetailsComponent },
   ] }
 ];
 

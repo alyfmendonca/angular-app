@@ -10,7 +10,11 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { NavBarComponent } from './nav-bar/nav-bar.component';
 import { MainContentComponent } from './main-content/main-content.component';
 import { AprovadasSolicitadasComponent } from './aprovadas-solicitadas/aprovadas-solicitadas.component';
+<<<<<<< HEAD
 import {ScrollDispatchModule} from '@angular/cdk/scrolling';
+=======
+import { SurgeryDetailsComponent } from './surgery-details/surgery-details.component';
+>>>>>>> 314d7c430a133ccbfae5dd8aad4cc7afd8b1d232
 
 @NgModule({
   declarations: [
@@ -18,7 +22,8 @@ import {ScrollDispatchModule} from '@angular/cdk/scrolling';
     RequestStepperComponent,
     NavBarComponent,
     MainContentComponent,
-    AprovadasSolicitadasComponent
+    AprovadasSolicitadasComponent,
+    SurgeryDetailsComponent
   ],
   imports: [
     CommonModule,

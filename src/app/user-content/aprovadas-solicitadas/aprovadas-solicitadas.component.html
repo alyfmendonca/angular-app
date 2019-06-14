@@ -17,7 +17,7 @@
               </div>
               <div class="right-block">
                 <p class="complexidade" [ngClass]="text == 'Baixa Complexidade' ? 'green': 'red'">Baixa Complexidade</p>
-                <img class="image-details" src="../../assets/detalhe.png" />
+                <a (click)="router.navigate(['/user/main/surgery']);"><img class="image-details" src="../../assets/detalhe.png" /></a>
               </div>
             </div>
   
