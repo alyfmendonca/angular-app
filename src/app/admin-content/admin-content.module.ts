@@ -12,6 +12,8 @@ import { HospitalDetailsComponent } from './hospital-details/hospital-details.co
 import { AllSurgeonsComponent } from './all-surgeons/all-surgeons.component';
 import { AprovadasComponent } from './aprovadas/aprovadas.component';
 import { SolicitacoesComponent } from './solicitacoes/solicitacoes.component';
+import { NewSurgeonComponent } from './new-surgeon/new-surgeon.component';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -22,13 +24,16 @@ import { SolicitacoesComponent } from './solicitacoes/solicitacoes.component';
     HospitalDetailsComponent,
     AllSurgeonsComponent,
     AprovadasComponent,
-    SolicitacoesComponent
+    SolicitacoesComponent,
+    NewSurgeonComponent
   ],
   imports: [
     CommonModule,
     AdminContentRoutingModule,
     CoreModule,
-    MaterialComponentsModule
+    MaterialComponentsModule,
+    FormsModule,
+    ReactiveFormsModule
   ]
 })
 export class AdminContentModule { }

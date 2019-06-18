@@ -1,0 +1,27 @@
+.content-conteudo{
+    padding: 50px 100px;
+}
+.conteudo{
+    width: 100%;
+}
+.image-voltar{
+    height: 28px;
+    width: auto;
+}
+.cont-header a{
+    display: flex;
+    align-items: center;
+}
+.cont-header h3{
+    margin: 0;
+    padding-left: 20px; 
+}
+
+form input{
+    background: transparent !important;
+    border: 1px solid #ccc;
+    border-radius: 3px;
+    padding: 10px 5px;
+    color: #ccc;
+    margin-top: 5px;
+}

@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 
 export interface PeriodicElement {
   name: string;
@@ -31,7 +32,7 @@ export class AllSurgeonsComponent implements OnInit {
   displayedColumns: string[] = ['position', 'crm', 'uf', 'name', 'weight', 'symbol'];
   dataSource = ELEMENT_DATA;
 
-  constructor() { }
+  constructor(public router: Router) { }
 
   ngOnInit() {
   }

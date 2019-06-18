@@ -8,6 +8,7 @@ import { HospitalDetailsComponent } from './hospital-details/hospital-details.co
 import { AllSurgeonsComponent } from './all-surgeons/all-surgeons.component';
 import { AprovadasComponent } from './aprovadas/aprovadas.component';
 import { SolicitacoesComponent } from './solicitacoes/solicitacoes.component';
+import { NewSurgeonComponent } from './new-surgeon/new-surgeon.component'
 
 const routes: Routes = [
   { path: '', redirectTo: 'main/profile', pathMatch: 'full' },
@@ -18,7 +19,8 @@ const routes: Routes = [
     { path:'hospitalDetails', component: HospitalDetailsComponent },
     { path:'aprovadas', component: AprovadasComponent },
     { path:'solicitacoes', component: SolicitacoesComponent },
-    { path:'tuss-table', component: TussTableComponent }
+    { path:'tuss-table', component: TussTableComponent },
+    { path:'new-surgeon', component: NewSurgeonComponent }
   ] }
   
 ];

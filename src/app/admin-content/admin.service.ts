@@ -14,8 +14,11 @@ export class AdminService {
 
   getHospitals(){
     let headers = new HttpHeaders;
-    headers.append('Content-Type', 'application/json');
-    headers.append('Authorization', '81f204edcca524ff266b98b94a264db12d640c55');
+    headers.append('Content-Type', 'application/x-www-form-urlencoded ');
+    headers.append('Authorization', 'token 81f204edcca524ff266b98b94a264db12d640c55');
+    headers.append('Access-Control-Allow-Origin', 'http://134.209.213.2:8003/allHospitals/:');
+    
+    
     
 
     // headers = new HttpHeaders({
