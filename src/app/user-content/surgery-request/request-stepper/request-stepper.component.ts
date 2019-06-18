@@ -1,10 +1,11 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ChangeDetectionStrategy } from '@angular/core';
 import {FormBuilder, FormGroup, Validators, FormControl} from '@angular/forms';
 
 @Component({
   selector: 'app-request-stepper',
   templateUrl: './request-stepper.component.html', 
-  styleUrls: ['./request-stepper.component.css']
+  styleUrls: ['./request-stepper.component.css'],
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class RequestStepperComponent implements OnInit {
   isLinear = false;
@@ -17,7 +18,8 @@ export class RequestStepperComponent implements OnInit {
   dtNasc:string = "";
   txtDur:string = "";
 
-  complexidade: string = "";
+  altaComplex:boolean = false;
+  baixaComplex:boolean = false;
 
   listProcedimentosMock: any[] = 
   [
@@ -50,6 +52,57 @@ export class RequestStepperComponent implements OnInit {
       "descricao": "RASPAGEM" 
     },
     {
+      "id": 1387,
+      "descricao": "PLAQTUDUM"
+    },{
+      "id": 1387,
+      "descricao": "asdasdasd"
+    },{
+      "id": 1387,
+      "descricao": "asdasdasd"
+    },{
+      "id": 1387,
+      "descricao": "PLAQTUDUM"
+    },{
+      "id": 1387,
+      "descricao": "PLAQTUDUM"
+    },{
+      "id": 1387,
+      "descricao": "asdasdasasd"
+    },{
+      "id": 1387,
+      "descricao": "PLAQTUDUM"
+    },{
+      "id": 1387,
+      "descricao": "PLAQTUDUM"
+    },{
+      "id": 1387,
+      "descricao": "PLAQTUDUM"
+    },{
+      "id": 1387,
+      "descricao": "PLAQTUDUM"
+    },{
+      "id": 1387,
+      "descricao": "PLAQTUDUM"
+    },{
+      "id": 1387,
+      "descricao": "PLAQTUDUM"
+    },{
+      "id": 1387,
+      "descricao": "asdasdasff"
+    },{
+      "id": 1387,
+      "descricao": "sadasdasda"
+    },{
+      "id": 1387,
+      "descricao": "asdasdasd"
+    },{
+      "id": 1387,
+      "descricao": "PLAQTUDUM"
+    },{
+      "id": 1387,
+      "descricao": "asdasdsa"
+    },{
       "id": 1387,
       "descricao": "PLAQTUDUM"
     },
@@ -98,6 +151,38 @@ export class RequestStepperComponent implements OnInit {
     {
       "id": 3,
       "descricao": "Andar" 
+    },
+    {
+      "id": 4,
+      "descricao": "Day Clinic" 
+    },
+    {
+      "id": 4,
+      "descricao": "Day Clinic" 
+    },
+    {
+      "id": 4,
+      "descricao": "Day Clinic" 
+    },
+    {
+      "id": 4,
+      "descricao": "Day Clinic" 
+    },
+    {
+      "id": 4,
+      "descricao": "Day Clinic" 
+    },
+    {
+      "id": 4,
+      "descricao": "Day Clinic" 
+    },
+    {
+      "id": 4,
+      "descricao": "Day Clinic" 
+    },
+    {
+      "id": 4,
+      "descricao": "Day Clinic" 
     },
     {
       "id": 4,
