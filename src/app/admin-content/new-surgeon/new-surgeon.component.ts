@@ -1,15 +1,16 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ChangeDetectionStrategy } from '@angular/core';
 import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-new-surgeon',
   templateUrl: './new-surgeon.component.html',
-  styleUrls: ['./new-surgeon.component.css']
+  styleUrls: ['./new-surgeon.component.css'],
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class NewSurgeonComponent implements OnInit {
 
   constructor(public router: Router) { }
-
+  isLinear = false;
   pacienteNome: String;
   txtCPF: String;
   txtNome: String;
@@ -64,7 +65,71 @@ export class NewSurgeonComponent implements OnInit {
     {
       "id": 1387,
       "descricao": "PLAQTUDUM"
+    },{
+      "id": 1387,
+      "descricao": "asdasdasd"
+    },{
+      "id": 1387,
+      "descricao": "asdasdasd"
+    },{
+      "id": 1387,
+      "descricao": "PLAQTUDUM"
+    },{
+      "id": 1387,
+      "descricao": "PLAQTUDUM"
+    },{
+      "id": 1387,
+      "descricao": "asdasdasasd"
+    },{
+      "id": 1387,
+      "descricao": "PLAQTUDUM"
+    },{
+      "id": 1387,
+      "descricao": "PLAQTUDUM"
+    },{
+      "id": 1387,
+      "descricao": "PLAQTUDUM"
+    },{
+      "id": 1387,
+      "descricao": "PLAQTUDUM"
+    },{
+      "id": 1387,
+      "descricao": "PLAQTUDUM"
+    },{
+      "id": 1387,
+      "descricao": "PLAQTUDUM"
+    },{
+      "id": 1387,
+      "descricao": "asdasdasff"
+    },{
+      "id": 1387,
+      "descricao": "sadasdasda"
+    },{
+      "id": 1387,
+      "descricao": "asdasdasd"
+    },{
+      "id": 1387,
+      "descricao": "PLAQTUDUM"
+    },{
+      "id": 1387,
+      "descricao": "asdasdsa"
+    },{
+      "id": 1387,
+      "descricao": "PLAQTUDUM"
     },
   ]; 
+
+  selectionClick(procedimento: any){
+    if(this.listSelected.find(function(item:any){
+      return item.id == procedimento.id;
+    })){
+      this.listSelected = this.listSelected.filter(function(item){
+        return  item.id != procedimento.id
+      });
+    }else{
+      this.listSelected.push(procedimento);
+    }
+
+  }
 
 }

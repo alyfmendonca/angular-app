@@ -30,7 +30,22 @@
             </div>
 
             <div class="dir">
-              
+              <div class="menu-esq">
+                <div>
+                  <h3 class="dark">Procedimentos (TUSS)</h3>
+                  <p class="">Selecione os procedimentos que serão realizados na cirurgia</p>
+                </div>
+                <div class="list-scroll-esq">
+                  <cdk-virtual-scroll-viewport class="virtualScroll" itemSize="8">
+                    <mat-selection-list>
+                      <mat-list-option (click)="selectionClick(procedimento);"
+                        *ngFor="let procedimento of listProcedimentosMock">
+                        {{procedimento.id}} - {{procedimento.descricao}}
+                      </mat-list-option>
+                    </mat-selection-list>
+                  </cdk-virtual-scroll-viewport>
+                </div>
+              </div>
             </div>
           </form>
           

@@ -15,6 +15,7 @@ import { SolicitacoesComponent } from './solicitacoes/solicitacoes.component';
 import { SurgeonDetailsComponent } from './surgeon-details/surgeon-details.component';
 import { NewSurgeonComponent } from './new-surgeon/new-surgeon.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import {ScrollDispatchModule} from '@angular/cdk/scrolling';
 
 
 @NgModule({
@@ -36,7 +37,8 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     CoreModule,
     MaterialComponentsModule,
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    ScrollDispatchModule,
   ]
 })
 export class AdminContentModule { }
