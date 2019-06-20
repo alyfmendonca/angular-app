@@ -10,6 +10,7 @@ import { AprovadasComponent } from './aprovadas/aprovadas.component';
 import { SolicitacoesComponent } from './solicitacoes/solicitacoes.component';
 import { NewSurgeonComponent } from './new-surgeon/new-surgeon.component';
 import { SurgeonDetailsComponent } from './surgeon-details/surgeon-details.component';
+import { RealizadasComponent } from './realizadas/realizadas.component';
 
 const routes: Routes = [
   { path: '', redirectTo: 'main/profile', pathMatch: 'full' },
@@ -23,6 +24,7 @@ const routes: Routes = [
     { path:'tuss-table', component: TussTableComponent },
     { path:'new-surgeon', component: NewSurgeonComponent },
     { path:'surgeonDetails', component: SurgeonDetailsComponent },
+    { path:'realizadas', component: RealizadasComponent },
   ] }
   
 ];

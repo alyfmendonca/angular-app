@@ -10,6 +10,7 @@ export class MainContentComponent implements OnInit {
   
 
   navBarAtual:any = [
+    {label: "Realizadas", url:"../main/realizadas"},
     {label: "Aprovadas", url:"../main/aprovadas"},
     {label: "Solicitações", url:"../main/solicitacoes"},
     {label: "Tabela TUSS", url:"../main/tuss-table"}, 

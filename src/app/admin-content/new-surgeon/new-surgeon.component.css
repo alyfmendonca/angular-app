@@ -1,9 +1,11 @@
 .content-conteudo{
     padding: 50px 100px;
+    width: 70%;
 }
 .conteudo{
     width: 100%;
 }
+
 .image-voltar{
     height: 28px;
     width: auto;
@@ -11,6 +13,7 @@
 .cont-header a{
     display: flex;
     align-items: center;
+    padding-bottom: 20px;
 }
 .cont-header h3{
     margin: 0;
@@ -21,16 +24,26 @@ form input{
     background: transparent !important;
     border: 1px solid #ccc;
     border-radius: 3px;
-    padding: 10px 5px;
+    padding: 8px 5px;
     color: #ccc;
+    width: 80%;
     margin-top: 5px;
 }
+form label{
+    color: #ccc;
+    font-weight: 500;
+    margin-top: 20px;
+}
+label{
+    align-self: flex-start;
+}
 .esq, .dir{
-    width: 48%;
+    width: 50%;
     display: flex;
     flex-direction: column;
     float: left;
     height: 100%;
+    position: relative;
 }
 
 
@@ -39,7 +52,7 @@ form input{
     padding: 0px 5px !important;
     flex-direction: row !important;
     font-weight: 300 !important;
-    font-size: 10px !important;
+    font-size: 12px !important;
     color: #b6b5b5 !important;
 }
 
@@ -60,13 +73,13 @@ form input{
     transform: unset !important;
     opacity: 1 !important;
     box-sizing: content-box !important;
-    background: #3fc0c2 !important;
+    background: rgba(45, 175, 126, 1) !important;
 }
 
 ::ng-deep .list-scroll-esq .mat-pseudo-checkbox {
     width: 15px !important;
-    height: 14px !important;
-    border: 1px solid #3fc0c2 !important;
+    height: 15px !important;
+    border: 1px solid rgba(45, 175, 126, 1) !important;
     border-radius: 2px !important;
     cursor: pointer !important;
     display: inline-block !important;
@@ -90,10 +103,10 @@ form input{
 }
 .list-scroll-esq{
     height: 300px;
-    width: 80%;
+    width: 100%;
 }
 .virtualScroll{
-    height: 75%;
+    height: 100%;
 }
 .list-scroll-dir{
     overflow-y:scroll;
@@ -103,4 +116,18 @@ form input{
     border: 1px solid #b6b5b5;
     align-self: center;
     margin-right: 93px;
+}
+.light-dark{
+    color: rgba(45, 175, 126, 1);
+    padding-top: 20px;
+}
+.menu-esq{
+    position: absolute;
+    width: 100%;
+}
+.btn-line{
+    width: 100%;
+    float: left;
+    text-align: right;
+    margin-top: 60px;
 }

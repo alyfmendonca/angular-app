@@ -118,7 +118,7 @@ export class NewSurgeonComponent implements OnInit {
       "descricao": "PLAQTUDUM"
     },
   ]; 
-
+  listSelected: any[] = []; 
   selectionClick(procedimento: any){
     if(this.listSelected.find(function(item:any){
       return item.id == procedimento.id;

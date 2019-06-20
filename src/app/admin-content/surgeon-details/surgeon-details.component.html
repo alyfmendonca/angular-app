@@ -1,3 +1,64 @@
-<p>
-  surgeon-details works!
-</p>
+<div class="content-background">
+  <div class="content-conteudo page-profile">
+    <div class="conteudo">
+      <div>
+        <div class="cont-header">
+          <a (click)="router.navigate(['admin/main/allSurgeons']);" class="return">
+            <img class="image-voltar" src="../../assets/voltar.png" />
+            <h3 class="dark">Detalhe do Cirurgião</h3>
+          </a>
+        </div>
+        <div>
+          
+          <form #form="ngForm">
+            <div class="esq">
+              <label for='txtNome'>Nome</label>
+              <input [(ngModel)]='txtNome' type='text' id='txtNome' name='txtNome' placeholder="Alberto Pacheco" #nameVerify="ngModel" required>
+              
+              <label for='txtCrm'>Crm</label>
+              <input [(ngModel)]='txtCrm' type='text' id='txtCrm' name='txtCrm' placeholder="2342423" #nameVerify="ngModel" required>
+
+              <label for='txtUf'>Uf</label>
+              <input [(ngModel)]='txtUf' type='text' id='txtUf' name='txtUf' placeholder="UF" #nameVerify="ngModel" required>
+              
+              <label for='txtEmail'>Email</label>
+              <input [(ngModel)]='txtEmail' type='email' id='txtEmail' name='txtEmail' placeholder="albertopacheco@gmail.com" #nameVerify="ngModel" required>
+
+              <label for='txtFone'>Telefone</label>
+              <input [(ngModel)]='txtFone' type='tel' id='txtFone' name='txtFone' placeholder="(21) 91234-5678" #nameVerify="ngModel" required>
+
+            </div>
+
+            <div class="dir">
+              <div class="menu-esq">
+                <div>
+                  <h3 class="light-dark">Procedimentos (TUSS)</h3>
+                </div>
+                <div class="list-scroll-esq">
+                  <cdk-virtual-scroll-viewport class="virtualScroll" itemSize="8">
+                    <mat-list>
+                      <mat-list-item (click)="selectionClick(procedimento);"
+                        *ngFor="let procedimento of listProcedimentosMock">
+                        {{procedimento.id}} - {{procedimento.descricao}}
+                      </mat-list-item>
+                    </mat-list>
+                  </cdk-virtual-scroll-viewport>
+                </div>
+              </div>
+            </div>
+            <div class="btn-line">
+              <button class="dark-button">ACEITAR</button>
+            </div>
+          </form>
+          
+        </div>
+
+
+        
+        
+      </div>
+
+    </div>
+  
+  </div>
+</div>

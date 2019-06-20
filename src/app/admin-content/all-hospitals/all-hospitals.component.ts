@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { AdminService } from '../admin.service'
+import { AdminService } from '../admin.service';
+import { Router } from '@angular/router';
 
 
 export interface PeriodicElement {
@@ -32,7 +33,7 @@ export class AllHospitalsComponent implements OnInit {
   displayedColumns: string[] = ['position', 'name', 'weight', 'symbol'];
   dataSource = ELEMENT_DATA;
 
-  constructor(private adminService : AdminService) { }
+  constructor(private adminService : AdminService, private router: Router) { }
   
   ngOnInit() {
     let teste; 
@@ -43,6 +44,7 @@ export class AllHospitalsComponent implements OnInit {
   }
   mostraId(id){
     console.log(id);
+    this.router.navigate(['admin/main/hospitalDetails']);
   }
 
 }

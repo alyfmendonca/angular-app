@@ -12,6 +12,7 @@ import { MainContentComponent } from './main-content/main-content.component';
 import { AprovadasSolicitadasComponent } from './aprovadas-solicitadas/aprovadas-solicitadas.component';
 import {ScrollDispatchModule} from '@angular/cdk/scrolling';
 import { SurgeryDetailsComponent } from './surgery-details/surgery-details.component';
+import { RealizadasComponent } from './realizadas/realizadas.component';
 
 @NgModule({
   declarations: [
@@ -20,7 +21,8 @@ import { SurgeryDetailsComponent } from './surgery-details/surgery-details.compo
     NavBarComponent,
     MainContentComponent,
     AprovadasSolicitadasComponent,
-    SurgeryDetailsComponent
+    SurgeryDetailsComponent,
+    RealizadasComponent
   ],
   imports: [
     CommonModule,

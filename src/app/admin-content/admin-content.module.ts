@@ -16,6 +16,7 @@ import { SurgeonDetailsComponent } from './surgeon-details/surgeon-details.compo
 import { NewSurgeonComponent } from './new-surgeon/new-surgeon.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import {ScrollDispatchModule} from '@angular/cdk/scrolling';
+import { RealizadasComponent } from './realizadas/realizadas.component';
 
 
 @NgModule({
@@ -30,6 +31,7 @@ import {ScrollDispatchModule} from '@angular/cdk/scrolling';
     SolicitacoesComponent,
     NewSurgeonComponent,
     SurgeonDetailsComponent,
+    RealizadasComponent,
   ],
   imports: [
     CommonModule,
