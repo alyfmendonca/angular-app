@@ -9,6 +9,14 @@ import { Router } from '@angular/router';
 })
 export class SurgeryDetailsComponent implements OnInit {
 
+  pacienteNome: String;
+  txtCPF: String;
+  txtNome: String;
+  txtCrm: String;
+  txtUf: String;
+  durCirurgia: String;
+  dt: String;
+  
   constructor(public router: Router) { }
 
   ngOnInit() {

@@ -10,6 +10,7 @@ export class AprovadasComponent implements OnInit {
   constructor() { }
 
   text = "Baixa Complexidade";
+  text2 = "a";
   
   ngOnInit() {
   }

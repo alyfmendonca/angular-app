@@ -11,7 +11,7 @@ export class AprovadasSolicitadasComponent implements OnInit {
   constructor(public router: Router) { }
   
   text = "Baixa Complexidade";
-
+  text2 = "Baixa Complessxidade";
   ngOnInit() {
   }
 

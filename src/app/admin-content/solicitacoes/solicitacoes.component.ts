@@ -10,6 +10,8 @@ export class SolicitacoesComponent implements OnInit {
   constructor() { }
 
   text = "Baixa Complexidade";
+  text2 = "Baix222a Complexidade";
+
   
   ngOnInit() {
   }

@@ -9,6 +9,8 @@ export class RealizadasComponent implements OnInit {
 
   constructor() { }
   text = "Baixa Complexidade";
+  text2 = "Baixasa Complexidade";
+
   ngOnInit() {
   }
 

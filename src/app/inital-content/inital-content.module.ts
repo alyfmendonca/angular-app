@@ -8,6 +8,7 @@ import { CoreModule } from '../core/core.module';
 import { FormsModule } from '@angular/forms';
 import { NavBarComponent } from './nav-bar/nav-bar.component';
 import { MainContentComponent } from './main-content/main-content.component';
+  
 
 @NgModule({
   declarations: [
@@ -20,7 +21,8 @@ import { MainContentComponent } from './main-content/main-content.component';
     CommonModule,
     InitalContentRoutingModule,
     CoreModule,
-    FormsModule
+    FormsModule,
+
   ]
 })
 export class InitalContentModule { }

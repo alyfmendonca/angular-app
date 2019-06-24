@@ -17,6 +17,8 @@ export class SurgeonDetailsComponent implements OnInit {
   txtCrm: String;
   txtUf: String;
   durCirurgia: String;
+  txtEmail: String;
+  txtFone: String;
 
   ngOnInit() {
   }

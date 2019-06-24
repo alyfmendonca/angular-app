@@ -17,6 +17,22 @@ export class HospitalDetailsComponent implements OnInit {
   txtCrm: String;
   txtUf: String;
   durCirurgia: String;
+  txtFone: String;
+  txtEmail: String;
+  txtEnd: String;
+  txtCep: String;
+  txtNomeGroup: String;
+  taxaCirurgia: String;
+  taxaAdicional: String;
+  taxaAnestesia: String;
+  taxaMaterial: String;
+  taxaDiariaGlobal: String;
+  taxaDiariaGlobalQ: String;
+  taxaDiariaGlobalS: String;
+  taxaDiariaGlobalCTI: String;
+  HrClinico: String;
+
+
   ngOnInit() {
   }
   
