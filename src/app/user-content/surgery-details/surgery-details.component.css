@@ -24,6 +24,7 @@ form input{
     padding: 10px 5px;
     color: #ccc;
     margin-top: 5px;
+    width: 95%;
 }
 form label{
     color: #ccc;
@@ -34,14 +35,18 @@ label{
     align-self: flex-start;
 }
 .esq, .dir{
-    width: 50%;
+    width: 45%;
     display: flex;
     flex-direction: column;
 }
-form{
+.main-line{
     height: auto;
     display: flex;
+    justify-content: space-between;
 
+}
+.dir{
+    padding-top: 8%;
 }
 ::ng-deep .list-scroll-esq .mat-list-base .mat-list-item .mat-list-item-content-reverse, .list-scroll-esq .mat-list-base .mat-list-option .mat-list-item-content-reverse {
     display: flex !important;
@@ -146,4 +151,11 @@ form{
 ::ng-deep .list-scroll-dir .mat-list-text{
     padding-left: 5px !important;
     padding-right: 16px !important;
+}
+
+.btn-line{
+    width: 100%;
+    float: left;
+    text-align: right;
+    margin-top: 60px;
 }

@@ -9,14 +9,6 @@ import { Router } from '@angular/router';
 })
 export class SurgeryDetailsComponent implements OnInit {
 
-  pacienteNome: String;
-  txtCPF: String;
-  txtNome: String;
-  txtCrm: String;
-  txtUf: String;
-  durCirurgia: String;
-  dt: String;
-  
   constructor(public router: Router) { }
 
   ngOnInit() {
@@ -55,18 +47,21 @@ export class SurgeryDetailsComponent implements OnInit {
       "id": 1389,
       "descricao": "RETOSSIGMOIDECTOMIA ABDOMINAL POR VIDEOLAPAROSCOPIA"
     },
+    
+  ]; 
+
+  listProcedimentosMock2: any[] = 
+  [
     {
-      "id": 1376,
-      "descricao": "ENUCLEAÇÃO"
+      "id": 1342,
+      "descricao": "COLECISTECTOMIA"
     },
     {
-      "id": 135565,
-      "descricao": "RASPAGEM" 
+      "id": 1356,
+      "descricao": "VIDEOLAPAROSCOPIA"
     },
-    {
-      "id": 1387,
-      "descricao": "PLAQTUDUM"
-    },
+    
+    
   ]; 
 
 }
