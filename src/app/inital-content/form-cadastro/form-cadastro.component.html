@@ -1,37 +1,81 @@
 <div class="content-background">
     <div class="content-conteudo page-cadastro">
-      <div class="esqu">
-        <div class="entrar-esq">
-          <h3 class="dark">Cadastrar</h3>
-          <p>Coloque suas informações para solicitar seu cadastro no Smart Surgery!</p>
-        </div>
-        <div class="img-esq">
-          <img src="../../assets/bg-icon.png">
-        </div>
-      </div>
-      <div class="dir">
-        <form #form="ngForm">
-          <div class="form-dir">
-            <label for='txtNome'>Nome</label>
-            <input [(ngModel)]='txtNome' type='text' id='txtNome' name='txtNome' placeholder="Alberto Pacheco" #nameVerify="ngModel" required>
-  
-            <label for='txtCrm'>CRM</label>
-            <input [(ngModel)]='txtCrm' type='text' id='txtCrm' name='txtCrm' placeholder="12314" #nameVerify="ngModel" required>
-
-            <label for='txtUf'>Uf</label>
-            <input [(ngModel)]='txtUf' type='text' id='txtUf' name='txtUf' placeholder="RJ" #nameVerify="ngModel" required>
-
-            <label for='txtEmail'>Email</label>
-            <input [(ngModel)]='txtEmail' type='email' id='txtEmail' name='txtEmail' placeholder="albertopacheco@gmail.com" #nameVerify="ngModel" required>
-
-            <label for='txtTelefone'>Telefone</label>
-            <input [(ngModel)]='txtTelefone' type='tel' id='txtTelefone' name='txtTelefone' placeholder="(21) 91234-5678" #nameVerify="ngModel" required>
-  
-          </div>
-          <div class="bot-dir">
-            <button class="concluir-button" (click)="submitForm();">Próximo</button>
-          </div>
-        </form>
-      </div>
+        <mat-tab-group class="main-box">
+          <mat-tab label="First"> 
+              <div class="esqu">
+                  <div class="entrar-esq">
+                    <h3 class="dark">Cadastrar</h3>
+                    <p>Coloque suas informações para solicitar seu cadastro no Smart Surgery!</p>
+                  </div>
+                  <div class="img-esq">
+                    <img src="../../assets/bg-icon.png">
+                  </div>
+                </div>
+                <div class="dir">
+                  <form #form="ngForm">
+                    <div class="form-dir">
+                      <label for='txtNome'>Nome</label>
+                      <input [(ngModel)]='txtNome' type='text' id='txtNome' name='txtNome' placeholder="Alberto Pacheco" #nameVerify="ngModel" required>
+            
+                      <label for='txtCrm'>CRM</label>
+                      <input [(ngModel)]='txtCrm' type='text' id='txtCrm' name='txtCrm' placeholder="12314" #nameVerify="ngModel" required>
+          
+                      <label for='txtUf'>Uf</label>
+                      <input [(ngModel)]='txtUf' type='text' id='txtUf' name='txtUf' placeholder="RJ" #nameVerify="ngModel" required>
+          
+                      <label for='txtEmail'>Email</label>
+                      <input [(ngModel)]='txtEmail' type='email' id='txtEmail' name='txtEmail' placeholder="albertopacheco@gmail.com" #nameVerify="ngModel" required>
+          
+                      <label for='txtTelefone'>Telefone</label>
+                      <input [(ngModel)]='txtTelefone' type='tel' id='txtTelefone' name='txtTelefone' placeholder="(21) 91234-5678" #nameVerify="ngModel" required>
+            
+                    </div>
+                    <div class="bot-dir">
+                      <button class="concluir-button" (click)="onClickNext();">PRÓXIMO</button>
+                    </div>
+                  </form>
+                </div>
+          </mat-tab>
+          <mat-tab label="Second">
+              <div class="esqu">
+                  <div class="entrar-esq">
+                    <div class="return" (click)="onClickBack();">
+                      <img class="image-voltar" src="../../assets/voltar.png" />
+                      <h3 class="dark">Cadastrar</h3>
+                    </div>
+                    <p>Coloque suas informações para solicitar seu cadastro no Smart Surgery!</p>
+                  </div>
+                  <div class="img-esq">
+                    <img src="../../assets/bg-icon.png">
+                  </div>
+                </div>
+                <div class="dir">
+                  <form #form="ngForm">
+                    <div class="form-dir">
+                        <div class="menu-esq">
+                          <div>
+                            <h3 class="light-dark">Procedimentos (TUSS)</h3>
+                            <p class="">Selecione os procedimentos que serão realizados na cirurgia</p>
+                          </div>
+                          <div class="list-scroll-esq">
+                            <cdk-virtual-scroll-viewport class="virtualScroll" itemSize="8">
+                              <mat-selection-list>
+                                <mat-list-option (click)="selectionClick(procedimento);"
+                                  *ngFor="let procedimento of listProcedimentosMock">
+                                  {{procedimento.id}} - {{procedimento.descricao}}
+                                </mat-list-option>
+                              </mat-selection-list>
+                            </cdk-virtual-scroll-viewport>
+                          </div>
+                        </div>
+                    </div>
+                    <div class="bot-dir">
+                      <button class="concluir-button" (click)="submitForm();">SOLICITAR</button>
+                    </div>
+                  </form>
+                </div>
+          </mat-tab>
+        </mat-tab-group>
+      
     </div>
   </div>

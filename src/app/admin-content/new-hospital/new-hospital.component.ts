@@ -1,34 +1,51 @@
-import { Component, OnInit, ChangeDetectionStrategy } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
+
 @Component({
-  selector: 'app-form-cadastro',
-  templateUrl: './form-cadastro.component.html',
-  styleUrls: ['./form-cadastro.component.css', '../form-login/form-login.component.css'],
-  changeDetection: ChangeDetectionStrategy.OnPush,
+  selector: 'app-new-hospital',
+  templateUrl: './new-hospital.component.html',
+  styleUrls: ['./new-hospital.component.css']
 })
+export class NewHospitalComponent implements OnInit {
 
-export class FormCadastroComponent implements OnInit {
+  constructor(public router: Router) { }
 
-  
-  constructor() { }
+  pacienteNome: String;
+  txtCPF: String;
+  txtNome: String;
+  txtCrm: String;
+  txtUf: String;
+  durCirurgia: String;
+  txtFone: String;
+  txtEmail: String;
+  txtEnd: String;
+  txtCep: String;
+  txtNomeGroup: String;
+  taxaCirurgia: String;
+  taxaAdicional: String;
+  taxaAnestesia: String;
+  taxaMaterial: String;
+  taxaDiariaGlobal: String;
+  taxaDiariaGlobalQ: String;
+  taxaDiariaGlobalS: String;
+  taxaDiariaGlobalCTI: String;
+  HrClinico: String;
+
 
   ngOnInit() {
   }
-  txtNome = "";
-  txtCrm = "";
-  txtUf = "";
-  txtEmail = "";
-  txtTelefone = "";
-
-  submitForm(){
-    console.log(this.txtNome, this.txtCrm, this.txtUf, this.txtEmail, this.txtTelefone);
-  }
-  onClickNext(){
-    document.getElementById('mat-tab-label-0-1').click();
-  }
-  onClickBack(){
-    document.getElementById('mat-tab-label-0-0').click();
-  }
   
+  listComorbidadesMock: any[] = [
+    {
+      "id": 1,
+     "descricao": "Hipertensão"
+    },
+    {
+      "id": 2,
+      "descricao": "Diabetes"
+    },
+  ];
+
   listProcedimentosMock: any[] = 
   [
     {
@@ -116,5 +133,35 @@ export class FormCadastroComponent implements OnInit {
     },
   ]; 
 
-}
+  onClickNext(){
+    let i = 0
+    let continua = true;
+    while(continua){
+      let tab = document.getElementById(`mat-tab-label-${i}-1`);
+      if(tab){
+        tab.click();
+        continua = false;
+      }else{
+        i++
+      }
+    }
+    
+  }
+  onClickBack(){
+    let i = 0
+    let continua = true;
+    while(continua){
+      let tab = document.getElementById(`mat-tab-label-${i}-0`);
+      if(tab){
+        tab.click();
+        continua = false;
+      }else{
+        i++
+      }
+    }
+  }
+  newPackageForm(){
+    document.getElementsByClassName('add-packages')[0].setAttribute("style", "display:block;");
+  }
 
+}

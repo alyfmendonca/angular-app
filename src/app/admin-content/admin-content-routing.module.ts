@@ -11,6 +11,8 @@ import { SolicitacoesComponent } from './solicitacoes/solicitacoes.component';
 import { NewSurgeonComponent } from './new-surgeon/new-surgeon.component';
 import { SurgeonDetailsComponent } from './surgeon-details/surgeon-details.component';
 import { RealizadasComponent } from './realizadas/realizadas.component';
+import { SolicitacoesDetailsComponent } from './solicitacoes-details/solicitacoes-details.component';
+import { NewHospitalComponent } from './new-hospital/new-hospital.component';
 
 const routes: Routes = [
   { path: '', redirectTo: 'main/profile', pathMatch: 'full' },
@@ -25,6 +27,8 @@ const routes: Routes = [
     { path:'new-surgeon', component: NewSurgeonComponent },
     { path:'surgeonDetails', component: SurgeonDetailsComponent },
     { path:'realizadas', component: RealizadasComponent },
+    { path:'solicitacoesDetails', component: SolicitacoesDetailsComponent },
+    { path:'newHospital', component: NewHospitalComponent },
   ] }
   
 ];

@@ -17,13 +17,6 @@ export class AdminService {
       'Authorization': 'token 81f204edcca524ff266b98b94a264db12d640c55',
       'Content-Type': 'application/json'
     });
-
-
-    // headers = new HttpHeaders({
-    //   'Content-Type': 'application/json',
-    // 
-    //   'Authorization': 'token 81f204edcca524ff266b98b94a264db12d640c55'
-    // });
     return this.http.get<AdminService[]>(`${this.API_URL}allHospitals/`, {headers});
   }
 }

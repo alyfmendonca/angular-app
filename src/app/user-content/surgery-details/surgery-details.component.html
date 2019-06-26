@@ -33,6 +33,16 @@
                 <h3 class="light-dark">Complexidade</h3>
                 <label for='durCirurgia'>Duração da cirugia</label>
                 <input [(ngModel)]='durCirurgia' type='text' id='durCirurgia' name='durCirurgia' placeholder="2 horas e 30 min" #nameVerify="ngModel" required>
+                
+                <label>Essa cirurgia é de alta complexidade?</label>
+                <div class="list-scroll-esq listForm2">
+                  <mat-selection-list>
+                    <mat-list-option *ngFor="let comorbidades of listComorbidadesMock">
+                      {{comorbidades.descricao}}
+                    </mat-list-option>
+                  </mat-selection-list>
+                </div>
+
               </div>
 
               <div class="dir">

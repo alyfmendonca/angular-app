@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-solicitacoes',
@@ -7,7 +8,7 @@ import { Component, OnInit } from '@angular/core';
 })
 export class SolicitacoesComponent implements OnInit {
 
-  constructor() { }
+  constructor(public router: Router) { }
 
   text = "Baixa Complexidade";
   text2 = "Baix222a Complexidade";

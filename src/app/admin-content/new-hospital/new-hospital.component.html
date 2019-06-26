@@ -1,0 +1,206 @@
+<div class="content-background">
+    <div class="content-conteudo page-profile">
+      <mat-tab-group class="main-box">
+        <mat-tab label="First"> 
+          <div class="conteudo">
+            <div>
+              <div class="cont-header">
+                <a (click)="router.navigate(['admin/main/allHospitals']);" class="return">
+                  <img class="image-voltar" src="../../assets/voltar.png" />
+                  <h3 class="dark">Detalhe Hospital</h3>
+                </a>
+              </div>
+              <div>
+                
+                <form #form="ngForm">
+                  <div class="esq">
+                    <label for='txtNome'>Nome</label>
+                    <input [(ngModel)]='txtNome' type='text' id='txtNome' name='txtNome' placeholder="Alberto Pacheco" #nameVerify="ngModel" required>
+                    
+                    <label for='txtFone'>Telefone</label>
+                    <input [(ngModel)]='txtFone' type='tel' id='txtFone' name='txtFone' placeholder="(21) 91234-5678" #nameVerify="ngModel" required>
+      
+                    <label for='txtEmail'>Email</label>
+                    <input [(ngModel)]='txtEmail' type='email' id='txtEmail' name='txtEmail' placeholder="albertopacheco@gmail.com" #nameVerify="ngModel" required>
+      
+                    <label for='txtEnd'>Endereço</label>
+                    <input [(ngModel)]='txtEnd' type='text' id='txtEnd' name='txtEnd' placeholder="lorem ipsum" #nameVerify="ngModel" required>
+      
+                    <label for='txtCep'>CEP</label>
+                    <input [(ngModel)]='txtCep' type='text' id='txtCep' name='txtCep' placeholder="2342423" #nameVerify="ngModel" required>
+      
+                  </div>
+      
+                  <div class="dir">
+                    <div class="menu-esq">
+                      <div>
+                        <h3 class="light-dark">Procedimentos (TUSS)</h3>
+                      </div>
+                      <div class="list-scroll-esq">
+                        <cdk-virtual-scroll-viewport class="virtualScroll" itemSize="8">
+                          <mat-selection-list>
+                            <mat-list-option (click)="selectionClick(procedimento);"
+                              *ngFor="let procedimento of listProcedimentosMock">
+                              {{procedimento.id}} - {{procedimento.descricao}}
+                            </mat-list-option>
+                          </mat-selection-list>
+                        </cdk-virtual-scroll-viewport>
+                      </div>
+                    </div>
+                  </div>
+                  <!-- Botão CONCLUIR -->
+      
+                  <div class="btn-line">
+                    <button (click)="onClickNext();" class="dark-button">PRÓXIMO</button>
+                  </div>
+                </form>
+                
+              </div>
+      
+      
+              
+              
+            </div>
+      
+          </div>
+        </mat-tab>
+        <mat-tab label="Second">
+            <div class="conteudo">
+              <div>
+                <div class="cont-header">
+                  <a (click)="onClickBack();" class="return">
+                    <img class="image-voltar" src="../../assets/voltar.png" />
+                    <h3 class="dark">Detalhe Hospital</h3>
+                  </a>
+                </div>
+                <div>
+                  
+                    <div class="pacote-line">
+                        <div>
+                          <h3 class="light-dark">Pacotes de custo</h3>
+                          <p>Selecione um pacote de custos criado anteriormente ou crie um novo</p>
+                        </div>
+                        <div class="box-line">
+                          <div class="package-box new-package" (click)="newPackageForm();">
+                            <i class="fas fa-plus"></i>
+                            <p>Novo Pacote</p>
+                          </div>
+
+                          <div class="package-box">
+                            <p>Hospital 1</p>
+                          </div>
+          
+                          <div class="package-box">
+                            <p>Hospital 2</p>
+                          </div>
+          
+                          <div class="package-box">
+                            <p>Hospital 3</p>
+                          </div>
+          
+                          <div class="package-box">
+                            <p>Hospital 4</p>
+                          </div>
+                        </div>
+                      </div>
+        
+                      <div class="add-packages">
+                        <form #form="ngForm">
+  
+                        <!-- TUSS X CUSTO / FORM -->
+                        <div class="line">
+            
+                          <div class="tuss-esq">
+                            <h3 class="light-dark">TUSS x Custos</h3>
+                            <div class="list-scroll-esq">
+                              <cdk-virtual-scroll-viewport class="virtualScroll" itemSize="8">
+                                <mat-selection-list>
+                                  <mat-list-option (click)="selectionClick(procedimento);"
+                                    *ngFor="let procedimento of listProcedimentosMock">
+                                    {{procedimento.id}} - {{procedimento.descricao}}
+                                  </mat-list-option>
+                                </mat-selection-list>
+                              </cdk-virtual-scroll-viewport>
+                            </div>
+                          </div>
+            
+                          <div class="form-dir">
+                              <label for='txtNomeGroup'>Nome do Grupo</label>
+                              <input [(ngModel)]='txtNomeGroup' type='text' id='txtNomeGroup' name='txtNomeGroup' placeholder="Lorem Ipsum" #nameVerify="ngModel" required>
+                              
+                              <label for='taxaCirurgia'>Taxa Cirurgia</label>
+                              <input [(ngModel)]='taxaCirurgia' type='text' id='taxaCirurgia' name='taxaCirurgia' placeholder="R$ 0000,00" #nameVerify="ngModel" required>
+            
+                              <label for='taxaAdicional'>Taxa Adicional</label>
+                              <input [(ngModel)]='taxaAdicional' type='text' id='taxaAdicional' name='taxaAdicional' placeholder="R$ 0000,00" #nameVerify="ngModel" required>
+                
+                              <label for='taxaAnestesia'>Taxa de Anestesia</label>
+                              <input [(ngModel)]='taxaAnestesia' type='text' id='taxaAnestesia' name='taxaAnestesia' placeholder="R$ 0000,00" #nameVerify="ngModel" required>
+                
+                              <label for='taxaMaterial'>Taxa de Material em Centro Cirúrgico</label>
+                              <input [(ngModel)]='taxaMaterial' type='text' id='taxaMaterial' name='taxaMaterial' placeholder="R$ 0000,00" #nameVerify="ngModel" required>
+                
+                              <label for='taxaDiariaGlobal'>Diária Global Day Clinic</label>
+                              <input [(ngModel)]='taxaDiariaGlobal' type='text' id='taxaDiariaGlobal' name='taxaDiariaGlobal' placeholder="R$ 0000,00" #nameVerify="ngModel" required>
+            
+                              <label for='taxaDiariaGlobalQ'>Diária Global Quarto</label>
+                              <input [(ngModel)]='taxaDiariaGlobalQ' type='text' id='taxaDiariaGlobalQ' name='taxaDiariaGlobalQ' placeholder="R$ 0000,00" #nameVerify="ngModel" required>
+            
+                              <label for='taxaDiariaGlobalS'>Diária Global Semiintensiva</label>
+                              <input [(ngModel)]='taxaDiariaGlobalS' type='text' id='taxaDiariaGlobalS' name='taxaDiariaGlobalS' placeholder="R$ 0000,00" #nameVerify="ngModel" required>
+            
+                              <label for='taxaDiariaGlobalCTI'>Diária Global CTI</label>
+                              <input [(ngModel)]='taxaDiariaGlobalCTI' type='text' id='taxaDiariaGlobalCTI' name='taxaDiariaGlobalCTI' placeholder="R$ 0000,00" #nameVerify="ngModel" required>
+            
+                              <label for='HrClinico'>Horário Clínico</label>
+                              <input [(ngModel)]='HrClinico' type='text' id='HrClinico' name='HrClinico' placeholder="R$ 0000,00" #nameVerify="ngModel" required>
+                          </div>
+            
+                        </div>
+
+                        <!-- Pacote de custos -->
+
+                        <div class="pacote-line">
+                            <div>
+                              <h3 class="light-dark">Pacote de custo: HOSPITAL 1</h3>
+                            </div>
+                            <div class="box-line">
+                              <div class="package-box">
+                                <p>Grupo 1</p>
+                              </div>
+              
+                              <div class="package-box">
+                                <p>Grupo 2</p>
+                              </div>
+              
+                              <div class="package-box">
+                                <p>Grupo 3</p>
+                              </div>
+              
+                              <div class="package-box">
+                                <p>Grupo 4</p>
+                              </div>
+                            </div>
+                          </div>
+                        </form>
+                      </div>
+                    
+                    <!-- Botão CONCLUIR -->
+        
+                    <div class="btn-line">
+                      <button (click)="onClickNext();" class="dark-button">CONCLUIR</button>
+                    </div>
+             
+                </div>
+        
+        
+                
+                
+              </div>
+        
+            </div>
+        </mat-tab> 
+        
+      </mat-tab-group>
+    </div>
+  </div>

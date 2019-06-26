@@ -17,7 +17,7 @@
             </div>
             <div class="right-block">
               <p class="complexidade" [ngClass]="text == 'Baixa Complexidade' ? 'green': 'red'">Baixa Complexidade</p>
-              <img class="image-details" src="../../assets/detalhe.png" />
+              <img (click)="router.navigate(['/admin/main/solicitacoesDetails']);" class="image-details" src="../../assets/detalhe.png" />
             </div>
           </div>
 
@@ -91,7 +91,7 @@
                 <p class="paciente-name">lucianoantunes@gmail.com</p>
               </div>
               <div class="right-block">
-                <img class="image-details" src="../../assets/detalhe.png" />
+                <img (click)="router.navigate(['admin/main/surgeonDetails']);"  class="image-details" src="../../assets/detalhe.png" />
               </div>
             </div>
   
