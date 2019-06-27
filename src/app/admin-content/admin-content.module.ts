@@ -19,6 +19,8 @@ import {ScrollDispatchModule} from '@angular/cdk/scrolling';
 import { RealizadasComponent } from './realizadas/realizadas.component';
 import { SolicitacoesDetailsComponent } from './solicitacoes-details/solicitacoes-details.component';
 import { NewHospitalComponent } from './new-hospital/new-hospital.component';
+import { RealizadasDetailsComponent } from './realizadas-details/realizadas-details.component';
+import { ApprovedDetailsComponent } from './approved-details/approved-details.component';
 
 
 @NgModule({
@@ -36,6 +38,8 @@ import { NewHospitalComponent } from './new-hospital/new-hospital.component';
     RealizadasComponent,
     SolicitacoesDetailsComponent,
     NewHospitalComponent,
+    RealizadasDetailsComponent,
+    ApprovedDetailsComponent,
   ],
   imports: [
     CommonModule,

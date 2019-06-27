@@ -13,6 +13,7 @@ import { AprovadasSolicitadasComponent } from './aprovadas-solicitadas/aprovadas
 import {ScrollDispatchModule} from '@angular/cdk/scrolling';
 import { SurgeryDetailsComponent } from './surgery-details/surgery-details.component';
 import { RealizadasComponent } from './realizadas/realizadas.component';
+import { ApprovedDetailsComponent } from './approved-details/approved-details.component';
 
 @NgModule({
   declarations: [
@@ -22,7 +23,8 @@ import { RealizadasComponent } from './realizadas/realizadas.component';
     MainContentComponent,
     AprovadasSolicitadasComponent,
     SurgeryDetailsComponent,
-    RealizadasComponent
+    RealizadasComponent,
+    ApprovedDetailsComponent
   ],
   imports: [
     CommonModule,

@@ -13,6 +13,8 @@ import { SurgeonDetailsComponent } from './surgeon-details/surgeon-details.compo
 import { RealizadasComponent } from './realizadas/realizadas.component';
 import { SolicitacoesDetailsComponent } from './solicitacoes-details/solicitacoes-details.component';
 import { NewHospitalComponent } from './new-hospital/new-hospital.component';
+import { RealizadasDetailsComponent } from './realizadas-details/realizadas-details.component';
+import { ApprovedDetailsComponent } from './approved-details/approved-details.component';
 
 const routes: Routes = [
   { path: '', redirectTo: 'main/profile', pathMatch: 'full' },
@@ -29,6 +31,9 @@ const routes: Routes = [
     { path:'realizadas', component: RealizadasComponent },
     { path:'solicitacoesDetails', component: SolicitacoesDetailsComponent },
     { path:'newHospital', component: NewHospitalComponent },
+    { path:'realizadaDetails', component: RealizadasDetailsComponent },
+    { path:'approvedDetails', component: ApprovedDetailsComponent },
+
   ] }
   
 ];

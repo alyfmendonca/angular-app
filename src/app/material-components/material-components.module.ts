@@ -15,6 +15,7 @@ import {MatTableModule} from '@angular/material/table';
 import { MatListModule } from '@angular/material/list';
 import { MatRadioModule } from '@angular/material/radio';
 import { MatNativeDateModule } from '@angular/material';
+import {MatSliderModule} from '@angular/material/slider';
 
 
 
@@ -40,6 +41,7 @@ import { MatNativeDateModule } from '@angular/material';
     MatListModule,
     MatRadioModule,
     MatNativeDateModule,
+    MatSliderModule,
   ],
   exports: [
     MatCheckboxModule,
@@ -57,6 +59,7 @@ import { MatNativeDateModule } from '@angular/material';
     MatListModule,
     MatRadioModule,
     MatNativeDateModule,
+    MatSliderModule,
   ]
 })
 export class MaterialComponentsModule { }
