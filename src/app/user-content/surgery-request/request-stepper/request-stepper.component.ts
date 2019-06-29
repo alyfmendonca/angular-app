@@ -1,5 +1,6 @@
 import { Component, OnInit, ChangeDetectionStrategy } from '@angular/core';
-import {FormBuilder, FormGroup, Validators, FormControl} from '@angular/forms';
+import {FormBuilder, FormGroup, Validators} from '@angular/forms';
+import { OtherService } from 'src/app/services/other-services/other.service';
 
 @Component({
   selector: 'app-request-stepper',
@@ -108,36 +109,7 @@ export class RequestStepperComponent implements OnInit {
     },
   ]; 
 
-  listComorbidadesMock: any[] = [
-    {
-      "id": 1,
-     "descricao": "Hipertensão"
-    },
-    {
-      "id": 2,
-      "descricao": "Diabetes"
-    },
-    {
-      "id": 3,
-      "descricao": "DPOC"
-    },
-    {
-      "id": 4,
-      "descricao": "Tabagismo"
-    },
-    {
-      "id": 5,
-      "descricao": "Uso de mais de 2 medicações"
-    },
-    {
-      "id": 6,
-      "descricao": "Anticoagulantes"
-    },
-    {
-      "id": 7,
-      "descricao": "Antiagregante" 
-    },
-  ];
+  listComorbidadesMock: Comorbiditie[] = [];
 
   listNecessidadesMock: any[] = [
     {
@@ -192,7 +164,8 @@ export class RequestStepperComponent implements OnInit {
 
   listSelected: any[] = []; 
 
-  constructor(private _formBuilder: FormBuilder) {}
+  constructor(private _formBuilder: FormBuilder,
+              private otherServices: OtherService) {}
 
   ngOnInit() {
     this.firstFormGroup = this._formBuilder.group({
@@ -204,6 +177,12 @@ export class RequestStepperComponent implements OnInit {
    this.thirdFormGroup = this._formBuilder.group({
       thirdCtrl: ['', Validators.required]
     });
+
+    this.otherServices.getAllComorbidities().subscribe(
+      comorbidities => this.listComorbidadesMock = comorbidities
+    ).unsubscribe;
+    
+
   }
 
   selectionClick(procedimento: any){
