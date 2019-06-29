@@ -10,10 +10,6 @@ import { OtherService } from 'src/app/services/other-services/other.service';
 })
 export class RequestStepperComponent implements OnInit {
   isLinear = false;
-  firstFormGroup: FormGroup;
-  secondFormGroup: FormGroup;
-  thirdFormGroup: FormGroup;
-
   txtNome:string = "";
   txtCpf:string = "";
   dtNasc:string = "";
@@ -22,145 +18,11 @@ export class RequestStepperComponent implements OnInit {
   altaComplex:boolean = false;
   baixaComplex:boolean = false;
 
-  listProcedimentosMock: any[] = 
-  [
-    {
-      "id": 1342,
-      "descricao": "COLECISTECTOMIA"
-    },
-    {
-      "id": 1356,
-      "descricao": "VIDEOLAPAROSCOPIA"
-    },
-    {
-      "id": 1359,
-      "descricao": "LAPAROSCÓPICA"
-    },
-    {
-      "id": 1352,
-      "descricao": "DRENAGEM CIRÚRGICA POR VIDEOLAPAROSCOPIA"
-    },
-    {
-      "id": 1389,
-      "descricao": "RETOSSIGMOIDECTOMIA ABDOMINAL POR VIDEOLAPAROSCOPIA"
-    },
-    {
-      "id": 1376,
-      "descricao": "ENUCLEAÇÃO"
-    },
-    {
-      "id": 135565,
-      "descricao": "RASPAGEM" 
-    },
-    {
-      "id": 1387,
-      "descricao": "PLAQTUDUM"
-    },{
-      "id": 1387,
-      "descricao": "asdasdasd"
-    },{
-      "id": 1387,
-      "descricao": "asdasdasd"
-    },{
-      "id": 1387,
-      "descricao": "PLAQTUDUM"
-    },{
-      "id": 1387,
-      "descricao": "PLAQTUDUM"
-    },{
-      "id": 1387,
-      "descricao": "asdasdasasd"
-    },{
-      "id": 1387,
-      "descricao": "PLAQTUDUM"
-    },{
-      "id": 1387,
-      "descricao": "PLAQTUDUM"
-    },{
-      "id": 1387,
-      "descricao": "PLAQTUDUM"
-    },{
-      "id": 1387,
-      "descricao": "PLAQTUDUM"
-    },{
-      "id": 1387,
-      "descricao": "PLAQTUDUM"
-    },{
-      "id": 1387,
-      "descricao": "PLAQTUDUM"
-    },{
-      "id": 1387,
-      "descricao": "asdasdasff"
-    },{
-      "id": 1387,
-      "descricao": "sadasdasda"
-    },{
-      "id": 1387,
-      "descricao": "asdasdasd"
-    },{
-      "id": 1387,
-      "descricao": "PLAQTUDUM"
-    },{
-      "id": 1387,
-      "descricao": "asdasdsa"
-    },{
-      "id": 1387,
-      "descricao": "PLAQTUDUM"
-    },
-  ]; 
+  listProcedimentosMock: Tuss[] = []; 
 
   listComorbidadesMock: Comorbiditie[] = [];
 
-  listNecessidadesMock: any[] = [
-    {
-      "id": 1,
-      "descricao": "Semi Intensiva" 
-    },
-    {
-      "id": 2,
-      "descricao": "CTI" 
-    },
-    {
-      "id": 3,
-      "descricao": "Andar" 
-    },
-    {
-      "id": 4,
-      "descricao": "Day Clinic" 
-    },
-    {
-      "id": 4,
-      "descricao": "Day Clinic" 
-    },
-    {
-      "id": 4,
-      "descricao": "Day Clinic" 
-    },
-    {
-      "id": 4,
-      "descricao": "Day Clinic" 
-    },
-    {
-      "id": 4,
-      "descricao": "Day Clinic" 
-    },
-    {
-      "id": 4,
-      "descricao": "Day Clinic" 
-    },
-    {
-      "id": 4,
-      "descricao": "Day Clinic" 
-    },
-    {
-      "id": 4,
-      "descricao": "Day Clinic" 
-    },
-    {
-      "id": 4,
-      "descricao": "Day Clinic" 
-    },
-  ]
+  listNecessidadesMock: Accommodation[] = []
 
   listSelected: any[] = []; 
 
@@ -168,20 +30,18 @@ export class RequestStepperComponent implements OnInit {
               private otherServices: OtherService) {}
 
   ngOnInit() {
-    this.firstFormGroup = this._formBuilder.group({
-      firstCtrl: ['', Validators.required]
-    });
-    this.secondFormGroup = this._formBuilder.group({
-      secondCtrl: ['', Validators.required]
-    });
-   this.thirdFormGroup = this._formBuilder.group({
-      thirdCtrl: ['', Validators.required]
-    });
 
     this.otherServices.getAllComorbidities().subscribe(
       comorbidities => this.listComorbidadesMock = comorbidities
-    ).unsubscribe;
+    );
     
+    this.otherServices.getAllAccommodations().subscribe(
+      accommodations => this.listNecessidadesMock = accommodations
+    );
+
+    this.otherServices.getAllTuss().subscribe(
+      tuss => this.listProcedimentosMock = tuss
+    );
 
   }
 

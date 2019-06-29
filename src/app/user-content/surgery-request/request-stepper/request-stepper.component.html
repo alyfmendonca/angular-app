@@ -1,11 +1,11 @@
 <div class="content-background">
   <div class="content-conteudo">
     <mat-horizontal-stepper class="stepper" [linear]="isLinear" #stepper>
-
-      <mat-step [stepControl]="firstFormGroup"> 
-        <form class="form-stepper" [formGroup]="firstFormGroup">
+ 
+      <mat-step [completed]="false" > 
+        <form class="form-stepper" #form="ngForm" id="formOne">
           <div class="content-first">
-            <div class="menu-esq">
+            <div class="menu-esq"> 
               <div>
                 <h3 class="dark">Procedimentos (TUSS)</h3>
                 <p class="">Selecione os procedimentos que serão realizados na cirurgia</p>
@@ -13,9 +13,9 @@
               <div class="list-scroll-esq">
                 <cdk-virtual-scroll-viewport class="virtualScroll" itemSize="8">
                   <mat-selection-list>
-                    <mat-list-option (click)="selectionClick(procedimento);"
+                    <mat-list-option name="cboProcedimentos" (click)="selectionClick(procedimento);"
                       *ngFor="let procedimento of listProcedimentosMock">
-                      {{procedimento.id}} - {{procedimento.descricao}}
+                      {{procedimento.id}} - {{procedimento.str}}
                     </mat-list-option>
                   </mat-selection-list>
                 </cdk-virtual-scroll-viewport>
@@ -28,7 +28,7 @@
               <div class="list-scroll-dir">
                 <cdk-virtual-scroll-viewport class="virtualScroll"  itemSize="8">
                   <mat-selection-list>
-                    <mat-list-option (click)="selectionClick(procedimento);" *ngFor="let procedimento of listSelected">
+                    <mat-list-option name="cboSelectedProcedimentos" (click)="selectionClick(procedimento);" *ngFor="let procedimento of listSelected">
                       {{procedimento.id}} - {{procedimento.descricao}}
                     </mat-list-option>
                   </mat-selection-list>
@@ -42,8 +42,8 @@
         </form>
       </mat-step>
 
-      <mat-step [stepControl]="secondFormGroup">
-        <form class="form-stepper" [formGroup]="secondFormGroup">
+      <mat-step [completed]="false" >
+        <form class="form-stepper" #form="ngForm" id="formTwo">
           <div class="content-first form2">
             <div class="menu-esq">
               <div>
@@ -55,11 +55,11 @@
                 <input [(ngModel)]='txtNome' type='text' id='txtNome' name='txtNome' placeholder="Alberto Pacheco" #nameVerify="ngModel" required>
                 <br>
                 <label class="labelForm" for='txtCpf'>CPF</label>
-                <input [(ngModel)]='txtCpf' [ngModelOptions]="{standalone: true}" type='text' id='txtCpf' name='txtCpf'
+                <input [(ngModel)]='txtCpf' type='text' id='txtCpf' name='txtCpf'
                   placeholder="470.054.938-69" #nameVerify="ngModel" required>
                 <br>
                 <label class="labelForm" for='dtNasc'>Data de Nascimento</label>
-                <input [(ngModel)]='dtNasc' [ngModelOptions]="{standalone: true}" type='date' id='dtNasc' name='dtNasc'
+                <input [(ngModel)]='dtNasc' type='date' id='dtNasc' name='dtNasc'
                   placeholder="" #nameVerify="ngModel" required>
               </div>
             </div>
@@ -68,7 +68,7 @@
               <div class="list-scroll-esq listForm2">
                 <cdk-virtual-scroll-viewport class="virtualScroll" itemSize="8">
                   <mat-selection-list>
-                    <mat-list-option *ngFor="let comorbidades of listComorbidadesMock">
+                    <mat-list-option name="cboComorbidades" *ngFor="let comorbidades of listComorbidadesMock">
                       {{comorbidades.str}}
                     </mat-list-option>
                   </mat-selection-list>
@@ -82,8 +82,8 @@
         </form>
       </mat-step>
 
-      <mat-step [stepControl]="thirdFormGroup">
-        <form class="form-stepper" [formGroup]="thirdFormGroup">
+      <mat-step [completed]="false" >
+        <form class="form-stepper" #form="ngForm" id="formThree">
           <div class="content-first form2">
             <div class="menu-esq">
               <div>
@@ -92,25 +92,25 @@
               </div>
               <div class="inputsForm2">
                 <label class="labelForm" for='txtDur'>Duração da cirurgia</label>
-                <input [(ngModel)]='txtDur' [ngModelOptions]="{standalone: true}" type='text' id='txtDur' name='txtDur'
+                <input [(ngModel)]='txtDur' type='text' id='txtDur' name='txtDur'
                   placeholder="2h e 30m" #nameVerify="ngModel" required>
                 <br>
               </div>
               <div class="esq-baixo">
                 <p>Essa cirurgia é de alta complexidade?</p>
                 <div class="checkBoxGroup">
-                  <mat-checkbox [(ngModel)]="altaComplex">Sim</mat-checkbox>
-                  <mat-checkbox [(ngModel)]="baixaComplex" >Não</mat-checkbox>
+                  <mat-checkbox name="chckAlta" [(ngModel)]="altaComplex">Sim</mat-checkbox>
+                  <mat-checkbox name="chckBaixa" [(ngModel)]="baixaComplex" >Não</mat-checkbox>
                 </div>
               </div>
             </div>
             <div class="menu-dir">
-              <h3 class="dark">Comorbidades</h3><span>(Selecione quantos necessários)</span>
+              <h3 class="dark">Paciente precisará de:</h3><span>(Selecione quantos necessários)</span>
               <div class="list-scroll-esq listForm2">
                 <cdk-virtual-scroll-viewport class="virtualScroll" itemSize="8">
                   <mat-selection-list>
-                    <mat-list-option *cdkVirtualFor="let necessidades of listNecessidadesMock">
-                      {{necessidades.descricao}}
+                    <mat-list-option name="cboNecessidades" *cdkVirtualFor="let necessidades of listNecessidadesMock">
+                      {{necessidades.str}}
                     </mat-list-option>
                   </mat-selection-list>
                 </cdk-virtual-scroll-viewport>
