@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-
+import { SurgeonService } from '../../services/surgeon-services/surgeon.service'
 export interface PeriodicElement {
   name: string;
   position: number;
@@ -32,9 +32,15 @@ export class AllSurgeonsComponent implements OnInit {
   displayedColumns: string[] = ['position', 'crm', 'uf', 'name', 'weight', 'symbol'];
   dataSource = ELEMENT_DATA;
 
-  constructor(public router: Router) { }
+  constructor(public surgeonService: SurgeonService, public router: Router) { }
+
+  surgeons: Surgeon[] = [];
 
   ngOnInit() {
+    this.surgeonService.allSurgeons('Approved').subscribe(response => {
+      console.log(response);
+      this.surgeons = response;
+    })
   }
   mostraId(id){
     console.log(id);

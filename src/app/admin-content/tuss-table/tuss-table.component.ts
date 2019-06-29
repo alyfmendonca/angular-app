@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { OtherService } from '../../services/other-services/other.service'
 
 
 
@@ -50,15 +51,20 @@ const ELEMENT_DATA3: SurgeonAssociado[] = [
   styleUrls: ['./tuss-table.component.css']
 })
 export class TussTableComponent implements OnInit {
-  displayedColumns: string[] = ['position', 'name'];
+  displayedColumns: string[] = ['procedimento'];
   dataSource = ELEMENT_DATA;
 
   hospitals: any;
   surgeons: any;
+
+  tussTable: Tuss[] = [];
   
-  constructor() { }
+  constructor(public tussService: OtherService) { }
 
   ngOnInit() {
+    this.tussService.getAllTuss().subscribe(response => {
+      this.tussTable = response;
+    })
   }
   chamaAssociados(id){
     this.hospitals = ELEMENT_DATA2;

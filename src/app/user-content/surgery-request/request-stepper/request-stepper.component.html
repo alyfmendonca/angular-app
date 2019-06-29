@@ -29,7 +29,7 @@
                 <cdk-virtual-scroll-viewport class="virtualScroll"  itemSize="8">
                   <mat-selection-list>
                     <mat-list-option name="cboSelectedProcedimentos" (click)="selectionClick(procedimento);" *ngFor="let procedimento of listSelected">
-                      {{procedimento.id}} - {{procedimento.descricao}}
+                      {{procedimento.id}} - {{procedimento.str}}
                     </mat-list-option>
                   </mat-selection-list>
                 </cdk-virtual-scroll-viewport>

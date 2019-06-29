@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { AdminService } from '../admin.service';
+import { HospitalService } from '../../services/hospital-services/hospital.service';
 import { Router } from '@angular/router';
-
 
 export interface PeriodicElement {
   name: string;
@@ -9,6 +8,7 @@ export interface PeriodicElement {
   weight: string;
   symbol: string;
 }
+
 
 const ELEMENT_DATA: PeriodicElement[] = [
   {position: 1, name: 'Casa de Saúde São José', weight: 'casadesaudesaojose@contato.com', symbol: '+55 (21) 23456789'},
@@ -30,15 +30,17 @@ const ELEMENT_DATA: PeriodicElement[] = [
 })
 
 export class AllHospitalsComponent implements OnInit {
-  displayedColumns: string[] = ['position', 'name', 'weight', 'symbol'];
+  displayedColumns: string[] = ['name', 'tel', 'email', 'details'];
   dataSource = ELEMENT_DATA;
 
-  constructor(private adminService : AdminService, private router: Router) { }
-  
+  constructor(private hospitalService : HospitalService, private router: Router) { }
+
+  hospitals: Hospital[] = [];
+
   ngOnInit() {
-    let teste; 
-    this.adminService.getHospitals().subscribe(response => {
+    this.hospitalService.getHospitals().subscribe(response => {
       console.log(response);
+      this.hospitals = response;
     })
     
   }
