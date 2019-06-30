@@ -1,0 +1,73 @@
+.content-background{
+    display: flex;
+    justify-content: center;
+}
+.content-request{
+    background: white;
+    box-shadow: -1px 3px 7px 0px lightgrey;
+    position: relative;
+    display: flex;
+    flex-direction: row;
+    margin-top: 100px;
+    width: 60%;
+    height: 300px;
+    padding: 20px 0;
+}
+
+.content-request p {
+    color: #cccccc;
+    font-size: 17px;
+    margin: 0;
+    margin-bottom: 50px;
+    font-weight: 300;
+}
+
+.content-request h3 {
+    margin: 0;
+}
+
+.cont-esq{
+    width: 75%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.cont-esq .topo{
+    width: 65%;
+    align-self: center;
+}
+
+.cont-esq button{
+    margin-left: 80px;
+    padding: 10px 20px;
+    color: #fff;
+    border: 0;
+    border-radius: 2px;
+    background: rgba(45, 175, 126, 1);
+    cursor: pointer;
+    transition: .2s ease-in-out all;
+    border: 1px solid rgba(45, 175, 126, 1);
+    font-size: 12px;
+}
+
+.cont-esq button:hover{
+    background: transparent;
+    color: rgba(45, 175, 126, 1);
+}
+
+.cont-dir{
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    position: relative;
+}
+.content-request .cont-dir p {
+    margin-top: 20px;
+    text-align: center;
+}
+.cont-dir .conteudo {
+    display: flex;
+    width: 80%;
+    margin: auto;
+}

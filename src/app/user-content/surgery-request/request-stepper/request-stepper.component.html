@@ -12,9 +12,8 @@
               </div>
               <div class="list-scroll-esq">
                 <cdk-virtual-scroll-viewport class="virtualScroll" itemSize="8">
-                  <mat-selection-list>
-                    <mat-list-option name="cboProcedimentos" (click)="selectionClick(procedimento);"
-                      *ngFor="let procedimento of listProcedimentosMock">
+                  <mat-selection-list name="listTuss" #listaTuss [(ngModel)]="selectedTuss">
+                    <mat-list-option [value]="procedimento" name="cboProcedimentos" *ngFor="let procedimento of listProcedimentos">
                       {{procedimento.id}} - {{procedimento.str}}
                     </mat-list-option>
                   </mat-selection-list>
@@ -27,9 +26,9 @@
               </div>
               <div class="list-scroll-dir">
                 <cdk-virtual-scroll-viewport class="virtualScroll"  itemSize="8">
-                  <mat-selection-list>
-                    <mat-list-option name="cboSelectedProcedimentos" (click)="selectionClick(procedimento);" *ngFor="let procedimento of listSelected">
-                      {{procedimento.id}} - {{procedimento.str}}
+                  <mat-selection-list name="listTussSelected" [(ngModel)]="selectedTuss" #listaTuss>
+                    <mat-list-option [value]="procedimento" name="cboSelectedProcedimentos" *ngFor="let procedimento of selectedTuss">
+                      {{procedimento.id}} - {{procedimento.str}} 
                     </mat-list-option>
                   </mat-selection-list>
                 </cdk-virtual-scroll-viewport>
@@ -52,23 +51,23 @@
               </div>
               <div class="inputsForm2">
                 <label class="labelForm" for='txtNome'>Nome</label>
-                <input [(ngModel)]='txtNome' type='text' id='txtNome' name='txtNome' placeholder="Alberto Pacheco" #nameVerify="ngModel" required>
+                <input [(ngModel)]='surgeryCreate.name' type='text' id='txtNome' name='txtNome' placeholder="Alberto Pacheco" #nameVerify="ngModel" required>
                 <br>
                 <label class="labelForm" for='txtCpf'>CPF</label>
-                <input [(ngModel)]='txtCpf' type='text' id='txtCpf' name='txtCpf'
-                  placeholder="470.054.938-69" #nameVerify="ngModel" required>
+                <input [(ngModel)]='surgeryCreate.cpf' type='number' id='txtCpf' name='txtCpf'
+                  placeholder="999.999.999-99" #nameVerify="ngModel" required>
                 <br>
                 <label class="labelForm" for='dtNasc'>Data de Nascimento</label>
-                <input [(ngModel)]='dtNasc' type='date' id='dtNasc' name='dtNasc'
+                <input [(ngModel)]='surgeryCreate.birth_date' type='date' id='dtNasc' name='dtNasc'
                   placeholder="" #nameVerify="ngModel" required>
               </div>
-            </div>
+            </div> 
             <div class="menu-dir">
               <h3 class="dark">Comorbidades</h3><span>(Selecione quantos necessários)</span>
               <div class="list-scroll-esq listForm2">
                 <cdk-virtual-scroll-viewport class="virtualScroll" itemSize="8">
-                  <mat-selection-list>
-                    <mat-list-option name="cboComorbidades" *ngFor="let comorbidades of listComorbidadesMock">
+                  <mat-selection-list #comorb>
+                    <mat-list-option name="cboComorbidades" (click)="selectionComorbClick(comorbidades);" *ngFor="let comorbidades of listComorbidades">
                       {{comorbidades.str}}
                     </mat-list-option>
                   </mat-selection-list>
@@ -92,15 +91,17 @@
               </div>
               <div class="inputsForm2">
                 <label class="labelForm" for='txtDur'>Duração da cirurgia</label>
-                <input [(ngModel)]='txtDur' type='text' id='txtDur' name='txtDur'
+                <input [(ngModel)]='surgeryCreate.duration' type='text' id='txtDur' name='txtDur'
                   placeholder="2h e 30m" #nameVerify="ngModel" required>
                 <br>
               </div>
               <div class="esq-baixo">
                 <p>Essa cirurgia é de alta complexidade?</p>
                 <div class="checkBoxGroup">
-                  <mat-checkbox name="chckAlta" [(ngModel)]="altaComplex">Sim</mat-checkbox>
-                  <mat-checkbox name="chckBaixa" [(ngModel)]="baixaComplex" >Não</mat-checkbox>
+                  <mat-radio-group [(ngModel)]="surgeryCreate.complicated" name="rdComplex"> 
+                    <mat-radio-button class="example-margin" value="true">Sim</mat-radio-button>
+                    <mat-radio-button class="example-margin" value="false">Não</mat-radio-button>
+                  </mat-radio-group>
                 </div>
               </div>
             </div>
@@ -109,14 +110,14 @@
               <div class="list-scroll-esq listForm2">
                 <cdk-virtual-scroll-viewport class="virtualScroll" itemSize="8">
                   <mat-selection-list>
-                    <mat-list-option name="cboNecessidades" *cdkVirtualFor="let necessidades of listNecessidadesMock">
+                    <mat-list-option name="cboNecessidades" (click)="selectionNeedsClick(necessidades);" *cdkVirtualFor="let necessidades of listNecessidades">
                       {{necessidades.str}}
                     </mat-list-option>
                   </mat-selection-list>
                 </cdk-virtual-scroll-viewport>
               </div>
               <div class="btn-next">
-                <button class="dark-button" mat-button matStepperNext>Finalizar</button>
+                <button class="dark-button" (click)="finalizar();" mat-button matStepperNext>Finalizar</button>
               </div>
             </div>
           </div>

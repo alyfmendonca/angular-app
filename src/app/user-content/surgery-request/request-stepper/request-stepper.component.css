@@ -137,8 +137,8 @@ p {
 }
 
 ::ng-deep .list-scroll-esq .mat-pseudo-checkbox {
-    width: 4.5% !important;
-    height: 55% !important;
+    width: 14px !important;
+    height: 14px !important;
     border: 1px solid #3fc0c2 !important;
     border-radius: 2px !important;
     cursor: pointer !important;
@@ -179,7 +179,8 @@ p {
 }
 
 ::ng-deep .mat-list-base .mat-list-item, .mat-list-base .mat-list-option {
-    height: 24px !important;
+    height: auto !important;
+    padding-top: 10px;
 } 
 
 ::ng-deep .listForm2 .mat-list-base .mat-list-item, .listForm2 .mat-list-base .mat-list-option {

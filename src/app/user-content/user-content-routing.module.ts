@@ -8,6 +8,7 @@ import { AprovadasSolicitadasComponent } from './aprovadas-solicitadas/aprovadas
 import { SurgeryDetailsComponent } from './surgery-details/surgery-details.component';
 import { RealizadasComponent } from './realizadas/realizadas.component';
 import { ApprovedDetailsComponent } from './approved-details/approved-details.component';
+import { RequestConfirmationComponent } from './surgery-request/request-confirmation/request-confirmation.component';
 
 const routes: Routes = [
   { path: '', redirectTo: 'main', pathMatch: 'full' },
@@ -16,6 +17,7 @@ const routes: Routes = [
     { path: 'profile', component: ProfileComponent },
     { path:'request-orientation', component:RequestOrientationComponent },
     { path:'request-stepper', component: RequestStepperComponent },
+    { path:'request-confirmation', component: RequestConfirmationComponent },
     { path:'aprovadas-solicitadas', component: AprovadasSolicitadasComponent },
     { path:'surgery', component: SurgeryDetailsComponent },
     { path:'realizadas', component: RealizadasComponent },

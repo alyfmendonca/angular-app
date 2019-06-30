@@ -16,6 +16,7 @@ import { MatListModule } from '@angular/material/list';
 import { MatRadioModule } from '@angular/material/radio';
 import { MatNativeDateModule } from '@angular/material';
 import {MatSliderModule} from '@angular/material/slider';
+import { ScrollingModule } from '@angular/cdk/scrolling';
 
 
 
@@ -42,6 +43,7 @@ import {MatSliderModule} from '@angular/material/slider';
     MatRadioModule,
     MatNativeDateModule,
     MatSliderModule,
+    ScrollingModule,
   ],
   exports: [
     MatCheckboxModule,

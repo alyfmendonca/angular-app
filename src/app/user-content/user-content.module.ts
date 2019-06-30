@@ -14,6 +14,7 @@ import {ScrollDispatchModule} from '@angular/cdk/scrolling';
 import { SurgeryDetailsComponent } from './surgery-details/surgery-details.component';
 import { RealizadasComponent } from './realizadas/realizadas.component';
 import { ApprovedDetailsComponent } from './approved-details/approved-details.component';
+import { RequestConfirmationComponent } from './surgery-request/request-confirmation/request-confirmation.component';
 
 @NgModule({
   declarations: [
@@ -24,7 +25,8 @@ import { ApprovedDetailsComponent } from './approved-details/approved-details.co
     AprovadasSolicitadasComponent,
     SurgeryDetailsComponent,
     RealizadasComponent,
-    ApprovedDetailsComponent
+    ApprovedDetailsComponent,
+    RequestConfirmationComponent
   ],
   imports: [
     CommonModule,
