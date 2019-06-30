@@ -1,0 +1,60 @@
+<div class="content-background">
+  <div class="content-conteudo page-profile">
+    <div class="conteudo">
+      <div>
+        <div class="cont-header">
+          <a (click)="router.navigate(['admin/main/solicitacoes']);" class="return">
+            <img class="image-voltar" src="../../assets/voltar.png" />
+            <h3 class="dark">Detalhe do Cirurgião</h3>
+          </a>
+        </div>
+        <div>
+          
+          <form #form="ngForm">
+            <div class="esq">
+              <label for='txtNome'>Nome</label>
+              <input [(ngModel)]='surgeonChoosed.name' type='text' id='txtNome' name='txtNome' #nameVerify="ngModel" required>
+              
+              <label for='txtCrm'>Crm</label>
+              <input [(ngModel)]='surgeonChoosed.crm' type='text' id='txtCrm' name='txtCrm' #nameVerify="ngModel" required>
+
+              <label for='txtUf'>Uf</label>
+              <input [(ngModel)]='surgeonChoosed.uf' type='text' id='txtUf' name='txtUf' #nameVerify="ngModel" required>
+              
+              <label for='txtFone'>Telefone</label>
+              <input [(ngModel)]='surgeonChoosed.phone' type='tel' id='txtFone' name='txtFone' #nameVerify="ngModel" required>
+
+            </div>
+
+            <div class="dir">
+              <div class="menu-esq">
+                <div>
+                  <h3 class="light-dark">Procedimentos (TUSS)</h3>
+                </div>
+                <div class="list-scroll-esq">
+                  <cdk-virtual-scroll-viewport class="virtualScroll" itemSize="8"> 
+                    <mat-list name="listTuss" >
+                      <mat-list-item *ngFor="let tuss of surgeonChoosed.tuss">
+                        {{tuss.str}}
+                      </mat-list-item>
+                    </mat-list>
+                  </cdk-virtual-scroll-viewport>
+                </div>
+              </div>
+            </div> 
+            <div class="btn-line">
+              <button class="dark-button" (click)="salvar();">SALVAR</button>
+            </div>
+          </form>
+          
+        </div>
+
+
+        
+        
+      </div>
+
+    </div>
+  
+  </div>
+</div>

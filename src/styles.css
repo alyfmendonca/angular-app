@@ -72,3 +72,10 @@ app-new-hospital .mat-tab-body-content{
 app-new-hospital mat-tab-group{
     width: 100%;
 }
+.nav-bar-content .active-menu button{
+    border: 1px solid rgb(18, 145, 105)
+}
+
+.nav-bar-content button {
+    border: none;
+}

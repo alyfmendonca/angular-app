@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { SurgeryService } from '../../services/surgery-services/surgery.service'
 import { Router } from '@angular/router';
-import { SurgeonService } from '../../services/surgeon-services/surgeon.service'
+import { SurgeonService } from '../../services/surgeon-services/surgeon.service';
 
 @Component({
   selector: 'app-solicitacoes',
@@ -34,7 +34,7 @@ export class SolicitacoesComponent implements OnInit {
   }
 
   clickDetailsSurgeonAccept(id){
-    //this.router.navigateByUrl(`admin/main/surgeonDetails/${id}`);
+    this.router.navigateByUrl(`admin/main/solicitacoesDetailsAccept/${id}`);
     //criar outro component de accept
   }
 

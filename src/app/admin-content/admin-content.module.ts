@@ -22,6 +22,7 @@ import { NewHospitalComponent } from './new-hospital/new-hospital.component';
 import { RealizadasDetailsComponent } from './realizadas-details/realizadas-details.component';
 import { ApprovedDetailsComponent } from './approved-details/approved-details.component';
 import { CostGroupComponent } from './cost-group/cost-group.component';
+import { SurgeonDetailsAcceptComponent } from './surgeon-details-accept/surgeon-details-accept.component';
 
 
 @NgModule({
@@ -42,6 +43,7 @@ import { CostGroupComponent } from './cost-group/cost-group.component';
     RealizadasDetailsComponent,
     ApprovedDetailsComponent,
     CostGroupComponent,
+    SurgeonDetailsAcceptComponent
   ],
   imports: [
     CommonModule,

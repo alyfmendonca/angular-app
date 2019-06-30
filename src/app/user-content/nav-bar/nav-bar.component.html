@@ -1,5 +1,5 @@
 <div class="nav-bar">
     <div class="nav-bar-content">
-        <a *ngFor="let botao of navBarAtual" routerLink={{botao.url}}><button>{{botao.label}}</button></a>
+        <a *ngFor="let botao of navBarAtual" routerLink={{botao.url}} [routerLinkActive]="'active-menu'"><button>{{botao.label}}</button></a>
     </div>
 </div> 

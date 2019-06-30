@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
+import { Router, ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-new-hospital',
@@ -8,7 +8,10 @@ import { Router } from '@angular/router';
 })
 export class NewHospitalComponent implements OnInit {
 
-  constructor(public router: Router) { }
+  constructor(
+    public router: Router,
+    public route: ActivatedRoute,
+    ) { }
 
   pacienteNome: String;
   txtCPF: String;
@@ -31,8 +34,10 @@ export class NewHospitalComponent implements OnInit {
   taxaDiariaGlobalCTI: String;
   HrClinico: String;
 
+  tussTable: Tuss[] = [];
 
   ngOnInit() {
+    this.tussTable = this.route.snapshot.data.allTuss;
   }
   
   listComorbidadesMock: any[] = [
