@@ -33,5 +33,14 @@ export class SolicitacoesComponent implements OnInit {
     this.router.navigateByUrl(`admin/main/solicitacoesDetails/?id=${id}`);
   }
 
+  clickDetailsSurgeonAccept(id){
+    //this.router.navigateByUrl(`admin/main/surgeonDetails/${id}`);
+    //criar outro component de accept
+  }
+
+  clickNewSurgeon(){
+    this.router.navigateByUrl('admin/main/new-surgeon');
+  }
+
 
 }

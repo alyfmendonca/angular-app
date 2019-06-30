@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { OtherService } from '../../services/other-services/other.service'
+import { ActivatedRoute } from '@angular/router';
 
 
 
@@ -59,13 +60,11 @@ export class TussTableComponent implements OnInit {
 
   tussTable: Tuss[] = [];
   
-  constructor(public tussService: OtherService) { }
+  constructor(public tussService: OtherService,
+              private route: ActivatedRoute) { }
 
   ngOnInit() {
-    this.tussService.getAllTuss().subscribe(response => {
-      this.tussTable = response;
-
-    })
+    this.tussTable = this.route.snapshot.data.allTuss;
   }
   chamaAssociados(id){
     this.tussService.getTuss(id).subscribe(response => {

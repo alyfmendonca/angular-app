@@ -36,7 +36,7 @@
         <div class="conteudo">
           <div class="cont-header">
               <h3 class="dark">Cirurgiões</h3>
-              <button class="dark-button">NOVO</button>
+              <button class="dark-button" (click)="clickNewSurgeon()">NOVO</button>
           </div>
           <div>
   
@@ -47,7 +47,7 @@
                 <p class="paciente-name">{{surgeon.email}}</p>
               </div>
               <div class="right-block">
-                <img (click)="router.navigate(['admin/main/surgeonDetails']);"  class="image-details" src="../../assets/detalhe.png" />
+                <img (click)="clickDetailsSurgeonAccept(surgeon.id)"  class="image-details" src="../../assets/detalhe.png" />
               </div>
             </div>   
           </div>

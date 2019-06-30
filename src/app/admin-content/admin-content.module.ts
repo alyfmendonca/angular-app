@@ -22,7 +22,6 @@ import { NewHospitalComponent } from './new-hospital/new-hospital.component';
 import { RealizadasDetailsComponent } from './realizadas-details/realizadas-details.component';
 import { ApprovedDetailsComponent } from './approved-details/approved-details.component';
 import { CostGroupComponent } from './cost-group/cost-group.component';
-import { OtherAllTussResolve } from '../services/other-services/other-service.resolve';
 
 
 @NgModule({

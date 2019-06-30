@@ -26,12 +26,16 @@ const routes: Routes = [
     { path:'hospitalDetails/:id', component: HospitalDetailsComponent },
     { path:'aprovadas', component: AprovadasComponent },
     { path:'solicitacoes', component: SolicitacoesComponent },
-    { path:'tuss-table', component: TussTableComponent },
+    { path:'tuss-table', component: TussTableComponent , resolve: {
+      allTuss: OtherAllTussResolve
+    } },
     { path:'new-surgeon', component: NewSurgeonComponent, resolve: {
         allTuss: OtherAllTussResolve
       } 
     },
-    { path:'surgeonDetails/:id', component: SurgeonDetailsComponent },
+    { path:'surgeonDetails/:id', component: SurgeonDetailsComponent, resolve: {
+      allTuss: OtherAllTussResolve
+    }  },
     { path:'realizadas', component: RealizadasComponent },
     { path:'solicitacoesDetails/:id', component: SolicitacoesDetailsComponent },
     { path:'newHospital', component: NewHospitalComponent },
