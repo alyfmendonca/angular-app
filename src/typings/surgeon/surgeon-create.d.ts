@@ -4,5 +4,6 @@ type SurgeonCreate = {
     crm: number;
     phone: string;
     uf: string;
-    tuss: number[];
+    tuss: string;
+    is_admin: boolean
 }

@@ -13,8 +13,7 @@ export class SurgeonDetailsComponent implements OnInit {
 
   constructor(public router: Router,
               private route: ActivatedRoute,
-              private surgeonService: SurgeonService,
-              private otherService: OtherService) { }
+              private surgeonService: SurgeonService) { }
 
 
   id: number;
@@ -22,9 +21,8 @@ export class SurgeonDetailsComponent implements OnInit {
   surgeonChoosed: SurgeonById;
 
   ngOnInit() {
-    this.route.params.subscribe( parametros => {
-      this.id = parametros.id;
-  });
+    this.listProcedimentos = this.route.snapshot.data.allTuss;
+    this.id = this.route.snapshot.params.id;
 
     this.surgeonService.getSurgeon(this.id).subscribe((surgeon) => {
       this.surgeonChoosed = surgeon;
@@ -33,11 +31,7 @@ export class SurgeonDetailsComponent implements OnInit {
       });
     });
 
-    this.otherService.getAllTuss().subscribe((res) => {
-      this.listProcedimentos = res;
-      this.selectedTuss = this.tuss;
-    });
-
+    this.selectedTuss = this.tuss;
   }
 
   listProcedimentos: Tuss[] = []; 
