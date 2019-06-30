@@ -55,7 +55,7 @@ export class TussTableComponent implements OnInit {
   dataSource = ELEMENT_DATA;
 
   hospitals: any;
-  surgeons: any;
+  surgeons: any[];
 
   tussTable: Tuss[] = [];
   
@@ -64,10 +64,16 @@ export class TussTableComponent implements OnInit {
   ngOnInit() {
     this.tussService.getAllTuss().subscribe(response => {
       this.tussTable = response;
+
     })
   }
   chamaAssociados(id){
-    this.hospitals = ELEMENT_DATA2;
-    this.surgeons = ELEMENT_DATA3;
+    this.tussService.getTuss(id).subscribe(response => {
+      this.hospitals = response.hospitals;
+      this.surgeons = response.surgeons;
+      console.log(id);
+      console.log(this.hospitals);
+      console.log(this.surgeons);
+    })
   }
 }

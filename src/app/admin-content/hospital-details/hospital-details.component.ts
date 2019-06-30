@@ -1,5 +1,7 @@
 import { Component, OnInit, ChangeDetectionStrategy } from '@angular/core';
-import { Router } from '@angular/router';
+import { Router, ActivatedRoute } from '@angular/router';
+import { HospitalService } from '../../services/hospital-services/hospital.service';
+import { OtherService } from '../../services/other-services/other.service'
 
 @Component({
   selector: 'app-hospital-details',
@@ -9,143 +11,51 @@ import { Router } from '@angular/router';
 })
 export class HospitalDetailsComponent implements OnInit {
 
-  constructor(public router: Router) { }
+  constructor(public router: Router, 
+    private route: ActivatedRoute, 
+    public hopitalService: HospitalService,
+    public otherServices: OtherService,
+    ) { }
   isLinear = false;
-  pacienteNome: String;
-  txtCPF: String;
-  txtNome: String;
-  txtCrm: String;
-  txtUf: String;
-  durCirurgia: String;
-  txtFone: String;
-  txtEmail: String;
-  txtEnd: String;
-  txtCep: String;
-  txtNomeGroup: String;
-  taxaCirurgia: String;
-  taxaAdicional: String;
-  taxaAnestesia: String;
-  taxaMaterial: String;
-  taxaDiariaGlobal: String;
-  taxaDiariaGlobalQ: String;
-  taxaDiariaGlobalS: String;
-  taxaDiariaGlobalCTI: String;
-  HrClinico: String;
-
-
+  
+  id: string;
+  hospitalDetails: HospitalById;
+  allTuss: number[] = [];
+  atualCostGroup: CostGroup;
+  listProcedimentosMock: Tuss[] = [];
+  selectedOptions: number[] = [];
   ngOnInit() {
+    this.route.params.subscribe( parametros => {
+        this.id = parametros.id;
+    });
+    this.hopitalService.getHospital(this.id).subscribe(response => {
+      this.hospitalDetails = response;
+      this.atualCostGroup = response.cost_groups[0];
+      response.all_tuss.forEach(element => {
+        this.allTuss.push(element.id);
+      });
+      console.log(this.allTuss);
+    });
+    this.otherServices.getAllTuss().subscribe(
+      tuss => {
+        this.listProcedimentosMock = tuss;
+        this.selectedOptions = this.allTuss;
+        
+      }
+    );
+    
+  }
+  onNgModelChange(event){
+    console.log(event);
+    console.log(this.selectedOptions);
+  }
+  changeCost(cost: CostGroup){
+    console.log(cost);
+    this.atualCostGroup = cost;
   }
   
-  listComorbidadesMock: any[] = [
-    {
-      "id": 1,
-     "descricao": "Hipertensão"
-    },
-    {
-      "id": 2,
-      "descricao": "Diabetes"
-    },
-  ];
-
-  listProcedimentosMock: any[] = 
-  [
-    {
-      "id": 1342,
-      "descricao": "COLECISTECTOMIA"
-    },
-    {
-      "id": 1356,
-      "descricao": "VIDEOLAPAROSCOPIA"
-    },
-    {
-      "id": 1359,
-      "descricao": "LAPAROSCÓPICA"
-    },
-    {
-      "id": 1352,
-      "descricao": "DRENAGEM CIRÚRGICA POR VIDEOLAPAROSCOPIA"
-    },
-    {
-      "id": 1389,
-      "descricao": "RETOSSIGMOIDECTOMIA ABDOMINAL POR VIDEOLAPAROSCOPIA"
-    },
-    {
-      "id": 1376,
-      "descricao": "ENUCLEAÇÃO"
-    },
-    {
-      "id": 135565,
-      "descricao": "RASPAGEM" 
-    },
-    {
-      "id": 1387,
-      "descricao": "PLAQTUDUM"
-    },{
-      "id": 1387,
-      "descricao": "asdasdasd"
-    },{
-      "id": 1387,
-      "descricao": "asdasdasd"
-    },{
-      "id": 1387,
-      "descricao": "PLAQTUDUM"
-    },{
-      "id": 1387,
-      "descricao": "PLAQTUDUM"
-    },{
-      "id": 1387,
-      "descricao": "asdasdasasd"
-    },{
-      "id": 1387,
-      "descricao": "PLAQTUDUM"
-    },{
-      "id": 1387,
-      "descricao": "PLAQTUDUM"
-    },{
-      "id": 1387,
-      "descricao": "PLAQTUDUM"
-    },{
-      "id": 1387,
-      "descricao": "PLAQTUDUM"
-    },{
-      "id": 1387,
-      "descricao": "PLAQTUDUM"
-    },{
-      "id": 1387,
-      "descricao": "PLAQTUDUM"
-    },{
-      "id": 1387,
-      "descricao": "asdasdasff"
-    },{
-      "id": 1387,
-      "descricao": "sadasdasda"
-    },{
-      "id": 1387,
-      "descricao": "asdasdasd"
-    },{
-      "id": 1387,
-      "descricao": "PLAQTUDUM"
-    },{
-      "id": 1387,
-      "descricao": "asdasdsa"
-    },{
-      "id": 1387,
-      "descricao": "PLAQTUDUM"
-    },
-  ]; 
-  listSelected: any[] = []; 
-  selectionClick(procedimento: any){
-    if(this.listSelected.find(function(item:any){
-      return item.id == procedimento.id;
-    })){
-      this.listSelected = this.listSelected.filter(function(item){
-        return  item.id != procedimento.id
-      });
-    }else{
-      this.listSelected.push(procedimento);
-    }
-
-  }
+  
+ 
 
 
 }

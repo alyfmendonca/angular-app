@@ -21,7 +21,7 @@ export class HospitalService {
   }
 
   getHospital(hospId: string){
-    return this.http.get<Hospital>(`${API_URL}hospital/?id=${hospId}`, {headers});
+    return this.http.get<HospitalById>(`${API_URL}hospital/?id=${hospId}`, {headers});
   }
 
   createHospital(hospital: HospitalCreate){

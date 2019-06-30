@@ -21,6 +21,7 @@ import { SolicitacoesDetailsComponent } from './solicitacoes-details/solicitacoe
 import { NewHospitalComponent } from './new-hospital/new-hospital.component';
 import { RealizadasDetailsComponent } from './realizadas-details/realizadas-details.component';
 import { ApprovedDetailsComponent } from './approved-details/approved-details.component';
+import { CostGroupComponent } from './cost-group/cost-group.component';
 
 
 @NgModule({
@@ -40,6 +41,7 @@ import { ApprovedDetailsComponent } from './approved-details/approved-details.co
     NewHospitalComponent,
     RealizadasDetailsComponent,
     ApprovedDetailsComponent,
+    CostGroupComponent,
   ],
   imports: [
     CommonModule,

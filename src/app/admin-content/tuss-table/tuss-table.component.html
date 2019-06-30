@@ -1,7 +1,7 @@
 <div class="content-background">
   <div class="content-conteudo page-profile">
     <div class="conteudo">
-      <div>
+      <div style="width: 40%;">
         <div class="cont-header">
             <h3 class="dark">Tabela TUSS</h3>
         </div>
@@ -28,7 +28,7 @@
         </div>
         
         <div class="hospitalsBox">
-            <p *ngFor="let hospital of hospitals">{{hospital.name}}</p>
+            <p *ngFor="let hospital of hospitals">{{hospital}}</p>
         </div>
       </div>
 
@@ -38,7 +38,7 @@
           </div>
           
           <div class="hospitalsBox">
-              <p *ngFor="let surgeon of surgeons">{{surgeon.name}}</p>
+              <p *ngFor="let surgeon of surgeons">{{surgeon}}</p>
           </div>
         </div>
         

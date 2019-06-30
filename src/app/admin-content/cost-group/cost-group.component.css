@@ -186,14 +186,19 @@ label{
 }
 .form-dir label{
     padding-left: 9%;
+    color: #ccc;
+    font-weight: 500;
+    margin-top: 20px;
+}
+.form-dir input{
+    background: transparent !important;
+    border: 1px solid #ccc;
+    border-radius: 3px;
+    padding: 8px 5px;
+    color: #ccc;
+    width: 80%;
+    margin-top: 5px;
 }
 .tuss-esq .list-scroll-esq{
     height: 800px;
-}
-.package-box{
-    cursor: pointer;
-}
-.package-box:hover{
-    border-color: #3ec0c2;
-    color: #3ec0c2;
 }

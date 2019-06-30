@@ -22,7 +22,7 @@ const routes: Routes = [
     { path: 'profile', component: ProfileComponent },
     { path:'allHospitals', component: AllHospitalsComponent },
     { path:'allSurgeons', component: AllSurgeonsComponent },
-    { path:'hospitalDetails', component: HospitalDetailsComponent },
+    { path:'hospitalDetails/:id', component: HospitalDetailsComponent },
     { path:'aprovadas', component: AprovadasComponent },
     { path:'solicitacoes', component: SolicitacoesComponent },
     { path:'tuss-table', component: TussTableComponent },

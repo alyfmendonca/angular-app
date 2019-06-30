@@ -45,8 +45,8 @@ export class AllHospitalsComponent implements OnInit {
     
   }
   mostraId(id){
-    console.log(id);
-    this.router.navigate(['admin/main/hospitalDetails']);
+    //console.log(id);
+    this.router.navigateByUrl(`admin/main/hospitalDetails/${id}`);
   }
 
 }
