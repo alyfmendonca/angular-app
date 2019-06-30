@@ -40,8 +40,8 @@
                         <cdk-virtual-scroll-viewport class="virtualScroll" itemSize="8">
                           <mat-selection-list>
                             <mat-list-option (click)="selectionClick(procedimento);"
-                              *ngFor="let procedimento of listProcedimentosMock">
-                              {{procedimento.id}} - {{procedimento.descricao}}
+                              *ngFor="let procedimento of tussTable">
+                              {{procedimento.id}} - {{procedimento.str}}
                             </mat-list-option>
                           </mat-selection-list>
                         </cdk-virtual-scroll-viewport>
