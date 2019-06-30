@@ -1,4 +1,6 @@
 import { Component, OnInit, ChangeDetectionStrategy } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
+import { AuthService } from 'src/app/services/auth-services/auth.service';
 @Component({
   selector: 'app-form-cadastro',
   templateUrl: './form-cadastro.component.html',
@@ -8,19 +10,47 @@ import { Component, OnInit, ChangeDetectionStrategy } from '@angular/core';
 
 export class FormCadastroComponent implements OnInit {
 
-  
-  constructor() { }
+  userCreate: UserSignIn = {
+    email: null,
+    name: null,
+    phone: null,
+    crm: null,
+    uf: null,
+    tuss: null,
+    is_admin: false,
+  }
+
+   listProcedimentos: Tuss[] = []; 
+   selectedTuss: number [] = [];
+
+  constructor(private route: ActivatedRoute,
+              private authService: AuthService) { }
 
   ngOnInit() {
+    this.listProcedimentos = this.route.snapshot.data.allTuss;
   }
-  txtNome = "";
-  txtCrm = "";
-  txtUf = "";
-  txtEmail = "";
-  txtTelefone = "";
 
   submitForm(){
-    console.log(this.txtNome, this.txtCrm, this.txtUf, this.txtEmail, this.txtTelefone);
+    if(!this.userCreate.name){
+      alert('Favor digitar seu nome');
+      return;
+    }else if(!this.userCreate.crm){
+      alert('Favor digitar seu CRM');
+      return; 
+    }else if(!this.userCreate.uf){
+      alert('Favor digitar a UF');
+      return; 
+    }else if(!this.userCreate.phone){
+      alert('Favor digitar seu telefone');
+      return;  
+    }else if(!this.selectedTuss){
+      alert('Favor digitar selecioanar ao menos um TUSS');
+      return; 
+    }else{
+    this.userCreate.tuss = '[' + this.selectedTuss + ']';
+    this.authService.requestSignIn(this.userCreate).subscribe(res => alert('Cadastro realizado'), err => console.log(JSON.stringify(this.userCreate)));
+    }
+    
   }
   onClickNext(){
     document.getElementById('mat-tab-label-0-1').click();
@@ -28,93 +58,6 @@ export class FormCadastroComponent implements OnInit {
   onClickBack(){
     document.getElementById('mat-tab-label-0-0').click();
   }
-  
-  listProcedimentosMock: any[] = 
-  [
-    {
-      "id": 1342,
-      "descricao": "COLECISTECTOMIA"
-    },
-    {
-      "id": 1356,
-      "descricao": "VIDEOLAPAROSCOPIA"
-    },
-    {
-      "id": 1359,
-      "descricao": "LAPAROSCÓPICA"
-    },
-    {
-      "id": 1352,
-      "descricao": "DRENAGEM CIRÚRGICA POR VIDEOLAPAROSCOPIA"
-    },
-    {
-      "id": 1389,
-      "descricao": "RETOSSIGMOIDECTOMIA ABDOMINAL POR VIDEOLAPAROSCOPIA"
-    },
-    {
-      "id": 1376,
-      "descricao": "ENUCLEAÇÃO"
-    },
-    {
-      "id": 135565,
-      "descricao": "RASPAGEM" 
-    },
-    {
-      "id": 1387,
-      "descricao": "PLAQTUDUM"
-    },{
-      "id": 1387,
-      "descricao": "asdasdasd"
-    },{
-      "id": 1387,
-      "descricao": "asdasdasd"
-    },{
-      "id": 1387,
-      "descricao": "PLAQTUDUM"
-    },{
-      "id": 1387,
-      "descricao": "PLAQTUDUM"
-    },{
-      "id": 1387,
-      "descricao": "asdasdasasd"
-    },{
-      "id": 1387,
-      "descricao": "PLAQTUDUM"
-    },{
-      "id": 1387,
-      "descricao": "PLAQTUDUM"
-    },{
-      "id": 1387,
-      "descricao": "PLAQTUDUM"
-    },{
-      "id": 1387,
-      "descricao": "PLAQTUDUM"
-    },{
-      "id": 1387,
-      "descricao": "PLAQTUDUM"
-    },{
-      "id": 1387,
-      "descricao": "PLAQTUDUM"
-    },{
-      "id": 1387,
-      "descricao": "asdasdasff"
-    },{
-      "id": 1387,
-      "descricao": "sadasdasda"
-    },{
-      "id": 1387,
-      "descricao": "asdasdasd"
-    },{
-      "id": 1387,
-      "descricao": "PLAQTUDUM"
-    },{
-      "id": 1387,
-      "descricao": "asdasdsa"
-    },{
-      "id": 1387,
-      "descricao": "PLAQTUDUM"
-    },
-  ]; 
 
 }
 

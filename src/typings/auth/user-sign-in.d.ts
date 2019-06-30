@@ -4,5 +4,6 @@ type UserSignIn = {
     phone: string;
     crm: number;
     uf: string;
-    tuss: number[];
+    tuss: string;
+    is_admin: boolean
 }

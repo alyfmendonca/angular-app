@@ -15,19 +15,19 @@
                   <form #form="ngForm">
                     <div class="form-dir">
                       <label for='txtNome'>Nome</label>
-                      <input [(ngModel)]='txtNome' type='text' id='txtNome' name='txtNome' placeholder="Alberto Pacheco" #nameVerify="ngModel" required>
+                      <input [(ngModel)]='userCreate.name' type='text' id='txtNome' name='txtNome' placeholder="Alberto Pacheco" #nameVerify="ngModel" required>
             
                       <label for='txtCrm'>CRM</label>
-                      <input [(ngModel)]='txtCrm' type='text' id='txtCrm' name='txtCrm' placeholder="12314" #nameVerify="ngModel" required>
+                      <input [(ngModel)]='userCreate.crm' type='text' id='txtCrm' name='txtCrm' placeholder="12314" #nameVerify="ngModel" required>
           
                       <label for='txtUf'>Uf</label>
-                      <input [(ngModel)]='txtUf' type='text' id='txtUf' name='txtUf' placeholder="RJ" #nameVerify="ngModel" required>
+                      <input [(ngModel)]='userCreate.uf' type='text' id='txtUf' name='txtUf' placeholder="RJ" #nameVerify="ngModel" required>
           
                       <label for='txtEmail'>Email</label>
-                      <input [(ngModel)]='txtEmail' type='email' id='txtEmail' name='txtEmail' placeholder="albertopacheco@gmail.com" #nameVerify="ngModel" required>
+                      <input [(ngModel)]='userCreate.email' type='email' id='txtEmail' name='txtEmail' placeholder="albertopacheco@gmail.com" #nameVerify="ngModel" required>
           
                       <label for='txtTelefone'>Telefone</label>
-                      <input [(ngModel)]='txtTelefone' type='tel' id='txtTelefone' name='txtTelefone' placeholder="(21) 91234-5678" #nameVerify="ngModel" required>
+                      <input [(ngModel)]='userCreate.phone' type='tel' id='txtTelefone' name='txtTelefone' placeholder="(21) 91234-5678" #nameVerify="ngModel" required>
             
                     </div>
                     <div class="bot-dir">
@@ -58,11 +58,10 @@
                             <p class="">Selecione os procedimentos que serão realizados na cirurgia</p>
                           </div>
                           <div class="list-scroll-esq">
-                            <cdk-virtual-scroll-viewport class="virtualScroll" itemSize="8">
-                              <mat-selection-list>
-                                <mat-list-option (click)="selectionClick(procedimento);"
-                                  *ngFor="let procedimento of listProcedimentosMock">
-                                  {{procedimento.id}} - {{procedimento.descricao}}
+                            <cdk-virtual-scroll-viewport class="virtualScroll"  itemSize="8">
+                              <mat-selection-list name="listTussSelected" [(ngModel)]="selectedTuss" #listaTuss>
+                                <mat-list-option [value]="procedimento.id" name="cboSelectedProcedimentos" *ngFor="let procedimento of listProcedimentos">
+                                  {{procedimento.id}} - {{procedimento.str}} 
                                 </mat-list-option>
                               </mat-selection-list>
                             </cdk-virtual-scroll-viewport>
