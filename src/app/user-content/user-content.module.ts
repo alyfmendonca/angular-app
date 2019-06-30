@@ -15,6 +15,7 @@ import { SurgeryDetailsComponent } from './surgery-details/surgery-details.compo
 import { RealizadasComponent } from './realizadas/realizadas.component';
 import { ApprovedDetailsComponent } from './approved-details/approved-details.component';
 import { RequestConfirmationComponent } from './surgery-request/request-confirmation/request-confirmation.component';
+import { RealizadaDetailsComponent } from './realizada-details/realizada-details.component';
 
 @NgModule({
   declarations: [
@@ -26,7 +27,8 @@ import { RequestConfirmationComponent } from './surgery-request/request-confirma
     SurgeryDetailsComponent,
     RealizadasComponent,
     ApprovedDetailsComponent,
-    RequestConfirmationComponent
+    RequestConfirmationComponent,
+    RealizadaDetailsComponent
   ],
   imports: [
     CommonModule,

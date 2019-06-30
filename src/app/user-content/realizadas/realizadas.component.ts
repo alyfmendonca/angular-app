@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { SurgeryService } from '../../services/surgery-services/surgery.service'
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-realizadas',
@@ -7,11 +9,21 @@ import { Component, OnInit } from '@angular/core';
 })
 export class RealizadasComponent implements OnInit {
 
-  constructor() { }
-  text = "Baixa Complexidade";
-  text2 = "Baixasa Complexidade";
+  constructor(
+      public surgeryService: SurgeryService,
+      public router: Router) { }
+ 
+
+  allSurgeries: SurgeryDone[];
 
   ngOnInit() {
+    this.surgeryService.allSurgery('Done').subscribe(response => {
+      this.allSurgeries = response;
+    })
+  }
+  clickDetails(id){
+    console.log(id);
+    this.router.navigateByUrl(`user/main/realizadaDetails/?id=${id}`);
   }
 
 }

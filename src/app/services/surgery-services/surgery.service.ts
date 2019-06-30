@@ -17,8 +17,8 @@ export class SurgeryService {
 
   constructor(private http: HttpClient) { }
 
-    allSurgery(){
-      return this.http.get<SurgeryAll[]>(`${API_URL}allSurgeries/`, {headers});
+    allSurgery(status: string){
+      return this.http.get<SurgeryDone[]>(`${API_URL}allSurgeries/?status=${status}`, {headers});
     }
 
     getSurgery(id: string){

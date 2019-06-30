@@ -3,11 +3,11 @@ import { Router, ActivatedRoute } from '@angular/router';
 import { SurgeryService } from '../../services/surgery-services/surgery.service';
 
 @Component({
-  selector: 'app-approved-details',
-  templateUrl: './approved-details.component.html',
-  styleUrls: ['./approved-details.component.css']
+  selector: 'app-realizada-details',
+  templateUrl: './realizada-details.component.html',
+  styleUrls: ['./realizada-details.component.css']
 })
-export class ApprovedDetailsComponent implements OnInit {
+export class RealizadaDetailsComponent implements OnInit {
 
   constructor(
     public router: Router,
@@ -77,5 +77,5 @@ export class ApprovedDetailsComponent implements OnInit {
     
     
   ]; 
-  
+
 }

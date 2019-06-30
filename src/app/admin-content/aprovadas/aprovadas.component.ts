@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { SurgeryService } from '../../services/surgery-services/surgery.service'
 import { Router } from '@angular/router';
 
 @Component({
@@ -8,12 +9,20 @@ import { Router } from '@angular/router';
 })
 export class AprovadasComponent implements OnInit {
 
-  constructor(public router: Router) { }
+  constructor(
+      public router: Router,
+      public surgeryService: SurgeryService,
+    ) { }
 
-  text = "Baixa Complexidade";
-  text2 = "a";
+    allSurgeries: SurgeryDone[];
   
   ngOnInit() {
+    this.surgeryService.allSurgery('Approved').subscribe(response => {
+      this.allSurgeries = response;
+    })
   }
-
+  clickDetails(id){
+    console.log(id);
+    this.router.navigateByUrl(`admin/main/approvedDetails/?id=${id}`);
+  }
 }

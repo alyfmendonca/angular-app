@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
+import { Router, ActivatedRoute } from '@angular/router';
+import { SurgeryService } from '../../services/surgery-services/surgery.service';
 
 @Component({
   selector: 'app-solicitacoes-details',
@@ -8,10 +9,24 @@ import { Router } from '@angular/router';
 })
 export class SolicitacoesDetailsComponent implements OnInit {
 
-  constructor(public router: Router) { }
+  constructor(
+    public router: Router, 
+    public route: ActivatedRoute,
+    public surgeryService: SurgeryService,
+    ) { }
 
-  ngOnInit() {
-  }
+    id: string;
+    surgery: Surgery[];
+  
+    ngOnInit() {
+      this.route.params.subscribe( parametros => {
+        this.id = parametros.id;
+      });
+      this.surgeryService.getSurgery('13').subscribe(response => {
+        console.log(response);
+        this.surgery = response;
+      })
+    }
 
   listComorbidadesMock: any[] = [
     {

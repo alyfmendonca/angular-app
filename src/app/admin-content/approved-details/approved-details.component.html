@@ -3,7 +3,7 @@
       <div class="conteudo">
         <div>
           <div class="cont-header">
-            <a (click)="router.navigate(['/user/main/aprovadas-solicitadas']);" class="return">
+            <a (click)="router.navigate(['/admin/main/aprovadas']);" class="return">
               <img class="image-voltar" src="../../assets/voltar.png" />
               <h3 class="dark">Detalhe da Cirurgia</h3>
             </a>
@@ -15,30 +15,33 @@
                 <div class="esq">
                   <h3 class="light-dark">Paciente</h3>
                   <label for='pacienteNome'>Nome</label>
-                  <input [(ngModel)]='pacienteNome' type='text' id='pacienteNome' name='pacienteNome' placeholder="Alberto Pacheco" #nameVerify="ngModel" required>
+                  <input [(ngModel)]='surgery.patient.name' type='text' id='pacienteNome' name='pacienteNome' placeholder="Alberto Pacheco" #nameVerify="ngModel" required>
                   
                   <label for='pacienteCpf'>CPF</label>
-                  <input [(ngModel)]='txtCPF' type='text' id='txtCPF' name='txtCPF' placeholder="2342423" #nameVerify="ngModel" required>
+                  <input [(ngModel)]='surgery.patient.cpf' type='text' id='txtCPF' name='txtCPF' placeholder="2342423" #nameVerify="ngModel" required>
                   
                   <h3 class="light-dark">Cirurgião</h3>
                   <label for='txtNome'>Nome</label>
-                  <input [(ngModel)]='txtNome' type='text' id='txtNome' name='txtNome' placeholder="Alberto Pacheco" #nameVerify="ngModel" required>
+                  <input [(ngModel)]='surgery.surgeon.name' type='text' id='txtNome' name='txtNome' placeholder="Alberto Pacheco" #nameVerify="ngModel" required>
         
                   <label for='txtCrm'>Crm</label>
-                  <input [(ngModel)]='txtCrm' type='text' id='txtCrm' name='txtCrm' placeholder="2342423" #nameVerify="ngModel" required>
+                  <input [(ngModel)]='surgery.surgeon.crm' type='text' id='txtCrm' name='txtCrm' placeholder="2342423" #nameVerify="ngModel" required>
   
                   <label for='txtUf'>Uf</label>
                   <input [(ngModel)]='txtUf' type='text' id='txtUf' name='txtUf' placeholder="UF" #nameVerify="ngModel" required>
                   
                   <h3 class="light-dark">Complexidade</h3>
                   <label for='durCirurgia'>Duração da cirugia</label>
-                  <input [(ngModel)]='durCirurgia' type='text' id='durCirurgia' name='durCirurgia' placeholder="2 horas e 30 min" #nameVerify="ngModel" required>
+                  <input [(ngModel)]='surgery.duration' type='text' id='durCirurgia' name='durCirurgia' placeholder="2 horas e 30 min" #nameVerify="ngModel" required>
                   
                   <label>Essa cirurgia é de alta complexidade?</label>
                   <div class="list-scroll-esq listForm2">
                     <mat-selection-list>
-                      <mat-list-option *ngFor="let comorbidades of listComorbidadesMock">
-                        {{comorbidades.descricao}}
+                      <mat-list-option selected *ngIf="surgery.complicated">
+                        Sim
+                      </mat-list-option>
+                      <mat-list-option selected *ngIf="!surgery.complicated">
+                        Não
                       </mat-list-option>
                     </mat-selection-list>
                   </div>
@@ -50,30 +53,34 @@
                     <input [(ngModel)]='dt' type='text' id='dt' name='dt' placeholder="2 horas e 30 min" #nameVerify="ngModel" required>
   
                     <label>Comorbidades</label>
-                    <div class="list-scroll-esq listForm2">
-                      <mat-selection-list>
-                        <mat-list-option *ngFor="let comorbidades of listComorbidadesMock">
-                          {{comorbidades.descricao}}
-                        </mat-list-option>
-                      </mat-selection-list>
-                    </div>
-                    <label>Procedimento (TUSS)</label>
-                    <div class="list-scroll-dir">
-                      <mat-selection-list>
-                        <mat-list-option  *ngFor="let procedimento of listProcedimentosMock">
-                          {{procedimento.id}} - {{procedimento.descricao}}
-                        </mat-list-option>
-                      </mat-selection-list>
-                    </div>
-  
-                    <label>Paciente precisará de:</label>
-                    <div class="list-scroll-dir">
-                      <mat-selection-list>
-                        <mat-list-option  *ngFor="let procedimento of listProcedimentosMock2">
-                          {{procedimento.id}} - {{procedimento.descricao}}
-                        </mat-list-option>
-                      </mat-selection-list>
-                    </div>
+                  <div class="list-scroll-esq listForm2">
+                    <mat-selection-list>
+                      <mat-list-option selected *ngFor="let comorbidades of surgery.comorbidities">
+                        {{comorbidades}}
+                      </mat-list-option>
+                    </mat-selection-list>
+                  </div>
+                  <label>Procedimento (TUSS)</label>
+                  <div class="list-scroll-dir">
+                    <mat-selection-list>
+                      <mat-list-option selected>
+                        {{surgery.main_tuss.str}}
+                      </mat-list-option>
+
+                      <mat-list-option selected *ngFor="let poced of surgery.secondary_tuss">
+                        {{poced.str}}
+                      </mat-list-option>
+                    </mat-selection-list>
+                  </div>
+
+                  <label>Paciente precisará de:</label>
+                  <div class="list-scroll-dir">
+                    <mat-selection-list>
+                      <mat-list-option  selected *ngFor="let procedimento of surgery.accommodations">
+                       {{procedimento}}
+                      </mat-list-option>
+                    </mat-selection-list>
+                  </div>
                 </div>
               </div>
               

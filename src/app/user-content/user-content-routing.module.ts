@@ -9,6 +9,7 @@ import { SurgeryDetailsComponent } from './surgery-details/surgery-details.compo
 import { RealizadasComponent } from './realizadas/realizadas.component';
 import { ApprovedDetailsComponent } from './approved-details/approved-details.component';
 import { RequestConfirmationComponent } from './surgery-request/request-confirmation/request-confirmation.component';
+import { RealizadaDetailsComponent } from './realizada-details/realizada-details.component';
 
 const routes: Routes = [
   { path: '', redirectTo: 'main', pathMatch: 'full' },
@@ -22,6 +23,8 @@ const routes: Routes = [
     { path:'surgery', component: SurgeryDetailsComponent },
     { path:'realizadas', component: RealizadasComponent },
     { path:'approvedDetails', component: ApprovedDetailsComponent },
+    { path:'realizadaDetails/:id', component: RealizadaDetailsComponent },
+    
 
   ] }
 ];

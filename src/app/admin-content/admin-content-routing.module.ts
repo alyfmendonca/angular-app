@@ -29,10 +29,10 @@ const routes: Routes = [
     { path:'new-surgeon', component: NewSurgeonComponent },
     { path:'surgeonDetails', component: SurgeonDetailsComponent },
     { path:'realizadas', component: RealizadasComponent },
-    { path:'solicitacoesDetails', component: SolicitacoesDetailsComponent },
+    { path:'solicitacoesDetails/:id', component: SolicitacoesDetailsComponent },
     { path:'newHospital', component: NewHospitalComponent },
-    { path:'realizadaDetails', component: RealizadasDetailsComponent },
-    { path:'approvedDetails', component: ApprovedDetailsComponent },
+    { path:'realizadaDetails/:id', component: RealizadasDetailsComponent },
+    { path:'approvedDetails/:id', component: ApprovedDetailsComponent },
 
   ] }
   
