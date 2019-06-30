@@ -15,6 +15,7 @@ import { SolicitacoesDetailsComponent } from './solicitacoes-details/solicitacoe
 import { NewHospitalComponent } from './new-hospital/new-hospital.component';
 import { RealizadasDetailsComponent } from './realizadas-details/realizadas-details.component';
 import { ApprovedDetailsComponent } from './approved-details/approved-details.component';
+import { OtherAllTussResolve } from '../services/other-services/other-service.resolve';
 
 const routes: Routes = [
   { path: '', redirectTo: 'main/profile', pathMatch: 'full' },
@@ -26,7 +27,10 @@ const routes: Routes = [
     { path:'aprovadas', component: AprovadasComponent },
     { path:'solicitacoes', component: SolicitacoesComponent },
     { path:'tuss-table', component: TussTableComponent },
-    { path:'new-surgeon', component: NewSurgeonComponent },
+    { path:'new-surgeon', component: NewSurgeonComponent, resolve: {
+        allTuss: OtherAllTussResolve
+      } 
+    },
     { path:'surgeonDetails/:id', component: SurgeonDetailsComponent },
     { path:'realizadas', component: RealizadasComponent },
     { path:'solicitacoesDetails/:id', component: SolicitacoesDetailsComponent },

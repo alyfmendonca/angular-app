@@ -1,5 +1,5 @@
 import { Component, OnInit, ChangeDetectionStrategy } from '@angular/core';
-import { Router } from '@angular/router';
+import { Router, ActivatedRoute } from '@angular/router';
 import { OtherService } from 'src/app/services/other-services/other.service';
 
 @Component({
@@ -11,7 +11,7 @@ import { OtherService } from 'src/app/services/other-services/other.service';
 export class NewSurgeonComponent implements OnInit {
 
   constructor(public router: Router,
-              private otherService: OtherService) { }
+              private route: ActivatedRoute) { }
   isLinear = false;
   pacienteNome: String;
   txtCPF: String;
@@ -23,14 +23,8 @@ export class NewSurgeonComponent implements OnInit {
   txtFone: String;
   
   ngOnInit() {
-    this.allTuss();
-  }
-
-  async allTuss(){
-    await this.otherService.getAllTuss().toPromise().then((resolve) => {
-      this.listProcedimentos = resolve;
-    });
-  }
+    this.listProcedimentos = this.route.snapshot.data.allTuss;
+  } 
 
   listProcedimentos: Tuss[] = []; 
 
