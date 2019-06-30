@@ -1,7 +1,6 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { TussTableComponent } from './tuss-table/tuss-table.component';
-import { ProfileComponent } from '../core/profile/profile.component';
 import { MainContentComponent } from './main-content/main-content.component';
 import { AllHospitalsComponent } from './all-hospitals/all-hospitals.component';
 import { HospitalDetailsComponent } from './hospital-details/hospital-details.component';
@@ -17,11 +16,12 @@ import { RealizadasDetailsComponent } from './realizadas-details/realizadas-deta
 import { ApprovedDetailsComponent } from './approved-details/approved-details.component';
 import { OtherAllTussResolve } from '../services/other-services/other-service.resolve';
 import { SurgeonDetailsAcceptComponent } from './surgeon-details-accept/surgeon-details-accept.component'
+import { AdminProfileComponent } from './admin-profile/admin-profile.component';
 
 const routes: Routes = [
   { path: '', redirectTo: 'main/profile', pathMatch: 'full' },
   { path:'main', component: MainContentComponent, children: [
-    { path: 'profile', component: ProfileComponent },
+    { path: 'profile', component: AdminProfileComponent },
     { path:'allHospitals', component: AllHospitalsComponent },
     { path:'allSurgeons', component: AllSurgeonsComponent },
     { path:'hospitalDetails/:id', component: HospitalDetailsComponent },

@@ -2,7 +2,6 @@ import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { RequestOrientationComponent } from './surgery-request/request-orientation/request-orientation.component';
 import { RequestStepperComponent } from './surgery-request/request-stepper/request-stepper.component';
-import { ProfileComponent } from '../core/profile/profile.component';
 import { MainContentComponent } from './main-content/main-content.component';
 import { AprovadasSolicitadasComponent } from './aprovadas-solicitadas/aprovadas-solicitadas.component';
 import { SurgeryDetailsComponent } from './surgery-details/surgery-details.component';
@@ -11,11 +10,12 @@ import { ApprovedDetailsComponent } from './approved-details/approved-details.co
 import { RequestConfirmationComponent } from './surgery-request/request-confirmation/request-confirmation.component';
 import { RealizadaDetailsComponent } from './realizada-details/realizada-details.component';
 import { OtherAllTussResolve } from '../services/other-services/other-service.resolve';
+import { UserProfileComponent } from './user-profile/user-profile.component';
 
 const routes: Routes = [
   { path: '', redirectTo: 'main/profile', pathMatch: 'full' },
   { path: 'main', component: MainContentComponent, children: [
-    { path: 'profile', component: ProfileComponent },
+    { path: 'profile', component: UserProfileComponent },
     { path:'request-orientation', component:RequestOrientationComponent },
     { path:'request-stepper', component: RequestStepperComponent, resolve: {
       allTuss: OtherAllTussResolve

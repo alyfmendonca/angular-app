@@ -1,0 +1,39 @@
+<div class="content-background">
+  <div class="content-conteudo page-profile">
+   
+      <div class="esqu">
+        <div class="entrar-esq">
+          <h3 class="dark">Minha Conta</h3>
+        </div>
+        <form #form="ngForm">
+            <div class="form-esq">
+              <label for='txtNome'>Nome</label>
+              <input [(ngModel)]='surgeonByID.name' type='text' id='txtNome' name='txtNome' placeholder="Alberto Pacheco" #nameVerify="ngModel" required>
+    
+              <label for='txtCrm'>Crm</label>
+              <input [(ngModel)]='surgeonByID.crm' type='text' id='txtCrm' name='txtCrm' placeholder="2342423" #nameVerify="ngModel" required>
+
+              <label for='txtUf'>Uf</label>
+              <input [(ngModel)]='surgeonByID.uf' type='text' id='txtUf' name='txtUf' placeholder="UF" #nameVerify="ngModel" required>
+            </div>
+        </form>
+      
+      </div>
+      <div class="dir">
+        <form #form="ngForm">
+          <div class="form-dir">
+            <label for='txtEmail'>Email</label>
+            <input [(ngModel)]='surgeonByID.email' type='email' id='txtEmail' name='txtEmail' placeholder="Digite o login" #nameVerify="ngModel" required>
+  
+            <label for='txtTelefone'>Telefone</label>
+            <input [(ngModel)]='surgeonByID.phone' type='tel' id='txtTelefone' name='txtTelefone' placeholder="Digite a Senha" #nameVerify="ngModel" required>
+          </div>
+          <div class="bot-dir">
+            <button class="concluir-button" (click)="submitForm();">Salvar</button>
+            
+          </div>
+        </form>
+      </div>
+  
+  </div>
+</div>

@@ -32,7 +32,7 @@ export class SurgeonDetailsAcceptComponent implements OnInit {
       this.id = parametros.id;
   });
 
-    this.surgeonService.getSurgeon(this.id).subscribe((surgeon) => {
+    this.surgeonService.getSurgeon().subscribe((surgeon) => {
       this.surgeonChoosed = surgeon;
       this.surgeonChoosed.tuss.forEach(tuss => {
         this.tuss.push(tuss.id);

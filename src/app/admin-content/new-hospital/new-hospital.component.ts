@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
+import { OtherService } from '../../services/other-services/other.service'
+
 
 @Component({
   selector: 'app-new-hospital',

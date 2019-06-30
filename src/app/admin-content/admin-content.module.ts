@@ -24,6 +24,7 @@ import { ApprovedDetailsComponent } from './approved-details/approved-details.co
 import { CostGroupComponent } from './cost-group/cost-group.component';
 import { SurgeonDetailsAcceptComponent } from './surgeon-details-accept/surgeon-details-accept.component';
 import { CostPackageComponent } from './cost-package/cost-package.component';
+import { AdminProfileComponent } from './admin-profile/admin-profile.component';
 
 
 @NgModule({
@@ -45,7 +46,8 @@ import { CostPackageComponent } from './cost-package/cost-package.component';
     ApprovedDetailsComponent,
     CostGroupComponent,
     SurgeonDetailsAcceptComponent,
-    CostPackageComponent
+    CostPackageComponent,
+    AdminProfileComponent
   ],
   imports: [
     CommonModule,
