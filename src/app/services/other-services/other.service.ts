@@ -1,7 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient,HttpHeaders } from '@angular/common/http';
 import { environment } from 'src/environments/environment';
-import { Observable } from 'rxjs';
 
 const API_URL = environment.apiUrl;
 
@@ -17,7 +16,7 @@ export class OtherService {
 
   constructor(private http: HttpClient) { }
 
-  getAllTuss(): Observable<Tuss[]>{
+  getAllTuss(){
     return this.http.get<Tuss[]>(`${API_URL}allTuss/`, {headers});
   }
   getTuss(id: string){
