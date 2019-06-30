@@ -4,6 +4,7 @@ type SurgeonById = {
     crm: number;
     phone: string;
     uf: string;
+    email:string;
     status: string;
     approved_date: string;
     used_approved_token: boolean;

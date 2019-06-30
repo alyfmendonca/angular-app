@@ -2,7 +2,7 @@ import { Component, OnInit, ChangeDetectionStrategy, ViewChild } from '@angular/
 import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 import { OtherService } from 'src/app/services/other-services/other.service';
 import { CdkVirtualScrollViewport } from '@angular/cdk/scrolling';
-import { Router } from '@angular/router';
+import { Router, ActivatedRoute } from '@angular/router';
 import { SurgeryService } from 'src/app/services/surgery-services/surgery.service';
 
 @Component({
@@ -43,9 +43,12 @@ export class RequestStepperComponent implements OnInit {
 
   constructor(private otherServices: OtherService,
               private router: Router,
-              private surgeryServices: SurgeryService) {}
+              private surgeryServices: SurgeryService,
+              private route:ActivatedRoute) {}
 
   ngOnInit() {
+
+    this.listProcedimentos = this.route.snapshot.data.allTuss;
 
     this.otherServices.getAllComorbidities().subscribe(
       comorbidities => this.listComorbidades = comorbidities
@@ -53,10 +56,6 @@ export class RequestStepperComponent implements OnInit {
     
     this.otherServices.getAllAccommodations().subscribe(
       accommodations => this.listNecessidades = accommodations
-    );
-
-    this.otherServices.getAllTuss().subscribe(
-      tuss => this.listProcedimentos = tuss
     );
 
   }

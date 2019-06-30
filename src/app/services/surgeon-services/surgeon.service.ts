@@ -22,8 +22,11 @@ export class SurgeonService {
     }});
   }
 
-  getSurgeon(id: number){
-    return this.http.get<SurgeonById>(`${API_URL}surgeon/?id=${id}`, {headers});
+  getSurgeon(id?: number){
+    if(id){
+      return this.http.get<SurgeonById>(`${API_URL}surgeon/?id=${id}`, {headers});
+    }
+    return this.http.get<SurgeonById>(`${API_URL}surgeon`, {headers});
   }
 
   createSurgeon(surgeon: SurgeonCreate){

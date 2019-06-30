@@ -44,7 +44,10 @@ export class SurgeonDetailsComponent implements OnInit {
     var surgeonUpdate: SurgeonUpdate = {
       id: this.id,
       phone: this.surgeonChoosed.phone,
-      tuss: '[' + this.selectedTuss + ']'
+      tuss: '[' + this.selectedTuss + ']',
+      crm: this.surgeonChoosed.crm,
+      uf: this.surgeonChoosed.uf,
+      name: this.surgeonChoosed.name,
     }
     console.log(surgeonUpdate);
     this.surgeonService.updateSurgeon(surgeonUpdate).subscribe(res => alert('Cirurgião atualizado!'), (err) => {

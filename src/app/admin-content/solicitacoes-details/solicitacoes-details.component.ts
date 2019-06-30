@@ -22,7 +22,7 @@ export class SolicitacoesDetailsComponent implements OnInit {
       this.route.params.subscribe( parametros => {
         this.id = parametros.id;
       });
-      this.surgeryService.getSurgery('13').subscribe(response => {
+      this.surgeryService.getSurgery('13').subscribe((response) => {
         console.log(response);
         this.surgery = response;
       })

@@ -10,14 +10,16 @@ import { RealizadasComponent } from './realizadas/realizadas.component';
 import { ApprovedDetailsComponent } from './approved-details/approved-details.component';
 import { RequestConfirmationComponent } from './surgery-request/request-confirmation/request-confirmation.component';
 import { RealizadaDetailsComponent } from './realizada-details/realizada-details.component';
+import { OtherAllTussResolve } from '../services/other-services/other-service.resolve';
 
 const routes: Routes = [
-  { path: '', redirectTo: 'main', pathMatch: 'full' },
+  { path: '', redirectTo: 'main/profile', pathMatch: 'full' },
   { path: 'main', component: MainContentComponent, children: [
-    { path: '', redirectTo: 'profile', pathMatch: 'full' },
     { path: 'profile', component: ProfileComponent },
     { path:'request-orientation', component:RequestOrientationComponent },
-    { path:'request-stepper', component: RequestStepperComponent },
+    { path:'request-stepper', component: RequestStepperComponent, resolve: {
+      allTuss: OtherAllTussResolve
+    }   },
     { path:'request-confirmation', component: RequestConfirmationComponent },
     { path:'aprovadas-solicitadas', component: AprovadasSolicitadasComponent },
     { path:'surgery/:id', component: SurgeryDetailsComponent },
