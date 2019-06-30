@@ -27,7 +27,7 @@ const routes: Routes = [
     { path:'solicitacoes', component: SolicitacoesComponent },
     { path:'tuss-table', component: TussTableComponent },
     { path:'new-surgeon', component: NewSurgeonComponent },
-    { path:'surgeonDetails', component: SurgeonDetailsComponent },
+    { path:'surgeonDetails/:id', component: SurgeonDetailsComponent },
     { path:'realizadas', component: RealizadasComponent },
     { path:'solicitacoesDetails/:id', component: SolicitacoesDetailsComponent },
     { path:'newHospital', component: NewHospitalComponent },

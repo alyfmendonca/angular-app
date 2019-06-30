@@ -22,7 +22,7 @@ export class SurgeonService {
     }});
   }
 
-  getSurgeon(id: string){
+  getSurgeon(id: number){
     return this.http.get<SurgeonById>(`${API_URL}surgeon/?id=${id}`, {headers});
   }
 

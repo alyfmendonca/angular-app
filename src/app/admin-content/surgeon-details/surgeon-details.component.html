@@ -13,19 +13,16 @@
           <form #form="ngForm">
             <div class="esq">
               <label for='txtNome'>Nome</label>
-              <input [(ngModel)]='txtNome' type='text' id='txtNome' name='txtNome' placeholder="Alberto Pacheco" #nameVerify="ngModel" required>
+              <input [(ngModel)]='surgeonChoosed.name' type='text' id='txtNome' name='txtNome' #nameVerify="ngModel" required>
               
               <label for='txtCrm'>Crm</label>
-              <input [(ngModel)]='txtCrm' type='text' id='txtCrm' name='txtCrm' placeholder="2342423" #nameVerify="ngModel" required>
+              <input [(ngModel)]='surgeonChoosed.crm' type='text' id='txtCrm' name='txtCrm' #nameVerify="ngModel" required>
 
               <label for='txtUf'>Uf</label>
-              <input [(ngModel)]='txtUf' type='text' id='txtUf' name='txtUf' placeholder="UF" #nameVerify="ngModel" required>
+              <input [(ngModel)]='surgeonChoosed.uf' type='text' id='txtUf' name='txtUf' #nameVerify="ngModel" required>
               
-              <label for='txtEmail'>Email</label>
-              <input [(ngModel)]='txtEmail' type='email' id='txtEmail' name='txtEmail' placeholder="albertopacheco@gmail.com" #nameVerify="ngModel" required>
-
               <label for='txtFone'>Telefone</label>
-              <input [(ngModel)]='txtFone' type='tel' id='txtFone' name='txtFone' placeholder="(21) 91234-5678" #nameVerify="ngModel" required>
+              <input [(ngModel)]='surgeonChoosed.phone' type='tel' id='txtFone' name='txtFone' #nameVerify="ngModel" required>
 
             </div>
 
@@ -35,19 +32,18 @@
                   <h3 class="light-dark">Procedimentos (TUSS)</h3>
                 </div>
                 <div class="list-scroll-esq">
-                  <cdk-virtual-scroll-viewport class="virtualScroll" itemSize="8">
-                    <mat-list>
-                      <mat-list-item (click)="selectionClick(procedimento);"
-                        *ngFor="let procedimento of listProcedimentosMock">
-                        {{procedimento.id}} - {{procedimento.descricao}}
-                      </mat-list-item>
-                    </mat-list>
+                  <cdk-virtual-scroll-viewport class="virtualScroll" itemSize="8"> 
+                    <mat-selection-list name="listTuss" #listaTuss [(ngModel)]="selectedTuss">
+                      <mat-list-option [value]="procedimento.id" name="cboProcedimentos" *ngFor="let procedimento of listProcedimentos">
+                        {{procedimento.id}} - {{procedimento.str}}
+                      </mat-list-option>
+                    </mat-selection-list>
                   </cdk-virtual-scroll-viewport>
                 </div>
               </div>
-            </div>
+            </div> 
             <div class="btn-line">
-              <button class="dark-button">ACEITAR</button>
+              <button class="dark-button" (click)="salvar();">SALVAR</button>
             </div>
           </form>
           

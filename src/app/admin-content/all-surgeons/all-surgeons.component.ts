@@ -1,27 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { SurgeonService } from '../../services/surgeon-services/surgeon.service'
-export interface PeriodicElement {
-  name: string;
-  position: number;
-  weight: string;
-  symbol: string;
-  crm: string;
-  uf: string;
-}
-
-const ELEMENT_DATA: PeriodicElement[] = [
-  {position: 1, name: 'Luciano Costa de Freitas', weight: 'lucianoantunes@gmail.com', symbol: '+55 (21) 23456789', crm: '12345', uf: 'RJ'},
-  {position: 2, name: 'Luciano Costa de Freitas', weight: 'lucianoantunes@gmail.com', symbol: '+55 (21) 23456789', crm: '12345', uf: 'RJ'},
-  {position: 3, name: 'Luciano Costa de Freitas', weight: 'lucianoantunes@gmail.com', symbol: '+55 (21) 23456789', crm: '12345', uf: 'RJ'},
-  {position: 4, name: 'Luciano Costa de Freitas', weight: 'lucianoantunes@gmail.com', symbol: '+55 (21) 23456789', crm: '12345', uf: 'RJ'},
-  {position: 5, name: 'Luciano Costa de Freitas', weight: 'lucianoantunes@gmail.com', symbol: '+55 (21) 23456789', crm: '12345', uf: 'RJ'},
-  {position: 6, name: 'Luciano Costa de Freitas', weight: 'lucianoantunes@gmail.com', symbol: '+55 (21) 23456789', crm: '12345', uf: 'RJ'},
-  {position: 7, name: 'Luciano Costa de Freitas', weight: 'lucianoantunes@gmail.com', symbol: '+55 (21) 23456789', crm: '12345', uf: 'RJ'},
-  {position: 8, name: 'Luciano Costa de Freitas', weight: 'lucianoantunes@gmail.com', symbol: '+55 (21) 23456789', crm: '12345', uf: 'RJ'},
-  {position: 9, name: 'Luciano Costa de Freitas', weight: 'lucianoantunes@gmail.com', symbol: '+55 (21) 23456789', crm: '12345', uf: 'RJ'},
-  {position: 10, name: 'Luciano Costa de Freitas', weight: 'lucianoantunes@gmail.com', symbol: '+55 (21) 23456789', crm: '12345', uf: 'RJ'},
-];
 
 @Component({
   selector: 'app-all-surgeons',
@@ -30,7 +9,6 @@ const ELEMENT_DATA: PeriodicElement[] = [
 })
 export class AllSurgeonsComponent implements OnInit {
   displayedColumns: string[] = ['position', 'crm', 'uf', 'name', 'weight', 'symbol'];
-  dataSource = ELEMENT_DATA;
 
   constructor(public surgeonService: SurgeonService, public router: Router) { }
 
@@ -42,8 +20,8 @@ export class AllSurgeonsComponent implements OnInit {
       this.surgeons = response;
     })
   }
-  mostraId(id){
-    console.log(id);
+  showDetails(id){
+    this.router.navigateByUrl(`admin/main/surgeonDetails/${id}`);
   }
 
 }
