@@ -15,7 +15,7 @@ export class SurgeryDetailsComponent implements OnInit {
     public surgeryService: SurgeryService,) { }
   
   id: number;
-  surgery: Surgery[];
+  surgery: Surgery;
   
   ngOnInit() {
     this.route.params.subscribe( parametros => {

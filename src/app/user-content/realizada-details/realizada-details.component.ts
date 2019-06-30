@@ -16,7 +16,7 @@ export class RealizadaDetailsComponent implements OnInit {
   ) { }
 
   id: string;
-  surgery: Surgery[];
+  surgery: Surgery;
 
   ngOnInit() {
     this.route.params.subscribe( parametros => {
