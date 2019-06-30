@@ -49,3 +49,6 @@
 .red{
     color: red;
 }
+.right-block p{
+    margin-top: 0;
+}

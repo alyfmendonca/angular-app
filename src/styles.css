@@ -79,3 +79,6 @@ app-new-hospital mat-tab-group{
 .nav-bar-content button {
     border: none;
 }
+button:focus{
+    outline: none;
+}

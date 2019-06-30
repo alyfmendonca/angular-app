@@ -23,6 +23,7 @@ import { RealizadasDetailsComponent } from './realizadas-details/realizadas-deta
 import { ApprovedDetailsComponent } from './approved-details/approved-details.component';
 import { CostGroupComponent } from './cost-group/cost-group.component';
 import { SurgeonDetailsAcceptComponent } from './surgeon-details-accept/surgeon-details-accept.component';
+import { CostPackageComponent } from './cost-package/cost-package.component';
 
 
 @NgModule({
@@ -43,7 +44,8 @@ import { SurgeonDetailsAcceptComponent } from './surgeon-details-accept/surgeon-
     RealizadasDetailsComponent,
     ApprovedDetailsComponent,
     CostGroupComponent,
-    SurgeonDetailsAcceptComponent
+    SurgeonDetailsAcceptComponent,
+    CostPackageComponent
   ],
   imports: [
     CommonModule,
