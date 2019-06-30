@@ -22,7 +22,7 @@ export class SurgeryService {
     }
 
     getSurgery(id: string){
-      return this.http.get<Surgery[]>(`${API_URL}surgery/?id=${id}`, {headers});
+      return this.http.get<Surgery>(`${API_URL}surgery/?id=${id}`, {headers});
     }
 
     createSurgery(surgery: SurgeryCreate){

@@ -14,9 +14,18 @@ export class ApprovedDetailsComponent implements OnInit {
     public route: ActivatedRoute,
     public surgeryService: SurgeryService,
   ) { }
-
+  txtNomeGroup: string;
+  taxaCirurgia: string;
+  taxaAdicional: string;
+  taxaAnestesia: string;
+  taxaMaterial: string;
+  taxaDiariaGlobal: string;
+  taxaDiariaGlobalQ: string;
+  taxaDiariaGlobalS: string;
+  taxaDiariaGlobalCTI: string;
+  HrClinico: string;
   id: string;
-  surgery: Surgery[];
+  surgery: Surgery;
 
   ngOnInit() {
     this.route.params.subscribe( parametros => {
