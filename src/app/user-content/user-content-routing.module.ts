@@ -20,7 +20,7 @@ const routes: Routes = [
     { path:'request-stepper', component: RequestStepperComponent },
     { path:'request-confirmation', component: RequestConfirmationComponent },
     { path:'aprovadas-solicitadas', component: AprovadasSolicitadasComponent },
-    { path:'surgery', component: SurgeryDetailsComponent },
+    { path:'surgery/:id', component: SurgeryDetailsComponent },
     { path:'realizadas', component: RealizadasComponent },
     { path:'approvedDetails', component: ApprovedDetailsComponent },
     { path:'realizadaDetails/:id', component: RealizadaDetailsComponent },

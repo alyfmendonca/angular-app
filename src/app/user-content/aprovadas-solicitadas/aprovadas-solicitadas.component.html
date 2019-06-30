@@ -9,65 +9,21 @@
           </div>
           <div>
   
-            <div class="box">
+            <div class="box" *ngFor="let surgery of allSurgeries">
               <div>
-                <h4 class="light-dark">Colecistectomia com fistula biliodigestiva</h4>
-                <p class="name-dr">Dr. Luciano Costa de Freitas Antunes</p>
-                <p class="paciente-name">Paciente: Carlos Henrique Duque</p>
+                <h4 class="light-dark">{{surgery.main_tuss}}</h4>
+                <p class="name-dr">Dr. {{surgery.surgeon}}</p>
+                <p class="paciente-name">Paciente: {{surgery.patient}}</p>
               </div>
-              <div class="right-block">
-                <p class="complexidade" [ngClass]="text == 'Baixa Complexidade' ? 'green': 'red'">Baixa Complexidade</p>
-                <a (click)="router.navigate(['/user/main/surgery']);"><img class="image-details" src="../../assets/detalhe.png" /></a>
+              <div class="right-block" *ngIf="surgery.complicated">
+                <p class="complexidade" class="red">Alta Complexidade</p>
+                <img (click)="clickSurgeryDetails(surgery.id);" class="image-details" src="../../assets/detalhe.png" />
+              </div>
+              <div class="right-block" *ngIf="!surgery.complicated">
+                <p class="complexidade" class="green">Baixa Complexidade</p>
+                <img class="image-details" src="../../assets/detalhe.png" />
               </div>
             </div>
-  
-            <div class="box">
-                <div>
-                  <h4 class="light-dark">Colecistectomia com fistula biliodigestiva</h4>
-                  <p class="name-dr">Dr. Luciano Costa de Freitas Antunes</p>
-                  <p class="paciente-name">Paciente: Carlos Henrique Duque</p>
-                </div>
-                <div class="right-block">
-                  <p class="complexidade" [ngClass]="text == 'Baixa Complexidade' ? 'green': 'red'">Baixa Complexidade</p>
-                  <img class="image-details" src="../../assets/detalhe.png" />
-                </div>
-              </div>
-  
-              <div class="box">
-                  <div>
-                    <h4 class="light-dark">Colecistectomia com fistula biliodigestiva</h4>
-                    <p class="name-dr">Dr. Luciano Costa de Freitas Antunes</p>
-                    <p class="paciente-name">Paciente: Carlos Henrique Duque</p>
-                  </div>
-                  <div class="right-block">
-                    <p class="complexidade" [ngClass]="text == 'Baixa Complexidade' ? 'green': 'red'">Baixa Complexidade</p>
-                    <img class="image-details" src="../../assets/detalhe.png" />
-                  </div>
-                </div>
-  
-                <div class="box">
-                    <div>
-                      <h4 class="light-dark">Colecistectomia com fistula biliodigestiva</h4>
-                      <p class="name-dr">Dr. Luciano Costa de Freitas Antunes</p>
-                      <p class="paciente-name">Paciente: Carlos Henrique Duque</p>
-                    </div>
-                    <div class="right-block">
-                      <p class="complexidade" [ngClass]="text == 'Baixa Complexidade' ? 'green': 'red'">Baixa Complexidade</p>
-                      <img class="image-details" src="../../assets/detalhe.png" />
-                    </div>
-                  </div>
-  
-                  <div class="box">
-                      <div>
-                        <h4 class="light-dark">Colecistectomia com fistula biliodigestiva</h4>
-                        <p class="name-dr">Dr. Luciano Costa de Freitas Antunes</p>
-                        <p class="paciente-name">Paciente: Carlos Henrique Duque</p>
-                      </div>
-                      <div class="right-block">
-                        <p class="complexidade" [ngClass]="text2 == 'Baixa Complexidade' ? 'green': 'red'">Alta Complexidade</p>
-                        <img class="image-details" src="../../assets/detalhe.png" />
-                      </div>
-                    </div>
   
           </div>
         </div>
@@ -82,66 +38,21 @@
                 <h3 class="dark">Cirurgias Aprovadas</h3>
             </div>
             <div>
-                <div class="box">
-                    <div>
-                      <h4 class="light-dark">Colecistectomia com fistula biliodigestiva</h4>
-                      <p class="name-dr">Dr. Luciano Costa de Freitas Antunes</p>
-                      <p class="paciente-name">Paciente: Carlos Henrique Duque</p>
-                    </div>
-                    <div class="right-block">
-                      <p class="complexidade" [ngClass]="text == 'Baixa Complexidade' ? 'green': 'red'">Baixa Complexidade</p>
-                      <img (click)="router.navigate(['/user/main/approvedDetails']);" class="image-details" src="../../assets/detalhe.png" />
-                    </div>
-                  </div>
-        
-                  <div class="box">
-                      <div>
-                        <h4 class="light-dark">Colecistectomia com fistula biliodigestiva</h4>
-                        <p class="name-dr">Dr. Luciano Costa de Freitas Antunes</p>
-                        <p class="paciente-name">Paciente: Carlos Henrique Duque</p>
-                      </div>
-                      <div class="right-block">
-                        <p class="complexidade" [ngClass]="text == 'Baixa Complexidade' ? 'green': 'red'">Baixa Complexidade</p>
-                        <img class="image-details" src="../../assets/detalhe.png" />
-                      </div>
-                    </div>
-        
-                    <div class="box">
-                        <div>
-                          <h4 class="light-dark">Colecistectomia com fistula biliodigestiva</h4>
-                          <p class="name-dr">Dr. Luciano Costa de Freitas Antunes</p>
-                          <p class="paciente-name">Paciente: Carlos Henrique Duque</p>
-                        </div>
-                        <div class="right-block">
-                          <p class="complexidade" [ngClass]="text == 'Baixa Complexidade' ? 'green': 'red'">Baixa Complexidade</p>
-                          <img class="image-details" src="../../assets/detalhe.png" />
-                        </div>
-                      </div>
-        
-                      <div class="box">
-                          <div>
-                            <h4 class="light-dark">Colecistectomia com fistula biliodigestiva</h4>
-                            <p class="name-dr">Dr. Luciano Costa de Freitas Antunes</p>
-                            <p class="paciente-name">Paciente: Carlos Henrique Duque</p>
-                          </div>
-                          <div class="right-block">
-                            <p class="complexidade" [ngClass]="text == 'Baixa Complexidade' ? 'green': 'red'">Baixa Complexidade</p>
-                            <img class="image-details" src="../../assets/detalhe.png" />
-                          </div>
-                        </div>
-        
-                        <div class="box">
-                            <div>
-                              <h4 class="light-dark">Colecistectomia com fistula biliodigestiva</h4>
-                              <p class="name-dr">Dr. Luciano Costa de Freitas Antunes</p>
-                              <p class="paciente-name">Paciente: Carlos Henrique Duque</p>
-                            </div>
-                            <div class="right-block">
-                              <p class="complexidade" [ngClass]="text2 == 'Baixa Complexidade' ? 'green': 'red'">Alta Complexidade</p>
-                              <img class="image-details" src="../../assets/detalhe.png" />
-                            </div>
-                          </div>
-    
+              <div class="box" *ngFor="let surgery of allSurgeriesDone">
+                <div>
+                  <h4 class="light-dark">{{surgery.main_tuss}}</h4>
+                  <p class="name-dr">Dr. {{surgery.surgeon}}</p>
+                  <p class="paciente-name">Paciente: {{surgery.patient}}</p>
+                </div>
+                <div class="right-block" *ngIf="surgery.complicated">
+                  <p class="complexidade" class="red">Alta Complexidade</p>
+                  <img (click)="clickSurgeryDone(surgery.id);" class="image-details" src="../../assets/detalhe.png" />
+                </div>
+                <div class="right-block" *ngIf="!surgery.complicated">
+                  <p class="complexidade" class="green">Baixa Complexidade</p>
+                  <img class="image-details" src="../../assets/detalhe.png" />
+                </div>
+              </div>  
             </div>
           </div>
         
