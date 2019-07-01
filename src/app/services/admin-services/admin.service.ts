@@ -24,4 +24,8 @@ export class AdminService {
     return this.http.post<any>(`${API_URL}addNewCostGroup/`, costGroup, {headers});
   }
 
+  userAdmin(){
+    return this.http.get<Admin>(`${API_URL}userAdmin/`, {headers});
+  }
+
 }

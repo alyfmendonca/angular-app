@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { SurgeonService } from 'src/app/services/surgeon-services/surgeon.service';
+import { AdminService } from '../../services/admin-services/admin.service';
 import { ActivatedRoute } from '@angular/router';
 
 @Component({
@@ -9,17 +9,20 @@ import { ActivatedRoute } from '@angular/router';
 })
 export class AdminProfileComponent implements OnInit {
 
-  
-  surgeonByID: SurgeonById ;
+  txtTelefone = '';
+  txtUf = '';
+  txtCrm = '';
+
+  admin: Admin;
   surgeonUpdate: SurgeonUpdate;
 
-  constructor(public surgeonService: SurgeonService,
+  constructor(public admiService: AdminService,
               private route: ActivatedRoute) { }
 
   ngOnInit() {
-    this.surgeonService.getSurgeon(1).subscribe((surgeon) => {
-      this.surgeonByID = surgeon;
-      console.log(surgeon);
+    this.admiService.userAdmin().subscribe((admin) => {
+      this.admin = admin;
+      console.log(admin);
     });
     
   }
