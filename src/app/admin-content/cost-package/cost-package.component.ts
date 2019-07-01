@@ -1,4 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, EventEmitter, Output, Input } from '@angular/core';
+import { Router, ActivatedRoute } from '@angular/router';
+import { OtherService } from '../../services/other-services/other.service'
+import { AdminService } from '../../services/admin-services/admin.service';
+
 
 @Component({
   selector: 'app-cost-package',
@@ -7,7 +11,30 @@ import { Component, OnInit } from '@angular/core';
 })
 export class CostPackageComponent implements OnInit {
 
-  constructor() { }
+  constructor(
+    public route: ActivatedRoute,
+    public adminService: AdminService,
+    ) { }
+
+    @Output() respostaFamilia = new EventEmitter();
+
+  costGroup: CostGroupCreate= {
+    hospitl_id:null,
+    name:'',
+    surgery_tax:null,
+    additional_tax:null,
+    anesthesia_tax:null,
+    material_tax: null,
+    clinical_schedule:null,
+    tuss: null,
+    accommodations: null,
+    Semi_intensiva: '',
+    CTI: '',
+    Andar: '',
+    Day_Clinic: '',
+  }
+  tussTable: Tuss[] = [];
+
   listComorbidadesMock: any[] = [
     {
       "id": 1,
@@ -106,8 +133,23 @@ export class CostPackageComponent implements OnInit {
     },
   ]; 
 
+  selectedTuss: number[] = []; 
 
   ngOnInit() {
+    this.tussTable = this.route.snapshot.data.allTuss;
+    
   }
-
+  onSend(){
+    this.costGroup.tuss = "[" + this.selectedTuss + "]";
+    this.feedback();
+  }
+  submitNewPackage(){
+    this.costGroup.tuss = "[" + this.selectedTuss + "]";
+    this.adminService.addNewCostGroup(this.costGroup).subscribe(response => {
+      console.log(response);
+    });
+  }
+  feedback() {
+    this.respostaFamilia.emit(this.costGroup.name);
+  }
 }

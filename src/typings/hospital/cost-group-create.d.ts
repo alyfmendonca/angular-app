@@ -6,6 +6,10 @@ type CostGroupCreate = {
     anesthesia_tax:number;
     material_tax: number;
     clinical_schedule:number;
-    tuss:number[];
+    tuss:string;
     accommodations: number;
+    Semi_intensiva?: string;
+    CTI?: string;
+    Andar?: string;
+    Day_Clinic?: string;
 }

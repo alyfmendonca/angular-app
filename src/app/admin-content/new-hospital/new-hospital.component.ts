@@ -1,6 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, EventEmitter, Output, Input } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
 import { OtherService } from '../../services/other-services/other.service'
+import { HospitalService } from '../../services/hospital-services/hospital.service';
 
 
 @Component({
@@ -13,6 +14,7 @@ export class NewHospitalComponent implements OnInit {
   constructor(
     public router: Router,
     public route: ActivatedRoute,
+    public hospitalService: HospitalService,
     ) { }
 
   newHospital: Hospital = {
@@ -52,11 +54,14 @@ export class NewHospitalComponent implements OnInit {
   HrClinico: String;
 
   tussTable: Tuss[] = [];
+  hospital: HospitalCreate;
 
   ngOnInit() {
     this.tussTable = this.route.snapshot.data.allTuss;
   }
-  
+  reciverFeedback(respostaFilho) {
+    this.hospital.cost_package_name =  respostaFilho;
+  }
   listComorbidadesMock: any[] = [
     {
       "id": 1,
@@ -67,6 +72,10 @@ export class NewHospitalComponent implements OnInit {
       "descricao": "Diabetes"
     },
   ];
+
+
+  selectedTuss: number[] = []; 
+
 
   listProcedimentosMock: any[] = 
   [
@@ -186,6 +195,10 @@ export class NewHospitalComponent implements OnInit {
   }
   newPackageForm(){
     document.getElementsByClassName('add-packages')[0].setAttribute("style", "display:block;");
+  }
+
+  onSend(){
+    // AQUIIII this.hospital. = "[" + this.selectedTuss + "]";
   }
 
 }

@@ -38,8 +38,8 @@
                       </div>
                       <div class="list-scroll-esq">
                         <cdk-virtual-scroll-viewport class="virtualScroll" itemSize="8">
-                          <mat-selection-list>
-                            <mat-list-option (click)="selectionClick(procedimento);"
+                          <mat-selection-list name="listTuss" #listaTuss [(ngModel)]="selectedTuss"> 
+                            <mat-list-option [value]="procedimento.id" 
                               *ngFor="let procedimento of tussTable">
                               {{procedimento.id}} - {{procedimento.str}}
                             </mat-list-option>
@@ -86,31 +86,20 @@
                             <p>Novo Pacote</p>
                           </div>
 
+                          <!--
                           <div class="package-box">
                             <p>Hospital 1</p>
-                          </div>
+                          </div>-->
           
-                          <div class="package-box">
-                            <p>Hospital 2</p>
-                          </div>
-          
-                          <div class="package-box">
-                            <p>Hospital 3</p>
-                          </div>
-          
-                          <div class="package-box">
-                            <p>Hospital 4</p>
-                          </div>
+                        
                         </div>
                       </div>
         
-                      <app-cost-package></app-cost-package>
+                      <app-cost-package (respostaFamilia)="reciverFeedback($event)"></app-cost-package>
                     
                     <!-- Botão CONCLUIR -->
         
-                    <div class="btn-line">
-                      <button (click)="onClickNext();" class="dark-button">CONCLUIR</button>
-                    </div>
+                    
              
                 </div>
         
