@@ -12,7 +12,7 @@ const routes: Routes = [
   { path: 'main', component: MainContentComponent, children: [
     { path:'login', component: FormLoginComponent },
     { path:'newpass/:token', component: NewPasswordComponent },
-    { path:':newpassforg', component: NewPassForgotComponent },
+    { path:'newpassforg/:token', component: NewPassForgotComponent },
     { path:'forgotPassword', component: ForgotPasswordComponent },
     { path:'cadastro', component: FormCadastroComponent , resolve: {
       allTuss: OtherAllTussResolve
