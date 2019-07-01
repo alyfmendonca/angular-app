@@ -18,7 +18,7 @@
           <label for='txtPass'>Senha</label>
           <input [(ngModel)]='txtPass' type='password' id='txtPass' name='txtPass' placeholder="Digite a Senha" #nameVerify="ngModel" required>
 
-          <a href="#" class="forg-pass">Esqueci a senha</a>
+          <a (click)="router.navigate(['/initial/main/forgotPassword'])" class="forg-pass">Esqueci a senha</a>
         </div>
         <div class="bot-dir">
           <div>

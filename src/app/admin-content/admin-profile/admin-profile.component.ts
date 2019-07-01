@@ -16,11 +16,11 @@ export class AdminProfileComponent implements OnInit {
   admin: Admin;
   surgeonUpdate: SurgeonUpdate;
 
-  constructor(public admiService: AdminService,
+  constructor(public adminService: AdminService,
               private route: ActivatedRoute) { }
 
   ngOnInit() {
-    this.admiService.userAdmin().subscribe((admin) => {
+    this.adminService.userAdmin().subscribe((admin) => {
       this.admin = admin;
       console.log(admin);
     });

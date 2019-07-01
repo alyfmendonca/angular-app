@@ -17,7 +17,7 @@ export class AuthService {
   constructor(private http: HttpClient) { }
 
   //Criptografia??
-  login(username: string, password: string){
+  login(username: string, password: string | Int32Array){
     return this.http.post<Credentials>(`${API_URL}auth/`, {username, password});
   }
 
@@ -25,8 +25,8 @@ export class AuthService {
     return this.http.post<any>(`${API_URL}requestSignIn/`, user);
   }
 
-  forgotPassword(email: string){
-    return this.http.post<any>(`${API_URL}forgotPassword/`, {email});
+  forgotPassword(email: string, forgot_token: string | Int32Array){
+    return this.http.post<any>(`${API_URL}forgotPassword/`, {email, forgot_token});
   }
 
   approveSignIn(approved_token: string | Int32Array, surgeon_id: number){

@@ -10,6 +10,7 @@ import { NavBarComponent } from './nav-bar/nav-bar.component';
 import { MainContentComponent } from './main-content/main-content.component';
 import {ScrollDispatchModule} from '@angular/cdk/scrolling';
 import { NewPasswordComponent } from './new-password/new-password.component';
+import { ForgotPasswordComponent } from './forgot-password/forgot-password.component';
 
 
 @NgModule({
@@ -18,7 +19,8 @@ import { NewPasswordComponent } from './new-password/new-password.component';
     FormCadastroComponent,
     NavBarComponent,
     MainContentComponent,
-    NewPasswordComponent
+    NewPasswordComponent,
+    ForgotPasswordComponent
   ],
   imports: [
     CommonModule,

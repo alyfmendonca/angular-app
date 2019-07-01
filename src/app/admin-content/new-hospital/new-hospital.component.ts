@@ -54,13 +54,21 @@ export class NewHospitalComponent implements OnInit {
   HrClinico: String;
 
   tussTable: Tuss[] = [];
-  hospital: HospitalCreate;
+  hospital: HospitalCreate={
+    cost_package_name: '',
+    name: '',
+    email:'',
+    address: '',
+    phone: '',
+    cep: null
+  };
 
   ngOnInit() {
     this.tussTable = this.route.snapshot.data.allTuss;
   }
   reciverFeedback(respostaFilho) {
     this.hospital.cost_package_name =  respostaFilho;
+    console.log(this.hospital);
   }
   listComorbidadesMock: any[] = [
     {
@@ -198,7 +206,7 @@ export class NewHospitalComponent implements OnInit {
   }
 
   onSend(){
-    // AQUIIII this.hospital. = "[" + this.selectedTuss + "]";
+    ///////////this.hospital. = "[" + this.selectedTuss + "]";
   }
 
 }

@@ -28,7 +28,7 @@ export class FormLoginComponent implements OnInit {
   submitForm(){
     console.log(this.txtLogin, Md5.hashStr(this.txtPass));
 
-    this.authService.login(this.txtLogin, this.txtPass).subscribe(response => {
+    this.authService.login(this.txtLogin, Md5.hashStr(this.txtPass)).subscribe(response => {
       console.log(response);
       localStorage.setItem('token', response.token);
       //localStorage.setItem('userId', user._id);
@@ -41,8 +41,8 @@ export class FormLoginComponent implements OnInit {
       }
       
     }, err =>{
-      console.log(err.error);
-      
+      alert('Login ou senha incorretos');
+
     });
     
   }

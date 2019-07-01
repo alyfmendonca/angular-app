@@ -82,3 +82,9 @@ app-new-hospital mat-tab-group{
 button:focus{
     outline: none;
 }
+form input{
+    color: #615959 !important;
+} 
+form label{
+    color: #b6b5b5;
+}

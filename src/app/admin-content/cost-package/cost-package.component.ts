@@ -26,7 +26,7 @@ export class CostPackageComponent implements OnInit {
     anesthesia_tax:null,
     material_tax: null,
     clinical_schedule:null,
-    tuss: null,
+    tuss: '',
     accommodations: null,
     Semi_intensiva: '',
     CTI: '',
@@ -145,9 +145,10 @@ export class CostPackageComponent implements OnInit {
   }
   submitNewPackage(){
     this.costGroup.tuss = "[" + this.selectedTuss + "]";
-    this.adminService.addNewCostGroup(this.costGroup).subscribe(response => {
-      console.log(response);
-    });
+    //this.adminService.addNewCostGroup(this.costGroup).subscribe(response => {
+    //  console.log(response);
+    //});
+    this.feedback();
   }
   feedback() {
     this.respostaFamilia.emit(this.costGroup.name);
