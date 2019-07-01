@@ -4,10 +4,10 @@ import { environment } from 'src/environments/environment';
 import { Observable } from 'rxjs';
 
 const API_URL = environment.apiUrl;
-
+let token = localStorage.getItem('token');
 let headers = new HttpHeaders({
   //token de cirurgião
-  'Authorization': 'token 81f204edcca524ff266b98b94a264db12d640c55',
+  'Authorization': `token ${token}`,
   'Content-Type': 'application/json'
 });
 @Injectable({

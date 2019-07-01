@@ -3,10 +3,10 @@ import { HttpClient,HttpHeaders } from '@angular/common/http';
 import { environment } from 'src/environments/environment';
 
 const API_URL = environment.apiUrl;
-
+let token = localStorage.getItem('token');
 let headers = new HttpHeaders({
   //token de cirurgião
-  'Authorization': 'token 46811f648a332519b4e1d34bfc44f0680412f25a',
+  'Authorization': `token ${token}`,
   'Content-Type': 'application/json'
 });
 
