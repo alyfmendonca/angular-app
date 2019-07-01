@@ -18,7 +18,10 @@ export class OtherService {
   constructor(private http: HttpClient) { }
 
   getAllTuss(): Observable<Tuss[]>{
-    return this.http.get<Tuss[]>(`${API_URL}allTuss/`, {headers});
+    
+    return this.http.get<Tuss[]>(`${API_URL}allTuss/`);
+
+
   }
   getTuss(id: string){
     return this.http.get<any>(`${API_URL}tussDetails/?id=${id}`, {headers});

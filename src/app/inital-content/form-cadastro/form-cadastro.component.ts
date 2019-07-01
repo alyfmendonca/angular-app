@@ -57,11 +57,30 @@ export class FormCadastroComponent implements OnInit {
     
   }
   onClickNext(){
-    document.getElementById('mat-tab-label-0-1').click();
+    let i = 0
+    let continua = true;
+    while(continua){
+      let tab = document.getElementById(`mat-tab-label-${i}-1`);
+      if(tab){
+        tab.click();
+        continua = false;
+      }else{
+        i++
+      }
+    }
   }
   onClickBack(){
-    document.getElementById('mat-tab-label-0-0').click();
+    let i = 0
+    let continua = true;
+    while(continua){
+      let tab = document.getElementById(`mat-tab-label-${i}-0`);
+      if(tab){
+        tab.click();
+        continua = false;
+      }else{
+        i++
+      }
+    }
   }
-
 }
 
