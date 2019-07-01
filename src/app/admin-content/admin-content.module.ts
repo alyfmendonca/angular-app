@@ -56,7 +56,7 @@ import { AdminProfileComponent } from './admin-profile/admin-profile.component';
     MaterialComponentsModule,
     FormsModule,
     ReactiveFormsModule,
-    ScrollDispatchModule
+    ScrollDispatchModule,
   ]
 })
 export class AdminContentModule { }

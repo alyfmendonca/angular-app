@@ -29,4 +29,8 @@ export class AuthService {
     return this.http.post<any>(`${API_URL}forgotPassword/`, {email});
   }
 
+  approveSignIn(approved_token: string | Int32Array, surgeon_id: number){
+    return this.http.put<any>(`${API_URL}approveSignIn/`, {approved_token, surgeon_id}, {headers});
+  }
+
 }

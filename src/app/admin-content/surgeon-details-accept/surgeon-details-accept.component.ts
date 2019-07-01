@@ -2,6 +2,9 @@ import { Component, OnInit } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
 import { SurgeonService } from 'src/app/services/surgeon-services/surgeon.service';
 import { OtherService } from 'src/app/services/other-services/other.service';
+import {Md5} from 'ts-md5/dist/md5';
+import { formatDate } from '@angular/common';
+import { AuthService } from 'src/app/services/auth-services/auth.service';
 
 @Component({
   selector: 'app-surgeon-details-accept',
@@ -14,7 +17,7 @@ export class SurgeonDetailsAcceptComponent implements OnInit {
     public router: Router,
     private route: ActivatedRoute,
     private surgeonService: SurgeonService,
-    private otherService: OtherService
+    private authService: AuthService
   ) { }
 
   id: number;
@@ -42,16 +45,9 @@ export class SurgeonDetailsAcceptComponent implements OnInit {
   
 
   salvar(){
-    var surgeonUpdate: SurgeonUpdate = {
-      id: this.id,
-      phone: this.surgeonChoosed.phone,
-      tuss: '[' + this.selectedTuss + ']'
-    }
-    console.log(surgeonUpdate);
-    this.surgeonService.updateSurgeon(surgeonUpdate).subscribe(res => alert('Cirurgião atualizado!'), (err) => {
-      alert('Erro ao atualizar o cirurgião!');
-      console.log(err.error.message);
-    });
+    let now = new Date();
+    this.authService.approveSignIn(Md5.hashStr(formatDate(now, 'dd-MM-yyyy hh:mm:ss.S a', 'en-US', '+0530')), this.id).subscribe(res => 
+      alert(`Cirurgião ${this.surgeonChoosed.name} aprovado`), err => console.log(err));
   }
 
 }

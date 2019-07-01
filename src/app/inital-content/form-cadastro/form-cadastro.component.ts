@@ -1,5 +1,5 @@
 import { Component, OnInit, ChangeDetectionStrategy } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { AuthService } from 'src/app/services/auth-services/auth.service';
 @Component({
   selector: 'app-form-cadastro',
@@ -24,7 +24,8 @@ export class FormCadastroComponent implements OnInit {
    selectedTuss: number [] = [];
 
   constructor(private route: ActivatedRoute,
-              private authService: AuthService) { }
+              private authService: AuthService,
+              private router:Router) { }
 
   ngOnInit() {
     this.listProcedimentos = this.route.snapshot.data.allTuss;
@@ -48,7 +49,10 @@ export class FormCadastroComponent implements OnInit {
       return; 
     }else{
     this.userCreate.tuss = '[' + this.selectedTuss + ']';
-    this.authService.requestSignIn(this.userCreate).subscribe(res => alert('Cadastro realizado'), err => console.log(JSON.stringify(this.userCreate)));
+    this.authService.requestSignIn(this.userCreate).subscribe((res) => {
+      alert('Cadastro realizado');
+      this.router.navigateByUrl('../home');
+    }, err => console.log(JSON.stringify(this.userCreate)));
     }
     
   }
