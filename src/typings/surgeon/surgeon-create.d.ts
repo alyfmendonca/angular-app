@@ -5,5 +5,6 @@ type SurgeonCreate = {
     phone: string;
     uf: string;
     tuss: string;
-    is_admin: boolean
+    is_admin: boolean;
+    approved_token?: string | Int32Array;
 }

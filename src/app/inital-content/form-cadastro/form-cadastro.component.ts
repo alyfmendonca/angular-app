@@ -51,7 +51,7 @@ export class FormCadastroComponent implements OnInit {
     this.userCreate.tuss = '[' + this.selectedTuss + ']';
     this.authService.requestSignIn(this.userCreate).subscribe((res) => {
       alert('Cadastro realizado');
-      this.router.navigateByUrl('../home');
+      this.router.navigateByUrl('/home');
     }, err => console.log(JSON.stringify(this.userCreate)));
     }
     

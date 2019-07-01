@@ -2,6 +2,8 @@ import { Component, OnInit, ChangeDetectionStrategy } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
 import { OtherService } from 'src/app/services/other-services/other.service';
 import { SurgeonService } from 'src/app/services/surgeon-services/surgeon.service';
+import { formatDate } from '@angular/common';
+import { Md5 } from 'ts-md5';
 
 @Component({
   selector: 'app-new-surgeon',
@@ -52,7 +54,8 @@ export class NewSurgeonComponent implements OnInit {
       return
     }else{
       this.surgeonCreate.tuss = "[" + this.selectedTuss + "]";
-      console.log(JSON.stringify(this.surgeonCreate));
+      let now = new Date();
+      this.surgeonCreate.approved_token = Md5.hashStr(formatDate(now, 'dd-MM-yyyy hh:mm:ss.S a', 'en-US', '+0530'));
       this.surgeonService.createSurgeon(this.surgeonCreate).subscribe(res => alert('Cirurgião criado'), err => alert('Erro ao cadastrar cirurgião'));
     }
   }

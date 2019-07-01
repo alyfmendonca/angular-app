@@ -39,7 +39,7 @@
                   <cdk-virtual-scroll-viewport class="virtualScroll" itemSize="8"> 
                     <mat-selection-list name="listTuss" #listaTuss [(ngModel)]="selectedTuss">
                       <mat-list-option [value]="procedimento.id" name="cboProcedimentos" *ngFor="let procedimento of listProcedimentos">
-                        {{procedimento.id}} - {{procedimento.str}}
+                        {{procedimento.str}}
                       </mat-list-option>
                     </mat-selection-list>
                   </cdk-virtual-scroll-viewport>
