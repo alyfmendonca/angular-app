@@ -15,19 +15,19 @@
                 <form #form="ngForm">
                   <div class="esq">
                     <label for='txtNome'>Nome</label>
-                    <input [(ngModel)]='txtNome' type='text' id='txtNome' name='txtNome' placeholder="Alberto Pacheco" #nameVerify="ngModel" required>
+                    <input [(ngModel)]='newHospital.name' type='text' id='txtNome' name='txtNome' placeholder="Alberto Pacheco" #nameVerify="ngModel" required>
                     
                     <label for='txtFone'>Telefone</label>
-                    <input [(ngModel)]='txtFone' type='tel' id='txtFone' name='txtFone' placeholder="(21) 91234-5678" #nameVerify="ngModel" required>
+                    <input [(ngModel)]='newHospital.phone' type='tel' id='txtFone' name='txtFone' placeholder="(21) 91234-5678" #nameVerify="ngModel" required>
       
                     <label for='txtEmail'>Email</label>
-                    <input [(ngModel)]='txtEmail' type='email' id='txtEmail' name='txtEmail' placeholder="albertopacheco@gmail.com" #nameVerify="ngModel" required>
+                    <input [(ngModel)]='newHospital.email' type='email' id='txtEmail' name='txtEmail' placeholder="albertopacheco@gmail.com" #nameVerify="ngModel" required>
       
                     <label for='txtEnd'>Endereço</label>
-                    <input [(ngModel)]='txtEnd' type='text' id='txtEnd' name='txtEnd' placeholder="lorem ipsum" #nameVerify="ngModel" required>
+                    <input [(ngModel)]='newHospital.address' type='text' id='txtEnd' name='txtEnd' placeholder="lorem ipsum" #nameVerify="ngModel" required>
       
                     <label for='txtCep'>CEP</label>
-                    <input [(ngModel)]='txtCep' type='text' id='txtCep' name='txtCep' placeholder="2342423" #nameVerify="ngModel" required>
+                    <input [(ngModel)]='newHospital.cep' type='text' id='txtCep' name='txtCep' placeholder="2342423" #nameVerify="ngModel" required>
       
                   </div>
       

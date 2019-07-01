@@ -15,6 +15,21 @@ export class NewHospitalComponent implements OnInit {
     public route: ActivatedRoute,
     ) { }
 
+  newHospital: Hospital = {
+    id: null,
+    name: '',
+    email:'',
+    address: '',
+    phone: '',
+    cep: null,
+    creation_date: '',
+    delete: null,
+    cost_package: null,
+    created_by: null
+  };
+
+
+
   pacienteNome: String;
   txtCPF: String;
   txtNome: String;
@@ -152,6 +167,8 @@ export class NewHospitalComponent implements OnInit {
         i++
       }
     }
+    console.log(this.newHospital);
+
     
   }
   onClickBack(){

@@ -39,7 +39,9 @@ const routes: Routes = [
     }  },
     { path:'realizadas', component: RealizadasComponent },
     { path:'solicitacoesDetails/:id', component: SolicitacoesDetailsComponent },
-    { path:'newHospital', component: NewHospitalComponent },
+    { path:'newHospital', component: NewHospitalComponent, resolve: {
+      allTuss: OtherAllTussResolve
+    }   },
     { path:'realizadaDetails/:id', component: RealizadasDetailsComponent },
     { path:'approvedDetails/:id', component: ApprovedDetailsComponent },
     { path:'solicitacoesDetailsAccept/:id', component: SurgeonDetailsAcceptComponent },

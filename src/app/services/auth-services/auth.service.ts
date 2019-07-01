@@ -17,8 +17,8 @@ export class AuthService {
   constructor(private http: HttpClient) { }
 
   //Criptografia??
-  login(user: string, pass: string){
-    return this.http.post<Credentials>(`${API_URL}auth/`, { user, pass });
+  login(username: string, password: string){
+    return this.http.post<Credentials>(`${API_URL}auth/`, {username, password});
   }
 
   requestSignIn(user: UserSignIn){

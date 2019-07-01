@@ -1,5 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { AuthService } from '../../services/auth-services/auth.service';
+import { Md5 } from 'ts-md5';
+
 
 @Component({
   selector: 'app-form-login',
@@ -8,20 +11,40 @@ import { Router } from '@angular/router';
 })
 export class FormLoginComponent implements OnInit {
 
-  constructor(private router:Router) { }
+  constructor(
+    private router:Router,
+    public authService: AuthService,
+    ) { }
 
   ngOnInit() {
+    localStorage.removeItem('userId');
+    localStorage.removeItem('token');
   }
-  txtLogin ="";
-  txtPass = "";
+  txtLogin:string;
+  txtPass:string;
+
+
 
   submitForm(){
-    console.log(this.txtLogin, this.txtPass);
-    if(this.txtLogin == "admin"){
-      this.router.navigate(['/admin']);
-    }else{
-      this.router.navigate(['/user']);
-    }
+    console.log(this.txtLogin, Md5.hashStr(this.txtPass));
+
+    this.authService.login(this.txtLogin, this.txtPass).subscribe(response => {
+      console.log(response);
+      localStorage.setItem('token', response.token);
+      //localStorage.setItem('userId', user._id);
+      if(response.type == 'admin'){
+        this.router.navigate(['/admin']);
+      }else if(response.type == 'surgeon'){
+        this.router.navigate(['/user']);
+      }else{
+        alert('Este tipo de usuário não é válido');
+      }
+      
+    }, err =>{
+      console.log(err.error);
+      
+    });
+    
   }
 
 }
