@@ -11,7 +11,8 @@ export class MainContentComponent implements OnInit {
     {label: "Cirurgias Solicitadas e Aprovadas", url:"../main/aprovadas-solicitadas"},
     {label: "Cirurgias Realizadas", url:"../main/realizadas"},
     {label: "Solicitar Cirurgia", url:"../main/request-orientation"}, 
-    {label:"Minha Conta", url:"../main/profile"}
+    {label:"Minha Conta", url:"../main/profile"},
+    {label:"Logout", url:"../../initial/main/login"},
   ];
 
   constructor() { }

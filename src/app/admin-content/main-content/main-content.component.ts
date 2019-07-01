@@ -17,6 +17,7 @@ export class MainContentComponent implements OnInit {
     {label:"Cirurgiões", url:"../main/allSurgeons"}, 
     {label:"Hospitais", url:"../main/allHospitals"},
     {label:"Minha Conta", url:"../main/profile"},
+    {label:"Logout", url:"../../initial/main/login"},
 
   ];
 
