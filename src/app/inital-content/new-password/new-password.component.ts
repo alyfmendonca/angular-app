@@ -18,8 +18,14 @@ export class NewPasswordComponent implements OnInit {
     ) { }
   token: string;
   ngOnInit() {
-    this.route.params.subscribe( parametros => {
+    this.route.queryParams.subscribe( parametros => {
+      
+      console.log(parametros);
       this.token = parametros.token;
+      
+      console.log(this.token);
+    }, err =>{
+      console.log(err);
     });
   }
  
@@ -33,6 +39,7 @@ export class NewPasswordComponent implements OnInit {
         this.router.navigate(['initial/main/login']);
       }, err => {
         alert('Houve um erro no cadastro da senha');
+        console.log(err.error.message);
       });
       
     }else {
