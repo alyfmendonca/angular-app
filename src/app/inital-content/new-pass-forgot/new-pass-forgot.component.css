@@ -1,0 +1,96 @@
+.content-background{
+    display: flex;
+    justify-content: center;
+}
+.content-conteudo.page-login{
+    max-height: 400px;
+}
+.esqu{
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+.entrar-esq{
+    height: 100%;
+    width: 49%;
+    margin: 0 auto;
+    padding-top: 35px;
+}
+
+.entrar-esq p{
+    color: #cccccc;
+    font-weight: 300;
+}
+
+.img-esq{
+    height: 100%;
+    margin: 0 auto;
+}
+.dir{
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+}
+.form-dir{
+    height: 100%;
+    width: 80%;
+    display: flex;
+    flex-direction: column;
+    justify-content: start;
+    margin-left: 20px;
+    margin-top: 60px;
+}
+.bot-dir{
+    height: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: baseline;
+    padding-right: 15px;
+}
+label{
+    align-self: flex-start;
+}
+.forg-pass{
+    align-self: flex-end;
+}
+.img-esq img{
+    width: 100%;
+    margin-left: -110px;
+    margin-top: 11px;
+}
+
+.form-dir input{
+    background: transparent !important;
+    border: 1px solid #ccc;
+    border-radius: 3px;
+    padding: 10px 5px;
+    color: #ccc;
+    margin-top: 5px;
+}
+.form-dir label{
+    color: #ccc;
+    font-weight: 500;
+    margin-top: 20px;
+}
+.form-dir a{
+    color: rgba(63, 192, 194, 1); 
+    /* font-weight: 500; */
+    text-decoration: none;
+    margin-top: 5px;
+}
+.concluir-button{
+    padding: 10px 20px;
+    color: #fff;
+    border: 0;
+    border-radius: 2px;
+    background: rgba(45, 175, 126, 1);
+    cursor: pointer;
+    transition: .2s ease-in-out all;
+    border: 1px solid rgba(45, 175, 126, 1);
+}
+.concluir-button:hover{
+    background: transparent;
+    color: rgba(45, 175, 126, 1);
+}

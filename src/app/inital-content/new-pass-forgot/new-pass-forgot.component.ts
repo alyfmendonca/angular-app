@@ -5,11 +5,11 @@ import { formatDate } from '@angular/common';
 import { AuthService } from '../../services/auth-services/auth.service';
 
 @Component({
-  selector: 'app-new-password',
-  templateUrl: './new-password.component.html',
-  styleUrls: ['./new-password.component.css']
+  selector: 'app-new-pass-forgot',
+  templateUrl: './new-pass-forgot.component.html',
+  styleUrls: ['./new-pass-forgot.component.css']
 })
-export class NewPasswordComponent implements OnInit {
+export class NewPassForgotComponent implements OnInit {
 
   constructor(
     private router:Router,
@@ -28,7 +28,7 @@ export class NewPasswordComponent implements OnInit {
 
   submitForm(){
     if(this.txtPass == this.txtPass2){
-      this.authService.finishSignIn(this.token, Md5.hashStr(this.txtPass)).subscribe(response =>{
+      this.authService.finishForgotPassword(this.token, Md5.hashStr(this.txtPass)).subscribe(response =>{
         alert('Senha cadastrada com sucesso!');
         this.router.navigate(['initial/main/login']);
       }, err => {
@@ -39,5 +39,4 @@ export class NewPasswordComponent implements OnInit {
       alert('Senhas informadas não são iguais');
     }
   }
-
 }
