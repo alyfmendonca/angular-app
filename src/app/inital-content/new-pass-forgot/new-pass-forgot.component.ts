@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
 import { Md5 } from 'ts-md5';
-import { formatDate } from '@angular/common';
 import { AuthService } from '../../services/auth-services/auth.service';
 
 @Component({
@@ -18,8 +17,14 @@ export class NewPassForgotComponent implements OnInit {
     ) { }
   token: string;
   ngOnInit() {
-    this.route.params.subscribe( parametros => {
+    this.route.queryParams.subscribe( parametros => {
+      
+      console.log(parametros);
       this.token = parametros.token;
+      
+      console.log(this.token);
+    }, err =>{
+      console.log(err);
     });
   }
  
