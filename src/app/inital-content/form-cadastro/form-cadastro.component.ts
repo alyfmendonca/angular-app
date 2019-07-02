@@ -52,7 +52,7 @@ export class FormCadastroComponent implements OnInit {
     this.authService.requestSignIn(this.userCreate).subscribe((res) => {
       alert('Cadastro realizado');
       this.router.navigateByUrl('/home');
-    }, err => console.log(JSON.stringify(this.userCreate)));
+    }, err => console.log(JSON.stringify(this.userCreate), err.error.message));
     }
     
   }

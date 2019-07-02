@@ -4,12 +4,7 @@ import { environment } from 'src/environments/environment';
 import { Observable } from 'rxjs';
 
 const API_URL = environment.apiUrl;
-let token = localStorage.getItem('token');
-let headers = new HttpHeaders({
-  //token de cirurgião
-  'Authorization': `token ${token}`,
-  'Content-Type': 'application/json'
-});
+
 @Injectable({
   providedIn: 'root'
 })
@@ -24,14 +19,32 @@ export class OtherService {
 
   }
   getTuss(id: string){
+    let token = localStorage.getItem('token');
+    let headers = new HttpHeaders({
+      'Authorization': `token ${token}`,
+      'Content-Type': 'application/json'
+    });
+
     return this.http.get<any>(`${API_URL}tussDetails/?id=${id}`, {headers});
   }
 
   getAllAccommodations(){
+    let token = localStorage.getItem('token');
+    let headers = new HttpHeaders({
+      'Authorization': `token ${token}`,
+      'Content-Type': 'application/json'
+    });
+
     return this.http.get<Accommodation[]>(`${API_URL}allAccommodations/`, {headers});
   }
 
   getAllComorbidities(){
+    let token = localStorage.getItem('token');
+    let headers = new HttpHeaders({
+      'Authorization': `token ${token}`,
+      'Content-Type': 'application/json'
+    });
+    
     return this.http.get<Comorbiditie[]>(`${API_URL}allComorbidities/`, {headers});
   }
 
