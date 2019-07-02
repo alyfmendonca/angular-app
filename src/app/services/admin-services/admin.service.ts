@@ -21,7 +21,7 @@ export class AdminService {
     return this.http.post<any>(`${API_URL}approveSurgery/`, approve, {headers});
   }
 
-  addNewCostGroup(costGroup: CostGroupCreate){
+  addNewCostGroup(costGroup: CostGroupItem){
     let token = localStorage.getItem('token');
     let headers = new HttpHeaders({
       'Authorization': `token ${token}`,

@@ -1,5 +1,5 @@
 type CostGroupItem = {
-    hospitl_id?:number;
+    hospital_id?:number;
     name:string;
     surgery_tax:number;
     additional_tax:number;

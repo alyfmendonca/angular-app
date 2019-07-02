@@ -1,6 +1,6 @@
 import { Component, OnInit, EventEmitter, Output, Input } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
-import { OtherService } from '../../services/other-services/other.service'
+import { AdminService } from '../../services/admin-services/admin.service'
 import { HospitalService } from '../../services/hospital-services/hospital.service';
 
 
@@ -15,9 +15,10 @@ export class NewHospitalComponent implements OnInit {
     public router: Router,
     public route: ActivatedRoute,
     public hospitalService: HospitalService,
+    public adminService: AdminService,
     ) { }
 
-  newHospital: Hospital = {
+    hospital: Hospital = {
     id: null,
     name: '',
     email:'',
@@ -53,29 +54,27 @@ export class NewHospitalComponent implements OnInit {
 
   tussTable: Tuss[] = [];
   tussTableAfter: Tuss[] = [];
-  hospital: HospitalCreate={
+  newHospital: HospitalCreate={
     cost_package_name: '',
     name: '',
     email:'',
     address: '',
     phone: '',
-    cep: null
+    cep: null,
+    tuss: ''
   };
 
   ngOnInit() {
     this.tussTable = this.route.snapshot.data.allTuss;
   }
-  reciverFeedback(respostaFilho) {
-    this.hospital.cost_package_name =  respostaFilho;
-    console.log(this.hospital);
-  }
+
 
   arrayCostGroup: CostGroupItem[] = [];
 
   selectedTuss: Tuss[] = []; 
-
+  hospitalId: number;
   selectedTussGroup: number[] = [];
-
+  numbTuss: number[] = [];
   onClickNext(){
     if(this.newHospital.name && this.newHospital.phone && this.newHospital.email && 
       this.newHospital.address && this.newHospital.cep && this.selectedTuss.length > 0){
@@ -92,6 +91,13 @@ export class NewHospitalComponent implements OnInit {
       }
     }
     this.tussTableAfter = this.selectedTuss;
+    
+    this.selectedTuss.forEach(element => {
+      this.numbTuss.push(element.id);
+      console.log(element.id);
+    });
+    this.newHospital.tuss = '[' + this.numbTuss + ']';
+    this.newHospital.cost_package_name = this.newHospital.name + ' Grupo de custo';
   }else{
     alert('Preencha todos os campos');
     return;
@@ -133,7 +139,7 @@ export class NewHospitalComponent implements OnInit {
       this.selectedTussGroup.forEach(tuss => {
         this.tussTableAfter.splice(this.tussTableAfter.findIndex(x => x.id === tuss), 1);
       });
-
+      grupoCriado.hospital_id = this.hospitalId;
       grupoCriado.name = this.txtNomeGroup;
       grupoCriado.surgery_tax = this.taxaCirurgia;
       grupoCriado.additional_tax = this.taxaAdicional;
@@ -169,5 +175,19 @@ export class NewHospitalComponent implements OnInit {
     }
   }
 
-
+  concluirSolicitacao(){
+    this.processaGrupo();
+    if(this.tussTableAfter.length == 0){
+      this.hospitalService.createHospital(this.newHospital).subscribe(response =>{
+        console.log(response);
+        this.hospitalId = response.id;
+        this.arrayCostGroup.forEach(element => {
+          element.hospital_id = this.hospitalId;
+          this.adminService.addNewCostGroup(element).subscribe(response => {
+            console.log(response);
+          })
+        });
+      })
+    }
+  }
 }

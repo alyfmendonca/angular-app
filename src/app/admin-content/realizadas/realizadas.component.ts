@@ -23,7 +23,7 @@ export class RealizadasComponent implements OnInit {
   }
   clickDetails(id){
     console.log(id);
-    this.router.navigateByUrl(`admin/main/realizadaDetails/?id=${id}`);
+    this.router.navigateByUrl(`admin/main/realizadaDetails/${id}`);
   }
 
 }

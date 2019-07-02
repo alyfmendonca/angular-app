@@ -23,6 +23,6 @@ export class AprovadasComponent implements OnInit {
   }
   clickDetails(id){
     console.log(id);
-    this.router.navigateByUrl(`admin/main/approvedDetails/?id=${id}`);
+    this.router.navigateByUrl(`admin/main/approvedDetails/${id}`);
   }
 }

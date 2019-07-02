@@ -5,4 +5,5 @@ type HospitalCreate = {
     address: string;
     phone: string;
     cep: number;
+    tuss: string;
 }

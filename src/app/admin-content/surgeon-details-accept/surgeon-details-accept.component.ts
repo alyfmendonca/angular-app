@@ -31,9 +31,7 @@ export class SurgeonDetailsAcceptComponent implements OnInit {
   tuss: number[] = [];
 
   ngOnInit() {
-    this.route.params.subscribe( parametros => {
-      this.id = parametros.id;
-  });
+    this.id = this.route.snapshot.params.id;
 
     this.surgeonService.getSurgeon(this.id).subscribe((surgeon) => {
       this.surgeonChoosed = surgeon;

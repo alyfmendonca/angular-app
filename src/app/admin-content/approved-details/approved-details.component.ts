@@ -28,10 +28,8 @@ export class ApprovedDetailsComponent implements OnInit {
   surgery: Surgery;
 
   ngOnInit() {
-    this.route.params.subscribe( parametros => {
-      this.id = parametros.id;
-    });
-    this.surgeryService.getSurgery('13').subscribe(response => {
+    this.id = this.route.snapshot.params.id;
+    this.surgeryService.getSurgery(this.id).subscribe(response => {
       console.log(response);
       this.surgery = response;
     })

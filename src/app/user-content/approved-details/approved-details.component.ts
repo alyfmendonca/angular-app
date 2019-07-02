@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { Router, ActivatedRoute } from '@angular/router';
+import { SurgeryService } from '../../services/surgery-services/surgery.service';
 
 @Component({
   selector: 'app-approved-details',
@@ -7,9 +9,21 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ApprovedDetailsComponent implements OnInit {
 
-  constructor() { }
+  constructor(
+    public router: Router,
+    public route: ActivatedRoute,
+    public surgeryService: SurgeryService,
+  ) { }
+  
+  id: string;
+  surgery: Surgery;
 
   ngOnInit() {
+    this.id = this.route.snapshot.params.id;
+    this.surgeryService.getSurgery(this.id).subscribe(response => {
+      console.log(response);
+      this.surgery = response;
+    })
   }
   listComorbidadesMock: any[] = [
     {
