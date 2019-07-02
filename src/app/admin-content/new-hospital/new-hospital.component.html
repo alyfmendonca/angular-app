@@ -41,7 +41,7 @@
                           <mat-selection-list name="listTuss" #listaTuss [(ngModel)]="selectedTuss"> 
                             <mat-list-option [value]="procedimento" 
                               *ngFor="let procedimento of tussTable">
-                              {{procedimento.id}} - {{procedimento.str}}
+                              {{procedimento.str}}
                             </mat-list-option>
                           </mat-selection-list>
                         </cdk-virtual-scroll-viewport>
@@ -56,9 +56,6 @@
                 </form>
                 
               </div>
-      
-      
-              
               
             </div>
       
@@ -104,10 +101,10 @@
                             <h3 class="light-dark">TUSS x Custos</h3>
                             <div class="list-scroll-esq">
                               <cdk-virtual-scroll-viewport class="virtualScroll" itemSize="8">
-                                <mat-selection-list name="listTuss">
-                                  <mat-list-option [value]="procedimento.id" 
-                                    *ngFor="let procedimento of selectedTuss">
-                                    {{procedimento.str}}
+                                <mat-selection-list name="listTussGroup"  #listaTussGroup [(ngModel)]="selectedTussGroup">
+                                  <mat-list-option [value]="procedimentoGroup.id" 
+                                    *ngFor="let procedimentoGroup of tussTableAfter">
+                                    {{procedimentoGroup.str}}
                                   </mat-list-option>
                                 </mat-selection-list>
                               </cdk-virtual-scroll-viewport>
@@ -116,34 +113,34 @@
                       
                           <div class="form-dir">
                               <label for='txtNomeGroup'>Nome do Grupo</label>
-                              <input [(ngModel)]='name' type='text' id='txtNomeGroup' name='txtNomeGroup' placeholder="Lorem Ipsum" #nameVerify="ngModel" required>
+                              <input [(ngModel)]='txtNomeGroup' type='text' id='txtNomeGroup' name='txtNomeGroup' placeholder="Lorem Ipsum" #nameVerify="ngModel" required>
                               
                               <label for='taxaCirurgia'>Taxa Cirurgia</label>
-                              <input [(ngModel)]='surgery_tax' type='text' id='taxaCirurgia' name='taxaCirurgia' placeholder="R$ 0000,00" #nameVerify="ngModel" required>
+                              <input [(ngModel)]='taxaCirurgia' type='text' id='taxaCirurgia' name='taxaCirurgia' placeholder="R$ 0000,00" #nameVerify="ngModel" required>
                       
                               <label for='taxaAdicional'>Taxa Adicional</label>
-                              <input [(ngModel)]='additional_tax' type='text' id='taxaAdicional' name='taxaAdicional' placeholder="R$ 0000,00" #nameVerify="ngModel" required>
+                              <input [(ngModel)]='taxaAdicional' type='text' id='taxaAdicional' name='taxaAdicional' placeholder="R$ 0000,00" #nameVerify="ngModel" required>
                       
                               <label for='taxaAnestesia'>Taxa de Anestesia</label>
-                              <input [(ngModel)]='anesthesia_tax' type='text' id='taxaAnestesia' name='taxaAnestesia' placeholder="R$ 0000,00" #nameVerify="ngModel" required>
+                              <input [(ngModel)]='taxaAnestesia' type='text' id='taxaAnestesia' name='taxaAnestesia' placeholder="R$ 0000,00" #nameVerify="ngModel" required>
                       
                               <label for='taxaMaterial'>Taxa de Material em Centro Cirúrgico</label>
-                              <input [(ngModel)]='material_tax' type='text' id='taxaMaterial' name='taxaMaterial' placeholder="R$ 0000,00" #nameVerify="ngModel" required>
+                              <input [(ngModel)]='taxaMaterial' type='text' id='taxaMaterial' name='taxaMaterial' placeholder="R$ 0000,00" #nameVerify="ngModel" required>
                       
                               <label for='taxaDiariaGlobal'>Diária Global Day Clinic</label>
-                              <input [(ngModel)]='Day_Clinic' type='text' id='taxaDiariaGlobal' name='taxaDiariaGlobal' placeholder="R$ 0000,00" #nameVerify="ngModel" required>
+                              <input [(ngModel)]='taxaDiariaGlobal' type='text' id='taxaDiariaGlobal' name='taxaDiariaGlobal' placeholder="R$ 0000,00" #nameVerify="ngModel" required>
                       
                               <label for='taxaDiariaGlobalQ'>Diária Global Quarto</label>
-                              <input [(ngModel)]='Andar' type='text' id='taxaDiariaGlobalQ' name='taxaDiariaGlobalQ' placeholder="R$ 0000,00" #nameVerify="ngModel" required>
+                              <input [(ngModel)]='taxaDiariaGlobalQ' type='text' id='taxaDiariaGlobalQ' name='taxaDiariaGlobalQ' placeholder="R$ 0000,00" #nameVerify="ngModel" required>
                       
                               <label for='taxaDiariaGlobalS'>Diária Global Semiintensiva</label>
-                              <input [(ngModel)]='Semi_intensiva' type='text' id='taxaDiariaGlobalS' name='taxaDiariaGlobalS' placeholder="R$ 0000,00" #nameVerify="ngModel" required>
+                              <input [(ngModel)]='taxaDiariaGlobalS' type='text' id='taxaDiariaGlobalS' name='taxaDiariaGlobalS' placeholder="R$ 0000,00" #nameVerify="ngModel" required>
                       
                               <label for='taxaDiariaGlobalCTI'>Diária Global CTI</label>
-                              <input [(ngModel)]='CTI' type='text' id='taxaDiariaGlobalCTI' name='taxaDiariaGlobalCTI' placeholder="R$ 0000,00" #nameVerify="ngModel" required>
+                              <input [(ngModel)]='taxaDiariaGlobalCTI' type='text' id='taxaDiariaGlobalCTI' name='taxaDiariaGlobalCTI' placeholder="R$ 0000,00" #nameVerify="ngModel" required>
                       
                               <label for='HrClinico'>Horário Clínico</label>
-                              <input [(ngModel)]='clinical_schedule' type='text' id='HrClinico' name='HrClinico' placeholder="R$ 0000,00" #nameVerify="ngModel" required>
+                              <input [(ngModel)]='HrClinico' type='text' id='HrClinico' name='HrClinico' placeholder="R$ 0000,00" #nameVerify="ngModel" required>
                           </div>
                       
                         </div>
@@ -152,28 +149,20 @@
                       
                         <div class="pacote-line">
                             <div>
-                              <h3 class="light-dark">Pacote de custo: HOSPITAL 1</h3>
+                              <h3 class="light-dark">Pacote de custo: {{newHospital.name}}</h3>
                             </div>
                             <div class="box-line">
-                              <div class="package-box">
-                                <p>Grupo 1</p>
+                              <div class="package-box" *ngFor="let grupoCusto of arrayCostGroup">
+                                <p>{{grupoCusto.name}}</p>
                               </div>
-                      
-                              <div class="package-box">
-                                <p>Grupo 2</p>
+
+                              <div (click)="processaGrupo();" class="package-box">
+                                <p><i class="fas fa-plus"></i></p>
                               </div>
-                      
-                              <div class="package-box">
-                                <p>Grupo 3</p>
-                              </div>
-                      
-                              <div class="package-box">
-                                <p>Grupo 4</p>
-                              </div>
-                            </div>
+                            </div> 
                       
                             <div class="btn-line">
-                              <button (click)="submitNewPackage();" class="dark-button">CONCLUIR</button>
+                              <button (click)="newPackageForm();" class="dark-button">CONCLUIR</button>
                             </div>
                           </div>
                         </form>

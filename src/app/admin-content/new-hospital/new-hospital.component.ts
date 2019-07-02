@@ -30,8 +30,6 @@ export class NewHospitalComponent implements OnInit {
     created_by: null
   };
 
-  numberTuss: number [];
-
   pacienteNome: String;
   txtCPF: String;
   txtNome: String;
@@ -42,18 +40,19 @@ export class NewHospitalComponent implements OnInit {
   txtEmail: String;
   txtEnd: String;
   txtCep: String;
-  txtNomeGroup: String;
-  taxaCirurgia: String;
-  taxaAdicional: String;
-  taxaAnestesia: String;
-  taxaMaterial: String;
-  taxaDiariaGlobal: String;
-  taxaDiariaGlobalQ: String;
-  taxaDiariaGlobalS: String;
-  taxaDiariaGlobalCTI: String;
-  HrClinico: String;
+  txtNomeGroup: string;
+  taxaCirurgia: number;
+  taxaAdicional: number;
+  taxaAnestesia: number;
+  taxaMaterial: number;
+  taxaDiariaGlobal: number;
+  taxaDiariaGlobalQ: number;
+  taxaDiariaGlobalS: number;
+  taxaDiariaGlobalCTI: number;
+  HrClinico: number;
 
   tussTable: Tuss[] = [];
+  tussTableAfter: Tuss[] = [];
   hospital: HospitalCreate={
     cost_package_name: '',
     name: '',
@@ -70,109 +69,17 @@ export class NewHospitalComponent implements OnInit {
     this.hospital.cost_package_name =  respostaFilho;
     console.log(this.hospital);
   }
-  listComorbidadesMock: any[] = [
-    {
-      "id": 1,
-     "descricao": "Hipertensão"
-    },
-    {
-      "id": 2,
-      "descricao": "Diabetes"
-    },
-  ];
 
+  arrayCostGroup: CostGroupItem[] = [];
 
-  selectedTuss: number[] = []; 
+  selectedTuss: Tuss[] = []; 
 
-
-  listProcedimentosMock: any[] = 
-  [
-    {
-      "id": 1342,
-      "descricao": "COLECISTECTOMIA"
-    },
-    {
-      "id": 1356,
-      "descricao": "VIDEOLAPAROSCOPIA"
-    },
-    {
-      "id": 1359,
-      "descricao": "LAPAROSCÓPICA"
-    },
-    {
-      "id": 1352,
-      "descricao": "DRENAGEM CIRÚRGICA POR VIDEOLAPAROSCOPIA"
-    },
-    {
-      "id": 1389,
-      "descricao": "RETOSSIGMOIDECTOMIA ABDOMINAL POR VIDEOLAPAROSCOPIA"
-    },
-    {
-      "id": 1376,
-      "descricao": "ENUCLEAÇÃO"
-    },
-    {
-      "id": 135565,
-      "descricao": "RASPAGEM" 
-    },
-    {
-      "id": 1387,
-      "descricao": "PLAQTUDUM"
-    },{
-      "id": 1387,
-      "descricao": "asdasdasd"
-    },{
-      "id": 1387,
-      "descricao": "asdasdasd"
-    },{
-      "id": 1387,
-      "descricao": "PLAQTUDUM"
-    },{
-      "id": 1387,
-      "descricao": "PLAQTUDUM"
-    },{
-      "id": 1387,
-      "descricao": "asdasdasasd"
-    },{
-      "id": 1387,
-      "descricao": "PLAQTUDUM"
-    },{
-      "id": 1387,
-      "descricao": "PLAQTUDUM"
-    },{
-      "id": 1387,
-      "descricao": "PLAQTUDUM"
-    },{
-      "id": 1387,
-      "descricao": "PLAQTUDUM"
-    },{
-      "id": 1387,
-      "descricao": "PLAQTUDUM"
-    },{
-      "id": 1387,
-      "descricao": "PLAQTUDUM"
-    },{
-      "id": 1387,
-      "descricao": "asdasdasff"
-    },{
-      "id": 1387,
-      "descricao": "sadasdasda"
-    },{
-      "id": 1387,
-      "descricao": "asdasdasd"
-    },{
-      "id": 1387,
-      "descricao": "PLAQTUDUM"
-    },{
-      "id": 1387,
-      "descricao": "asdasdsa"
-    },{
-      "id": 1387,
-      "descricao": "PLAQTUDUM"
-    },
-  ]; 
+  selectedTussGroup: number[] = [];
 
   onClickNext(){
+    if(this.newHospital.name && this.newHospital.phone && this.newHospital.email && 
+      this.newHospital.address && this.newHospital.cep && this.selectedTuss.length > 0){
+    
     let i = 0
     let continua = true;
     while(continua){
@@ -184,12 +91,11 @@ export class NewHospitalComponent implements OnInit {
         i++
       }
     }
-    console.log(this.newHospital);
-    console.log(this.selectedTuss);
-    this.selectedTuss.forEach(element => {
-      this.numberTuss.push(element);
-    });
-
+    this.tussTableAfter = this.selectedTuss;
+  }else{
+    alert('Preencha todos os campos');
+    return;
+  }
     
   }
   onClickBack(){
@@ -205,12 +111,63 @@ export class NewHospitalComponent implements OnInit {
       }
     }
   }
+
   newPackageForm(){
     document.getElementsByClassName('add-packages')[0].setAttribute("style", "display:block;");
   }
 
-  onSend(){
-    ///////////this.hospital. = "[" + this.selectedTuss + "]";
+  processaGrupo(){
+    if(this.selectedTussGroup.length > 0 && this.txtNomeGroup && this.taxaCirurgia && this.taxaAdicional && 
+      this.taxaAnestesia && this.taxaMaterial && this.HrClinico){
+      var grupoCriado: CostGroupItem = {
+        name: '',
+        surgery_tax: 0,
+        additional_tax: 0,
+        anesthesia_tax: 0,
+        material_tax: 0,
+        clinical_schedule: 0,
+        tuss: ''
+      };
+      
+      //Para cada tuss selecionado, remove da tussTableAfter, que são os Tuss selecionados na primeira página e que foram movidos para outra lista.
+      this.selectedTussGroup.forEach(tuss => {
+        this.tussTableAfter.splice(this.tussTableAfter.findIndex(x => x.id === tuss), 1);
+      });
+
+      grupoCriado.name = this.txtNomeGroup;
+      grupoCriado.surgery_tax = this.taxaCirurgia;
+      grupoCriado.additional_tax = this.taxaAdicional;
+      grupoCriado.anesthesia_tax = this.taxaAnestesia;
+      grupoCriado.material_tax = this.taxaMaterial;
+      grupoCriado.clinical_schedule = this.HrClinico;
+      grupoCriado.Semi_intensiva = this.taxaDiariaGlobalS;
+      grupoCriado.CTI = this.taxaDiariaGlobalCTI;
+      grupoCriado.Andar = this.taxaDiariaGlobalQ;
+      grupoCriado.Day_Clinic = this.taxaDiariaGlobal;
+
+      //limpa tudo
+
+      this.txtNomeGroup = '';
+      this.taxaCirurgia = null;
+      this.taxaAdicional = null;
+      this.taxaAnestesia = null;
+      this.taxaMaterial = null;
+      this.HrClinico = null;
+      this.taxaDiariaGlobalS = null;
+      this.taxaDiariaGlobalCTI = null;
+      this.taxaDiariaGlobalQ = null;
+      this.taxaDiariaGlobal = null;
+      
+      grupoCriado.tuss = '[' + this.selectedTussGroup + ']';
+
+      this.arrayCostGroup.push(grupoCriado);
+
+      console.log(this.arrayCostGroup);
+    }else{
+      alert('Preencha todos os campos obrigatórios do grupo de custo e selecione ao menos um TUSS');
+      return;
+    }
   }
+
 
 }
