@@ -172,7 +172,11 @@
                     <p class="sub-total">Sub Total <span>R$ {{objCustos.surgery_cost}},00</span></p>
                     <p class="adicional">Adicional de Alta Complexidade <span>{{aditional}}%</span></p>
                     <p class="total">Total <span>R$ 0000,00</span></p>
+
+                    <mat-slider thumbLabel
+                  [displayWith]="formatLabel" min="0" max="30" step="0.5" value="1.5"></mat-slider>
                   </div>
+                  
                   <div>
                       <button (click)="onClickNext(custos)" class="dark-button">Escolher</button>
                   </div>
