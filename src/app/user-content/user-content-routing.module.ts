@@ -17,9 +17,7 @@ const routes: Routes = [
   { path: 'main', component: MainContentComponent, children: [
     { path: 'profile', component: UserProfileComponent },
     { path:'request-orientation', component:RequestOrientationComponent },
-    { path:'request-stepper', component: RequestStepperComponent, resolve: {
-      allTuss: OtherAllTussResolve
-    }   },
+    { path:'request-stepper', component: RequestStepperComponent},
     { path:'request-confirmation', component: RequestConfirmationComponent },
     { path:'aprovadas-solicitadas', component: AprovadasSolicitadasComponent },
     { path:'surgery/:id', component: SurgeryDetailsComponent },
