@@ -20,7 +20,7 @@
             </div>
             <div class="right-block" *ngIf="!surgery.complicated">
               <p class="complexidade" class="green">Baixa Complexidade</p>
-              <img class="image-details" src="../../assets/detalhe.png" />
+              <img (click)="clickDetails(surgery.id);" class="image-details" src="../../assets/detalhe.png" />
             </div>
           </div>
 

@@ -16,8 +16,8 @@ export class SolicitacoesComponent implements OnInit {
     public surgeonService: SurgeonService,
     ) { }
 
-  allSurgeries: SurgeryDone[];
-  allSurgeons: Surgeon[];
+  allSurgeries: SurgeryDone[] = null;
+  allSurgeons: Surgeon[] = null;
 
   ngOnInit() {
     this.surgeryService.allSurgery('Waiting').subscribe(response => {
