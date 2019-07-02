@@ -94,9 +94,91 @@
                         
                         </div>
                       </div>
-        
-                      <app-cost-package (respostaFamilia)="reciverFeedback($event)"></app-cost-package>
-                    
+                      <div class="add-packages">
+                        <form #form="ngForm">
+                      
+                        <!-- TUSS X CUSTO / FORM -->
+                        <div class="line">
+                      
+                          <div class="tuss-esq">
+                            <h3 class="light-dark">TUSS x Custos</h3>
+                            <div class="list-scroll-esq">
+                              <cdk-virtual-scroll-viewport class="virtualScroll" itemSize="8">
+                                <mat-selection-list name="listTuss">
+                                  <mat-list-option [value]="procedimento.id" 
+                                    *ngFor="let procedimento of tussTable">
+                                    {{procedimento.str}}
+                                  </mat-list-option>
+                                </mat-selection-list>
+                              </cdk-virtual-scroll-viewport>
+                            </div>
+                          </div>
+                      
+                          <div class="form-dir">
+                              <label for='txtNomeGroup'>Nome do Grupo</label>
+                              <input [(ngModel)]='name' type='text' id='txtNomeGroup' name='txtNomeGroup' placeholder="Lorem Ipsum" #nameVerify="ngModel" required>
+                              
+                              <label for='taxaCirurgia'>Taxa Cirurgia</label>
+                              <input [(ngModel)]='surgery_tax' type='text' id='taxaCirurgia' name='taxaCirurgia' placeholder="R$ 0000,00" #nameVerify="ngModel" required>
+                      
+                              <label for='taxaAdicional'>Taxa Adicional</label>
+                              <input [(ngModel)]='additional_tax' type='text' id='taxaAdicional' name='taxaAdicional' placeholder="R$ 0000,00" #nameVerify="ngModel" required>
+                      
+                              <label for='taxaAnestesia'>Taxa de Anestesia</label>
+                              <input [(ngModel)]='anesthesia_tax' type='text' id='taxaAnestesia' name='taxaAnestesia' placeholder="R$ 0000,00" #nameVerify="ngModel" required>
+                      
+                              <label for='taxaMaterial'>Taxa de Material em Centro Cirúrgico</label>
+                              <input [(ngModel)]='material_tax' type='text' id='taxaMaterial' name='taxaMaterial' placeholder="R$ 0000,00" #nameVerify="ngModel" required>
+                      
+                              <label for='taxaDiariaGlobal'>Diária Global Day Clinic</label>
+                              <input [(ngModel)]='Day_Clinic' type='text' id='taxaDiariaGlobal' name='taxaDiariaGlobal' placeholder="R$ 0000,00" #nameVerify="ngModel" required>
+                      
+                              <label for='taxaDiariaGlobalQ'>Diária Global Quarto</label>
+                              <input [(ngModel)]='Andar' type='text' id='taxaDiariaGlobalQ' name='taxaDiariaGlobalQ' placeholder="R$ 0000,00" #nameVerify="ngModel" required>
+                      
+                              <label for='taxaDiariaGlobalS'>Diária Global Semiintensiva</label>
+                              <input [(ngModel)]='Semi_intensiva' type='text' id='taxaDiariaGlobalS' name='taxaDiariaGlobalS' placeholder="R$ 0000,00" #nameVerify="ngModel" required>
+                      
+                              <label for='taxaDiariaGlobalCTI'>Diária Global CTI</label>
+                              <input [(ngModel)]='CTI' type='text' id='taxaDiariaGlobalCTI' name='taxaDiariaGlobalCTI' placeholder="R$ 0000,00" #nameVerify="ngModel" required>
+                      
+                              <label for='HrClinico'>Horário Clínico</label>
+                              <input [(ngModel)]='clinical_schedule' type='text' id='HrClinico' name='HrClinico' placeholder="R$ 0000,00" #nameVerify="ngModel" required>
+                          </div>
+                      
+                        </div>
+                      
+                        <!-- Pacote de custos -->
+                      
+                        <div class="pacote-line">
+                            <div>
+                              <h3 class="light-dark">Pacote de custo: HOSPITAL 1</h3>
+                            </div>
+                            <div class="box-line">
+                              <div class="package-box">
+                                <p>Grupo 1</p>
+                              </div>
+                      
+                              <div class="package-box">
+                                <p>Grupo 2</p>
+                              </div>
+                      
+                              <div class="package-box">
+                                <p>Grupo 3</p>
+                              </div>
+                      
+                              <div class="package-box">
+                                <p>Grupo 4</p>
+                              </div>
+                            </div>
+                      
+                            <div class="btn-line">
+                              <button (click)="submitNewPackage();" class="dark-button">CONCLUIR</button>
+                            </div>
+                          </div>
+                        </form>
+                      </div>
+                      
                     <!-- Botão CONCLUIR -->
         
                     

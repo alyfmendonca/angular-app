@@ -24,16 +24,21 @@ export class SurgeonService {
   }
 
   getSurgeon(id?: number){
+
     let token = localStorage.getItem('token');
     let headers = new HttpHeaders({
       'Authorization': `token ${token}`,
       'Content-Type': 'application/json'
     });
-
+    console.log(token);
+    
     if(id){
+      console.log('erro');
       return this.http.get<SurgeonById>(`${API_URL}surgeon/?id=${id}`, {headers});
     }
-    return this.http.get<SurgeonById>(`${API_URL}surgeon`, {headers});
+    console.log(headers);
+    
+    return this.http.get<SurgeonById>(`${API_URL}surgeon/`, {headers});
   }
 
   createSurgeon(surgeon: SurgeonCreate){
@@ -52,7 +57,7 @@ export class SurgeonService {
       'Authorization': `token ${token}`,
       'Content-Type': 'application/json'
     });
-    
+
     return this.http.put<any>(`${API_URL}surgeon/`, surgeon, {headers});
   }
 

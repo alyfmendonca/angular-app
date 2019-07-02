@@ -18,6 +18,7 @@ export class UserProfileComponent implements OnInit {
               private route: ActivatedRoute) { }
 
   ngOnInit() {
+    console.log('teste');
     this.surgeonService.getSurgeon().subscribe((surgeon) => {
       this.surgeonByID = surgeon;
       console.log(surgeon);
