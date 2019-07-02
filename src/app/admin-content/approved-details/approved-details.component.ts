@@ -14,6 +14,8 @@ export class ApprovedDetailsComponent implements OnInit {
     public route: ActivatedRoute,
     public surgeryService: SurgeryService,
   ) { }
+  trueDuration: string;
+  finalNote: string = '';
   txtNomeGroup: string;
   taxaCirurgia: string;
   taxaAdicional: string;
@@ -142,6 +144,26 @@ export class ApprovedDetailsComponent implements OnInit {
     
   ]; 
 
+  performSurgery: SurgeryPerform = {
+    id: null,
+    true_duration: '',
+    note: ''
+  };
+  transfRealiz(){
+    if(this.trueDuration == ""){
+      alert('Informe a duração da cirurgia');
+    }else{
+      this.performSurgery.id = this.surgery.id;
+      this.performSurgery.note = this.finalNote;
+      this.performSurgery.true_duration = this.trueDuration;
+      this.surgeryService.performSurgery(this.performSurgery).subscribe(response => {
+        console.log(response);
+        this.router.navigate(['/admin/main/aprovadas']);
+      }, err => {
+        console.log(err.error.message);
+      })
+    }
+  }
 
   
   

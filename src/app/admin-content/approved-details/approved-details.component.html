@@ -7,6 +7,7 @@
               <img class="image-voltar" src="../../assets/voltar.png" />
               <h3 class="dark">Detalhe da Cirurgia</h3>
             </a>
+            <button class="clean-button" (click)="transfRealiz();">TRANSFERIR PARA REALIZADAS</button>
           </div>
           <div>
             
@@ -148,10 +149,28 @@
                 <div class="line-valores">
                   <p class="sub-total">Sub Total <span>R$ {{objCustos.surgery_cost}},00</span></p>
                   <p class="adicional">Adicional de Alta Complexidade <span>{{aditional}}%</span></p>
-                  <p class="total">Total <span>R$ {{objCustos.total_cost}},00</span></p>
 
                   <mat-slider thumbLabel
                   [displayWith]="formatLabel"  min="0" max="30" step="1" value="{{porcentagem}}"></mat-slider>
+                  <div class="line-porcentagem">
+                      <span>0%</span>
+                      <span>30%</span>
+                    </div>
+
+                  <p class="total" style="margin-top: 20px;">Total <span>R$ {{objCustos.total_cost}},00</span></p>
+
+                  
+                </div>
+                <div class="last-line-input">
+                  <div>
+                      <label for='trueDuration'>Duração oficial da cirurgia</label>
+                      <input [(ngModel)]='trueDuration' type='text' id='trueDuration' name='trueDuration' placeholder="2 horas e 30 minutos" #nameVerify="ngModel" >  
+                  </div>
+                  <div>
+                      <label for='note'>Observações</label>
+                      <input [(ngModel)]='finalNote' type='text' id='note' name='note' placeholder="Observações" #nameVerify="ngModel">
+
+                  </div>
                 </div>
                 
               </form>
