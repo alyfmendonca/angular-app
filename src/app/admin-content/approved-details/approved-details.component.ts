@@ -74,6 +74,7 @@ export class ApprovedDetailsComponent implements OnInit {
   };
   aditional: any;
   porcentagem: any;
+  valueBar: any;
   ngOnInit() {
     this.id = this.route.snapshot.params.id;
     this.surgeryService.getSurgery(this.id).subscribe(response => {
@@ -140,5 +141,8 @@ export class ApprovedDetailsComponent implements OnInit {
     
     
   ]; 
+
+
+  
   
 }

@@ -139,7 +139,7 @@ export class SolicitacoesDetailsComponent implements OnInit {
     aprovarSolicitacao(){
       console.log(this.valorPorcent);
       this.surgeryAprove.id = this.surgery.id;
-      this.surgeryAprove.percentage = 10;
+      //this.surgeryAprove.percentage = 10;
       if(this.desconto){
         this.surgeryAprove.discount = true;
       }else{
@@ -156,6 +156,11 @@ export class SolicitacoesDetailsComponent implements OnInit {
       })
       
 
+    }
+
+    onChangeBar(event: any){
+      console.log(event.value);
+      this.surgeryAprove.percentage = event.value;
     }
 
 }

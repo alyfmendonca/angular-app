@@ -173,14 +173,14 @@
                     <p class="adicional">Adicional de Alta Complexidade <span>{{aditional}}%</span></p>
                     
 
-                    <mat-slider thumbLabel [displayWith]="formatLabel" min="0" max="30" step="0.5" value="1.5"></mat-slider>
+                    <mat-slider thumbLabel [displayWith]="formatLabel" (change)="onChangeBar($event)" min="0" max="30" step="0.5" value="1.5"></mat-slider>
                     <div class="line-porcentagem">
                       <span>0%</span>
                       <span>30%</span>
                     </div>
                     <mat-slide-toggle  (change)="onChange($event)" [checked]="checked">{{texto}}</mat-slide-toggle>
 
-                    <p class="total">Total <span>R$ {{objCustos.surgery_cost}},00</span></p>
+                    <p class="total" style="margin-top: 20px;">Total <span>R$ {{objCustos.surgery_cost}},00</span></p>
                   </div>
                   
                   <div>
