@@ -244,3 +244,22 @@ label{
 .total:before{
     left: 6%;
 }
+.line-porcentagem{
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 25px;
+    color: #ccc;
+    margin-top: -13px;
+}
+.last-line-input{
+    display: flex;
+    justify-content: space-between;
+    margin-top: 10px; 
+}
+.last-line-input input{
+   width: 100%;
+}
+.last-line-input div{
+    width: 45%;
+ }

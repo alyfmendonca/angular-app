@@ -21,7 +21,7 @@ export class AprovadasSolicitadasComponent implements OnInit {
       this.surgeryService.allSurgery('Waiting').subscribe(response => {
         this.allSurgeries = response;
       })
-      this.surgeryService.allSurgery('Done').subscribe(response => {
+      this.surgeryService.allSurgery('Approved').subscribe(response => {
         this.allSurgeriesDone = response;
       })
       

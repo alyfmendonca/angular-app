@@ -14,6 +14,18 @@ export class RealizadaDetailsComponent implements OnInit {
     public route: ActivatedRoute,
     public surgeryService: SurgeryService,
   ) { }
+  txtNomeGroup: string;
+  taxaCirurgia: string;
+  taxaAdicional: string;
+  taxaAnestesia: string;
+  taxaMaterial: string;
+  taxaDiariaGlobal: string;
+  taxaDiariaGlobalQ: string;
+  taxaDiariaGlobalS: string;
+  taxaDiariaGlobalCTI: string;
+  HrClinico: string;
+
+
 
   id: string;
   surgery: Surgery = {
@@ -46,63 +58,42 @@ export class RealizadaDetailsComponent implements OnInit {
       }],
       accommodations: null,
   };
+  trueDuration: string;
+  finalNote: string = '';
+  objCustos: any = {
+    id: null,
+    name: '',
+    surgery_tax: null,
+    additional_tax: null,
+    anesthesia_tax: null,
+    material_tax: null,
+    clinical_schedule: null,
+    surgery_cost: null,
+    Semi_intensiva: null,
+    CTI: null,
+    Andar: null,
+    Day_Clinic: null,
+    hospital: '',
+    total_cost: null,
+  };
+  aditional: any;
+  porcentagem: any;
+  valueBar: any;
 
   ngOnInit() {
     this.id = this.route.snapshot.params.id;
     this.surgeryService.getSurgery(this.id).subscribe(response => {
       console.log(response);
       this.surgery = response;
+      this.objCustos = response.cost;
+      console.log(this.objCustos);
+      if(this.surgery.complicated){
+        this.aditional = 20;
+      }else{
+        this.aditional = 0;
+      }
+      this.porcentagem = response.percentage;
     })
   }
-
-  listComorbidadesMock: any[] = [
-    {
-      "id": 1,
-     "descricao": "Hipertensão"
-    },
-    {
-      "id": 2,
-      "descricao": "Diabetes"
-    },
-  ];
-
-  listProcedimentosMock: any[] = 
-  [
-    {
-      "id": 1342,
-      "descricao": "COLECISTECTOMIA"
-    },
-    {
-      "id": 1356,
-      "descricao": "VIDEOLAPAROSCOPIA"
-    },
-    {
-      "id": 1359,
-      "descricao": "LAPAROSCÓPICA"
-    },
-    {
-      "id": 1352,
-      "descricao": "DRENAGEM CIRÚRGICA POR VIDEOLAPAROSCOPIA"
-    },
-    {
-      "id": 1389,
-      "descricao": "RETOSSIGMOIDECTOMIA ABDOMINAL POR VIDEOLAPAROSCOPIA"
-    },
-    
-  ]; 
-
-  listProcedimentosMock2: any[] = 
-  [
-    {
-      "id": 1342,
-      "descricao": "COLECISTECTOMIA"
-    },
-    {
-      "id": 1356,
-      "descricao": "VIDEOLAPAROSCOPIA"
-    },
-    
-    
-  ]; 
 
 }

@@ -110,54 +110,67 @@
             
             <form #form="ngForm">
               <div class="main-line bottom">
-                <div>
-                    <label for='txtNomeGroup'>Nome do Grupo</label>
-                    <input [(ngModel)]='txtNomeGroup' type='text' id='txtNomeGroup' name='txtNomeGroup' placeholder="Lorem Ipsum" #nameVerify="ngModel" required>
-                    
-                    <label for='taxaCirurgia'>Taxa Cirurgia</label>
-                    <input [(ngModel)]='taxaCirurgia' type='text' id='taxaCirurgia' name='taxaCirurgia' placeholder="R$ 0000,00" #nameVerify="ngModel" required>
-  
-                    <label for='taxaAdicional'>Taxa Adicional</label>
-                    <input [(ngModel)]='taxaAdicional' type='text' id='taxaAdicional' name='taxaAdicional' placeholder="R$ 0000,00" #nameVerify="ngModel" required>
-      
-                    <label for='taxaAnestesia'>Taxa de Anestesia</label>
-                    <input [(ngModel)]='taxaAnestesia' type='text' id='taxaAnestesia' name='taxaAnestesia' placeholder="R$ 0000,00" #nameVerify="ngModel" required>
-      
-                    <label for='taxaMaterial'>Taxa de Material em Centro Cirúrgico</label>
-                    <input [(ngModel)]='taxaMaterial' type='text' id='taxaMaterial' name='taxaMaterial' placeholder="R$ 0000,00" #nameVerify="ngModel" required>
-                </div>
-                <div>
-                    <label for='taxaDiariaGlobal'>Diária Global Day Clinic</label>
-                    <input [(ngModel)]='taxaDiariaGlobal' type='text' id='taxaDiariaGlobal' name='taxaDiariaGlobal' placeholder="R$ 0000,00" #nameVerify="ngModel" required>
-  
-                    <label for='taxaDiariaGlobalQ'>Diária Global Quarto</label>
-                    <input [(ngModel)]='taxaDiariaGlobalQ' type='text' id='taxaDiariaGlobalQ' name='taxaDiariaGlobalQ' placeholder="R$ 0000,00" #nameVerify="ngModel" required>
-  
-                    <label for='taxaDiariaGlobalS'>Diária Global Semiintensiva</label>
-                    <input [(ngModel)]='taxaDiariaGlobalS' type='text' id='taxaDiariaGlobalS' name='taxaDiariaGlobalS' placeholder="R$ 0000,00" #nameVerify="ngModel" required>
-  
-                    <label for='taxaDiariaGlobalCTI'>Diária Global CTI</label>
-                    <input [(ngModel)]='taxaDiariaGlobalCTI' type='text' id='taxaDiariaGlobalCTI' name='taxaDiariaGlobalCTI' placeholder="R$ 0000,00" #nameVerify="ngModel" required>
-  
-                    <label for='HrClinico'>Horário Clínico</label>
-                    <input [(ngModel)]='HrClinico' type='text' id='HrClinico' name='HrClinico' placeholder="R$ 0000,00" #nameVerify="ngModel" required>
-  
-                </div>
+                  <div>
+                      <label for='txtNomeGroup'>Nome do Grupo</label>
+                      <input [(ngModel)]='objCustos.name' type='text' id='txtNomeGroup' name='txtNomeGroup' placeholder="Lorem Ipsum" #nameVerify="ngModel" required>
+                      
+                      <label for='taxaCirurgia'>Taxa Cirurgia</label>
+                      <input [(ngModel)]='objCustos.surgery_tax' type='text' id='taxaCirurgia' name='taxaCirurgia' placeholder="R$ 0000,00" #nameVerify="ngModel" required>
+    
+                      <label for='taxaAdicional'>Taxa Adicional</label>
+                      <input [(ngModel)]='objCustos.additional_tax' type='text' id='taxaAdicional' name='taxaAdicional' placeholder="R$ 0000,00" #nameVerify="ngModel" required>
+        
+                      <label for='taxaAnestesia'>Taxa de Anestesia</label>
+                      <input [(ngModel)]='objCustos.anesthesia_tax' type='text' id='taxaAnestesia' name='taxaAnestesia' placeholder="R$ 0000,00" #nameVerify="ngModel" required>
+        
+                      <label for='taxaMaterial'>Taxa de Material em Centro Cirúrgico</label>
+                      <input [(ngModel)]='objCustos.material_tax' type='text' id='taxaMaterial' name='taxaMaterial' placeholder="R$ 0000,00" #nameVerify="ngModel" required>
+                  </div>
+                  <div>
+                      <label for='taxaDiariaGlobal'>Diária Global Day Clinic</label>
+                      <input [(ngModel)]='objCustos.Day_Clinic' type='text' id='taxaDiariaGlobal' name='taxaDiariaGlobal' placeholder="R$ 0000,00" #nameVerify="ngModel" required>
+    
+                      <label for='taxaDiariaGlobalQ'>Diária Global Quarto</label>
+                      <input [(ngModel)]='objCustos.Andar' type='text' id='taxaDiariaGlobalQ' name='taxaDiariaGlobalQ' placeholder="R$ 0000,00" #nameVerify="ngModel" required>
+    
+                      <label for='taxaDiariaGlobalS'>Diária Global Semiintensiva</label>
+                      <input [(ngModel)]='objCustos.Semi_intensiva' type='text' id='taxaDiariaGlobalS' name='taxaDiariaGlobalS' placeholder="R$ 0000,00" #nameVerify="ngModel" required>
+    
+                      <label for='taxaDiariaGlobalCTI'>Diária Global CTI</label>
+                      <input [(ngModel)]='objCustos.CTI' type='text' id='taxaDiariaGlobalCTI' name='taxaDiariaGlobalCTI' placeholder="R$ 0000,00" #nameVerify="ngModel" required>
+    
+                      <label for='HrClinico'>Horário Clínico</label>
+                      <input [(ngModel)]='objCustos.clinical_schedule' type='text' id='HrClinico' name='HrClinico' placeholder="R$ 0000,00" #nameVerify="ngModel" required>
+    
+                  </div>
                 
               </div>
               <div class="line-valores">
-                <p class="sub-total">Sub Total <span>R$ 0000,00</span></p>
-                <p class="adicional">Adicional de Alta Complexidade <span>20%</span></p>
-                <p class="total">Total <span>R$ 0000,00</span></p>
-              </div>
-              <div>
-                  <label for='taxaDiariaGlobalCTI'>Diária Global CTI</label>
-                  <input [(ngModel)]='taxaDiariaGlobalCTI' type='text' id='taxaDiariaGlobalCTI' name='taxaDiariaGlobalCTI' placeholder="R$ 0000,00" #nameVerify="ngModel" required>
+                  <p class="sub-total">Sub Total <span>R$ {{objCustos.surgery_cost}},00</span></p>
+                  <p class="adicional">Adicional de Alta Complexidade <span>{{aditional}}%</span></p>
 
-                  <label for='HrClinico'>Horário Clínico</label>
-                  <input [(ngModel)]='HrClinico' type='text' id='HrClinico' name='HrClinico' placeholder="R$ 0000,00" #nameVerify="ngModel" required>
+                  <mat-slider thumbLabel
+                  [displayWith]="formatLabel"  min="0" max="30" step="1" value="{{porcentagem}}"></mat-slider>
+                  <div class="line-porcentagem">
+                      <span>0%</span>
+                      <span>30%</span>
+                    </div>
 
-              </div>
+                  <p class="total" style="margin-top: 20px;">Total <span>R$ {{objCustos.total_cost}},00</span></p>
+
+                  
+                </div>
+                <div class="last-line-input">
+                  <div>
+                      <label for='trueDuration'>Duração oficial da cirurgia</label>
+                      <input [(ngModel)]='surgery.true_duration' type='text' id='trueDuration' name='trueDuration' placeholder="2 horas e 30 minutos" #nameVerify="ngModel" >  
+                  </div>
+                  <div>
+                      <label for='note'>Observações</label>
+                      <input [(ngModel)]='surgery.note' type='text' id='note' name='note' placeholder="Observações" #nameVerify="ngModel">
+
+                  </div>
+                </div>
             </form>
             
           </div>
