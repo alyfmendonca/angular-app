@@ -1,5 +1,8 @@
 <div class="content-background">
+    <mat-tab-group class="main-box">
+        <mat-tab label="First"> 
     <div class="content-conteudo page-profile">
+      
       <div class="conteudo">
         <div>
           <div class="cont-header">
@@ -50,7 +53,7 @@
   
                 <div class="dir">
                     <label for='dt'>Data</label>
-                    <input [(ngModel)]='dt' type='text' id='dt' name='dt' placeholder="2 horas e 30 min" #nameVerify="ngModel" required>
+                    <input [(ngModel)]='surgery.patient.birth_date' type='date' id='dt' name='dt' placeholder="2 horas e 30 min" #nameVerify="ngModel" required>
   
                     <label>Comorbidades</label>
                   <div class="list-scroll-esq listForm2">
@@ -101,29 +104,89 @@
           </div>
 
           <div class="custos-line">
-            <div class="hospital-box">
+            <div class="hospital-box" *ngFor="let custos of surgery.costs_options">
               <div class="first-line">
-                <h3>Hospital 1</h3>
-                <p>R$ 0000,00</p>
+                <h3>{{custos.name}}</h3>
+                <p>R$ {{custos.surgery_cost}}</p>
               </div>
               <div class="second-line">
-                <button class="dark-button">ESCOLHER</button>
-                <img class="image-details" src="../../assets/detalhe.png" />
+                <button (click)="onClickNext(custos)" class="dark-button">Ver Mais</button>
               </div>
             </div>
-
-            <div class="hospital-box">
-                <div class="first-line">
-                  <h3>Hospital 1</h3>
-                  <p>R$ 0000,00</p>
-                </div>
-                <div class="second-line">
-                  <button class="dark-button">ESCOLHER</button>
-                  <img class="image-details" src="../../assets/detalhe.png" />
-                </div>
-              </div>
           </div>
         </div>
 
     </div>
+  </mat-tab> 
+  <mat-tab label="Second">
+      <div class="content-conteudo page-profile">
+          <div class="conteudo">
+            <div>
+              <div class="cont-header bottom"> 
+                  <a (click)="onClickBack();" class="return">
+                    <img class="image-voltar" src="../../assets/voltar.png" />
+                    <h3 class="dark">Custos</h3>
+                  </a>
+                <img class="image-voltar" src="../../assets/download.png" />
+              </div>
+              <div>
+                
+                <form #form="ngForm">
+                  <div class="main-line bottom">
+                    <div>
+                        <label for='txtNomeGroup'>Nome do Grupo</label>
+                        <input [(ngModel)]='objCustos.name' type='text' id='txtNomeGroup' name='txtNomeGroup' placeholder="Lorem Ipsum" #nameVerify="ngModel" required>
+                        
+                        <label for='taxaCirurgia'>Taxa Cirurgia</label>
+                        <input [(ngModel)]='objCustos.surgery_tax' type='text' id='taxaCirurgia' name='taxaCirurgia' placeholder="R$ 0000,00" #nameVerify="ngModel" required>
+      
+                        <label for='taxaAdicional'>Taxa Adicional</label>
+                        <input [(ngModel)]='objCustos.additional_tax' type='text' id='taxaAdicional' name='taxaAdicional' placeholder="R$ 0000,00" #nameVerify="ngModel" required>
+          
+                        <label for='taxaAnestesia'>Taxa de Anestesia</label>
+                        <input [(ngModel)]='objCustos.anesthesia_tax' type='text' id='taxaAnestesia' name='taxaAnestesia' placeholder="R$ 0000,00" #nameVerify="ngModel" required>
+          
+                        <label for='taxaMaterial'>Taxa de Material em Centro Cirúrgico</label>
+                        <input [(ngModel)]='objCustos.material_tax' type='text' id='taxaMaterial' name='taxaMaterial' placeholder="R$ 0000,00" #nameVerify="ngModel" required>
+                    </div>
+                    <div>
+                        <label for='taxaDiariaGlobal'>Diária Global Day Clinic</label>
+                        <input [(ngModel)]='objCustos.Day_Clinic' type='text' id='taxaDiariaGlobal' name='taxaDiariaGlobal' placeholder="R$ 0000,00" #nameVerify="ngModel" required>
+      
+                        <label for='taxaDiariaGlobalQ'>Diária Global Quarto</label>
+                        <input [(ngModel)]='objCustos.Andar' type='text' id='taxaDiariaGlobalQ' name='taxaDiariaGlobalQ' placeholder="R$ 0000,00" #nameVerify="ngModel" required>
+      
+                        <label for='taxaDiariaGlobalS'>Diária Global Semiintensiva</label>
+                        <input [(ngModel)]='objCustos.Semi_intensiva' type='text' id='taxaDiariaGlobalS' name='taxaDiariaGlobalS' placeholder="R$ 0000,00" #nameVerify="ngModel" required>
+      
+                        <label for='taxaDiariaGlobalCTI'>Diária Global CTI</label>
+                        <input [(ngModel)]='objCustos.CTI' type='text' id='taxaDiariaGlobalCTI' name='taxaDiariaGlobalCTI' placeholder="R$ 0000,00" #nameVerify="ngModel" required>
+      
+                        <label for='HrClinico'>Horário Clínico</label>
+                        <input [(ngModel)]='objCustos.clinical_schedule' type='text' id='HrClinico' name='HrClinico' placeholder="R$ 0000,00" #nameVerify="ngModel" required>
+      
+                    </div>
+                    
+                  </div>
+                  <div class="line-valores">
+                    <p class="sub-total">Sub Total <span>R$ {{objCustos.surgery_cost}},00</span></p>
+                    <p class="adicional">Adicional de Alta Complexidade <span>{{aditional}}%</span></p>
+                    <p class="total">Total <span>R$ 0000,00</span></p>
+                  </div>
+                  <div>
+                      <button (click)="onClickNext(custos)" class="dark-button">Escolher</button>
+                  </div>
+                </form>
+                
+              </div>
+              
+              
+            </div>
+      
+          </div>
+        
+        </div>
+  </mat-tab>
+</mat-tab-group>
+        
   </div>

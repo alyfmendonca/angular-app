@@ -176,7 +176,10 @@ export class NewHospitalComponent implements OnInit {
   }
 
   concluirSolicitacao(){
-    this.processaGrupo();
+    if(this.tussTableAfter.length != 0){
+      this.processaGrupo();
+    }
+    
     if(this.tussTableAfter.length == 0){
       this.hospitalService.createHospital(this.newHospital).subscribe(response =>{
         console.log(response);

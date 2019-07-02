@@ -25,6 +25,7 @@ import { CostGroupComponent } from './cost-group/cost-group.component';
 import { SurgeonDetailsAcceptComponent } from './surgeon-details-accept/surgeon-details-accept.component';
 import { CostPackageComponent } from './cost-package/cost-package.component';
 import { AdminProfileComponent } from './admin-profile/admin-profile.component';
+import { SolicitacaoCustoComponent } from './solicitacao-custo/solicitacao-custo.component';
 
 
 @NgModule({
@@ -47,7 +48,8 @@ import { AdminProfileComponent } from './admin-profile/admin-profile.component';
     CostGroupComponent,
     SurgeonDetailsAcceptComponent,
     CostPackageComponent,
-    AdminProfileComponent
+    AdminProfileComponent,
+    SolicitacaoCustoComponent
   ],
   imports: [
     CommonModule,

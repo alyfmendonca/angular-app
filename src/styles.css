@@ -91,3 +91,6 @@ form label{
 .mat-list-base .mat-list-item .mat-list-item-content, .mat-list-base .mat-list-option .mat-list-item-content{
     color: #615959 !important;
 }
+app-solicitacoes-details .mat-tab-group{
+    width: 80%;
+}

@@ -14,8 +14,38 @@ export class SurgeryDetailsComponent implements OnInit {
     public route: ActivatedRoute,
     public surgeryService: SurgeryService,) { }
   
+  complexidade: string;
   id: string;
-  surgery: Surgery;
+  surgery: Surgery = {
+    id:null,
+      status: '',
+      complicated: null,
+      duration: '',
+      true_duration: '',
+      percentage: '',
+      discount: null,
+      note: '',
+      surgeon: [{
+          name:'',
+          crm:null,
+      }],
+      patient: [{
+          name: '',
+          cpf: null,
+          birth_date: '',
+      }],
+      main_tuss: [{
+          id: null,
+          str: '',
+      }],
+      hospital: null,
+      comorbidities: null,
+      secondary_tuss: [{
+          id: null,
+          str: '',
+      }],
+      accommodations: null,
+  };
   
   ngOnInit() {
     

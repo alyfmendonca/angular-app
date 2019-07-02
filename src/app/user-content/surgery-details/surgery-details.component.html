@@ -36,8 +36,14 @@
                 
                 <label>Essa cirurgia é de alta complexidade?</label>
                 <div class="list-scroll-esq listForm2">
-                  <mat-selection-list>
+                  <mat-selection-list [(ngModel)]="complexidade" >
                     <mat-list-option selected *ngIf="surgery.complicated">
+                      Sim
+                    </mat-list-option>
+                    <mat-list-option  *ngIf="surgery.complicated">
+                      Não
+                    </mat-list-option>
+                    <mat-list-option  *ngIf="!surgery.complicated">
                       Sim
                     </mat-list-option>
                     <mat-list-option selected *ngIf="!surgery.complicated">
@@ -50,7 +56,7 @@
 
               <div class="dir">
                   <label for='dt'>Data</label>
-                  <input [(ngModel)]='dt' type='text' id='dt' name='dt' placeholder="2 horas e 30 min" #nameVerify="ngModel" required>
+                  <input [(ngModel)]='surgery.patient.birth_date' type='date' id='dt' name='dt' placeholder="2 horas e 30 min" #nameVerify="ngModel" required>
 
                   <label>Comorbidades</label>
                   <div class="list-scroll-esq listForm2">
