@@ -53,6 +53,7 @@ export class SolicitacoesDetailsComponent implements OnInit {
       }],
       accommodations: null,
     };
+    valorTotal: any;
     aditional: number;
     objCustos: any = {
       id: null,
@@ -91,6 +92,11 @@ export class SolicitacoesDetailsComponent implements OnInit {
         this.texto = 'Desconto';
         this.desconto = true;
       }
+      if(this.desconto){
+        this.valorTotal = this.objCustos.surgery_cost - (this.objCustos.surgery_cost * this.surgeryAprove.percentage / 100);
+      }else{
+        this.valorTotal = this.objCustos.surgery_cost + (this.objCustos.surgery_cost * this.surgeryAprove.percentage / 100);
+      }
       console.log(this.desconto);
     }
     ngOnInit() {
@@ -107,6 +113,7 @@ export class SolicitacoesDetailsComponent implements OnInit {
     }
     onClickNext(custos: any){
       this.objCustos = custos;
+      this.valorTotal = custos.surgery_cost;
       let i = 0
       let continua = true;
       while(continua){
@@ -150,6 +157,7 @@ export class SolicitacoesDetailsComponent implements OnInit {
       console.log(this.surgeryAprove);
       this.surgeryService.approveSurgery(this.surgeryAprove).subscribe(response => {
         console.log(response);
+        this.router.navigate(['/admin/main/solicitacoes']);
 
       }, err => {
         console.log(err);
@@ -161,6 +169,11 @@ export class SolicitacoesDetailsComponent implements OnInit {
     onChangeBar(event: any){
       console.log(event.value);
       this.surgeryAprove.percentage = event.value;
+      if(this.desconto){
+        this.valorTotal = this.objCustos.surgery_cost - (this.objCustos.surgery_cost * event.value / 100);
+      }else{
+        this.valorTotal = this.objCustos.surgery_cost + (this.objCustos.surgery_cost * event.value / 100);
+      }
     }
 
 }
