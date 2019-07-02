@@ -27,4 +27,6 @@ type Surgery = {
         str: string,
     }];
     accommodations: any[];
+    cost?: any[];
+    
 }

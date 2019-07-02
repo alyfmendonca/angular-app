@@ -54,14 +54,41 @@ export class ApprovedDetailsComponent implements OnInit {
           str: '',
       }],
       accommodations: null,
+      cost: null,
   };
-
+  objCustos: any = {
+    id: null,
+    name: '',
+    surgery_tax: null,
+    additional_tax: null,
+    anesthesia_tax: null,
+    material_tax: null,
+    clinical_schedule: null,
+    surgery_cost: null,
+    Semi_intensiva: null,
+    CTI: null,
+    Andar: null,
+    Day_Clinic: null,
+    hospital: '',
+    total_cost: null,
+  };
+  aditional: any;
+  porcentagem: any;
   ngOnInit() {
     this.id = this.route.snapshot.params.id;
     this.surgeryService.getSurgery(this.id).subscribe(response => {
       console.log(response);
       this.surgery = response;
+      this.objCustos = response.cost;
+      console.log(this.objCustos);
+      if(this.surgery.complicated){
+        this.aditional = 20;
+      }else{
+        this.aditional = 0;
+      }
+      this.porcentagem = response.percentage;
     })
+    
   }
 
   listComorbidadesMock: any[] = [
