@@ -39,7 +39,7 @@
                       <div class="list-scroll-esq">
                         <cdk-virtual-scroll-viewport class="virtualScroll" itemSize="8">
                           <mat-selection-list name="listTuss" #listaTuss [(ngModel)]="selectedTuss"> 
-                            <mat-list-option [value]="procedimento.id" 
+                            <mat-list-option [value]="procedimento" 
                               *ngFor="let procedimento of tussTable">
                               {{procedimento.id}} - {{procedimento.str}}
                             </mat-list-option>
@@ -106,7 +106,7 @@
                               <cdk-virtual-scroll-viewport class="virtualScroll" itemSize="8">
                                 <mat-selection-list name="listTuss">
                                   <mat-list-option [value]="procedimento.id" 
-                                    *ngFor="let procedimento of tussTable">
+                                    *ngFor="let procedimento of selectedTuss">
                                     {{procedimento.str}}
                                   </mat-list-option>
                                 </mat-selection-list>

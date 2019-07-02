@@ -30,7 +30,7 @@ export class NewHospitalComponent implements OnInit {
     created_by: null
   };
 
-
+  numberTuss: number [];
 
   pacienteNome: String;
   txtCPF: String;
@@ -185,6 +185,10 @@ export class NewHospitalComponent implements OnInit {
       }
     }
     console.log(this.newHospital);
+    console.log(this.selectedTuss);
+    this.selectedTuss.forEach(element => {
+      this.numberTuss.push(element);
+    });
 
     
   }
