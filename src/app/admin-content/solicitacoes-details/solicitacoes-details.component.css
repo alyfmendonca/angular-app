@@ -281,3 +281,15 @@ label{
 .content-conteudo{
     width: auto;
 }
+.line-porcentagem{
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 25px;
+    color: #ccc;
+    margin-top: -13px;
+}
+.dark-button.last{
+    margin-top: 20px;
+    float: right;
+}

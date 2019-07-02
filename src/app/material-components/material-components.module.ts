@@ -17,6 +17,7 @@ import { MatRadioModule } from '@angular/material/radio';
 import { MatNativeDateModule } from '@angular/material';
 import {MatSliderModule} from '@angular/material/slider';
 import { ScrollingModule } from '@angular/cdk/scrolling';
+import {MatSlideToggleModule} from '@angular/material/slide-toggle';
 
 
 
@@ -44,6 +45,7 @@ import { ScrollingModule } from '@angular/cdk/scrolling';
     MatNativeDateModule,
     MatSliderModule,
     ScrollingModule,
+    MatSlideToggleModule,
   ],
   exports: [
     MatCheckboxModule,
@@ -62,6 +64,7 @@ import { ScrollingModule } from '@angular/cdk/scrolling';
     MatRadioModule,
     MatNativeDateModule,
     MatSliderModule,
+    MatSlideToggleModule,
   ]
 })
 export class MaterialComponentsModule { }

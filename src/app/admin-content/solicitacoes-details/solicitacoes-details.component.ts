@@ -14,8 +14,15 @@ export class SolicitacoesDetailsComponent implements OnInit {
     public route: ActivatedRoute,
     public surgeryService: SurgeryService,
     ) { }
-
+    checked = true;
+    texto = 'Acréscimo';
     id: string;
+    surgeryAprove: SurgeryApprove = {
+      id:null,
+      percentage: 0,
+      discount: null,
+      hospital: null
+    }
     surgery: Surgery = {
       id:null,
       status: '',
@@ -62,7 +69,30 @@ export class SolicitacoesDetailsComponent implements OnInit {
       Day_Clinic: null,
       hospital: ''
     };
-  
+
+    valorPorcent: number;
+    valorPorcentOut: number;
+    formatLabel(value: number | null) {
+
+      this.valorPorcent = value;
+      if(this.valorPorcentOut != this.valorPorcent){
+        this.valorPorcentOut = this.valorPorcent;
+      }
+      return value;
+    }
+
+    desconto: boolean;
+    onChange(evento: any){
+      if(evento.checked){
+        this.texto = 'Acréscimo';
+        this.desconto = false;
+        
+      }else{
+        this.texto = 'Desconto';
+        this.desconto = true;
+      }
+      console.log(this.desconto);
+    }
     ngOnInit() {
       this.id = this.route.snapshot.params.id;
       this.surgeryService.getSurgery(this.id).subscribe((response) => {
@@ -102,6 +132,30 @@ export class SolicitacoesDetailsComponent implements OnInit {
           i++
         }
       }
+    }
+    
+
+    
+    aprovarSolicitacao(){
+      console.log(this.valorPorcent);
+      this.surgeryAprove.id = this.surgery.id;
+      this.surgeryAprove.percentage = 10;
+      if(this.desconto){
+        this.surgeryAprove.discount = true;
+      }else{
+        this.surgeryAprove.discount = false;
+      }
+      this.surgeryAprove.hospital = this.objCustos.id;
+      
+      console.log(this.surgeryAprove);
+      this.surgeryService.approveSurgery(this.surgeryAprove).subscribe(response => {
+        console.log(response);
+
+      }, err => {
+        console.log(err);
+      })
+      
+
     }
 
 }

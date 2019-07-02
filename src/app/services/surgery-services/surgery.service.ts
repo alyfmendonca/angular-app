@@ -61,4 +61,14 @@ export class SurgeryService {
       return this.http.post<any>(`${API_URL}performSurgery/`, surgeryPerform, {headers});
     }
 
+    approveSurgery(surgeryAprove: SurgeryApprove){
+      let token = localStorage.getItem('token');
+      let headers = new HttpHeaders({
+        'Authorization': `token ${token}`,
+        'Content-Type': 'application/json'
+      });
+
+      return this.http.post<any>(`${API_URL}approveSurgery/`, surgeryAprove, {headers});
+    }
+
 }

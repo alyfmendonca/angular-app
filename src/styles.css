@@ -94,3 +94,27 @@ form label{
 app-solicitacoes-details .mat-tab-group{
     width: 80%;
 }
+mat-slider{
+    width: 100%;
+}
+.mat-slider-track-background{
+    background: #b6b5b5;
+}
+.mat-slider-track-fill{
+    background: rgba(63, 192, 194, 1);
+}
+.mat-slider-thumb{
+    background: #ccc;
+}
+.mat-slider-thumb-label-text{
+    opacity: 1;
+}
+.mat-slide-toggle-thumb{
+    background: rgba(63, 192, 194, 1);
+}
+.mat-slide-toggle-bar{
+    background: #ccc;
+}
+.mat-slide-toggle-input{
+    display: none;
+}
