@@ -50,6 +50,7 @@ label{
 .list-scroll-esq{
     height: 300px;
     width: 100%;
+    line-height: 15px;
 }
 .virtualScroll{
     height: 100%;

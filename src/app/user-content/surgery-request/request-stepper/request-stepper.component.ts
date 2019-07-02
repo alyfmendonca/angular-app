@@ -4,6 +4,7 @@ import { OtherService } from 'src/app/services/other-services/other.service';
 import { CdkVirtualScrollViewport } from '@angular/cdk/scrolling';
 import { Router, ActivatedRoute } from '@angular/router';
 import { SurgeryService } from 'src/app/services/surgery-services/surgery.service';
+import { SurgeonService } from 'src/app/services/surgeon-services/surgeon.service';
 
 @Component({
   selector: 'app-request-stepper',
@@ -44,11 +45,12 @@ export class RequestStepperComponent implements OnInit {
   constructor(private otherServices: OtherService,
               private router: Router,
               private surgeryServices: SurgeryService,
-              private route:ActivatedRoute) {}
+              private route:ActivatedRoute,
+              private surgeonService: SurgeonService) {}
 
   ngOnInit() {
 
-    this.listProcedimentos = this.route.snapshot.data.allTuss;
+    this.surgeonService.getSurgeon().subscribe(res => this.listProcedimentos = res.tuss);
 
     this.otherServices.getAllComorbidities().subscribe(
       comorbidities => this.listComorbidades = comorbidities
