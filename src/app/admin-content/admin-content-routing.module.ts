@@ -19,7 +19,7 @@ import { SurgeonDetailsAcceptComponent } from './surgeon-details-accept/surgeon-
 import { AdminProfileComponent } from './admin-profile/admin-profile.component';
 
 const routes: Routes = [
-  { path: '', redirectTo: 'main/profile', pathMatch: 'full' },
+  { path: '', redirectTo: 'main/solicitacoes', pathMatch: 'full' },
   { path:'main', component: MainContentComponent, children: [
     { path: 'profile', component: AdminProfileComponent },
     { path:'allHospitals', component: AllHospitalsComponent },

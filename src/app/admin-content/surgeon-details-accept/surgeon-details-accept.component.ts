@@ -46,6 +46,7 @@ export class SurgeonDetailsAcceptComponent implements OnInit {
     let now = new Date();
     this.authService.approveSignIn(Md5.hashStr(formatDate(now, 'dd-MM-yyyy hh:mm:ss.S a', 'en-US', '+0530')), this.id).subscribe(res => 
       alert(`Cirurgião ${this.surgeonChoosed.name} aprovado`), err => console.log(err));
+      this.router.navigate(['/admin/main/solicitacoes']);
   }
 
 }

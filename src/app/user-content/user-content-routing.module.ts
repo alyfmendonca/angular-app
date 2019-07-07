@@ -13,7 +13,7 @@ import { OtherAllTussResolve } from '../services/other-services/other-service.re
 import { UserProfileComponent } from './user-profile/user-profile.component';
 
 const routes: Routes = [
-  { path: '', redirectTo: 'main/profile', pathMatch: 'full' },
+  { path: '', redirectTo: 'main/aprovadas-solicitadas', pathMatch: 'full' },
   { path: 'main', component: MainContentComponent, children: [
     { path: 'profile', component: UserProfileComponent },
     { path:'request-orientation', component:RequestOrientationComponent },

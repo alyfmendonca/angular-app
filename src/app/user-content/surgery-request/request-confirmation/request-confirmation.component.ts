@@ -14,7 +14,7 @@ export class RequestConfirmationComponent implements OnInit {
   }
 
   home(){
-    this.router.navigate(['/user/main/']); 
+    this.router.navigate(['user/main/aprovadas-solicitadas']); 
   }
 
 }
