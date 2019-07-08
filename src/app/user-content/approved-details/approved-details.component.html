@@ -15,24 +15,24 @@
               <div class="esq">
                 <h3 class="light-dark">Paciente</h3>
                 <label for='pacienteNome'>Nome</label>
-                <input [(ngModel)]='surgery.patient.name' type='text' id='pacienteNome' name='pacienteNome' placeholder="Alberto Pacheco" #nameVerify="ngModel" required>
+                <input [(ngModel)]='surgery.patient.name' disabled  type='text' id='pacienteNome' name='pacienteNome' placeholder="Alberto Pacheco" #nameVerify="ngModel" required>
                 
                 <label for='pacienteCpf'>CPF</label>
-                <input [(ngModel)]='surgery.patient.cpf' type='text' id='txtCPF' name='txtCPF' placeholder="2342423" #nameVerify="ngModel" required>
+                <input [(ngModel)]='surgery.patient.cpf' disabled type='text' id='txtCPF' name='txtCPF' placeholder="2342423" #nameVerify="ngModel" required>
                 
                 <h3 class="light-dark">Cirurgião</h3>
                 <label for='txtNome'>Nome</label>
-                <input [(ngModel)]='surgery.surgeon.name' type='text' id='txtNome' name='txtNome' placeholder="Alberto Pacheco" #nameVerify="ngModel" required>
+                <input [(ngModel)]='surgery.surgeon.name' disabled type='text' id='txtNome' name='txtNome' placeholder="Alberto Pacheco" #nameVerify="ngModel" required>
       
                 <label for='txtCrm'>Crm</label>
-                <input [(ngModel)]='surgery.surgeon.crm' type='text' id='txtCrm' name='txtCrm' placeholder="2342423" #nameVerify="ngModel" required>
+                <input [(ngModel)]='surgery.surgeon.crm' disabled type='text' id='txtCrm' name='txtCrm' placeholder="2342423" #nameVerify="ngModel" required>
 
                 <label for='txtUf'>Uf</label>
-                <input [(ngModel)]='txtUf' type='text' id='txtUf' name='txtUf' placeholder="UF" #nameVerify="ngModel" required>
+                <input [(ngModel)]='txtUf' type='text' disabled id='txtUf' name='txtUf' placeholder="UF" #nameVerify="ngModel" required>
                 
                 <h3 class="light-dark">Complexidade</h3>
                 <label for='durCirurgia'>Duração da cirugia</label>
-                <input [(ngModel)]='surgery.duration' type='text' id='durCirurgia' name='durCirurgia' placeholder="2 horas e 30 min" #nameVerify="ngModel" required>
+                <input [(ngModel)]='surgery.duration'  disabled type='text' id='durCirurgia' name='durCirurgia' placeholder="2 horas e 30 min" #nameVerify="ngModel" required>
                 
                 <label>Essa cirurgia é de alta complexidade?</label>
                 <div class="list-scroll-esq listForm2">
@@ -50,7 +50,7 @@
 
               <div class="dir">
                   <label for='dt'>Data</label>
-                  <input [(ngModel)]='surgery.patient.birth_date' type='date' id='dt' name='dt' placeholder="2 horas e 30 min" #nameVerify="ngModel" required>
+                  <input [(ngModel)]='surgery.patient.birth_date' disabled type='date' id='dt' name='dt' placeholder="2 horas e 30 min" #nameVerify="ngModel" required>
 
                   <label>Comorbidades</label>
                   <div class="list-scroll-esq listForm2">
@@ -112,35 +112,35 @@
               <div class="main-line bottom">
                 <div>
                     <label for='txtNomeGroup'>Nome do Grupo</label>
-                    <input [(ngModel)]='txtNomeGroup' type='text' id='txtNomeGroup' name='txtNomeGroup' placeholder="Lorem Ipsum" #nameVerify="ngModel" required>
+                    <input [(ngModel)]='txtNomeGroup' disabled type='text' id='txtNomeGroup' name='txtNomeGroup' placeholder="Lorem Ipsum" #nameVerify="ngModel" required>
                     
                     <label for='taxaCirurgia'>Taxa Cirurgia</label>
-                    <input [(ngModel)]='taxaCirurgia' type='text' id='taxaCirurgia' name='taxaCirurgia' placeholder="R$ 0000,00" #nameVerify="ngModel" required>
+                    <input [(ngModel)]='taxaCirurgia' disabled type='text' id='taxaCirurgia' name='taxaCirurgia' placeholder="R$ 0000,00" #nameVerify="ngModel" required>
   
                     <label for='taxaAdicional'>Taxa Adicional</label>
-                    <input [(ngModel)]='taxaAdicional' type='text' id='taxaAdicional' name='taxaAdicional' placeholder="R$ 0000,00" #nameVerify="ngModel" required>
+                    <input [(ngModel)]='taxaAdicional' disabled type='text' id='taxaAdicional' name='taxaAdicional' placeholder="R$ 0000,00" #nameVerify="ngModel" required>
       
                     <label for='taxaAnestesia'>Taxa de Anestesia</label>
-                    <input [(ngModel)]='taxaAnestesia' type='text' id='taxaAnestesia' name='taxaAnestesia' placeholder="R$ 0000,00" #nameVerify="ngModel" required>
+                    <input [(ngModel)]='taxaAnestesia' disabled type='text' id='taxaAnestesia' name='taxaAnestesia' placeholder="R$ 0000,00" #nameVerify="ngModel" required>
       
                     <label for='taxaMaterial'>Taxa de Material em Centro Cirúrgico</label>
-                    <input [(ngModel)]='taxaMaterial' type='text' id='taxaMaterial' name='taxaMaterial' placeholder="R$ 0000,00" #nameVerify="ngModel" required>
+                    <input [(ngModel)]='taxaMaterial' disabled type='text' id='taxaMaterial' name='taxaMaterial' placeholder="R$ 0000,00" #nameVerify="ngModel" required>
                 </div>
                 <div>
                     <label for='taxaDiariaGlobal'>Diária Global Day Clinic</label>
-                    <input [(ngModel)]='taxaDiariaGlobal' type='text' id='taxaDiariaGlobal' name='taxaDiariaGlobal' placeholder="R$ 0000,00" #nameVerify="ngModel" required>
+                    <input [(ngModel)]='taxaDiariaGlobal' disabled type='text' id='taxaDiariaGlobal' name='taxaDiariaGlobal' placeholder="R$ 0000,00" #nameVerify="ngModel" required>
   
                     <label for='taxaDiariaGlobalQ'>Diária Global Quarto</label>
-                    <input [(ngModel)]='taxaDiariaGlobalQ' type='text' id='taxaDiariaGlobalQ' name='taxaDiariaGlobalQ' placeholder="R$ 0000,00" #nameVerify="ngModel" required>
+                    <input [(ngModel)]='taxaDiariaGlobalQ' disabled type='text' id='taxaDiariaGlobalQ' name='taxaDiariaGlobalQ' placeholder="R$ 0000,00" #nameVerify="ngModel" required>
   
                     <label for='taxaDiariaGlobalS'>Diária Global Semiintensiva</label>
-                    <input [(ngModel)]='taxaDiariaGlobalS' type='text' id='taxaDiariaGlobalS' name='taxaDiariaGlobalS' placeholder="R$ 0000,00" #nameVerify="ngModel" required>
+                    <input [(ngModel)]='taxaDiariaGlobalS' disabled type='text' id='taxaDiariaGlobalS' name='taxaDiariaGlobalS' placeholder="R$ 0000,00" #nameVerify="ngModel" required>
   
                     <label for='taxaDiariaGlobalCTI'>Diária Global CTI</label>
-                    <input [(ngModel)]='taxaDiariaGlobalCTI' type='text' id='taxaDiariaGlobalCTI' name='taxaDiariaGlobalCTI' placeholder="R$ 0000,00" #nameVerify="ngModel" required>
+                    <input [(ngModel)]='taxaDiariaGlobalCTI' disabled type='text' id='taxaDiariaGlobalCTI' name='taxaDiariaGlobalCTI' placeholder="R$ 0000,00" #nameVerify="ngModel" required>
   
                     <label for='HrClinico'>Horário Clínico</label>
-                    <input [(ngModel)]='HrClinico' type='text' id='HrClinico' name='HrClinico' placeholder="R$ 0000,00" #nameVerify="ngModel" required>
+                    <input [(ngModel)]='HrClinico' disabled type='text' id='HrClinico' name='HrClinico' placeholder="R$ 0000,00" #nameVerify="ngModel" required>
   
                 </div>
                 
@@ -152,10 +152,10 @@
               </div>
               <div>
                   <label for='taxaDiariaGlobalCTI'>Diária Global CTI</label>
-                  <input [(ngModel)]='taxaDiariaGlobalCTI' type='text' id='taxaDiariaGlobalCTI' name='taxaDiariaGlobalCTI' placeholder="R$ 0000,00" #nameVerify="ngModel" required>
+                  <input [(ngModel)]='taxaDiariaGlobalCTI' disabled type='text' id='taxaDiariaGlobalCTI' name='taxaDiariaGlobalCTI' placeholder="R$ 0000,00" #nameVerify="ngModel" required>
 
                   <label for='HrClinico'>Horário Clínico</label>
-                  <input [(ngModel)]='HrClinico' type='text' id='HrClinico' name='HrClinico' placeholder="R$ 0000,00" #nameVerify="ngModel" required>
+                  <input [(ngModel)]='HrClinico' disabled type='text' id='HrClinico' name='HrClinico' placeholder="R$ 0000,00" #nameVerify="ngModel" required>
 
               </div>
             </form>

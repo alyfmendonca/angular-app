@@ -118,3 +118,7 @@ mat-slider{
 .mat-slide-toggle-input{
     display: none;
 }
+
+app-request-stepper .mat-pseudo-checkbox::after{
+    content: none;
+}
