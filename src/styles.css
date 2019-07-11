@@ -122,3 +122,6 @@ mat-slider{
 app-request-stepper .mat-pseudo-checkbox::after{
     content: none;
 }
+mat-list-option{
+    margin: 5px 0;
+}

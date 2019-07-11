@@ -49,3 +49,11 @@ table tr:hover td{
     cursor: pointer;
     color: rgba(63, 192, 194, 1);
 } 
+
+.heigth-table{
+    height: 600px;
+    overflow: auto;
+}
+.heigth-table th{
+    background: #fff;
+}
