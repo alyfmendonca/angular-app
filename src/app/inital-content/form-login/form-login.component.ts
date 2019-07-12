@@ -24,24 +24,26 @@ export class FormLoginComponent implements OnInit {
   txtPass:string;
 
 
-
+  remember: boolean;
   submitForm(){
     console.log(this.txtLogin, Md5.hashStr(this.txtPass));
 
     this.authService.login(this.txtLogin, Md5.hashStr(this.txtPass)).subscribe(response => {
       console.log(response);
       localStorage.setItem('token', response.token);
+      console.log(this.remember);
       //localStorage.setItem('userId', user._id);
       if(response.type == 'admin'){
-        this.router.navigate(['/admin']);
+        //-------this.router.navigate(['/admin']);
       }else if(response.type == 'surgeon'){
-        this.router.navigate(['/user']);
+        //-------this.router.navigate(['/user']);
       }else{
         alert('Este tipo de usuário não é válido');
       }
       
     }, err =>{
       alert('Login ou senha incorretos');
+      console.log(this.remember);
 
     });
     
