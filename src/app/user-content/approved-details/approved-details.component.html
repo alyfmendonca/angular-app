@@ -36,7 +36,7 @@
                 
                 <label>Essa cirurgia é de alta complexidade?</label>
                 <div class="list-scroll-esq listForm2">
-                  <mat-selection-list>
+                  <mat-selection-list disabled>
                     <mat-list-option selected *ngIf="surgery.complicated">
                       Sim
                     </mat-list-option>
@@ -54,7 +54,7 @@
 
                   <label>Comorbidades</label>
                   <div class="list-scroll-esq listForm2">
-                    <mat-selection-list>
+                    <mat-selection-list disabled>
                       <mat-list-option selected *ngFor="let comorbidades of surgery.comorbidities">
                         {{comorbidades}}
                       </mat-list-option>
@@ -62,7 +62,7 @@
                   </div>
                   <label>Procedimento (TUSS)</label>
                   <div class="list-scroll-dir">
-                    <mat-selection-list>
+                    <mat-selection-list disabled>
                       <mat-list-option selected>
                         {{surgery.main_tuss.str}}
                       </mat-list-option>
@@ -75,7 +75,7 @@
 
                   <label>Paciente precisará de:</label>
                   <div class="list-scroll-dir">
-                    <mat-selection-list>
+                    <mat-selection-list disabled>
                       <mat-list-option  selected *ngFor="let procedimento of surgery.accommodations">
                        {{procedimento}}
                       </mat-list-option>
