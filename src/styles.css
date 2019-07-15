@@ -125,3 +125,15 @@ app-request-stepper .mat-pseudo-checkbox::after{
 mat-list-option{
     margin: 5px 0;
 }
+.mat-radio-checked .mat-radio-label .mat-radio-outer-circle{
+    background: #3fc0c2 !important;
+}
+.mat-radio-input{
+    display: none !important;
+}
+.mat-radio-outer-circle{
+    bottom: 0;
+    top: 3px !important;
+    left: 50% !important;
+    border-radius: 2px !important;
+}

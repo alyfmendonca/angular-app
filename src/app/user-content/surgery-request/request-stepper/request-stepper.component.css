@@ -284,9 +284,6 @@ span{
     top: 0;
     transition: unset;
     width: 14px !important; 
-    border-width: unset !important;
-    border-style: unset !important;
-    border-radius: unset !important;
     border: 1px solid #3fc0c2 !important;
 }
 .checkBoxGroup{
