@@ -14,7 +14,7 @@ import { SolicitacoesDetailsComponent } from './solicitacoes-details/solicitacoe
 import { NewHospitalComponent } from './new-hospital/new-hospital.component';
 import { RealizadasDetailsComponent } from './realizadas-details/realizadas-details.component';
 import { ApprovedDetailsComponent } from './approved-details/approved-details.component';
-import { OtherAllTussResolve } from '../services/other-services/other-service.resolve';
+import { OtherAllTussResolve } from '../services/other-services/other-service.resolver';
 import { SurgeonDetailsAcceptComponent } from './surgeon-details-accept/surgeon-details-accept.component'
 import { AdminProfileComponent } from './admin-profile/admin-profile.component';
 

@@ -1,7 +1,8 @@
 import { Injectable } from '@angular/core';
 import { HttpClient,HttpHeaders } from '@angular/common/http';
 import { environment } from 'src/environments/environment';
-import { Observable } from 'rxjs';
+import { Observable, BehaviorSubject } from 'rxjs';
+import { mergeMap, map, switchMap } from 'rxjs/operators';
 
 const API_URL = environment.apiUrl;
 
@@ -10,14 +11,15 @@ const API_URL = environment.apiUrl;
 })
 export class OtherService {
 
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient) {
+   }
 
   getAllTuss(): Observable<Tuss[]>{
     
     return this.http.get<Tuss[]>(`${API_URL}allTuss/`);
 
-
   }
+
   getTuss(id: string){
     let token = localStorage.getItem('token');
     let headers = new HttpHeaders({
@@ -44,8 +46,8 @@ export class OtherService {
       'Authorization': `token ${token}`,
       'Content-Type': 'application/json'
     });
-    
+
     return this.http.get<Comorbiditie[]>(`${API_URL}allComorbidities/`, {headers});
   }
-
+  
 }

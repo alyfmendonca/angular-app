@@ -3,7 +3,7 @@ import { Routes, RouterModule } from '@angular/router';
 import { FormLoginComponent } from './form-login/form-login.component';
 import { FormCadastroComponent } from './form-cadastro/form-cadastro.component';
 import { MainContentComponent } from './main-content/main-content.component';
-import { OtherAllTussResolve } from '../services/other-services/other-service.resolve';
+import { OtherAllTussResolve } from '../services/other-services/other-service.resolver';
 import { NewPasswordComponent } from './new-password/new-password.component';
 import { ForgotPasswordComponent } from './forgot-password/forgot-password.component';
 import { NewPassForgotComponent } from './new-pass-forgot/new-pass-forgot.component';

@@ -275,17 +275,6 @@ span{
     font-weight: 300;
     color: #b6b5b5;
 }
-
-::ng-deep .mat-radio-outer-circle {
-    box-sizing: border-box;
-    height: 14px !important;
-    left: 0;
-    position: absolute;
-    top: 0;
-    transition: unset;
-    width: 14px !important; 
-    border: 1px solid #3fc0c2 !important;
-}
 .checkBoxGroup{
     display: flex;
     flex-direction: column;

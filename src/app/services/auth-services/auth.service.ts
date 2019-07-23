@@ -1,6 +1,8 @@
 import { Injectable } from '@angular/core';
 import { HttpClient,HttpHeaders } from '@angular/common/http';
 import { environment } from 'src/environments/environment';
+import { OtherService } from '../other-services/other.service';
+import { map, tap } from 'rxjs/operators'
 
 const API_URL = environment.apiUrl;
 
@@ -11,11 +13,11 @@ const API_URL = environment.apiUrl;
 })
 export class AuthService {
 
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient,
+              private otherService:OtherService) { }
 
   //Criptografia??
   login(username: string, password: string | Int32Array){
-    
     return this.http.post<Credentials>(`${API_URL}auth/`, {username, password});
   }
 

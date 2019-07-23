@@ -28,29 +28,22 @@
                 <input [(ngModel)]='surgery.surgeon.crm' disabled type='text' id='txtCrm' name='txtCrm' placeholder="2342423" #nameVerify="ngModel" required>
 
                 <label for='txtUf'>Uf</label>
-                <input [(ngModel)]='txtUf' type='text' disabled  id='txtUf' name='txtUf' placeholder="UF" #nameVerify="ngModel" required>
+                <input [(ngModel)]='surgery.surgeon.uf' type='text' disabled  id='txtUf' name='txtUf' placeholder="UF" #nameVerify="ngModel" required>
                 
                 <h3 class="light-dark">Complexidade</h3>
                 <label for='durCirurgia'>Duração da cirugia</label>
-                <!-- <input [(ngModel)]='surgery.duration' type='text' id='durCirurgia' name='durCirurgia' placeholder="2 horas e 30 min" #nameVerify="ngModel" required> -->
+                
                 <ngx-timepicker-field id='txtDur' name='txtDur' [(ngModel)]='duracao' [format]="24" [defaultTime]="'00:00'" ></ngx-timepicker-field> 
                 <label>Essa cirurgia é de alta complexidade?</label>
+                
+                
+                <label>Essa cirurgia é de alta complexidade?</label>
                 <div class="list-scroll-esq listForm2">
-                  <mat-selection-list [(ngModel)]="complexidade" >
-                    <mat-list-option selected *ngIf="surgery.complicated">
-                      Sim
-                    </mat-list-option>
-                    <mat-list-option  *ngIf="surgery.complicated">
-                      Não
-                    </mat-list-option>
-                    <mat-list-option  *ngIf="!surgery.complicated">
-                      Sim
-                    </mat-list-option>
-                    <mat-list-option selected *ngIf="!surgery.complicated">
-                      Não
-                    </mat-list-option>
-                  </mat-selection-list>
-                </div>
+                  <mat-radio-group [(ngModel)]="complexidade" name="rdComplex"> 
+                    <mat-radio-button class="example-margin" value="true">Sim</mat-radio-button>
+                    <mat-radio-button class="example-margin" value="false">Não</mat-radio-button>
+                  </mat-radio-group>
+              </div>
 
               </div>
 
@@ -60,20 +53,18 @@
 
                   <label>Comorbidades</label>
                   <div class="list-scroll-esq listForm2">
-                    <mat-selection-list>
-                      <mat-list-option selected *ngFor="let comorbidades of surgery.comorbidities">
-                        {{comorbidades}}
+
+                    <mat-selection-list name="listComorbsSelected" [(ngModel)]="selectedComorbs" #listaComorbs>
+                      <mat-list-option [value]="comorbidade.id" name="cboSelectedComorbs" *ngFor="let comorbidade of listComorb">
+                        {{comorbidade.str}} 
                       </mat-list-option>
                     </mat-selection-list>
-                  </div>
-                  <label>Procedimento (TUSS)</label>
-                  <div class="list-scroll-dir">
-                    <mat-selection-list>
-                      <mat-list-option selected>
-                        {{surgery.main_tuss.str}}
-                      </mat-list-option>
 
-                      <mat-list-option selected *ngFor="let poced of surgery.secondary_tuss">
+                  </div>
+                  <label>Procedimento (TUSS)</label>  
+                  <div class="list-scroll-dir">
+                    <mat-selection-list name="listTussSelected" (click)='validaOnlyOne($event);' [(ngModel)]="selectedTuss">
+                      <mat-list-option [value]="poced.id" name="cboSelectedTuss" selected *ngFor="let poced of surgery.secondary_tuss">
                         {{poced.str}}
                       </mat-list-option>
                     </mat-selection-list>
@@ -81,23 +72,19 @@
 
                   <label>Paciente precisará de:</label>
                   <div class="list-scroll-dir">
-                    <mat-selection-list>
-                      <mat-list-option  selected *ngFor="let procedimento of surgery.accommodations">
-                       {{procedimento}}
-                      </mat-list-option>
+
+                    <mat-selection-list name="listAcomSelected" [(ngModel)]="selectedNeeds" #listaNeeds>
+                        <mat-list-option [value]="accomodations.id" name="cboSelectedAcom" *ngFor="let accomodations of listNeeds">
+                          {{accomodations.str}} 
+                        </mat-list-option>
                     </mat-selection-list>
+
                   </div>
               </div>
             </div>
-            <!-- <mat-form-field>
-                <input matInput [matDatepicker]="picker" placeholder="Choose a date">
-                <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
-                <mat-datepicker #picker></mat-datepicker>
-              </mat-form-field> -->
-              <!-- Botão CONCLUIR -->
 
             <div class="btn-line">
-              <button class="dark-button">SALVAR</button>
+              <button (click)='btnSalvar();' class="dark-button">SALVAR</button>
             </div>
             
           </form>

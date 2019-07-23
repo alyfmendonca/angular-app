@@ -9,8 +9,9 @@ import { RealizadasComponent } from './realizadas/realizadas.component';
 import { ApprovedDetailsComponent } from './approved-details/approved-details.component';
 import { RequestConfirmationComponent } from './surgery-request/request-confirmation/request-confirmation.component';
 import { RealizadaDetailsComponent } from './realizada-details/realizada-details.component';
-import { OtherAllTussResolve } from '../services/other-services/other-service.resolve';
+import { OtherAllTussResolve } from '../services/other-services/other-service.resolver';
 import { UserProfileComponent } from './user-profile/user-profile.component';
+import { SurgeryResolver } from '../services/surgery-services/surgery-service.resolver';
 
 const routes: Routes = [
   { path: '', redirectTo: 'main/aprovadas-solicitadas', pathMatch: 'full' },
@@ -20,7 +21,9 @@ const routes: Routes = [
     { path:'request-stepper', component: RequestStepperComponent},
     { path:'request-confirmation', component: RequestConfirmationComponent },
     { path:'aprovadas-solicitadas', component: AprovadasSolicitadasComponent },
-    { path:'surgery/:id', component: SurgeryDetailsComponent },
+    { path:'surgery/:id', component: SurgeryDetailsComponent, resolve: {
+        surgeryResolved : SurgeryResolver
+    } },
     { path:'realizadas', component: RealizadasComponent },
     { path:'approvedDetails', component: ApprovedDetailsComponent },
     { path:'realizadaDetails/:id', component: RealizadaDetailsComponent },
