@@ -35,7 +35,8 @@
                   
                   <h3 class="light-dark">Complexidade</h3>
                   <label for='durCirurgia'>Duração da cirugia</label>
-                  <input [(ngModel)]='surgery.duration' type='text' id='durCirurgia' name='durCirurgia' placeholder="2 horas e 30 min" #nameVerify="ngModel" required>
+                  <!-- <input [(ngModel)]='surgery.duration' type='text' id='durCirurgia' name='durCirurgia' placeholder="2 horas e 30 min" #nameVerify="ngModel" required> -->
+                  <ngx-timepicker-field id='txtDur' disabled name='txtDur' [(ngModel)]='duracao' [format]="24" [defaultTime]="'00:00'"></ngx-timepicker-field> 
                   
                   <label>Essa cirurgia é de alta complexidade?</label>
                   <div class="list-scroll-esq listForm2">

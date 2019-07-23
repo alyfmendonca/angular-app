@@ -20,8 +20,10 @@ export class ApprovedDetailsComponent implements OnInit {
     id:null,
       status: '',
       complicated: null,
-      duration: '',
-      true_duration: '',
+      hours_duration: null,
+      minutes_duration: null,
+      true_hours_duration: null,
+      true_minutes_duration: null,
       percentage: '',
       discount: null,
       note: '',
@@ -46,12 +48,17 @@ export class ApprovedDetailsComponent implements OnInit {
       }],
       accommodations: null,
   };
+  duracao: string;
+  verdadeiraDuracao: string;
 
   ngOnInit() {
     this.id = this.route.snapshot.params.id;
     this.surgeryService.getSurgery(this.id).subscribe(response => {
       console.log(response);
       this.surgery = response;
+      this.duracao = response.hours_duration;
+      this.duracao += ':';
+      this.duracao += response.minutes_duration;
     })
   }
   listComorbidadesMock: any[] = [

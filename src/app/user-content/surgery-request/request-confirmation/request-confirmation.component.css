@@ -71,3 +71,9 @@
     width: 80%;
     margin: auto;
 }
+.check-image{
+    max-width: 51%;
+    height: auto;
+    float: right;
+    margin: auto;
+}

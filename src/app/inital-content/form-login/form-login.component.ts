@@ -19,12 +19,20 @@ export class FormLoginComponent implements OnInit {
   ngOnInit() {
     localStorage.removeItem('userId');
     localStorage.removeItem('token');
+    var login = localStorage.getItem('login');
+    if(login){
+      this.txtLogin = login
+    }
   }
   txtLogin:string;
   txtPass:string;
-
-
   remember: boolean;
+
+  changeRemember(remember){
+    //console.log(remember);
+    this.remember = remember;
+  }
+
   submitForm(){
     console.log(this.txtLogin, Md5.hashStr(this.txtPass));
 
@@ -33,10 +41,13 @@ export class FormLoginComponent implements OnInit {
       localStorage.setItem('token', response.token);
       console.log(this.remember);
       //localStorage.setItem('userId', user._id);
+      if(this.remember){
+        localStorage.setItem('login', this.txtLogin);
+      }
       if(response.type == 'admin'){
-        //-------this.router.navigate(['/admin']);
+        this.router.navigate(['/admin']);
       }else if(response.type == 'surgeon'){
-        //-------this.router.navigate(['/user']);
+        this.router.navigate(['/user']);
       }else{
         alert('Este tipo de usuário não é válido');
       }

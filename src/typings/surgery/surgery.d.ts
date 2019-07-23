@@ -2,8 +2,10 @@ type Surgery = {
     id:number;
     status: string;
     complicated: boolean;
-    duration: string;
-    true_duration: string;
+    hours_duration: string,
+    minutes_duration: string,
+    true_hours_duration: string,
+    true_minutes_duration: string,
     percentage: string;
     discount: boolean;
     note: string;

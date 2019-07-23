@@ -58,8 +58,13 @@
                   placeholder="999.999.999-99" #nameVerify="ngModel" required>
                 <br>
                 <label class="labelForm" for='dtNasc'>Data de Nascimento</label>
-                <input [(ngModel)]='surgeryCreate.birth_date' type='date' id='dtNasc' name='dtNasc'
+                <input [(ngModel)]='surgeryCreate.birth_date'  type='date' id='dtNasc' name='dtNasc'
                   placeholder="" #nameVerify="ngModel" required>
+                
+                    <!-- <input matInput [matDatepicker]="picker" placeholder="Choose a date">
+                    <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+                    <mat-datepicker #picker></mat-datepicker> -->
+               
               </div>
             </div> 
             <div class="menu-dir">
@@ -91,8 +96,9 @@
               </div>
               <div class="inputsForm2">
                 <label class="labelForm" for='txtDur'>Duração da cirurgia</label>
-                <input [(ngModel)]='surgeryCreate.duration' type='text' id='txtDur' name='txtDur'
-                  placeholder="2h e 30m" #nameVerify="ngModel" required>
+                <!-- <input [(ngModel)]='surgeryCreate.duration' type='text' id='txtDur' name='txtDur'
+                  placeholder="2h e 30m" #nameVerify="ngModel" required> -->
+                <ngx-timepicker-field id='txtDur' name='txtDur' [(ngModel)]='duracao' [format]="24" [defaultTime]="'00:00'"></ngx-timepicker-field> 
                 <br>
               </div>
               <div class="esq-baixo">

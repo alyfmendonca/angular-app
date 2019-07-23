@@ -5,7 +5,8 @@ type SurgeryCreate = {
     cpf: number;
     birth_date: string;
     comorbidities: string;
-    duration: string;
+    hours_duration: string,
+    minutes_duration: string,
     complicated: boolean;
     accommodations: string;
 }

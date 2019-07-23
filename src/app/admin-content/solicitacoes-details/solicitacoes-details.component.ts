@@ -27,8 +27,10 @@ export class SolicitacoesDetailsComponent implements OnInit {
       id:null,
       status: '',
       complicated: null,
-      duration: '',
-      true_duration: '',
+      hours_duration: null,
+      minutes_duration: null,
+      true_hours_duration: null,
+      true_minutes_duration: null,
       percentage: '',
       discount: null,
       note: '',
@@ -70,6 +72,7 @@ export class SolicitacoesDetailsComponent implements OnInit {
       Day_Clinic: null,
       hospital: ''
     };
+    duracao: string;
 
     valorPorcent: number;
     valorPorcentOut: number;
@@ -104,6 +107,9 @@ export class SolicitacoesDetailsComponent implements OnInit {
       this.surgeryService.getSurgery(this.id).subscribe((response) => {
         console.log(response);
         this.surgery = response;
+        this.duracao = response.hours_duration;
+        this.duracao += ':';
+        this.duracao += response.minutes_duration;
       })
       if(this.surgery.complicated){
         this.aditional = 20;

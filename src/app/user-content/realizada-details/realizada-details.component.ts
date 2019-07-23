@@ -32,8 +32,10 @@ export class RealizadaDetailsComponent implements OnInit {
     id:null,
       status: '',
       complicated: null,
-      duration: '',
-      true_duration: '',
+      hours_duration: null,
+      minutes_duration: null,
+      true_hours_duration: null,
+      true_minutes_duration: null,
       percentage: '',
       discount: null,
       note: '',
@@ -79,6 +81,8 @@ export class RealizadaDetailsComponent implements OnInit {
   aditional: any;
   porcentagem: any;
   valueBar: any;
+  duracao: string;
+  verdadeiraDuracao: string;
 
   ngOnInit() {
     this.id = this.route.snapshot.params.id;
@@ -86,6 +90,13 @@ export class RealizadaDetailsComponent implements OnInit {
       console.log(response);
       this.surgery = response;
       this.objCustos = response.cost;
+      this.duracao = response.hours_duration;
+      this.duracao += ':';
+      this.duracao += response.minutes_duration;
+
+      this.verdadeiraDuracao = response.true_hours_duration;
+      this.verdadeiraDuracao += ':';
+      this.verdadeiraDuracao += response.true_minutes_duration;
       console.log(this.objCustos);
       if(this.surgery.complicated){
         this.aditional = 20;

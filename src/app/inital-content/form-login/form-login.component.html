@@ -22,7 +22,7 @@
         </div>
         <div class="bot-dir">
           <div>
-              <input [(ngModel)]='remember' type="checkbox"> Lembrar de mim 
+              <input  (change)="changeRemember($event.srcElement.checked);" type="checkbox"> Lembrar de mim 
           </div>
           <button class="concluir-button" (click)="submitForm();">Concluir</button>
         </div>

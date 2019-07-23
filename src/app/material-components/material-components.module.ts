@@ -1,6 +1,4 @@
 import { NgModule } from '@angular/core';
-
-
 import {MatCheckboxModule} from '@angular/material/';
 import {MatStepperModule} from '@angular/material/stepper';
 import {MatInputModule} from '@angular/material/input';
@@ -19,7 +17,7 @@ import {MatSliderModule} from '@angular/material/slider';
 import { ScrollingModule } from '@angular/cdk/scrolling';
 import {MatSlideToggleModule} from '@angular/material/slide-toggle';
 
-
+import {NgxMaterialTimepickerModule} from 'ngx-material-timepicker';
 
    
 
@@ -46,6 +44,8 @@ import {MatSlideToggleModule} from '@angular/material/slide-toggle';
     MatSliderModule,
     ScrollingModule,
     MatSlideToggleModule,
+    NgxMaterialTimepickerModule,
+
   ],
   exports: [
     MatCheckboxModule,
@@ -65,6 +65,8 @@ import {MatSlideToggleModule} from '@angular/material/slide-toggle';
     MatNativeDateModule,
     MatSliderModule,
     MatSlideToggleModule,
+    NgxMaterialTimepickerModule,
+
   ]
 })
 export class MaterialComponentsModule { }

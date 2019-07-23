@@ -22,7 +22,8 @@ export class RequestStepperComponent implements OnInit {
     cpf: null,
     birth_date: null,
     comorbidities: null,
-    duration: null,
+    hours_duration: null,
+    minutes_duration: null,
     complicated: null,
     accommodations: null,
   };
@@ -38,6 +39,8 @@ export class RequestStepperComponent implements OnInit {
   listComorbSelected: Comorbiditie[] = []; 
 
   listNeedsSelected: Accommodation[] = []; 
+
+  duracao: string;
 
   //teste
   selectedTuss: Tuss[]; 
@@ -100,7 +103,7 @@ export class RequestStepperComponent implements OnInit {
     }else if(!this.surgeryCreate.birth_date){
       alert('Informe uma data de nascimento do paciente');
       return;
-    }else if(!this.surgeryCreate.duration){
+    }else if(!this.duracao){
       alert('Informe a duração da cirurgia');
       return;
     }else if(!this.surgeryCreate.complicated){
@@ -109,6 +112,10 @@ export class RequestStepperComponent implements OnInit {
     }else{
       
         this.surgeryCreate.main_tuss = this.selectedTuss.shift().id;
+
+        let aux = this.duracao.split(':');
+        this.surgeryCreate.hours_duration = aux[0];
+        this.surgeryCreate.minutes_duration = aux[1];
 
 
         this.surgeryCreate.secondary_tuss = '[';
