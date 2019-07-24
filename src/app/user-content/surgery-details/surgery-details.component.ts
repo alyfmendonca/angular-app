@@ -111,13 +111,13 @@ export class SurgeryDetailsComponent implements OnInit {
   }
 
   btnSalvar(){
-    if(this.surgery.patient.name == ''){
+    if(this.surgery.patient['name'] == ''){
       alert('Digite o nome do paciente');
       return;
-    }else if(this.surgery.patient.cpf.toString() == ''){
+    }else if(this.surgery.patient['cpf'].toString() == ''){
       alert('Digite o cpf do paciente');
       return;
-    }else if(this.surgery.patient.birth_date == ''){
+    }else if(this.surgery.patient['birth_date'] == ''){
       alert('Digite a data de nascimento do paciente');
       return;
     }else if(this.duracao == '00:00'){
@@ -130,9 +130,9 @@ export class SurgeryDetailsComponent implements OnInit {
     console.log('comorb [' + this.selectedComorbs.toString() + ']');
     console.log('need [' + this.selectedNeeds.toString() + ']');
 
-    var nome: string = this.surgery.patient.name;
-    var cpfVar:string = this.surgery.patient.cpf.toString();
-    var birth_dateVar: string = this.surgery.patient.birth_date;
+    var nome: string = this.surgery.patient['name'];
+    var cpfVar:string = this.surgery.patient['cpf'].toString();
+    var birth_dateVar: string = this.surgery.patient['birth_date'];
 
     var surgeryUpdate : SurgeryUpdate = {
       id: this.surgery.id,

@@ -17,6 +17,7 @@ import { ApprovedDetailsComponent } from './approved-details/approved-details.co
 import { OtherAllTussResolve } from '../services/other-services/other-service.resolver';
 import { SurgeonDetailsAcceptComponent } from './surgeon-details-accept/surgeon-details-accept.component'
 import { AdminProfileComponent } from './admin-profile/admin-profile.component';
+import { SurgeryResolver } from '../services/surgery-services/surgery-service.resolver';
 
 const routes: Routes = [
   { path: '', redirectTo: 'main/solicitacoes', pathMatch: 'full' },
@@ -38,7 +39,9 @@ const routes: Routes = [
       allTuss: OtherAllTussResolve
     }  },
     { path:'realizadas', component: RealizadasComponent },
-    { path:'solicitacoesDetails/:id', component: SolicitacoesDetailsComponent },
+    { path:'solicitacoesDetails/:id', component: SolicitacoesDetailsComponent, resolve: {
+      surgeryResolved : SurgeryResolver
+    } },
     { path:'newHospital', component: NewHospitalComponent, resolve: {
       allTuss: OtherAllTussResolve
     }   },

@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
 import { SurgeryService } from '../../services/surgery-services/surgery.service';
+import { OtherService } from 'src/app/services/other-services/other.service';
 
 @Component({
   selector: 'app-solicitacoes-details',
@@ -10,9 +11,10 @@ import { SurgeryService } from '../../services/surgery-services/surgery.service'
 export class SolicitacoesDetailsComponent implements OnInit {
 
   constructor(
-    public router: Router, 
+    public router: Router,
     public route: ActivatedRoute,
     public surgeryService: SurgeryService,
+    private otherService: OtherService,
     ) { }
     checked = true;
     texto = 'Acréscimo';
@@ -23,6 +25,7 @@ export class SolicitacoesDetailsComponent implements OnInit {
       discount: null,
       hospital: null
     }
+    complexidade: string;
     surgery: Surgery = {
       id:null,
       status: '',
@@ -74,6 +77,17 @@ export class SolicitacoesDetailsComponent implements OnInit {
     };
     duracao: string;
 
+    listComorb: Comorbiditie[] = [];
+    listNeeds: Accommodation[] = [];
+
+    selectedTuss: number[];
+
+    selectedComorbs: number[] = [];
+    selectedNeeds: number[] = [];
+
+    selectedComorbsAux: number[] = [];
+    selectedNeedsAux: number[] = [];
+
     valorPorcent: number;
     valorPorcentOut: number;
     formatLabel(value: number | null) {
@@ -102,21 +116,7 @@ export class SolicitacoesDetailsComponent implements OnInit {
       }
       console.log(this.desconto);
     }
-    ngOnInit() {
-      this.id = this.route.snapshot.params.id;
-      this.surgeryService.getSurgery(this.id).subscribe((response) => {
-        console.log(response);
-        this.surgery = response;
-        this.duracao = response.hours_duration;
-        this.duracao += ':';
-        this.duracao += response.minutes_duration;
-      })
-      if(this.surgery.complicated){
-        this.aditional = 20;
-      }else{
-        this.aditional = 0;
-      }
-    }
+    
     onClickNext(custos: any){
       this.objCustos = custos;
       this.valorTotal = custos.surgery_cost;
@@ -181,5 +181,115 @@ export class SolicitacoesDetailsComponent implements OnInit {
         this.valorTotal = this.objCustos.surgery_cost + (this.objCustos.surgery_cost * event.value / 100);
       }
     }
+    ngOnInit() {
+      // this.id = this.route.snapshot.params.id;
+      // this.surgeryService.getSurgery(this.id).subscribe((response) => {
+      //   console.log(response);
+      //   this.surgery = response;
+      //   this.duracao = response.hours_duration;
+      //   this.duracao += ':';
+      //   this.duracao += response.minutes_duration;
+      // })
+      // if(this.surgery.complicated){
+      //   this.aditional = 20;
+      // }else{
+      //   this.aditional = 0;
+      // }
+      this.init();
+      
+    }
 
+    public async init() {
+
+      this.surgery = this.route.snapshot.data.surgeryResolved;
+      [this.listNeeds, this.listComorb] = await Promise.all([
+        this.otherService.getAllAccommodations().toPromise(),
+        this.otherService.getAllComorbidities().toPromise()
+      ]);
+      this.atribuiSelecteds();
+      
+      if (this.surgery.complicated) {
+        this.complexidade = 'true';
+        this.aditional = 20;
+      } else { 
+        this.complexidade = 'false';
+        this.aditional = 0;
+      }
+    }
+  
+    atribuiSelecteds() {
+   
+      this.selectedComorbs = undefined;
+      this.selectedNeeds = undefined;
+  
+      this.duracao = this.surgery.hours_duration;
+      this.duracao += ':';
+      this.duracao += this.surgery.minutes_duration;
+      
+    
+      setTimeout(() => {
+        this.selectedComorbs = this.surgery.comorbidities;
+        this.selectedNeeds = this.surgery.accommodations;
+      }, 1);
+  
+    }
+  
+    validaOnlyOne(event){
+      if(this.selectedTuss.length == 0){
+        alert('Deve haver ao menos um selecionado.');
+        event.target.click()
+        return;
+      }
+    }
+  
+    btnSalvar(){
+      if(this.surgery.patient['name'] == ''){
+        alert('Digite o nome do paciente');
+        return;
+      }else if(this.surgery.patient['cpf'].toString() == ''){
+        alert('Digite o cpf do paciente');
+        return;
+      }else if(this.surgery.patient['birth_date'] == ''){
+        alert('Digite a data de nascimento do paciente');
+        return;
+      }else if(this.duracao == '00:00'){
+        alert('Coloque uma duração válida');
+        return;
+      }
+       
+      let aux = this.duracao.split(':');
+      
+      console.log('comorb [' + this.selectedComorbs.toString() + ']');
+      console.log('need [' + this.selectedNeeds.toString() + ']');
+  
+      var nome: string = this.surgery.patient['name'];
+      var cpfVar:string = this.surgery.patient['cpf'].toString();
+      var birth_dateVar: string = this.surgery.patient['birth_date'];
+  
+      var surgeryUpdate : SurgeryUpdate = {
+        id: this.surgery.id,
+        complicated: this.complexidade == 'true' ? true : false,
+        hours_duration:aux[0],
+        minutes_duration:aux[1],
+        name: nome,
+        cpf: cpfVar,
+        birth_date: birth_dateVar,
+        comorbidities:'[' + this.selectedComorbs.toString() + ']',
+        accommodations:'[' + this.selectedNeeds.toString() + ']',
+      }
+  
+      console.log(surgeryUpdate);
+  
+       this.surgeryService.updateSurgery(surgeryUpdate).subscribe(
+         (res) => {
+           this.selectedComorbs = null;
+           this.selectedComorbsAux = null;
+           this.selectedNeeds = null;
+           this.selectedNeedsAux = null;
+           this.selectedTuss = null;
+           this.router.navigate(['/admin/main/solicitacoes']);
+         }, (err) => {
+         alert(err.error.message);
+       });
+    }
 }
