@@ -135,13 +135,12 @@
             <div class="menu-dir">
               <h3 class="dark">Paciente precisará de:</h3><span>(Selecione quantos necessários)</span>
               <div class="list-scroll-esq listForm2">
-                <cdk-virtual-scroll-viewport class="virtualScroll needsLine" itemSize="8">
+                <cdk-virtual-scroll-viewport class="virtualScroll" itemSize="8">
                   <mat-selection-list>
                     <mat-list-option name="cboNecessidades" (click)="selectionNeedsClick(necessidades);" *cdkVirtualFor="let necessidades of listNecessidades">
                       {{necessidades.str}}
-                       <input type="number" style="width: 40px; float: right;"  disabled id="teste-{{necessidades.id}}" />   
+                       <input type="number" id="teste-{{necessidades.id}}" />   
                     </mat-list-option>
-                    
                     
                   </mat-selection-list>
                 </cdk-virtual-scroll-viewport>

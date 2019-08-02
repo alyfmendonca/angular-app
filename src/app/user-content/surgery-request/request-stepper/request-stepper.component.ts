@@ -26,10 +26,10 @@ export class RequestStepperComponent implements OnInit {
     minutes_duration: null,
     complicated: null,
     accommodations: null,
-    cid: null,
+    cid: "2",
     date_time: null,
     explanation: null,
-    accommodations_days: null,
+    accommodations_days: "[1,2]",
   };
 
   listProcedimentos: Tuss[] = []; 
@@ -109,10 +109,11 @@ export class RequestStepperComponent implements OnInit {
     console.log(this.testedis);
     this.noComorbi = true;
   }
+  teste_necessidades = true;
 
   selectionNeedsClick(accommodations: Accommodation){
     if(this.listNeedsSelected.find(function(item:Comorbiditie){
-      var teste = document.getElementById(`teste-${item.id}`);
+      document.getElementById(`teste-${item.id}`);
       console.log(`teste-${item.id}`);
       return item.id == accommodations.id;
     })){
@@ -125,7 +126,7 @@ export class RequestStepperComponent implements OnInit {
   }
 
   finalizar(){
-    console.log(this.listNeedsSelected);
+    console.log(this.surgeryCreate.accommodations);
     var dia  = this.birth_date.getDate().toString().padStart(2, '0'),
     mes  = (this.birth_date.getMonth()+1).toString().padStart(2, '0'), //+1 pois no getMonth Janeiro começa com zero.
     ano  = this.birth_date.getFullYear();
@@ -134,7 +135,7 @@ export class RequestStepperComponent implements OnInit {
     var dia  = this.daySurgery.getDate().toString().padStart(2, '0'),
     mes  = (this.daySurgery.getMonth()+1).toString().padStart(2, '0'), //+1 pois no getMonth Janeiro começa com zero.
     ano  = this.daySurgery.getFullYear();
-    this.surgeryCreate.birth_date =  ano+"-"+mes+"-"+dia+ " " + this.hourSurgery;
+    this.surgeryCreate.date_time =  ano+"-"+mes+"-"+dia+ " " + this.hourSurgery;
     
     
     if(!(this.selectedTuss.length > 0)){
@@ -192,13 +193,14 @@ export class RequestStepperComponent implements OnInit {
           this.surgeryCreate.accommodations = this.surgeryCreate.accommodations.slice(0, this.surgeryCreate.accommodations.length - 1);
         }
         this.surgeryCreate.accommodations += ']';
-
+        console.log(this.surgeryCreate.accommodations);
         console.log(JSON.stringify(this.surgeryCreate));
   
         var surgery: Surgery;
         this.surgeryServices.createSurgery(this.surgeryCreate).subscribe(
           res => this.router.navigate(['/user/main/request-confirmation']), (err) => {
             alert(err.error.message);
+            console.log(err.error.message);
             this.selectedTuss = []; 
           }
         );

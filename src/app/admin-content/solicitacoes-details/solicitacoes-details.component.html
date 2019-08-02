@@ -44,14 +44,31 @@
                       <mat-radio-button class="example-margin" value="true">Sim</mat-radio-button>
                       <mat-radio-button class="example-margin" value="false">Não</mat-radio-button>
                     </mat-radio-group>
+
+                    
                 </div>
+                <label class="labelForm" for='daySurgery'>Data da Cirurgia</label>
+                <mat-form-field>
+                    <input  [(ngModel)]='surgery.date_time' id='daySurgery' name='daySurgery' matInput [matDatepicker]="picker2" >
+                    <mat-datepicker-toggle matSuffix [for]="picker2"></mat-datepicker-toggle>
+                    <mat-datepicker #picker2></mat-datepicker> 
+                  </mat-form-field>
+              
+               
+                  <label class="labelForm" for='hourSurgery'>Horário da Cirurgia</label>
+                  <ngx-timepicker-field id='hourSurgery' name='hourSurgery' [(ngModel)]='hourSurgery' [format]="24" [defaultTime]="'00:00'"></ngx-timepicker-field> 
+                  <br>
   
                 </div>
   
                 <div class="dir">
                     <label for='dt'>Data</label>
-                    <input [(ngModel)]='surgery.patient.birth_date' type='date' id='dt' name='dt' placeholder="2 horas e 30 min" #nameVerify="ngModel" required>
-  
+                    <!-- <input [(ngModel)]='surgery.patient.birth_date' type='date' id='dt' name='dt' placeholder="2 horas e 30 min" #nameVerify="ngModel" required> -->
+                    <mat-form-field>
+                        <input [(ngModel)]='surgery.patient.birth_date' id='dtNasc' name='dtNasc' matInput [matDatepicker]="picker" >
+                        <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+                        <mat-datepicker #picker></mat-datepicker> 
+                      </mat-form-field>
                     <label>Comorbidades</label>
                     <div class="list-scroll-esq listForm2">
   
