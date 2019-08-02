@@ -162,7 +162,7 @@ mat-list-option{
     position: absolute;
     pointer-events: auto;
     box-sizing: border-box;
-    z-index: 1000;
+    z-index: 999999;
     display: flex;
     max-width: 100%;
     max-height: 100%;
@@ -201,4 +201,11 @@ mat-list-option{
 }
 mat-datepicker-toggle button{
     background: transparent;
+}
+
+app-request-stepper .needsLine .mat-list-text{
+    display: inline-flex !important;
+    flex-direction: row !important;
+    justify-content: space-between;
+    align-items: center;
 }

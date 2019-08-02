@@ -112,6 +112,8 @@ export class RequestStepperComponent implements OnInit {
 
   selectionNeedsClick(accommodations: Accommodation){
     if(this.listNeedsSelected.find(function(item:Comorbiditie){
+      var teste = document.getElementById(`teste-${item.id}`);
+      console.log(`teste-${item.id}`);
       return item.id == accommodations.id;
     })){
       this.listNeedsSelected = this.listNeedsSelected.filter(function(item){
