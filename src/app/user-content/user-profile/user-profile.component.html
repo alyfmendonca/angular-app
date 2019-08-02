@@ -26,7 +26,7 @@
             <input [(ngModel)]='surgeonByID.email' type='email' id='txtEmail' name='txtEmail' placeholder="Digite o login" #nameVerify="ngModel" required>
   
             <label for='txtTelefone'>Telefone</label>
-            <input [(ngModel)]='surgeonByID.phone' type='tel' id='txtTelefone' name='txtTelefone' placeholder="Digite a Senha" #nameVerify="ngModel" required>
+            <input [(ngModel)]='surgeonByID.phone' type='text' mask='(00) 0000-00009' id='txtTelefone' name='txtTelefone' placeholder="Digite a Senha" #nameVerify="ngModel" required>
           </div>
           <div class="bot-dir">
             <button class="concluir-button" (click)="submitForm();">Salvar</button>

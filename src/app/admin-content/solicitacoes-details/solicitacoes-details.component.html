@@ -21,7 +21,7 @@
                   <input [(ngModel)]='surgery.patient.name' type='text' id='pacienteNome' name='pacienteNome' placeholder="Alberto Pacheco" #nameVerify="ngModel" required>
                   
                   <label for='pacienteCpf'>CPF</label>
-                  <input [(ngModel)]='surgery.patient.cpf' type='text' id='txtCPF' name='txtCPF' placeholder="2342423" #nameVerify="ngModel" required>
+                  <input [(ngModel)]='surgery.patient.cpf' mask='000.000.000-00' type='text' id='txtCPF' name='txtCPF' placeholder="2342423" #nameVerify="ngModel" required>
                   
                   <h3 class="light-dark">Cirurgião</h3>
                   <label for='txtNome'>Nome</label>
@@ -162,7 +162,7 @@
                         <label for='taxaDiariaGlobalCTI'>Diária Global CTI</label>
                         <input [(ngModel)]='objCustos.CTI' type='text' id='taxaDiariaGlobalCTI' name='taxaDiariaGlobalCTI' placeholder="R$ 0000,00" #nameVerify="ngModel" required>
       
-                        <label for='HrClinico'>Horário Clínico</label>
+                        <label for='HrClinico'>Honorário Clínico</label>
                         <input [(ngModel)]='objCustos.clinical_schedule' type='text' id='HrClinico' name='HrClinico' placeholder="R$ 0000,00" #nameVerify="ngModel" required>
       
                     </div>

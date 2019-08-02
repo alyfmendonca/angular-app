@@ -18,7 +18,7 @@
                 <input [(ngModel)]='surgery.patient.name' type='text' id='pacienteNome' name='pacienteNome' placeholder="Alberto Pacheco" #nameVerify="ngModel" required>
                 
                 <label for='pacienteCpf'>CPF</label>
-                <input [(ngModel)]='surgery.patient.cpf' type='text' id='txtCPF' name='txtCPF' placeholder="2342423" #nameVerify="ngModel" required>
+                <input [(ngModel)]='surgery.patient.cpf' mask='000.000.000-00' type='text' id='txtCPF' name='txtCPF' placeholder="2342423" #nameVerify="ngModel" required>
                 
                 <h3 class="light-dark">Cirurgião</h3>
                 <label for='txtNome'>Nome</label>

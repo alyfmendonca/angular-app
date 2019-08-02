@@ -26,6 +26,10 @@ export class RequestStepperComponent implements OnInit {
     minutes_duration: null,
     complicated: null,
     accommodations: null,
+    cid: null,
+    date_time: null,
+    explanation: null,
+    accommodations_days: null,
   };
 
   listProcedimentos: Tuss[] = []; 
@@ -51,6 +55,13 @@ export class RequestStepperComponent implements OnInit {
               private route:ActivatedRoute,
               private surgeonService: SurgeonService) {}
 
+
+  // Variáveis auxiliares para pegar data e hora
+  daySurgery: Date;
+  hourSurgery: string;
+  
+  birth_date: Date;
+        
   ngOnInit() {
 
     this.surgeonService.getSurgeon().subscribe(res => this.listProcedimentos = res.tuss);
@@ -64,7 +75,6 @@ export class RequestStepperComponent implements OnInit {
     );
 
   }
-
   selectionComorbClick(comorbidade: Comorbiditie){
     if(this.listComorbSelected.find(function(item:Comorbiditie){
       return item.id == comorbidade.id;
@@ -75,6 +85,29 @@ export class RequestStepperComponent implements OnInit {
     }else{
       this.listComorbSelected.push(comorbidade);
     }
+  }
+  teste90: any;
+  chama(teste){
+      var reader = new FileReader();
+
+      reader.readAsDataURL(teste.target.files[0]);
+
+      reader.onload = (event) => {
+        console.log(event);
+        this.teste90 = event.target;  
+        console.log(this.teste90.result);
+        this.teste90 = this.teste90.result;
+      }
+      
+  
+  }
+  noComorbi = false;
+  testedis= "string";
+  noSelectionComorbClick(valida){
+    this.listComorbSelected = [];
+    console.log(valida);
+    console.log(this.testedis);
+    this.noComorbi = true;
   }
 
   selectionNeedsClick(accommodations: Accommodation){
@@ -90,6 +123,17 @@ export class RequestStepperComponent implements OnInit {
   }
 
   finalizar(){
+    console.log(this.listNeedsSelected);
+    var dia  = this.birth_date.getDate().toString().padStart(2, '0'),
+    mes  = (this.birth_date.getMonth()+1).toString().padStart(2, '0'), //+1 pois no getMonth Janeiro começa com zero.
+    ano  = this.birth_date.getFullYear();
+    this.surgeryCreate.birth_date =  ano+"-"+mes+"-"+dia;
+
+    var dia  = this.daySurgery.getDate().toString().padStart(2, '0'),
+    mes  = (this.daySurgery.getMonth()+1).toString().padStart(2, '0'), //+1 pois no getMonth Janeiro começa com zero.
+    ano  = this.daySurgery.getFullYear();
+    this.surgeryCreate.birth_date =  ano+"-"+mes+"-"+dia+ " " + this.hourSurgery;
+    
     
     if(!(this.selectedTuss.length > 0)){
       alert('Seleciona ao menos um Tuss');

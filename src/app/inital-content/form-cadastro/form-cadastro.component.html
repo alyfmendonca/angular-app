@@ -18,7 +18,7 @@
                       <input [(ngModel)]='userCreate.name' type='text' id='txtNome' name='txtNome' placeholder="Alberto Pacheco" #nameVerify="ngModel" required>
             
                       <label for='txtCrm'>CRM</label>
-                      <input [(ngModel)]='userCreate.crm' type='text' id='txtCrm' name='txtCrm' placeholder="12314" #nameVerify="ngModel" required>
+                      <input [(ngModel)]='userCreate.crm' mask='99990-0' type='text' id='txtCrm' name='txtCrm' placeholder="12314" #nameVerify="ngModel" required>
           
                       <label for='txtUf'>Uf</label>
                       <input [(ngModel)]='userCreate.uf' type='text' id='txtUf' name='txtUf' placeholder="RJ" #nameVerify="ngModel" required>
@@ -27,7 +27,7 @@
                       <input [(ngModel)]='userCreate.email' type='email' id='txtEmail' name='txtEmail' placeholder="albertopacheco@gmail.com" #nameVerify="ngModel" required>
           
                       <label for='txtTelefone'>Telefone</label>
-                      <input [(ngModel)]='userCreate.phone' type='tel' id='txtTelefone' name='txtTelefone' placeholder="(21) 91234-5678" #nameVerify="ngModel" required>
+                      <input [(ngModel)]='userCreate.phone' type='text' mask='(00) 0000-00009' required id='txtTelefone' name='txtTelefone' placeholder="(21) 91234-5678" #nameVerify="ngModel" required>
             
                     </div>
                     <div class="bot-dir">

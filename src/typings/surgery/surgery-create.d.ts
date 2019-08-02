@@ -9,4 +9,8 @@ type SurgeryCreate = {
     minutes_duration: string,
     complicated: boolean;
     accommodations: string;
+    accommodations_days:string;
+    cid?: string;
+    date_time: string;
+    explanation?: string;
 }

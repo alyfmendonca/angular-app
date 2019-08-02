@@ -18,7 +18,7 @@
                     <input [(ngModel)]='newHospital.name' type='text' id='txtNome' name='txtNome' placeholder="Alberto Pacheco" #nameVerify="ngModel" required>
                     
                     <label for='txtFone'>Telefone</label>
-                    <input [(ngModel)]='newHospital.phone' type='tel' id='txtFone' name='txtFone' placeholder="(21) 91234-5678" #nameVerify="ngModel" required>
+                    <input [(ngModel)]='newHospital.phone' type='text' mask='(00) 0000-00009' id='txtFone' name='txtFone' placeholder="(21) 91234-5678" #nameVerify="ngModel" required>
       
                     <label for='txtEmail'>Email</label>
                     <input [(ngModel)]='newHospital.email' type='email' id='txtEmail' name='txtEmail' placeholder="albertopacheco@gmail.com" #nameVerify="ngModel" required>

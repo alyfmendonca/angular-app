@@ -19,7 +19,7 @@
                   <input [(ngModel)]='surgery.patient.name' disabled type='text' id='pacienteNome' name='pacienteNome' placeholder="Alberto Pacheco" #nameVerify="ngModel" required>
                   
                   <label for='pacienteCpf'>CPF</label>
-                  <input [(ngModel)]='surgery.patient.cpf' disabled type='text' id='txtCPF' name='txtCPF' placeholder="2342423" #nameVerify="ngModel" required>
+                  <input [(ngModel)]='surgery.patient.cpf' mask='000.000.000-00' disabled type='text' id='txtCPF' name='txtCPF' placeholder="2342423" #nameVerify="ngModel" required>
                   
                   <h3 class="light-dark">Cirurgião</h3>
                   <label for='txtNome'>Nome</label>
@@ -161,14 +161,14 @@
 
                   
                 </div>
-                <div class="last-line-input">
+                <div >
                   <div>
                       <label for='trueDuration'>Duração oficial da cirurgia</label>
                       <input [(ngModel)]='trueDuration' disabled type='text' id='trueDuration' name='trueDuration' placeholder="2 horas e 30 minutos" #nameVerify="ngModel" >  
                   </div>
                   <div>
                       <label for='note'>Observações</label>
-                      <input [(ngModel)]='finalNote' disabled type='text' id='note' name='note' placeholder="Observações" #nameVerify="ngModel">
+                      <textarea [(ngModel)]='finalNote' disabled type='text' id='note' name='note' placeholder="Observações" #nameVerify="ngModel"></textarea>
 
                   </div>
                 </div>

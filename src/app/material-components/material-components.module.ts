@@ -18,10 +18,9 @@ import { ScrollingModule } from '@angular/cdk/scrolling';
 import {MatSlideToggleModule} from '@angular/material/slide-toggle';
 
 import {NgxMaterialTimepickerModule} from 'ngx-material-timepicker';
+import {NgxMaskModule} from 'ngx-mask'
 
-   
-
-      
+        
 @NgModule({
   declarations: [],
   imports: [
@@ -45,6 +44,7 @@ import {NgxMaterialTimepickerModule} from 'ngx-material-timepicker';
     ScrollingModule,
     MatSlideToggleModule,
     NgxMaterialTimepickerModule,
+    NgxMaskModule.forRoot(),
 
   ],
   exports: [
@@ -66,6 +66,7 @@ import {NgxMaterialTimepickerModule} from 'ngx-material-timepicker';
     MatSliderModule,
     MatSlideToggleModule,
     NgxMaterialTimepickerModule,
+    NgxMaskModule,
 
   ]
 })

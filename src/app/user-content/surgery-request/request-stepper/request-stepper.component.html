@@ -54,16 +54,17 @@
                 <input [(ngModel)]='surgeryCreate.name' type='text' id='txtNome' name='txtNome' placeholder="Alberto Pacheco" #nameVerify="ngModel" required>
                 <br>
                 <label class="labelForm" for='txtCpf'>CPF</label>
-                <input [(ngModel)]='surgeryCreate.cpf' type='number' id='txtCpf' name='txtCpf'
-                  placeholder="999.999.999-99" #nameVerify="ngModel" required>
+                <input [(ngModel)]='surgeryCreate.cpf' type='text' id='txtCpf' name='txtCpf'
+                  placeholder="999.999.999-99" mask='000.000.000-00' #nameVerify="ngModel" required>
                 <br>
                 <label class="labelForm" for='dtNasc'>Data de Nascimento</label>
-                <input [(ngModel)]='surgeryCreate.birth_date'  type='date' id='dtNasc' name='dtNasc'
-                  placeholder="" #nameVerify="ngModel" required>
-                
-                    <!-- <input matInput [matDatepicker]="picker" placeholder="Choose a date">
-                    <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
-                    <mat-datepicker #picker></mat-datepicker> -->
+                <!-- <input [(ngModel)]='surgeryCreate.birth_date'  type='date' id='dtNasc' name='dtNasc'
+                  placeholder="" #nameVerify="ngModel" required> -->
+                <mat-form-field>
+                  <input [(ngModel)]='birth_date' id='dtNasc' name='dtNasc' matInput [matDatepicker]="picker" >
+                  <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+                  <mat-datepicker #picker></mat-datepicker> 
+                </mat-form-field>
                
               </div>
             </div> 
@@ -72,8 +73,11 @@
               <div class="list-scroll-esq listForm2">
                 <cdk-virtual-scroll-viewport class="virtualScroll" itemSize="8">
                   <mat-selection-list #comorb>
-                    <mat-list-option name="cboComorbidades" (click)="selectionComorbClick(comorbidades);" *ngFor="let comorbidades of listComorbidades">
+                    <mat-list-option [disabled]="noComorbi" name="cboComorbidades" (click)="selectionComorbClick(comorbidades);" *ngFor="let comorbidades of listComorbidades">
                       {{comorbidades.str}}
+                    </mat-list-option>
+                    <mat-list-option name="noCboComorbidades" (click)="noSelectionComorbClick($event);">
+                      Sem comorbidade
                     </mat-list-option>
                   </mat-selection-list>
                 </cdk-virtual-scroll-viewport>
@@ -101,6 +105,23 @@
                 <ngx-timepicker-field id='txtDur' name='txtDur' [(ngModel)]='duracao' [format]="24" [defaultTime]="'00:00'"></ngx-timepicker-field> 
                 <br>
               </div>
+              <div class="inputsForm2">
+                <label class="labelForm" for='dtNasc'>Data da Cirurgia</label>
+                <!-- <input [(ngModel)]='surgeryCreate.birth_date'  type='date' id='dtNasc' name='dtNasc'
+                  placeholder="" #nameVerify="ngModel" required> -->
+                <mat-form-field>
+                  <input  [(ngModel)]='daySurgery' id='daySurgery' name='daySurgery' matInput [matDatepicker]="picker2" >
+                  <mat-datepicker-toggle matSuffix [for]="picker2"></mat-datepicker-toggle>
+                  <mat-datepicker #picker2></mat-datepicker> 
+                </mat-form-field>
+              </div>
+              <div class="inputsForm2">
+                <label class="labelForm" for='hourSurgery'>Horário da Cirurgia</label>
+                <!-- <input [(ngModel)]='surgeryCreate.duration' type='text' id='txtDur' name='txtDur'
+                  placeholder="2h e 30m" #nameVerify="ngModel" required> -->
+                <ngx-timepicker-field id='hourSurgery' name='hourSurgery' [(ngModel)]='hourSurgery' [format]="24" [defaultTime]="'00:00'"></ngx-timepicker-field> 
+                <br>
+              </div>
               <div class="esq-baixo">
                 <p>Essa cirurgia é de alta complexidade?</p>
                 <div class="checkBoxGroup">
@@ -118,13 +139,52 @@
                   <mat-selection-list>
                     <mat-list-option name="cboNecessidades" (click)="selectionNeedsClick(necessidades);" *cdkVirtualFor="let necessidades of listNecessidades">
                       {{necessidades.str}}
+                       <input type="number" id="teste-{{necessidades.id}}" />   
                     </mat-list-option>
+                    
                   </mat-selection-list>
                 </cdk-virtual-scroll-viewport>
               </div>
               <div class="btn-next">
-                <button class="dark-button" (click)="finalizar();" mat-button matStepperNext>Finalizar</button>
+                <button class="dark-button" mat-button matStepperNext>Próximo</button>
               </div>
+            </div>
+          </div>
+        </form>
+      </mat-step>
+
+      <!-- Ultimo Step -->
+      <mat-step [completed]="false" >
+        <form class="form-stepper" #form="ngForm" id="formFour">
+          <div class="content-first form2">
+            <div class="menu-esq">
+              <div class="inputsForm2">
+                <label class="labelForm" for='txtCid'>CID: </label>
+                <mat-select [(ngModel)]='surgeryCreate.cid' name="cid" id="cid">
+                  <mat-option value="food" value="1">
+                    food1
+                  </mat-option>
+                  <mat-option value="food" value="2">
+                    food2
+                  </mat-option>
+                  <mat-option value="food" value="3">
+                    food3
+                  </mat-option>
+                  <mat-option value="food" value="4">
+                    food4
+                  </mat-option>
+                </mat-select>
+                <br>
+              </div>
+              <div class="esq-baixo">
+                <label for="explanation">Exame Clínico - Justificativa</label>
+                <textarea [(ngModel)]='surgeryCreate.explanation' type='text' id='explanation' name='explanation' placeholder="Alberto Pacheco" #nameVerify="ngModel"></textarea>
+              </div>
+              <input id="imagesUpload" (change)="chama($event)" type="file" multiple  />
+              <img [src]="teste90" id="imagePreview" />
+            </div>
+            <div class="btn-next">
+              <button class="dark-button" (click)="finalizar();" mat-button matStepperNext>Finalizar</button>
             </div>
           </div>
         </form>

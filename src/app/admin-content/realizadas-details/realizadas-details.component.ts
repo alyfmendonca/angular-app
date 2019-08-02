@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
 import { SurgeryService } from '../../services/surgery-services/surgery.service';
+import { OtherService } from 'src/app/services/other-services/other.service';
 
 @Component({
   selector: 'app-realizadas-details',
@@ -13,6 +14,7 @@ export class RealizadasDetailsComponent implements OnInit {
     public router: Router,
     public route: ActivatedRoute,
     public surgeryService: SurgeryService,
+    private otherService: OtherService,
   ) { }
   txtNomeGroup: string;
   taxaCirurgia: string;
@@ -83,31 +85,95 @@ export class RealizadasDetailsComponent implements OnInit {
   valueBar: any;
   duracao: string;
   verdadeiraDuracao: string;
+  complexidade: string;
+  
+  listComorb: Comorbiditie[] = [];
+  listNeeds: Accommodation[] = [];
+
+  selectedTuss: number[];
+
+  selectedComorbs: number[] = [];
+  selectedNeeds: number[] = [];
+
+  selectedComorbsAux: number[] = [];
+  selectedNeedsAux: number[] = [];
+
+  valorPorcent: number;
+  valorPorcentOut: number;
 
   ngOnInit() {
-    this.id = this.route.snapshot.params.id;
-    this.surgeryService.getSurgery(this.id).subscribe(response => {
-      console.log(response);
-      this.surgery = response;
-      this.objCustos = response.cost;
-      this.duracao = response.hours_duration;
-      this.duracao += ':';
-      this.duracao += response.minutes_duration;
+    // this.id = this.route.snapshot.params.id;
+    // this.surgeryService.getSurgery(this.id).subscribe(response => {
+    //   console.log(response);
+    //   this.surgery = response;
+    //   this.objCustos = response.cost;
+    //   this.duracao = response.hours_duration;
+    //   this.duracao += ':';
+    //   this.duracao += response.minutes_duration;
 
-      this.verdadeiraDuracao = response.true_hours_duration;
+    //   this.verdadeiraDuracao = response.true_hours_duration;
+    //   this.verdadeiraDuracao += ':';
+    //   this.verdadeiraDuracao += response.true_minutes_duration;
+    //   console.log(this.objCustos);
+    //   if(this.surgery.complicated){
+    //     this.aditional = 20;
+    //   }else{
+    //     this.aditional = 0;
+    //   }
+    //   this.porcentagem = response.percentage;
+    // })
+    this.init();
+  }
+
+  
+  public async init() {
+
+    this.surgery = this.route.snapshot.data.surgeryResolved;
+    [this.listNeeds, this.listComorb] = await Promise.all([
+      this.otherService.getAllAccommodations().toPromise(),
+      this.otherService.getAllComorbidities().toPromise()
+    ]);
+    this.atribuiSelecteds();
+    this.objCustos = this.surgery.cost;
+      this.duracao = this.surgery.hours_duration;
+      this.duracao += ':';
+      this.duracao += this.surgery.minutes_duration;
+
+      this.verdadeiraDuracao = this.surgery.true_hours_duration;
       this.verdadeiraDuracao += ':';
-      this.verdadeiraDuracao += response.true_minutes_duration;
+      this.verdadeiraDuracao += this.surgery.true_minutes_duration;
       console.log(this.objCustos);
       if(this.surgery.complicated){
         this.aditional = 20;
       }else{
         this.aditional = 0;
       }
-      this.porcentagem = response.percentage;
-    })
+      this.porcentagem = this.surgery.percentage;
+    if (this.surgery.complicated) {
+      this.complexidade = 'true';
+      this.aditional = 20;
+    } else { 
+      this.complexidade = 'false';
+      this.aditional = 0;
+    }
   }
 
+  atribuiSelecteds() {
+ 
+    this.selectedComorbs = undefined;
+    this.selectedNeeds = undefined;
+
+    this.duracao = this.surgery.hours_duration;
+    this.duracao += ':';
+    this.duracao += this.surgery.minutes_duration;
+    
   
+    setTimeout(() => {
+      this.selectedComorbs = this.surgery.comorbidities;
+      this.selectedNeeds = this.surgery.accommodations;
+    }, 1);
+
+  }
 
 
 

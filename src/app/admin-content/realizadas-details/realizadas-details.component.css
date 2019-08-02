@@ -263,3 +263,14 @@ label{
 .last-line-input div{
     width: 45%;
  }
+ textarea{
+    background: transparent !important;
+    border: 1px solid #ccc;
+    border-radius: 3px;
+    padding: 10px 5px;
+    color: #ccc;
+    margin-top: 5px;
+    width: 95%;
+    height: 75px;
+    font-family: Roboto;
+ }
