@@ -12,13 +12,16 @@ import { RealizadaDetailsComponent } from './realizada-details/realizada-details
 import { OtherAllTussResolve } from '../services/other-services/other-service.resolver';
 import { UserProfileComponent } from './user-profile/user-profile.component';
 import { SurgeryResolver } from '../services/surgery-services/surgery-service.resolver';
+import { OtherAllCidResolve } from '../services/other-services/other-service-cid.resolver';
 
 const routes: Routes = [
   { path: '', redirectTo: 'main/aprovadas-solicitadas', pathMatch: 'full' },
   { path: 'main', component: MainContentComponent, children: [
     { path: 'profile', component: UserProfileComponent },
     { path:'request-orientation', component:RequestOrientationComponent },
-    { path:'request-stepper', component: RequestStepperComponent},
+    { path:'request-stepper', component: RequestStepperComponent, resolve: {
+      cidsResolved : OtherAllCidResolve
+    }},
     { path:'request-confirmation', component: RequestConfirmationComponent },
     { path:'aprovadas-solicitadas', component: AprovadasSolicitadasComponent },
     { path:'surgery/:id', component: SurgeryDetailsComponent, resolve: {

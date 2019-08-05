@@ -26,10 +26,10 @@ export class RequestStepperComponent implements OnInit {
     minutes_duration: null,
     complicated: null,
     accommodations: null,
-    cid: "2",
+    cid: null,
     date_time: null,
     explanation: null,
-    accommodations_days: "[1,2]",
+    accommodations_days: null,
   };
 
   listProcedimentos: Tuss[] = []; 
@@ -45,6 +45,11 @@ export class RequestStepperComponent implements OnInit {
   listNeedsSelected: Accommodation[] = []; 
 
   duracao: string;
+
+  selectedNeedsDays: number[];
+
+  //Cids
+  listCid: Cid[] = [];
 
   //teste
   selectedTuss: Tuss[]; 
@@ -63,6 +68,8 @@ export class RequestStepperComponent implements OnInit {
   birth_date: Date;
         
   ngOnInit() {
+
+    this.listCid = this.route.snapshot.data.cidsResolved;
 
     this.surgeonService.getSurgeon().subscribe(res => this.listProcedimentos = res.tuss);
 
@@ -112,23 +119,41 @@ export class RequestStepperComponent implements OnInit {
   teste_necessidades = true;
 
   selectionNeedsClick(accommodations: Accommodation){
-    if(this.listNeedsSelected.find(function(item:Comorbiditie){
-      //document.getElementById(`teste-${item.id}`).disabled = true;
-      console.log(`teste-${item.id}`);
-      return item.id == accommodations.id;
-    })){
-      this.listNeedsSelected = this.listNeedsSelected.filter(function(item){
-        //document.getElementById(`teste-${item.id}`).disabled = false;
-        return  item.id != accommodations.id
-      });
+    var flag: boolean = false;
+    this.selectedNeedsDays.forEach(selected => {
+      if(selected == accommodations.id){
+        flag = true;
+      }
+    });
+
+    if(flag){
+      var element = <HTMLInputElement> document.getElementById(`inputNeeds-${accommodations.id}`);
+      element.disabled = false;
     }else{
-      
-      this.listNeedsSelected.push(accommodations);
+      var element = <HTMLInputElement> document.getElementById(`inputNeeds-${accommodations.id}`);
+      element.disabled = true;
     }
+
   }
 
   finalizar(){
-    console.log(this.surgeryCreate.accommodations);
+
+    //cria arrays de accomodations days e array de dis somente com os que estão habilitados
+    var elements = <HTMLCollectionOf<HTMLInputElement>> document.getElementsByClassName('inputDays');
+    var daysArray: number[] = [];
+    //flag para validar se todos foram preenchidos
+    var flagDaysUnwrited: boolean = false;
+
+        for (let index = 0; index < elements.length; index++) {
+          if(!elements[index].disabled){
+            daysArray.push(+elements[index].value);
+            if(+elements[index].value == 0){
+              flagDaysUnwrited = true;
+            }
+          }
+        }
+
+    //datas ------
     var dia  = this.birth_date.getDate().toString().padStart(2, '0'),
     mes  = (this.birth_date.getMonth()+1).toString().padStart(2, '0'), //+1 pois no getMonth Janeiro começa com zero.
     ano  = this.birth_date.getFullYear();
@@ -138,7 +163,7 @@ export class RequestStepperComponent implements OnInit {
     mes  = (this.daySurgery.getMonth()+1).toString().padStart(2, '0'), //+1 pois no getMonth Janeiro começa com zero.
     ano  = this.daySurgery.getFullYear();
     this.surgeryCreate.date_time =  ano+"-"+mes+"-"+dia+ " " + this.hourSurgery;
-    
+    //datas ------
     
     if(!(this.selectedTuss.length > 0)){
       alert('Seleciona ao menos um Tuss');
@@ -157,6 +182,12 @@ export class RequestStepperComponent implements OnInit {
       return;
     }else if(!this.surgeryCreate.complicated){
       alert('Informe a complexidade da cirurgia');
+      return;
+    }else if(flagDaysUnwrited){
+      alert('Informe os dias de todas as acomodações');
+      return;
+    }else if(!this.surgeryCreate.cid){
+      alert('Informe o CID');
       return;
     }else{
       
@@ -188,16 +219,20 @@ export class RequestStepperComponent implements OnInit {
 
 
         this.surgeryCreate.accommodations = '[';
-        this.listNeedsSelected.forEach(need => {
-          this.surgeryCreate.accommodations += need.id + ',' ;
+        this.selectedNeedsDays.forEach(need => {
+          this.surgeryCreate.accommodations += need + ',' ;
         });
         if(this.surgeryCreate.accommodations.length > 1){
           this.surgeryCreate.accommodations = this.surgeryCreate.accommodations.slice(0, this.surgeryCreate.accommodations.length - 1);
         }
         this.surgeryCreate.accommodations += ']';
         console.log(this.surgeryCreate.accommodations);
+
+        this.surgeryCreate.accommodations_days = '['
+        this.surgeryCreate.accommodations_days += daysArray.toString();
+        this.surgeryCreate.accommodations_days += ']';
+
         console.log(JSON.stringify(this.surgeryCreate));
-  
         var surgery: Surgery;
         this.surgeryServices.createSurgery(this.surgeryCreate).subscribe(
           res => this.router.navigate(['/user/main/request-confirmation']), (err) => {

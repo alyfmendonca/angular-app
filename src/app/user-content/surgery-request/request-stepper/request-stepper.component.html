@@ -136,16 +136,16 @@
               <h3 class="dark">Paciente precisará de:</h3><span>(Selecione quantos necessários)</span>
               <div class="list-scroll-esq listForm2">
                 <cdk-virtual-scroll-viewport class="virtualScroll needsLine" itemSize="8">
-                  <mat-selection-list class="sectionList">
+                  <mat-selection-list [(ngModel)]="selectedNeedsDays" name="listNecess" class="sectionList">
                     <div class="optionDiv">
-                      <mat-list-option name="cboNecessidades" (click)="selectionNeedsClick(necessidades);" *cdkVirtualFor="let necessidades of listNecessidades">
+                      <mat-list-option [value]="necessidades.id" name="cboNecessidades" (click)="selectionNeedsClick(necessidades);" *cdkVirtualFor="let necessidades of listNecessidades">
                         {{necessidades.str}}
                         <!-- <input type="number" style="width: 40px;" id="teste-{{necessidades.id}}" />    -->
                       </mat-list-option>
                     </div>
                     <div class="inputDiv">
                       <div style="margin: auto;" *ngFor="let necessidades of listNecessidades">
-                        <input class="inputDays" disabled placeholder="Dias"  type="number" style="width: 40px;" id="teste-{{necessidades.id}}" />
+                        <input class="inputDays" disabled placeholder="Dias"  type="number" style="width: 55px;" id="inputNeeds-{{necessidades.id}}" />
                       </div>
                     </div>
                       
@@ -169,17 +169,8 @@
               <div class="inputsForm2">
                 <label class="labelForm" for='txtCid'>CID: </label>
                 <mat-select [(ngModel)]='surgeryCreate.cid' name="cid" id="cid">
-                  <mat-option value="food" value="1">
-                    food1
-                  </mat-option>
-                  <mat-option value="food" value="2">
-                    food2
-                  </mat-option>
-                  <mat-option value="food" value="3">
-                    food3
-                  </mat-option>
-                  <mat-option value="food" value="4">
-                    food4
+                  <mat-option *ngFor="let cid of listCid" [value]='cid.id'>
+                    {{cid.str}}
                   </mat-option>
                 </mat-select>
                 <br>
