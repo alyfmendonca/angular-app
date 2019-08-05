@@ -45,21 +45,18 @@ export class HospitalDetailsComponent implements OnInit {
     );
     
   }
-  onNgModelChange(event){
-    console.log(event);
-    console.log(this.selectedOptions);
-  }
   changeCost(cost: CostGroup){
     console.log(cost);
     this.atualCostGroup = cost;
   }
-  validaOnlyOne(event){
-    // if(this.selectedTuss.length == 0){
-    //   alert('Deve haver ao menos um selecionado.');
-    //   event.target.click()
-    //   return;
-    // }
-    console.log(event);
+  validaOnlyOne(event, id){
+    if(this.allTuss.find((valor) => {
+      return valor == id;
+    })){
+      //Não deixa clicar no que já veio clicado
+      event.target.click();
+    }
+
   }
   
   
