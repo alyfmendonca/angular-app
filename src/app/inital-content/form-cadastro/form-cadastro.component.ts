@@ -75,13 +75,12 @@ export class FormCadastroComponent implements OnInit {
     //this.mascaraCrm = '000-00'
     var auxCrm = '';
     console.log('a');
-    //auxCrm = '0';
     console.log('b');
     for (let index = 0; index < event.length-1; index++) {
       auxCrm += '0';
       console.log('c');
     }
-    auxCrm += '-0';
+    auxCrm += '-09';
     this.mascaraCrm = auxCrm;
      
     

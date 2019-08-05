@@ -16,7 +16,7 @@
               <input [(ngModel)]='hospitalDetails.name' type='text' id='txtNome' name='txtNome' placeholder="Alberto Pacheco" #nameVerify="ngModel" required>
               
               <label for='txtFone'>Telefone</label>
-              <input [(ngModel)]='hospitalDetails.phone' type='text' mask='(00) 0000-00009' id='txtFone' name='txtFone' placeholder="(21) 91234-5678" #nameVerify="ngModel" required>
+              <input [(ngModel)]='hospitalDetails.phone' type='text' mask='{{telMask}}' id='txtFone' name='txtFone' placeholder="(21) 91234-5678" #nameVerify="ngModel" required>
 
               <label for='txtEmail'>Email</label>
               <input [(ngModel)]='hospitalDetails.email' type='email' id='txtEmail' name='txtEmail' placeholder="albertopacheco@gmail.com" #nameVerify="ngModel" required>
@@ -25,7 +25,7 @@
               <input [(ngModel)]='hospitalDetails.address' type='text' id='txtEnd' name='txtEnd' placeholder="lorem ipsum" #nameVerify="ngModel" required>
 
               <label for='txtCep'>CEP</label>
-              <input [(ngModel)]='hospitalDetails.cep' type='text' id='txtCep' name='txtCep' placeholder="2342423" #nameVerify="ngModel" required>
+              <input [(ngModel)]='hospitalDetails.cep' type='text' id='txtCep' mask='00000-000' name='txtCep' placeholder="2342423" #nameVerify="ngModel" required>
 
             </div>
 
