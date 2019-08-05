@@ -158,15 +158,15 @@ export class NewHospitalComponent implements OnInit {
               clinical_schedule: null,
               tuss: null,
             };
-            var auxTuss: string;
+            var auxTuss: number;
 
-            auxTuss += '[';
+            //auxTuss += '[';
 
             element2.tuss.forEach(element3 => {
-              auxTuss += element3.id + ', ';
+              auxTuss += +element3.id;
             })
             //auxTuss = auxTuss.substring(0,(auxTuss.length - 1))
-            auxTuss += ']';
+            //auxTuss += ']';
             console.log(element2.tuss);
             aux.name = element2.cost_group.name;
             aux.surgery_tax = element2.cost_group.surgery_tax;
@@ -174,7 +174,8 @@ export class NewHospitalComponent implements OnInit {
             aux.anesthesia_tax = element2.cost_group.anesthesia_tax;
             aux.material_tax = element2.cost_group.material_tax;
             aux.clinical_schedule = element2.cost_group.clinical_fee;
-            aux.tuss = auxTuss;
+            //let x = '[' + auxTuss.toString() + ']';
+            aux.tuss = '';
             
             console.log(aux);
             this.arrayCostGroup.push(aux);
