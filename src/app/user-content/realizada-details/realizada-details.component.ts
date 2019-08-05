@@ -36,7 +36,7 @@ export class RealizadaDetailsComponent implements OnInit {
       minutes_duration: null,
       true_hours_duration: null,
       true_minutes_duration: null,
-      percentage: '',
+      percentage: null,
       discount: null,
       note: '',
       surgeon: [{
@@ -103,7 +103,12 @@ export class RealizadaDetailsComponent implements OnInit {
       }else{
         this.aditional = 0;
       }
-      this.porcentagem = response.percentage;
+      if(response.discount){
+        this.porcentagem = (response.percentage * -1);
+      }else{
+        this.porcentagem = (response.percentage);
+      }
+      
     })
   }
 

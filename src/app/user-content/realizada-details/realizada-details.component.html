@@ -151,9 +151,9 @@
                     <p class="adicional">Adicional de Alta Complexidade <span>{{aditional}}%</span></p>
   
                     <mat-slider thumbLabel disabled
-                    [displayWith]="formatLabel"  min="0" max="30" step="1" value="{{porcentagem}}"></mat-slider>
+                    [displayWith]="formatLabel"  min="-30" max="30" step="1" value="{{porcentagem}}"></mat-slider>
                     <div class="line-porcentagem">
-                        <span>0%</span>
+                        <span>-30%</span>
                         <span>30%</span>
                       </div>
   
@@ -170,7 +170,7 @@
                     </div>
                     <div>
                         <label for='note'>Observações</label>
-                        <input [(ngModel)]='surgery.note' type='text' disabled id='note' name='note' placeholder="Observações" #nameVerify="ngModel">
+                        <textarea [(ngModel)]='surgery.note' disabled type='text' id='note' name='note' placeholder="Observações" #nameVerify="ngModel"></textarea>
   
                     </div>
                   </div>

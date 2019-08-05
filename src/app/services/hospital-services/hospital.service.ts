@@ -41,4 +41,14 @@ export class HospitalService {
     return this.http.post<Hospital>(`${API_URL}hospital/`, hospital, {headers});
   }
 
+  getCostPackageOptions(tuss: string){
+    let token = localStorage.getItem('token');
+    let headers = new HttpHeaders({
+      'Authorization': `token ${token}`,
+      'Content-Type': 'application/json'
+    });
+
+    return this.http.get<CostPackageOptions[]>(`${API_URL}costPackageOptionsForHospital/?tuss=${tuss}`, {headers});
+  }
+
 }

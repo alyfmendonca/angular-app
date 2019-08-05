@@ -78,9 +78,12 @@
                           <p>Selecione um pacote de custos criado anteriormente ou crie um novo</p>
                         </div>
                         <div class="box-line">
-                          <div class="package-box new-package" (click)="newPackageForm();">
+                          <div class="package-box new-package" (click)="newPackageForm(0);">
                             <i class="fas fa-plus"></i>
                             <p>Novo Pacote</p>
+                          </div>
+                          <div class="package-box new-package" *ngFor="let group of packageOptions" (click)="newPackageForm(group.name);">
+                            <p>{{group.name}}</p>
                           </div>
 
                           <!--

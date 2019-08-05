@@ -69,6 +69,24 @@ export class FormCadastroComponent implements OnInit {
       }
     }
   }
+  mascaraCrm = '00-0';
+  mudaMascara(event){
+    console.log(event.length);
+    //this.mascaraCrm = '000-00'
+    var auxCrm = '';
+    console.log('a');
+    //auxCrm = '0';
+    console.log('b');
+    for (let index = 0; index < event.length-1; index++) {
+      auxCrm += '0';
+      console.log('c');
+    }
+    auxCrm += '-0';
+    this.mascaraCrm = auxCrm;
+     
+    
+  }
+
   onClickBack(){
     let i = 0
     let continua = true;

@@ -135,12 +135,20 @@
             <div class="menu-dir">
               <h3 class="dark">Paciente precisará de:</h3><span>(Selecione quantos necessários)</span>
               <div class="list-scroll-esq listForm2">
-                <cdk-virtual-scroll-viewport class="virtualScroll" itemSize="8">
-                  <mat-selection-list>
-                    <mat-list-option name="cboNecessidades" (click)="selectionNeedsClick(necessidades);" *cdkVirtualFor="let necessidades of listNecessidades">
-                      {{necessidades.str}}
-                       <input type="number" id="teste-{{necessidades.id}}" />   
-                    </mat-list-option>
+                <cdk-virtual-scroll-viewport class="virtualScroll needsLine" itemSize="8">
+                  <mat-selection-list class="sectionList">
+                    <div class="optionDiv">
+                      <mat-list-option name="cboNecessidades" (click)="selectionNeedsClick(necessidades);" *cdkVirtualFor="let necessidades of listNecessidades">
+                        {{necessidades.str}}
+                        <!-- <input type="number" style="width: 40px;" id="teste-{{necessidades.id}}" />    -->
+                      </mat-list-option>
+                    </div>
+                    <div class="inputDiv">
+                      <div style="margin: auto;" *ngFor="let necessidades of listNecessidades">
+                        <input class="inputDays" disabled placeholder="Dias"  type="number" style="width: 40px;" id="teste-{{necessidades.id}}" />
+                      </div>
+                    </div>
+                      
                     
                   </mat-selection-list>
                 </cdk-virtual-scroll-viewport>
@@ -156,7 +164,7 @@
       <!-- Ultimo Step -->
       <mat-step [completed]="false" >
         <form class="form-stepper" #form="ngForm" id="formFour">
-          <div class="content-first form2">
+          <div class=" form2">
             <div class="menu-esq">
               <div class="inputsForm2">
                 <label class="labelForm" for='txtCid'>CID: </label>
@@ -178,12 +186,12 @@
               </div>
               <div class="esq-baixo">
                 <label for="explanation">Exame Clínico - Justificativa</label>
-                <textarea [(ngModel)]='surgeryCreate.explanation' type='text' id='explanation' name='explanation' placeholder="Alberto Pacheco" #nameVerify="ngModel"></textarea>
+                <textarea [(ngModel)]='surgeryCreate.explanation' type='text' id='explanation' name='explanation' placeholder="Justificativa" #nameVerify="ngModel"></textarea>
               </div>
               <input id="imagesUpload" (change)="chama($event)" type="file" multiple  />
               <img [src]="teste90" id="imagePreview" />
             </div>
-            <div class="btn-next">
+            <div style="float: right" class="btn-next">
               <button class="dark-button" (click)="finalizar();" mat-button matStepperNext>Finalizar</button>
             </div>
           </div>

@@ -36,7 +36,7 @@
                 </div>
                 <div class="list-scroll-esq">
                   <cdk-virtual-scroll-viewport class="virtualScroll" itemSize="8">
-                    <mat-selection-list [(ngModel)]="selectedOptions" name="a" (ngModelChange)="onNgModelChange($event)">
+                    <mat-selection-list (click)='validaOnlyOne($event);' [(ngModel)]="selectedOptions" name="a" (ngModelChange)="onNgModelChange($event)">
                       <mat-list-option *ngFor="let procedimento of listProcedimentosMock" [value]="procedimento.id">
                         {{procedimento.id}} - {{procedimento.str}}
                       </mat-list-option>

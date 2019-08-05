@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
 import { SurgeryService } from '../../services/surgery-services/surgery.service';
+import { HospitalService } from '../../services/hospital-services/hospital.service';
 import { OtherService } from 'src/app/services/other-services/other.service';
 
 @Component({
@@ -15,6 +16,7 @@ export class SolicitacoesDetailsComponent implements OnInit {
     public route: ActivatedRoute,
     public surgeryService: SurgeryService,
     private otherService: OtherService,
+    private hospitalService: HospitalService,
     ) { }
     checked = true;
     texto = 'Acréscimo';
@@ -34,7 +36,7 @@ export class SolicitacoesDetailsComponent implements OnInit {
       minutes_duration: null,
       true_hours_duration: null,
       true_minutes_duration: null,
-      percentage: '',
+      percentage: null,
       discount: null,
       note: '',
       surgeon: [{
@@ -57,9 +59,12 @@ export class SolicitacoesDetailsComponent implements OnInit {
           str: '',
       }],
       accommodations: null,
+      costs_options: null,
     };
     valorTotal: any;
     aditional: number;
+
+
     objCustos: any = {
       id: null,
       name: '',
@@ -75,6 +80,9 @@ export class SolicitacoesDetailsComponent implements OnInit {
       Day_Clinic: null,
       hospital: ''
     };
+
+    
+
     duracao: string;
 
     listComorb: Comorbiditie[] = [];
@@ -100,22 +108,22 @@ export class SolicitacoesDetailsComponent implements OnInit {
     }
 
     desconto: boolean;
-    onChange(evento: any){
-      if(evento.checked){
-        this.texto = 'Acréscimo';
-        this.desconto = false;
+    // onChange(evento: any){
+    //   if(evento.checked){
+    //     this.texto = 'Acréscimo';
+    //     this.desconto = false;
         
-      }else{
-        this.texto = 'Desconto';
-        this.desconto = true;
-      }
-      if(this.desconto){
-        this.valorTotal = this.objCustos.surgery_cost - (this.objCustos.surgery_cost * this.surgeryAprove.percentage / 100);
-      }else{
-        this.valorTotal = this.objCustos.surgery_cost + (this.objCustos.surgery_cost * this.surgeryAprove.percentage / 100);
-      }
-      console.log(this.desconto);
-    }
+    //   }else{
+    //     this.texto = 'Desconto';
+    //     this.desconto = true;
+    //   }
+    //   if(this.desconto){
+    //     this.valorTotal = this.objCustos.surgery_cost - (this.objCustos.surgery_cost * this.surgeryAprove.percentage / 100);
+    //   }else{
+    //     this.valorTotal = this.objCustos.surgery_cost + (this.objCustos.surgery_cost * this.surgeryAprove.percentage / 100);
+    //   }
+    //   console.log(this.desconto);
+    // }
     
     onClickNext(custos: any){
       this.objCustos = custos;
@@ -174,12 +182,15 @@ export class SolicitacoesDetailsComponent implements OnInit {
 
     onChangeBar(event: any){
       console.log(event.value);
-      this.surgeryAprove.percentage = event.value;
-      if(this.desconto){
-        this.valorTotal = this.objCustos.surgery_cost - (this.objCustos.surgery_cost * event.value / 100);
-      }else{
+      if(event.value > 0){    
+        this.desconto = false;
         this.valorTotal = this.objCustos.surgery_cost + (this.objCustos.surgery_cost * event.value / 100);
       }
+      if(event.value < 0){
+        this.desconto = true;
+        this.valorTotal = this.objCustos.surgery_cost - (this.objCustos.surgery_cost * (event.value * -1) / 100);
+      }
+      this.surgeryAprove.percentage = (event.value * -1);
     }
     ngOnInit() {
       // this.id = this.route.snapshot.params.id;
@@ -201,6 +212,7 @@ export class SolicitacoesDetailsComponent implements OnInit {
 
     public async init() {
 
+      
       this.surgery = this.route.snapshot.data.surgeryResolved;
       [this.listNeeds, this.listComorb] = await Promise.all([
         this.otherService.getAllAccommodations().toPromise(),
@@ -215,6 +227,9 @@ export class SolicitacoesDetailsComponent implements OnInit {
         this.complexidade = 'false';
         this.aditional = 0;
       }
+
+      
+      console.log(this.surgery.costs_options)
     }
   
     atribuiSelecteds() {

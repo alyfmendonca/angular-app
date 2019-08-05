@@ -288,7 +288,24 @@ textarea {
     padding: 10px 5px;
     color: #ccc;
     margin-top: 5px;
-    width: 95%;
+    width: 80%;
     height: 75px;
     font-family: Roboto;
+}
+.sectionList {
+    display: flex !important;
+}
+.inputDiv{
+    display: flex;
+    flex-direction: column;
+    width: 30%;
+}
+.optionDiv{
+    width: 70%;
+}
+
+.inputDiv input {
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    margin: auto;
 }

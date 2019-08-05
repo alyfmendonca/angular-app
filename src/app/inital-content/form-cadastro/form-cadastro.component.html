@@ -18,7 +18,7 @@
                       <input [(ngModel)]='userCreate.name' type='text' id='txtNome' name='txtNome' placeholder="Alberto Pacheco" #nameVerify="ngModel" required>
             
                       <label for='txtCrm'>CRM</label>
-                      <input [(ngModel)]='userCreate.crm' mask='99990-0' type='text' id='txtCrm' name='txtCrm' placeholder="12314" #nameVerify="ngModel" required>
+                      <input [(ngModel)]='userCreate.crm' (ngModelChange)="mudaMascara($event);" mask='{{mascaraCrm}}' type='text' id='txtCrm' name='txtCrm' placeholder="12314" #nameVerify="ngModel" required>
           
                       <label for='txtUf'>Uf</label>
                       <input [(ngModel)]='userCreate.uf' type='text' id='txtUf' name='txtUf' placeholder="RJ" #nameVerify="ngModel" required>

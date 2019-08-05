@@ -113,14 +113,16 @@ export class RequestStepperComponent implements OnInit {
 
   selectionNeedsClick(accommodations: Accommodation){
     if(this.listNeedsSelected.find(function(item:Comorbiditie){
-      document.getElementById(`teste-${item.id}`);
+      //document.getElementById(`teste-${item.id}`).disabled = true;
       console.log(`teste-${item.id}`);
       return item.id == accommodations.id;
     })){
       this.listNeedsSelected = this.listNeedsSelected.filter(function(item){
+        //document.getElementById(`teste-${item.id}`).disabled = false;
         return  item.id != accommodations.id
       });
     }else{
+      
       this.listNeedsSelected.push(accommodations);
     }
   }

@@ -26,7 +26,7 @@ export class SurgeryDetailsComponent implements OnInit {
       minutes_duration: null,
       true_hours_duration: null,
       true_minutes_duration: null,
-      percentage: '',
+      percentage: null,
       discount: null,
       note: '',
       surgeon: [{

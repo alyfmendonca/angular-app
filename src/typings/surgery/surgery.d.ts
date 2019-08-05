@@ -6,7 +6,7 @@ type Surgery = {
     minutes_duration: string,
     true_hours_duration: string,
     true_minutes_duration: string,
-    percentage: string;
+    percentage: number;
     discount: boolean;
     note: string;
     surgeon: [{
@@ -30,5 +30,6 @@ type Surgery = {
     }];
     accommodations: any[];
     cost?: any[];
+    costs_options?: any[];
     
 }

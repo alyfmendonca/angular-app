@@ -53,6 +53,14 @@ export class HospitalDetailsComponent implements OnInit {
     console.log(cost);
     this.atualCostGroup = cost;
   }
+  validaOnlyOne(event){
+    // if(this.selectedTuss.length == 0){
+    //   alert('Deve haver ao menos um selecionado.');
+    //   event.target.click()
+    //   return;
+    // }
+    console.log(event);
+  }
   
   
  
