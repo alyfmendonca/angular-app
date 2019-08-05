@@ -228,3 +228,9 @@ label{
     color: #3ec0c2;
     
 }
+
+.divBtnSalvar{
+    align-self: flex-end;
+    margin-right: 5%;
+    margin-top: 5%;
+}

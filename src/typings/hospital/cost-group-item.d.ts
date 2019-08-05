@@ -5,7 +5,8 @@ type CostGroupItem = {
     additional_tax:number;
     anesthesia_tax:number;
     material_tax: number;
-    clinical_schedule:number;
+    clinical_schedule?:number;
+    clinical_fee?:number;
     tuss:string;
     Semi_intensiva?: number;
     CTI?: number;

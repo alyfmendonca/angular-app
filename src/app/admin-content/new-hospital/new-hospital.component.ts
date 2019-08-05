@@ -52,6 +52,8 @@ export class NewHospitalComponent implements OnInit {
   taxaDiariaGlobalCTI: number;
   HrClinico: number;
 
+  flagBtnSalvar:boolean = false;
+
   tussTable: Tuss[] = [];
   tussTableAfter: Tuss[] = [];
   newHospital: HospitalCreate={
@@ -65,7 +67,7 @@ export class NewHospitalComponent implements OnInit {
   };
 
   packageOptions: CostPackageOptions [] = [];
-
+ 
   ngOnInit() {
     this.tussTable = this.route.snapshot.data.allTuss;
   }
@@ -155,7 +157,7 @@ export class NewHospitalComponent implements OnInit {
               additional_tax: null,
               anesthesia_tax: null,
               material_tax: null,
-              clinical_schedule: null,
+              clinical_fee: null,
               tuss: null,
             };
             var auxTuss: number;
@@ -173,7 +175,7 @@ export class NewHospitalComponent implements OnInit {
             aux.additional_tax = element2.cost_group.additional_tax;
             aux.anesthesia_tax = element2.cost_group.anesthesia_tax;
             aux.material_tax = element2.cost_group.material_tax;
-            aux.clinical_schedule = element2.cost_group.clinical_fee;
+            aux.clinical_fee = element2.cost_group.clinical_fee;
             //let x = '[' + auxTuss.toString() + ']';
             aux.tuss = '';
             
@@ -197,7 +199,7 @@ export class NewHospitalComponent implements OnInit {
         additional_tax: 0,
         anesthesia_tax: 0,
         material_tax: 0,
-        clinical_schedule: 0,
+        clinical_fee: 0,
         tuss: ''
       };
       
@@ -211,7 +213,7 @@ export class NewHospitalComponent implements OnInit {
       grupoCriado.additional_tax = this.taxaAdicional;
       grupoCriado.anesthesia_tax = this.taxaAnestesia;
       grupoCriado.material_tax = this.taxaMaterial;
-      grupoCriado.clinical_schedule = this.HrClinico;
+      grupoCriado.clinical_fee = this.HrClinico;
       grupoCriado.Semi_intensiva = this.taxaDiariaGlobalS;
       grupoCriado.CTI = this.taxaDiariaGlobalCTI;
       grupoCriado.Andar = this.taxaDiariaGlobalQ;
@@ -257,6 +259,93 @@ export class NewHospitalComponent implements OnInit {
           })
         });
       })
+      this.router.navigateByUrl('admin/main/allHospitals');
     }
   }
+
+  grupoClicado: CostGroupItem; 
+
+  editaGrupo(grupoCusto){
+    this.grupoClicado = grupoCusto;
+
+    this.txtNomeGroup = grupoCusto.name;
+    this.taxaCirurgia = grupoCusto.surgery_tax;
+    this.taxaAdicional = grupoCusto.additional_tax;
+    this.taxaAnestesia = grupoCusto.anesthesia_tax;
+    this.taxaMaterial = grupoCusto.material_tax;
+    if(grupoCusto.CTI)
+      this.taxaDiariaGlobalCTI = grupoCusto.CTI;
+    if(grupoCusto.clinical_fee)
+      this.HrClinico = grupoCusto.clinical_fee;
+    if(grupoCusto.Semi_intensiva)
+      this.taxaDiariaGlobalS = grupoCusto.Semi_intensiva;
+    if(grupoCusto.Day_Clinic)
+      this.taxaDiariaGlobal = grupoCusto.Day_Clinic;
+    if(grupoCusto.Andar)
+      this.taxaDiariaGlobalQ = grupoCusto.Andar;
+    this.HrClinico = grupoCusto.clinical_fee;
+  }
+
+  salvaGrupoCusto(){
+    if(this.selectedTussGroup.length > 0 && this.txtNomeGroup && this.taxaCirurgia && this.taxaAdicional && 
+      this.taxaAnestesia && this.taxaMaterial && this.HrClinico){
+
+        var grupoCriado: CostGroupItem = {
+          name: '',
+          surgery_tax: 0,
+          additional_tax: 0,
+          anesthesia_tax: 0,
+          material_tax: 0,
+          clinical_fee: 0,
+          tuss: ''
+        };
+        
+        //Para cada tuss selecionado, remove da tussTableAfter, que são os Tuss selecionados na primeira página e que foram movidos para outra lista.
+        this.selectedTussGroup.forEach(tuss => {
+          this.tussTableAfter.splice(this.tussTableAfter.findIndex(x => x.id === tuss), 1);
+        });
+        grupoCriado.hospital_id = this.hospitalId;
+        grupoCriado.name = this.txtNomeGroup;
+        grupoCriado.surgery_tax = this.taxaCirurgia;
+        grupoCriado.additional_tax = this.taxaAdicional;
+        grupoCriado.anesthesia_tax = this.taxaAnestesia;
+        grupoCriado.material_tax = this.taxaMaterial;
+        grupoCriado.clinical_fee = this.HrClinico;
+        grupoCriado.Semi_intensiva = this.taxaDiariaGlobalS;
+        grupoCriado.CTI = this.taxaDiariaGlobalCTI;
+        grupoCriado.Andar = this.taxaDiariaGlobalQ;
+        grupoCriado.Day_Clinic = this.taxaDiariaGlobal;
+
+        //limpa tudo
+
+        this.txtNomeGroup = '';
+        this.taxaCirurgia = null;
+        this.taxaAdicional = null;
+        this.taxaAnestesia = null;
+        this.taxaMaterial = null;
+        this.HrClinico = null;
+        this.taxaDiariaGlobalS = null;
+        this.taxaDiariaGlobalCTI = null;
+        this.taxaDiariaGlobalQ = null;
+        this.taxaDiariaGlobal = null;
+        
+        grupoCriado.tuss = '[' + this.selectedTussGroup + ']';
+
+        if(this.arrayCostGroup.find((item) => {
+          return item == this.grupoClicado;
+        })){
+          this.arrayCostGroup[this.arrayCostGroup.indexOf(this.grupoClicado)] = {...grupoCriado};
+        }else{
+          console.log('erro');
+        }
+
+        this.flagBtnSalvar = false;
+        alert('Salvo com sucesso!')
+
+    }else{
+      alert('Preencha todos os campos obrigatórios do grupo de custo e selecione ao menos um TUSS');
+      return;
+    }
+  }
+
 }

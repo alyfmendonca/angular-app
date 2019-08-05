@@ -144,6 +144,11 @@
                       
                               <label for='HrClinico'>Honorário Clínico</label>
                               <input [(ngModel)]='HrClinico' type='text' id='HrClinico' name='HrClinico' placeholder="R$ 0000,00" #nameVerify="ngModel" required>
+
+                              <div *ngIf="this.flagBtnSalvar" class="divBtnSalvar">
+                                <button (click)="salvaGrupoCusto();" class="dark-button">Salvar</button>
+                              </div>
+                              
                           </div>
                       
                         </div>
@@ -155,11 +160,11 @@
                               <h3 class="light-dark">Pacote de custo: {{newHospital.name}}</h3>
                             </div>
                             <div class="box-line">
-                              <div class="package-box" *ngFor="let grupoCusto of arrayCostGroup">
+                              <div class="package-box" (click)="editaGrupo(grupoCusto); this.flagBtnSalvar = true;" *ngFor="let grupoCusto of arrayCostGroup">
                                 <p>{{grupoCusto.name}}</p>
                               </div>
 
-                              <div (click)="processaGrupo();" class="package-box">
+                              <div (click)="processaGrupo();  this.flagBtnSalvar = false;" class="package-box">
                                 <p><i class="fas fa-plus"></i></p>
                               </div>
                             </div> 
