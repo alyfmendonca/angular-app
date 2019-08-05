@@ -95,14 +95,17 @@ export class RequestStepperComponent implements OnInit {
   }
   teste90: any;
   chama(teste){
+    //console.log(document.getElementById('imagesUpload').files.length);
+    console.log(teste)
       var reader = new FileReader();
+      
 
       reader.readAsDataURL(teste.target.files[0]);
 
       reader.onload = (event) => {
-        console.log(event);
+        console.log(event.target);
         this.teste90 = event.target;  
-        console.log(this.teste90.result);
+        console.log(this.teste90.attributes);
         this.teste90 = this.teste90.result;
       }
       
