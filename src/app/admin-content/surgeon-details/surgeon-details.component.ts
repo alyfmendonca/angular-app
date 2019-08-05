@@ -19,21 +19,34 @@ export class SurgeonDetailsComponent implements OnInit {
   id: number;
 
   surgeonChoosed: SurgeonById;
-
+  maskCrm = '00-0';
+  telMask = '';
   ngOnInit() {
     this.listProcedimentos = this.route.snapshot.data.allTuss;
     this.id = this.route.snapshot.params.id;
 
     this.surgeonService.getSurgeon(this.id).subscribe((surgeon) => {
       this.surgeonChoosed = surgeon;
+      if(surgeon.phone.length == 11){
+        this.telMask = '(00) 00000-0000';
+      }else{
+        this.telMask = '(00) 0000-0000';
+      }
+      console.log((this.surgeonChoosed.crm.toString()))
+      this.maskCrm = '';
+      for (let index = 0; index < (this.surgeonChoosed.crm.toString()).length -1; index++) {
+        this.maskCrm += '0';
+      }
+      this.maskCrm += '-0';
+      this.selectedTuss = this.tuss;
       this.surgeonChoosed.tuss.forEach(tuss => {
         this.tuss.push(tuss.id);
       });
     });
-
-    this.selectedTuss = this.tuss;
+    
+    
   }
-
+  
   listProcedimentos: Tuss[] = []; 
 
   selectedTuss: number[] = []; 

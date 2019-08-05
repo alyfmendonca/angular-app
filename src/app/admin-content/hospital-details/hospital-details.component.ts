@@ -24,6 +24,7 @@ export class HospitalDetailsComponent implements OnInit {
   atualCostGroup: CostGroup;
   listProcedimentosMock: Tuss[] = [];
   selectedOptions: number[] = [];
+  telMask = '';
   ngOnInit() {
     this.route.params.subscribe( parametros => {
         this.id = parametros.id;
@@ -31,6 +32,11 @@ export class HospitalDetailsComponent implements OnInit {
     this.hopitalService.getHospital(this.id).subscribe(response => {
       this.hospitalDetails = response;
       this.atualCostGroup = response.cost_groups[0];
+      if(response.phone.length == 11){
+        this.telMask = '(00) 00000-0000';
+      }else{
+        this.telMask = '(00) 0000-0000';
+      }
       response.all_tuss.forEach(element => {
         this.allTuss.push(element.id);
       });
