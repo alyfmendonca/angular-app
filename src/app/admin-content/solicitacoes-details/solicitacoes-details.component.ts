@@ -37,6 +37,7 @@ export class SolicitacoesDetailsComponent implements OnInit {
       true_hours_duration: null,
       true_minutes_duration: null,
       percentage: null,
+      explanation: '',
       discount: null,
       note: '',
       surgeon: [{
@@ -60,6 +61,10 @@ export class SolicitacoesDetailsComponent implements OnInit {
       }],
       accommodations: null,
       costs_options: null,
+      cid: {
+          id: null,
+          str: ''
+      }
     };
     valorTotal: any;
     aditional: number;

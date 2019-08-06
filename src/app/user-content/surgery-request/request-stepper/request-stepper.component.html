@@ -182,7 +182,7 @@
               <input id="imagesUpload" (change)="chama($event)" type="file" multiple  />
               <div class="divFiles"> 
                 <div *ngFor="let arquivo of listFilesFinal | async" class="divFile"> 
-                  <img src="{{arquivo}}">
+                  <img class="singleImagePreview" src="{{arquivo}}">
                 </div>
               </div>  
             </div>

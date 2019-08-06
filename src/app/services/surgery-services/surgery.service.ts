@@ -78,7 +78,7 @@ export class SurgeryService {
         'Content-Type': 'application/json'
       });
 
-      return this.http.post<any>(`${API_URL}postSurgeryMedia/`, {
+      return this.http.post<any>(`${API_URL}surgeryMedia/`, {
         id: id,
         media: data
       }, {headers});

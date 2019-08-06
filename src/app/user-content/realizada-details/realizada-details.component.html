@@ -57,11 +57,14 @@
                   <label class="labelForm" for='hourSurgery'>Horário da Cirurgia</label>
                   <ngx-timepicker-field id='hourSurgery' disabled name='hourSurgery' [(ngModel)]='hourSurgery' [format]="24" [defaultTime]="'00:00'"></ngx-timepicker-field> 
                   <br>
+
+                  <label for='explanation'>Justificativa</label>
+                  <textarea [(ngModel)]='surgery.explanation'  type='text' id='explanation' name='explanation' placeholder="Justificativa" #nameVerify="ngModel" required> </textarea>
   
                 </div>
   
                 <div class="dir">
-                    <label for='dt'>Data</label>
+                    <label for='dt'>Data de Nascimento</label>
                     <mat-form-field>
                       <input disabled [(ngModel)]='surgery.patient.birth_date' id='dtNasc' name='dtNasc' matInput [matDatepicker]="picker" >
                       <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
@@ -95,6 +98,14 @@
                           <mat-list-option [value]="accomodations.id" name="cboSelectedAcom" *ngFor="let accomodations of listNeeds">
                             {{accomodations.str}} 
                           </mat-list-option>
+                      </mat-selection-list>
+                    </div>
+                    <label>CID: </label>
+                    <div class="list-scroll-dir">
+                      <mat-selection-list disabled name="cid">
+                        <mat-list-option selected [value]="surgery.cid.str" name="cidoption">
+                          {{surgery.cid.str}} 
+                        </mat-list-option>
                       </mat-selection-list>
                     </div>
                 </div>

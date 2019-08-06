@@ -57,6 +57,8 @@
                 <label class="labelForm" for='hourSurgery'>Horário da Cirurgia</label>
                 <ngx-timepicker-field disabled id='hourSurgery' name='hourSurgery' [(ngModel)]='hourSurgery' [format]="24" [defaultTime]="'00:00'"></ngx-timepicker-field> 
                 <br>
+                <label for='explanation'>Justificativa</label>
+                  <textarea [(ngModel)]='surgery.explanation'  type='text' id='explanation' name='explanation' placeholder="Justificativa" #nameVerify="ngModel" required> </textarea>
 
               </div>
 
@@ -96,6 +98,14 @@
                         <mat-list-option [value]="accomodations.id" name="cboSelectedAcom" *ngFor="let accomodations of listNeeds">
                           {{accomodations.str}} 
                         </mat-list-option>
+                    </mat-selection-list>
+                  </div>
+                  <label>CID: </label>
+                  <div class="list-scroll-dir">
+                    <mat-selection-list disabled name="cid">
+                      <mat-list-option selected [value]="surgery.cid.str" name="cidoption">
+                        {{surgery.cid.str}} 
+                      </mat-list-option>
                     </mat-selection-list>
                   </div>
               </div>

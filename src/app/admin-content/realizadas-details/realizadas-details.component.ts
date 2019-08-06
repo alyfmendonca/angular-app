@@ -38,6 +38,7 @@ export class RealizadasDetailsComponent implements OnInit {
       minutes_duration: null,
       true_hours_duration: null,
       true_minutes_duration: null,
+      explanation: '',
       percentage: null,
       discount: null,
       note: '',
@@ -61,6 +62,10 @@ export class RealizadasDetailsComponent implements OnInit {
           str: '',
       }],
       accommodations: null,
+      cid: {
+          id: null,
+          str: ''
+      },
   };
   trueDuration: string;
   finalNote: string = '';

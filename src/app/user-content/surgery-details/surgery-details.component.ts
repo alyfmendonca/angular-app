@@ -24,6 +24,7 @@ export class SurgeryDetailsComponent implements OnInit {
       complicated: null,
       hours_duration: null,
       minutes_duration: null,
+      explanation: '',
       true_hours_duration: null,
       true_minutes_duration: null,
       percentage: null,
@@ -49,6 +50,10 @@ export class SurgeryDetailsComponent implements OnInit {
           str: '',
       }],
       accommodations: null,
+      cid: {
+          id: null,
+          str: ''
+      }
   };
 
   listComorb: Comorbiditie[] = [];

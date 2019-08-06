@@ -38,6 +38,7 @@ export class ApprovedDetailsComponent implements OnInit {
       minutes_duration: null,
       true_hours_duration: null,
       true_minutes_duration: null,
+      explanation: '',
       percentage: null,
       discount: null,
       note: '',
@@ -62,6 +63,10 @@ export class ApprovedDetailsComponent implements OnInit {
       }],
       accommodations: null,
       cost: null,
+      cid: {
+          id: null,
+          str: ''
+      },
   };
   objCustos: any = {
     id: null,
