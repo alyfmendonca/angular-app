@@ -127,14 +127,16 @@ export class RealizadasDetailsComponent implements OnInit {
 
   
   public async init() {
-
-    this.surgery = this.route.snapshot.data.surgeryResolved;
-    [this.listNeeds, this.listComorb] = await Promise.all([
-      this.otherService.getAllAccommodations().toPromise(),
-      this.otherService.getAllComorbidities().toPromise()
-    ]);
-    this.atribuiSelecteds();
-    this.objCustos = this.surgery.cost;
+    this.id = this.route.snapshot.params.id;
+    this.surgeryService.getSurgery(this.id).subscribe(response => {
+      console.log(response);
+      this.surgery = response;
+      if(response.discount){
+        this.porcentagem = (response.percentage * -1);
+      }else{
+        this.porcentagem = (response.percentage);
+      }
+      this.objCustos = this.surgery.cost;
       this.duracao = this.surgery.hours_duration;
       this.duracao += ':';
       this.duracao += this.surgery.minutes_duration;
@@ -156,16 +158,21 @@ export class RealizadasDetailsComponent implements OnInit {
       this.complexidade = 'false';
       this.aditional = 0;
     }
+    })
+    this.surgery = this.route.snapshot.data.surgeryResolved;
+    [this.listNeeds, this.listComorb] = await Promise.all([
+      this.otherService.getAllAccommodations().toPromise(),
+      this.otherService.getAllComorbidities().toPromise()
+    ]);
+    
+      
+    this.atribuiSelecteds();
   }
 
   atribuiSelecteds() {
  
     this.selectedComorbs = undefined;
     this.selectedNeeds = undefined;
-
-    this.duracao = this.surgery.hours_duration;
-    this.duracao += ':';
-    this.duracao += this.surgery.minutes_duration;
     
   
     setTimeout(() => {

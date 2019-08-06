@@ -181,6 +181,7 @@ label{
     padding: 10px;
     min-width: 250px;
     margin-right: 25px;
+    margin-bottom: 20px;
 }
 .hospital-box .first-line h3{
     margin: 0;
@@ -210,6 +211,7 @@ label{
 .custos-line{
     display: flex;
     margin-top: 20px;
+    flex-wrap: wrap;
 }
 
 .line-valores{
