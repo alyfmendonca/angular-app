@@ -220,7 +220,7 @@ span{
     margin-top: 30px;
 }
 
-::ng-deep .listForm2 .mat-pseudo-checkbox {
+::ng-deep .listForm2 .mat-pseudo-checkbox{
     width: 14px !important;
     height: 13px !important;
     border: 1px solid #3fc0c2 !important;
@@ -341,3 +341,4 @@ textarea {
     bottom: 0;
     z-index: 9999;
 }
+

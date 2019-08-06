@@ -74,6 +74,8 @@ export class RequestStepperComponent implements OnInit {
   hourSurgery: string;
   
   birth_date: Date;
+
+  semComorb: boolean = false;
         
   ngOnInit() {
 
@@ -89,17 +91,6 @@ export class RequestStepperComponent implements OnInit {
       accommodations => this.listNecessidades = accommodations
     );
 
-  }
-  selectionComorbClick(comorbidade: Comorbiditie){
-    if(this.listComorbSelected.find(function(item:Comorbiditie){
-      return item.id == comorbidade.id;
-    })){
-      this.listComorbSelected = this.listComorbSelected.filter(function(item){
-        return  item.id != comorbidade.id
-      });
-    }else{
-      this.listComorbSelected.push(comorbidade);
-    }
   }
 
   chama(param){
@@ -127,15 +118,13 @@ export class RequestStepperComponent implements OnInit {
     }) 
   }
 
-  noComorbi = false;
   testedis= "string";
-  noSelectionComorbClick(valida){
-    this.listComorbSelected = [];
-    console.log(valida);
-    console.log(this.testedis);
-    this.noComorbi = true;
-  }
+
   teste_necessidades = true;
+
+  changeClass(){
+    alert('ok');
+  }
 
   selectionNeedsClick(accommodations: Accommodation){
     var flag: boolean = false;

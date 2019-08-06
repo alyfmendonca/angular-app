@@ -70,14 +70,15 @@
             </div> 
             <div class="menu-dir">
               <h3 class="dark">Comorbidades</h3><span>(Selecione quantos necessários)</span>
+              <mat-checkbox name="semComorb" (change)="listComorbSelected = [];" class="semComorb" [(ngModel)]="semComorb">
+                  Sem comorbidade
+              </mat-checkbox>
               <div class="list-scroll-esq listForm2">
                 <cdk-virtual-scroll-viewport class="virtualScroll" itemSize="8">
-                  <mat-selection-list #comorb>
-                    <mat-list-option [disabled]="noComorbi" name="cboComorbidades" (click)="selectionComorbClick(comorbidades);" *ngFor="let comorbidades of listComorbidades">
+                  <mat-selection-list [(ngModel)]="listComorbSelected" #comorb name="ab">
+                    <mat-list-option [disabled]="semComorb" name="cboComorbidades" 
+                    *ngFor="let comorbidades of listComorbidades">
                       {{comorbidades.str}}
-                    </mat-list-option>
-                    <mat-list-option id="semComorb" name="noCboComorbidades" (click)="noSelectionComorbClick($event);">
-                      Sem comorbidade
                     </mat-list-option>
                   </mat-selection-list>
                 </cdk-virtual-scroll-viewport>
