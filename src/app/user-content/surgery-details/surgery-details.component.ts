@@ -48,8 +48,9 @@ export class SurgeryDetailsComponent implements OnInit {
       secondary_tuss: [{
           id: null,
           str: '',
-      }],
+      }], 
       accommodations: null,
+      accommodations_days: null,
       cid: {
           id: null,
           str: ''
@@ -63,6 +64,7 @@ export class SurgeryDetailsComponent implements OnInit {
 
   selectedComorbs: number[] = [];
   selectedNeeds: number[] = [];
+  selectedNeedsDays: number[] = [];
 
   selectedComorbsAux: number[] = [];
   selectedNeedsAux: number[] = [];
@@ -122,6 +124,7 @@ export class SurgeryDetailsComponent implements OnInit {
  
     this.selectedComorbs = undefined;
     this.selectedNeeds = undefined;
+    this.selectedNeedsDays = undefined;
 
     this.duracao = this.surgery.hours_duration;
     this.duracao += ':';
@@ -131,8 +134,19 @@ export class SurgeryDetailsComponent implements OnInit {
     setTimeout(() => {
       this.selectedComorbs = this.surgery.comorbidities;
       this.selectedNeeds = this.surgery.accommodations;
+      this.selectedNeedsDays = this.surgery.accommodations_days;
+
+      this.preencheDias();
+
     }, 1);
 
+  }
+
+  preencheDias(){
+    for (let index = 0; index < this.selectedNeeds.length; index++) {
+      var element = <HTMLInputElement> document.getElementById(`inputNeeds-${this.selectedNeeds[index]}`);
+      element.value = ''+this.selectedNeedsDays[index];
+    }
   }
 
   validaOnlyOne(event){
