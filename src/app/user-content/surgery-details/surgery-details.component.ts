@@ -90,6 +90,34 @@ export class SurgeryDetailsComponent implements OnInit {
     }
   }
 
+  optionClick(accomodation){
+    var flag: boolean = false;
+    this.selectedNeeds.forEach(selected => {
+      if(selected == accomodation.id){
+        flag = true;
+      }
+    });
+
+    if(flag){
+      var element = <HTMLInputElement> document.getElementById(`inputNeeds-${accomodation.id}`);
+      if(accomodation.id == 4){
+        element.value = '1';
+        element.disabled = true;
+        return;
+      }
+      element.disabled = false;
+    }else{
+      var element = <HTMLInputElement> document.getElementById(`inputNeeds-${accomodation.id}`);
+      if(accomodation.id == 4){
+        element.value = '';
+        element.disabled = true;
+        return;
+      }
+      element.disabled = true;
+      element.value = '';
+    }
+  }
+
   atribuiSelecteds() {
  
     this.selectedComorbs = undefined;

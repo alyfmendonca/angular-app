@@ -193,3 +193,8 @@ textarea{
     justify-content: space-between;
     align-items: center;
 }
+
+.listWDays{
+    display: flex;
+    flex-direction: row;
+}

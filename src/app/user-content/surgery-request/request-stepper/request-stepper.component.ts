@@ -122,10 +122,6 @@ export class RequestStepperComponent implements OnInit {
 
   teste_necessidades = true;
 
-  changeClass(){
-    alert('ok');
-  }
-
   selectionNeedsClick(accommodations: Accommodation){
     var flag: boolean = false;
     this.selectedNeedsDays.forEach(selected => {
@@ -150,6 +146,7 @@ export class RequestStepperComponent implements OnInit {
         return;
       }
       element.disabled = true;
+      element.value = '';
     }
 
   }
