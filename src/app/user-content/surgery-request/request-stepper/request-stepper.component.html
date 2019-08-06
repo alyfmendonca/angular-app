@@ -180,7 +180,11 @@
                 <textarea [(ngModel)]='surgeryCreate.explanation' type='text' id='explanation' name='explanation' placeholder="Justificativa" #nameVerify="ngModel"></textarea>
               </div>
               <input id="imagesUpload" (change)="chama($event)" type="file" multiple  />
-              <img [src]="teste90" id="imagePreview" />
+              <div class="divFiles"> 
+                <div *ngFor="let arquivo of listFilesFinal | async" class="divFile"> 
+                  <img src="{{arquivo}}">
+                </div>
+              </div>  
             </div>
             <div style="float: right" class="btn-next">
               <button class="dark-button" (click)="finalizar();" mat-button matStepperNext>Finalizar</button>

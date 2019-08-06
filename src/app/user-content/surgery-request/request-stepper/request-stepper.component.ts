@@ -6,6 +6,7 @@ import { Router, ActivatedRoute } from '@angular/router';
 import { SurgeryService } from 'src/app/services/surgery-services/surgery.service';
 import { SurgeonService } from 'src/app/services/surgeon-services/surgeon.service';
 
+
 @Component({
   selector: 'app-request-stepper',
   templateUrl: './request-stepper.component.html', 
@@ -14,6 +15,8 @@ import { SurgeonService } from 'src/app/services/surgeon-services/surgeon.servic
 })
 export class RequestStepperComponent implements OnInit {
   isLinear = false;
+
+  
 
   surgeryCreate: SurgeryCreate = {
     main_tuss: null,
@@ -47,6 +50,9 @@ export class RequestStepperComponent implements OnInit {
   duracao: string;
 
   selectedNeedsDays: number[];
+
+  listFilesFinal: Promise<any[]> = null;
+  listFilesFinalFinalizar: any[] = [];
 
   //Cids
   listCid: Cid[] = [];
@@ -93,24 +99,32 @@ export class RequestStepperComponent implements OnInit {
       this.listComorbSelected.push(comorbidade);
     }
   }
-  teste90: any;
-  chama(teste){
+
+  chama(param){
     //console.log(document.getElementById('imagesUpload').files.length);
-    console.log(teste)
-      var reader = new FileReader();
-      
-
-      reader.readAsDataURL(teste.target.files[0]);
-
-      reader.onload = (event) => {
-        console.log(event.target);
-        this.teste90 = event.target;  
-        console.log(this.teste90.attributes);
-        this.teste90 = this.teste90.result;
-      }
-      
-  
+    let listFiles: any[] = [];
+      for (var i = 0; i < param.target.files.length; i++) { //for multiple files          
+        (function(file) {
+            var reader = new FileReader();  
+            reader.onload = (event) => {
+              let fileAny:any = event.target;
+              listFiles.push(fileAny.result);
+            }
+            reader.readAsDataURL(file); 
+        })(param.target.files[i]);  
+    }
+    this.listFilesFinal = new Promise<any[]>((resolve, reject) => {
+      setTimeout(() => {
+        resolve();
+      }, 300);
+    }).then(() => {
+      listFiles.forEach(element => {
+        this.listFilesFinalFinalizar.push(element);
+      });
+      return listFiles;
+    }) 
   }
+
   noComorbi = false;
   testedis= "string";
   noSelectionComorbClick(valida){
@@ -238,7 +252,10 @@ export class RequestStepperComponent implements OnInit {
         console.log(JSON.stringify(this.surgeryCreate));
         var surgery: Surgery;
         this.surgeryServices.createSurgery(this.surgeryCreate).subscribe(
-          res => this.router.navigate(['/user/main/request-confirmation']), (err) => {
+          (res) => {
+            this.gravaMidias(res.id);
+            this.router.navigate(['/user/main/request-confirmation']);
+          }, (err) => {
             alert(err.error.message);
             console.log(err.error.message);
             this.selectedTuss = []; 
@@ -246,6 +263,14 @@ export class RequestStepperComponent implements OnInit {
         );
 
     }
+  }
+
+  gravaMidias(id){
+    this.listFilesFinalFinalizar.forEach(dataFile => {
+      this.surgeryServices.uploadMedia(dataFile, id)
+      console.log(id + " <<< ID --- DATA >>>" + dataFile);
+    });
+
   }
 
 }

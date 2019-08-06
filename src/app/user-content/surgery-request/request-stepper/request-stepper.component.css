@@ -309,3 +309,25 @@ textarea {
     border: 1px solid #ccc;
     margin: auto;
 }
+
+.divFiles{
+    width: 80%;
+    height: 200px;
+    margin-top: 1%;
+    overflow-y: auto;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    flex-wrap: wrap;
+}
+
+.divFile{
+    display: flex;
+    flex-direction: column;
+    width: 240px;
+    margin-bottom: 2%;
+}
+
+.divFile img{
+    width: 100%
+}

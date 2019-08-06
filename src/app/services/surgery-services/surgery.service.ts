@@ -71,4 +71,17 @@ export class SurgeryService {
       return this.http.post<any>(`${API_URL}approveSurgery/`, surgeryAprove, {headers});
     }
 
+    uploadMedia(data: string, id: number){
+      let token = localStorage.getItem('token');
+      let headers = new HttpHeaders({
+        'Authorization': `token ${token}`,
+        'Content-Type': 'application/json'
+      });
+
+      return this.http.post<any>(`${API_URL}postSurgeryMedia/`, {
+        id: id,
+        media: data
+      }, {headers});
+    }
+
 }
