@@ -32,8 +32,8 @@
                   
                   <h3 class="light-dark">Complexidade</h3>
                   <label for='durCirurgia'>Duração da cirugia</label>
-                  <!-- <input [(ngModel)]='surgery.duration' disabled type='text' id='durCirurgia' name='durCirurgia' placeholder="2 horas e 30 min" #nameVerify="ngModel" required>-->
-                  <ngx-timepicker-field id='txtDur2' disabled name='txtDur2' [(ngModel)]='duracao' [format]="24" [defaultTime]="'00:00'"></ngx-timepicker-field> 
+                  
+                  <ngx-timepicker-field disabled id='txtDur' name='txtDur' [(ngModel)]='duracao' [format]="24" [defaultTime]="'00:00'" ></ngx-timepicker-field>
                   
                   <label>Essa cirurgia é de alta complexidade?</label>
                   <div class="list-scroll-esq listForm2">
@@ -46,18 +46,33 @@
                       </mat-list-option>
                     </mat-selection-list>
                   </div>
+                  <label class="labelForm" for='daySurgery'>Data da Cirurgia</label>
+                <mat-form-field>
+                    <input disabled [(ngModel)]='surgery.date_time' id='daySurgery' name='daySurgery' matInput [matDatepicker]="picker2" >
+                    <mat-datepicker-toggle  matSuffix [for]="picker2"></mat-datepicker-toggle>
+                    <mat-datepicker #picker2></mat-datepicker> 
+                  </mat-form-field>
+              
+               
+                  <label class="labelForm" for='hourSurgery'>Horário da Cirurgia</label>
+                  <ngx-timepicker-field id='hourSurgery' disabled name='hourSurgery' [(ngModel)]='hourSurgery' [format]="24" [defaultTime]="'00:00'"></ngx-timepicker-field> 
+                  <br>
   
                 </div>
   
                 <div class="dir">
                     <label for='dt'>Data</label>
-                    <input disabled [(ngModel)]='surgery.patient.birth_date' type='date' id='dt' name='dt' placeholder="2 horas e 30 min" #nameVerify="ngModel" required>
+                    <mat-form-field>
+                      <input disabled [(ngModel)]='surgery.patient.birth_date' id='dtNasc' name='dtNasc' matInput [matDatepicker]="picker" >
+                      <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+                      <mat-datepicker #picker></mat-datepicker> 
+                    </mat-form-field>
   
                     <label>Comorbidades</label>
                     <div class="list-scroll-esq listForm2">
-                      <mat-selection-list disabled>
-                        <mat-list-option selected *ngFor="let comorbidades of surgery.comorbidities">
-                          {{comorbidades}}
+                      <mat-selection-list disabled name="listComorbsSelected" [(ngModel)]="selectedComorbs" #listaComorbs>
+                        <mat-list-option [value]="comorbidade.id" name="cboSelectedComorbs" *ngFor="let comorbidade of listComorb" >
+                          {{comorbidade.str}} 
                         </mat-list-option>
                       </mat-selection-list>
                     </div>
@@ -76,10 +91,10 @@
   
                     <label>Paciente precisará de:</label>
                     <div class="list-scroll-dir">
-                      <mat-selection-list disabled>
-                        <mat-list-option  selected *ngFor="let procedimento of surgery.accommodations">
-                         {{procedimento}}
-                        </mat-list-option>
+                      <mat-selection-list disabled name="listAcomSelected" [(ngModel)]="selectedNeeds" #listaNeeds>
+                          <mat-list-option [value]="accomodations.id" name="cboSelectedAcom" *ngFor="let accomodations of listNeeds">
+                            {{accomodations.str}} 
+                          </mat-list-option>
                       </mat-selection-list>
                     </div>
                 </div>
@@ -161,7 +176,7 @@
   
                     
                   </div>
-                  <div class="last-line-input">
+                  <div >
                     <div>
                         <label for='trueDuration'>Duração oficial da cirurgia</label>
                         <!-- <input [(ngModel)]='surgery.true_duration' disabled type='text' id='trueDuration' name='trueDuration' placeholder="2 horas e 30 minutos" #nameVerify="ngModel" >   -->

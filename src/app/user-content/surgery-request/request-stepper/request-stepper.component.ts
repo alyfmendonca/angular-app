@@ -267,7 +267,9 @@ export class RequestStepperComponent implements OnInit {
 
   gravaMidias(id){
     this.listFilesFinalFinalizar.forEach(dataFile => {
-      this.surgeryServices.uploadMedia(dataFile, id)
+      this.surgeryServices.uploadMedia(dataFile, id).subscribe(response => {
+        console.log(response);
+      })
       console.log(id + " <<< ID --- DATA >>>" + dataFile);
     });
 

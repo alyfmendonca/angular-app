@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
 import { SurgeryService } from '../../services/surgery-services/surgery.service';
+import { OtherService } from 'src/app/services/other-services/other.service';
 
 @Component({
   selector: 'app-approved-details',
@@ -13,6 +14,7 @@ export class ApprovedDetailsComponent implements OnInit {
     public router: Router,
     public route: ActivatedRoute,
     public surgeryService: SurgeryService,
+    private otherService: OtherService,
   ) { }
   trueDuration: string;
   finalNote: string = '';
@@ -26,6 +28,7 @@ export class ApprovedDetailsComponent implements OnInit {
   taxaDiariaGlobalS: string;
   taxaDiariaGlobalCTI: string;
   HrClinico: string;
+  duracao: string;
   id: string;
   surgery: Surgery = {
     id:null,
@@ -77,12 +80,27 @@ export class ApprovedDetailsComponent implements OnInit {
     total_cost: null,
   };
   aditional: any;
+  listComorb: Comorbiditie[] = [];
+  listNeeds: Accommodation[] = [];
+  selectedComorbs: number[] = [];
+  selectedNeeds: number[] = [];
+
   porcentagem: any;
   valueBar: any;
   ngOnInit() {
+    
+    this.init();
+  }
+
+  public async init() {
     this.id = this.route.snapshot.params.id;
     this.surgeryService.getSurgery(this.id).subscribe(response => {
       console.log(response);
+      if(response.discount){
+        this.porcentagem = (response.percentage * -1);
+      }else{
+        this.porcentagem = (response.percentage);
+      }
       this.surgery = response;
       this.objCustos = response.cost;
       console.log(this.objCustos);
@@ -91,23 +109,52 @@ export class ApprovedDetailsComponent implements OnInit {
       }else{
         this.aditional = 0;
       }
-      this.porcentagem = response.percentage;
+      this.duracao = this.surgery.hours_duration;
+      this.duracao += ':';
+      this.duracao += this.surgery.minutes_duration;
+      
     })
+      
+    this.surgery = this.route.snapshot.data.surgeryResolved;
+    [this.listNeeds, this.listComorb] = await Promise.all([
+      this.otherService.getAllAccommodations().toPromise(),
+      this.otherService.getAllComorbidities().toPromise()
+    ]);
+    this.atribuiSelecteds();
+
+  }
+
+  atribuiSelecteds() {
+    this.selectedComorbs = undefined;
+    this.selectedNeeds = undefined;
+
+    // this.duracao = this.surgery.hours_duration;
+    // this.duracao += ':';
+    // this.duracao += this.surgery.minutes_duration;
     
+    setTimeout(() => {
+      this.selectedComorbs = this.surgery.comorbidities;
+      console.log(this.selectedComorbs);
+      this.selectedNeeds = this.surgery.accommodations;
+    }, 1);
+
   }
 
   performSurgery: SurgeryPerform = {
     id: null,
-    true_duration: '',
-    note: ''
+    true_hours_duration: '',
+    note: '',
+    true_minutes_duration: '',
   };
   transfRealiz(){
     if(this.trueDuration == ""){
       alert('Informe a duração da cirurgia');
     }else{
+      let aux = this.trueDuration.split(':');
+      this.performSurgery.true_hours_duration = aux[0];
+      this.performSurgery.true_minutes_duration = aux[1];
       this.performSurgery.id = this.surgery.id;
       this.performSurgery.note = this.finalNote;
-      this.performSurgery.true_duration = this.trueDuration;
       this.surgeryService.performSurgery(this.performSurgery).subscribe(response => {
         console.log(response);
         this.router.navigate(['/admin/main/aprovadas']);

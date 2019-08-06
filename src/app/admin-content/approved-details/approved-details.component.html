@@ -33,7 +33,8 @@
                   
                   <h3 class="light-dark">Complexidade</h3>
                   <label for='durCirurgia'>Duração da cirugia</label>
-                  <input [(ngModel)]='surgery.duration' type='text' disabled id='durCirurgia' name='durCirurgia' placeholder="2 horas e 30 min" #nameVerify="ngModel" required>
+                  
+                  <ngx-timepicker-field id='txtDur' name='txtDur' [(ngModel)]='duracao' [format]="24" [defaultTime]="'00:00'" ></ngx-timepicker-field>
                   
                   <label>Essa cirurgia é de alta complexidade?</label>
                   <div class="list-scroll-esq listForm2">
@@ -46,20 +47,36 @@
                       </mat-list-option>
                     </mat-selection-list>
                   </div>
+                  <label class="labelForm" for='daySurgery'>Data da Cirurgia</label>
+                <mat-form-field>
+                    <input disabled [(ngModel)]='surgery.date_time' id='daySurgery' name='daySurgery' matInput [matDatepicker]="picker2" >
+                    <mat-datepicker-toggle matSuffix [for]="picker2"></mat-datepicker-toggle>
+                    <mat-datepicker #picker2></mat-datepicker> 
+                  </mat-form-field>
+              
+               
+                  <label class="labelForm" for='hourSurgery'>Horário da Cirurgia</label>
+                  <ngx-timepicker-field disabled id='hourSurgery' name='hourSurgery' [(ngModel)]='hourSurgery' [format]="24" [defaultTime]="'00:00'"></ngx-timepicker-field> 
+                  <br>
   
                 </div>
   
                 <div class="dir">
-                    <label for='dt'>Data</label>
-                    <input [(ngModel)]='surgery.patient.birth_date' disabled type='data' id='dt' name='dt' placeholder="2 horas e 30 min" #nameVerify="ngModel" required>
-  
-                    <label>Comorbidades</label>
+                  <label for='dt'>Data</label>
+                  <!-- <input [(ngModel)]='surgery.patient.birth_date' type='date' id='dt' name='dt' placeholder="2 horas e 30 min" #nameVerify="ngModel" required> -->
+                  <mat-form-field>
+                    <input disabled [(ngModel)]='surgery.patient.birth_date' id='dtNasc' name='dtNasc' matInput [matDatepicker]="picker" >
+                    <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+                    <mat-datepicker #picker></mat-datepicker> 
+                  </mat-form-field>
+
+                  <label>Comorbidades</label>
                   <div class="list-scroll-esq listForm2">
-                    <mat-selection-list disabled>
-                      <mat-list-option selected *ngFor="let comorbidades of surgery.comorbidities">
-                        {{comorbidades}}
-                      </mat-list-option>
-                    </mat-selection-list>
+                      <mat-selection-list disabled name="listComorbsSelected" [(ngModel)]="selectedComorbs" #listaComorbs>
+                        <mat-list-option [value]="comorbidade.id" name="cboSelectedComorbs" *ngFor="let comorbidade of listComorb" >
+                          {{comorbidade.str}} 
+                        </mat-list-option>
+                      </mat-selection-list>
                   </div>
                   <label>Procedimento (TUSS)</label>
                   <div class="list-scroll-dir">
@@ -76,10 +93,10 @@
 
                   <label>Paciente precisará de:</label>
                   <div class="list-scroll-dir">
-                    <mat-selection-list disabled>
-                      <mat-list-option  selected *ngFor="let procedimento of surgery.accommodations">
-                       {{procedimento}}
-                      </mat-list-option>
+                    <mat-selection-list disabled name="listAcomSelected" [(ngModel)]="selectedNeeds" #listaNeeds>
+                        <mat-list-option [value]="accomodations.id" name="cboSelectedAcom" *ngFor="let accomodations of listNeeds">
+                          {{accomodations.str}} 
+                        </mat-list-option>
                     </mat-selection-list>
                   </div>
                 </div>
@@ -151,9 +168,9 @@
                   <p class="adicional">Adicional de Alta Complexidade <span>{{aditional}}%</span></p>
 
                   <mat-slider thumbLabel disabled
-                  [displayWith]="formatLabel"  min="0" max="30" step="1" value="{{porcentagem}}"></mat-slider>
+                  [displayWith]="formatLabel"  min="-30" max="30" step="1" value="{{porcentagem}}"></mat-slider>
                   <div class="line-porcentagem">
-                      <span>0%</span>
+                      <span>-30%</span>
                       <span>30%</span>
                     </div>
 
@@ -163,12 +180,14 @@
                 </div>
                 <div >
                   <div>
+                      <br>
                       <label for='trueDuration'>Duração oficial da cirurgia</label>
-                      <input [(ngModel)]='trueDuration' disabled type='text' id='trueDuration' name='trueDuration' placeholder="2 horas e 30 minutos" #nameVerify="ngModel" >  
+                      <ngx-timepicker-field id='trueDuration' name='trueDuration' [(ngModel)]='trueDuration' [format]="24" [defaultTime]="'00:00'"></ngx-timepicker-field> 
+                      <br>
                   </div>
                   <div>
                       <label for='note'>Observações</label>
-                      <textarea [(ngModel)]='finalNote' disabled type='text' id='note' name='note' placeholder="Observações" #nameVerify="ngModel"></textarea>
+                      <textarea [(ngModel)]='finalNote' type='text' id='note' name='note' placeholder="Observações" #nameVerify="ngModel"></textarea>
 
                   </div>
                 </div>

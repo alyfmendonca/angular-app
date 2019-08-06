@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
 import { SurgeryService } from '../../services/surgery-services/surgery.service';
+import { OtherService } from 'src/app/services/other-services/other.service';
 
 @Component({
   selector: 'app-realizada-details',
@@ -13,6 +14,7 @@ export class RealizadaDetailsComponent implements OnInit {
     public router: Router,
     public route: ActivatedRoute,
     public surgeryService: SurgeryService,
+    private otherService: OtherService,
   ) { }
   txtNomeGroup: string;
   taxaCirurgia: string;
@@ -24,6 +26,11 @@ export class RealizadaDetailsComponent implements OnInit {
   taxaDiariaGlobalS: string;
   taxaDiariaGlobalCTI: string;
   HrClinico: string;
+
+  listComorb: Comorbiditie[] = [];
+  listNeeds: Accommodation[] = [];
+  selectedComorbs: number[] = [];
+  selectedNeeds: number[] = [];
 
 
 
@@ -85,6 +92,11 @@ export class RealizadaDetailsComponent implements OnInit {
   verdadeiraDuracao: string;
 
   ngOnInit() {
+    
+    this.init();
+  }
+
+  public async init() {
     this.id = this.route.snapshot.params.id;
     this.surgeryService.getSurgery(this.id).subscribe(response => {
       console.log(response);
@@ -110,6 +122,30 @@ export class RealizadaDetailsComponent implements OnInit {
       }
       
     })
+      
+    this.surgery = this.route.snapshot.data.surgeryResolved;
+    [this.listNeeds, this.listComorb] = await Promise.all([
+      this.otherService.getAllAccommodations().toPromise(),
+      this.otherService.getAllComorbidities().toPromise()
+    ]);
+    this.atribuiSelecteds();
+
+  }
+
+  atribuiSelecteds() {
+    this.selectedComorbs = undefined;
+    this.selectedNeeds = undefined;
+
+    // this.duracao = this.surgery.hours_duration;
+    // this.duracao += ':';
+    // this.duracao += this.surgery.minutes_duration;
+    
+    setTimeout(() => {
+      this.selectedComorbs = this.surgery.comorbidities;
+      console.log(this.selectedComorbs);
+      this.selectedNeeds = this.surgery.accommodations;
+    }, 1);
+
   }
 
 }
