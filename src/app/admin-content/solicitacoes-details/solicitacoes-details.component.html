@@ -109,6 +109,10 @@
                         </mat-list-option>
                       </mat-selection-list>
                     </div>
+
+                    <div class="list-scroll-dir" *ngFor="let media of surgery.media">
+                      <img src="http://mysurgery.com.br:8003{{media.media}}" />
+                    </div>
                 </div>
               </div>
               <div class="btn-line">

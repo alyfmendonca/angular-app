@@ -10,6 +10,11 @@ type Surgery = {
     percentage: number;
     discount: boolean;
     note: string;
+    media?: [{
+        id: number,
+        media: string,
+        surgery: number
+    }];
     surgeon: [{
         name:string,
         crm:number,

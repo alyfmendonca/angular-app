@@ -76,7 +76,7 @@
                     <mat-list-option [disabled]="noComorbi" name="cboComorbidades" (click)="selectionComorbClick(comorbidades);" *ngFor="let comorbidades of listComorbidades">
                       {{comorbidades.str}}
                     </mat-list-option>
-                    <mat-list-option name="noCboComorbidades" (click)="noSelectionComorbClick($event);">
+                    <mat-list-option id="semComorb" name="noCboComorbidades" (click)="noSelectionComorbClick($event);">
                       Sem comorbidade
                     </mat-list-option>
                   </mat-selection-list>

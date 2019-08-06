@@ -47,6 +47,8 @@ export class RequestStepperComponent implements OnInit {
 
   listNeedsSelected: Accommodation[] = []; 
 
+  selectedComorbs: any[];
+
   duracao: string;
 
   selectedNeedsDays: number[];
@@ -145,9 +147,19 @@ export class RequestStepperComponent implements OnInit {
 
     if(flag){
       var element = <HTMLInputElement> document.getElementById(`inputNeeds-${accommodations.id}`);
+      if(accommodations.id == 4){
+        element.value = '1';
+        element.disabled = true;
+        return;
+      }
       element.disabled = false;
     }else{
       var element = <HTMLInputElement> document.getElementById(`inputNeeds-${accommodations.id}`);
+      if(accommodations.id == 4){
+        element.value = '';
+        element.disabled = true;
+        return;
+      }
       element.disabled = true;
     }
 
