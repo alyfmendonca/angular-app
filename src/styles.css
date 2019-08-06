@@ -225,3 +225,35 @@ app-request-stepper .list-scroll-dir .mat-pseudo-checkbox {
     background-image: url("src\assets\excluir.png");
     background-size: contain;
 }
+
+app-request-stepper .mat-checkbox-inner-container{
+    width: 14px !important;
+    height: 13px !important;
+    border: 1px solid #3fc0c2 !important;
+    border-radius: 2px !important;
+    cursor: pointer !important;
+    display: inline-block !important;
+    vertical-align: middle !important;
+    box-sizing: border-box !important;
+    position: relative !important;
+    flex-shrink: 0 !important;
+    transition: border-color 90ms cubic-bezier(0,0,.2,.1),background-color 90ms cubic-bezier(0,0,.2,.1) !important;
+}
+app-request-stepper mat-checkbox{
+    display: flex !important;
+    padding: 0px 3px !important;
+    flex-direction: row !important;
+    font-weight: 300 !important;
+    font-size: 10px !important;
+    color: #b6b5b5 !important;
+}
+app-request-stepper .mat-checkbox-input {
+    display: none !important;
+}
+app-request-stepper .mat-checkbox-frame, app-request-stepper .mat-checkbox-background{
+    display: none;
+}
+
+app-request-stepper .mat-checkbox-checked .mat-checkbox-inner-container{
+    background: #3fc0c2;
+}

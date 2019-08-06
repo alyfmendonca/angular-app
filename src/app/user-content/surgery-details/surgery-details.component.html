@@ -89,12 +89,18 @@
 
                   <label>Paciente precisará de:</label>
                   <div class="list-scroll-dir">
-
+                    
                     <mat-selection-list name="listAcomSelected" [(ngModel)]="selectedNeeds" #listaNeeds>
                         <mat-list-option [value]="accomodations.id" name="cboSelectedAcom" *ngFor="let accomodations of listNeeds">
                           {{accomodations.str}} 
                         </mat-list-option>
                     </mat-selection-list>
+
+                    <div class="inputDiv">
+                      <div style="margin: auto;" *ngFor="let necessidades of listNecessidades">
+                        <input class="inputDays" disabled placeholder="Dias"  type="number" style="width: 55px;" id="inputNeeds-{{necessidades.id}}" />
+                      </div>
+                    </div>
 
                   </div>
                   <label>CID: </label>

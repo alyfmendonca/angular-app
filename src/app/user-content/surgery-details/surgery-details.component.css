@@ -173,3 +173,23 @@ textarea{
     height: 75px;
     font-family: Roboto;
  }
+ .inputDiv{
+    display: flex;
+    flex-direction: column;
+    width: 30%;
+}
+.optionDiv{
+    width: 70%;
+}
+
+.inputDiv input {
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    margin: auto;
+}
+.needsLine{
+    display: inline-flex !important;
+    flex-direction: row !important;
+    justify-content: space-between;
+    align-items: center;
+}
