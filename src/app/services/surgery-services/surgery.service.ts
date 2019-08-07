@@ -84,4 +84,15 @@ export class SurgeryService {
       }, {headers});
     }
 
+    getMedia(name: string){
+      let token = localStorage.getItem('token');
+      let headers = new HttpHeaders({
+        'Authorization': `token ${token}`,
+        'Content-Type': 'text',
+        
+      });
+      
+      return this.http.get(`http://mysurgery.com.br:8003${name}`, {headers, responseType: 'text'});
+    }
+
 }

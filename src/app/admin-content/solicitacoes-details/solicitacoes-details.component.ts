@@ -60,6 +60,7 @@ export class SolicitacoesDetailsComponent implements OnInit {
           str: '',
       }],
       accommodations: null,
+      accommodations_days: null,
       costs_options: null,
       cid: {
           id: null,
@@ -69,6 +70,7 @@ export class SolicitacoesDetailsComponent implements OnInit {
     valorTotal: any;
     aditional: number;
 
+    testeImagem: any;
 
     objCustos: any = {
       id: null,
@@ -97,6 +99,7 @@ export class SolicitacoesDetailsComponent implements OnInit {
 
     selectedComorbs: number[] = [];
     selectedNeeds: number[] = [];
+    selectedNeedsDays: number[] = [];
 
     selectedComorbsAux: number[] = [];
     selectedNeedsAux: number[] = [];
@@ -146,6 +149,35 @@ export class SolicitacoesDetailsComponent implements OnInit {
       }
       console.log(this.objCustos);
     }
+
+    optionClick(accomodation){
+      var flag: boolean = false;
+      this.selectedNeeds.forEach(selected => {
+        if(selected == accomodation.id){
+          flag = true;
+        }
+      });
+  
+      if(flag){
+        var element = <HTMLInputElement> document.getElementById(`inputNeeds-${accomodation.id}`);
+        if(accomodation.id == 4){
+          element.value = '1';
+          element.disabled = true;
+          return;
+        }
+        element.disabled = false;
+      }else{
+        var element = <HTMLInputElement> document.getElementById(`inputNeeds-${accomodation.id}`);
+        if(accomodation.id == 4){
+          element.value = '';
+          element.disabled = true;
+          return;
+        }
+        element.disabled = true;
+        element.value = '';
+      }
+    }
+
     onClickBack(){
       let i = 0
       let continua = true;
@@ -216,6 +248,7 @@ export class SolicitacoesDetailsComponent implements OnInit {
       this.init();
       
     }
+    token = localStorage.getItem('token');
 
     public async init() {
 
@@ -234,7 +267,20 @@ export class SolicitacoesDetailsComponent implements OnInit {
         this.complexidade = 'false';
         this.aditional = 0;
       }
+      // this.surgery.media.forEach(element => {
+      //   this.surgeryService.getMedia(element.media).subscribe(response =>{
 
+      //     console.log(response);
+
+          
+
+      //     this.testeImagem = response;
+      //   }, err => {
+      //     console.log(err);
+      
+      //     this.testeImagem = err.error.text;
+      //   })
+      // })
       
       console.log(this.surgery.costs_options)
     }
@@ -250,10 +296,21 @@ export class SolicitacoesDetailsComponent implements OnInit {
       
     
       setTimeout(() => {
-        this.selectedComorbs = this.surgery.comorbidities;
-        this.selectedNeeds = this.surgery.accommodations;
-      }, 1);
+      this.selectedComorbs = this.surgery.comorbidities;
+      this.selectedNeeds = this.surgery.accommodations;
+      this.selectedNeedsDays = this.surgery.accommodations_days;
+
+      this.preencheDias();
+
+    }, 1);
   
+    }
+
+    preencheDias(){
+      for (let index = 0; index < this.selectedNeeds.length; index++) {
+        var element = <HTMLInputElement> document.getElementById(`inputNeeds-${this.selectedNeeds[index]}`);
+        element.value = ''+this.selectedNeedsDays[index];
+      }
     }
   
     validaOnlyOne(event){

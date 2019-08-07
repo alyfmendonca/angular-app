@@ -21,6 +21,14 @@
                   <label for='pacienteCpf'>CPF</label>
                   <input [(ngModel)]='surgery.patient.cpf' mask='000.000.000-00' disabled type='text' id='txtCPF' name='txtCPF' placeholder="2342423" #nameVerify="ngModel" required>
                   
+                  <label for='dt'>Data de Nascimento</label>
+                  <!-- <input [(ngModel)]='surgery.patient.birth_date' type='date' id='dt' name='dt' placeholder="2 horas e 30 min" #nameVerify="ngModel" required> -->
+                  <mat-form-field>
+                    <input disabled [(ngModel)]='surgery.patient.birth_date' id='dtNasc' name='dtNasc' matInput [matDatepicker]="picker" >
+                    <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+                    <mat-datepicker #picker></mat-datepicker> 
+                  </mat-form-field>
+                  
                   <h3 class="light-dark">Cirurgião</h3>
                   <label for='txtNome'>Nome</label>
                   <input [(ngModel)]='surgery.surgeon.name' disabled type='text' id='txtNome' name='txtNome' placeholder="Alberto Pacheco" #nameVerify="ngModel" required>
@@ -58,19 +66,14 @@
                   <label class="labelForm" for='hourSurgery'>Horário da Cirurgia</label>
                   <ngx-timepicker-field disabled id='hourSurgery' name='hourSurgery' [(ngModel)]='hourSurgery' [format]="24" [defaultTime]="'00:00'"></ngx-timepicker-field> 
                   <br>
+
                   
-                  <label for='explanation'>Justificativa</label>
-                  <textarea [(ngModel)]='surgery.explanation'  type='text' id='explanation' name='explanation' placeholder="Justificativa" #nameVerify="ngModel" required> </textarea>
                 </div>
   
                 <div class="dir">
-                  <label for='dt'>Data de Nascimento</label>
-                  <!-- <input [(ngModel)]='surgery.patient.birth_date' type='date' id='dt' name='dt' placeholder="2 horas e 30 min" #nameVerify="ngModel" required> -->
-                  <mat-form-field>
-                    <input disabled [(ngModel)]='surgery.patient.birth_date' id='dtNasc' name='dtNasc' matInput [matDatepicker]="picker" >
-                    <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
-                    <mat-datepicker #picker></mat-datepicker> 
-                  </mat-form-field>
+                  
+                    <label for='explanation'>Justificativa</label>
+                    <textarea [(ngModel)]='surgery.explanation'  type='text' id='explanation' name='explanation' placeholder="Justificativa" #nameVerify="ngModel" required> </textarea>
 
                   <label>Comorbidades</label>
                   <div class="list-scroll-esq listForm2">
