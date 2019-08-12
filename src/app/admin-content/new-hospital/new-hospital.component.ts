@@ -2,6 +2,9 @@ import { Component, OnInit, EventEmitter, Output, Input } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
 import { AdminService } from '../../services/admin-services/admin.service'
 import { HospitalService } from '../../services/hospital-services/hospital.service';
+import { FormControl } from '@angular/forms';
+import { Observable } from 'rxjs';
+import { startWith, map } from 'rxjs/operators';
 
 
 @Component({
@@ -70,8 +73,22 @@ export class NewHospitalComponent implements OnInit {
  
   ngOnInit() {
     this.tussTable = this.route.snapshot.data.allTuss;
+
+    this.filteredTuss = this.tussControl.valueChanges
+      .pipe(
+        startWith(''),
+        map(value => this._filter(value))
+      );
   }
 
+  private _filter(value: string): Tuss[] {
+    const filterValue = value.toLowerCase();
+
+    return this.tussTable.filter(tuss => tuss.str.toLowerCase().includes(filterValue));
+  }
+
+  tussControl = new FormControl();
+  filteredTuss: Observable<Tuss[]>;
 
   arrayCostGroup: CostGroupItem[] = [];
 

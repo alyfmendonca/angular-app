@@ -35,18 +35,18 @@
                     <div class="menu-esq">
                       <div>
                         <h3 class="light-dark">Procedimentos (TUSS)</h3>
+                        <i style="display: inline; margin-right: 1%; color: #3ec0c2" class="fas fa-search"></i><input type="text" placeholder="" aria-label="Number" matInput [formControl]="tussControl">
                       </div>
                       <div class="list-scroll-esq">
                         <cdk-virtual-scroll-viewport class="virtualScroll" itemSize="8">
-                          <mat-selection-list name="listTuss" #listaTuss [(ngModel)]="selectedTuss"> 
-                            <mat-list-option [value]="procedimento" 
-                              *ngFor="let procedimento of tussTable">
-                              {{procedimento.str}}
-                            </mat-list-option>
+                          <mat-selection-list name="listTuss" #listaTuss [(ngModel)]="selectedTuss">
+                              <mat-list-option [value]="procedimento" *ngFor="let procedimento of filteredTuss | async">
+                                {{procedimento.str}}
+                              </mat-list-option>
                           </mat-selection-list>
                         </cdk-virtual-scroll-viewport>
                       </div>
-                    </div>
+                      </div>
                   </div>
                   <!-- Botão CONCLUIR -->
       
