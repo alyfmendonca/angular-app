@@ -343,6 +343,7 @@ textarea {
 }
 .searchCid{
     align-self: center;
+    width: 90%;
 }
  
 .searchCid h3{
