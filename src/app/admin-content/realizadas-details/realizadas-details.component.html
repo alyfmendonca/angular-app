@@ -113,6 +113,14 @@
                   <label for='explanation'>Justificativa</label>
                   <textarea [(ngModel)]='surgery.explanation'  type='text' id='explanation' name='explanation' placeholder="Justificativa" #nameVerify="ngModel" required> </textarea>
 
+                  <h3 class="light-dark">Imagens: </h3>
+                  <div class="lineMedia">
+                    
+                    <div class="list-scroll-dir singleImage" *ngFor="let media of surgery.media">
+                      <img class="imageMedia" src="http://mysurgery.com.br:8003{{media.media}}/?token={{token}}" />
+                    </div>
+                  </div>
+
               </div>
             </div>
             

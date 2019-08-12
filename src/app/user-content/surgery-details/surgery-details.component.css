@@ -198,3 +198,25 @@ textarea{
     display: flex;
     flex-direction: row;
 }
+.lineMedia{
+    display: flex;
+    flex-wrap: wrap;
+ }
+ .singleImage{
+    width: 125px;
+    height: 113px;
+    position: relative;
+    overflow: hidden;
+    border-radius: 2px;
+    margin: 5px;
+    transition: ease-in-out 0.2s all;
+    cursor: pointer;
+ }
+ img.imageMedia {
+    position: absolute;
+    width: 110%;
+}
+.singleImage:hover {
+    margin-top: -3px;
+    box-shadow: 0 4px 4px 0 #ccc;
+}

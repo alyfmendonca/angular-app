@@ -328,3 +328,26 @@ textarea{
     margin-top: -3px;
     box-shadow: 0 4px 4px 0 #ccc;
 }
+.optionDiv{
+    width: 70%;
+}
+.inputDiv{
+    display: flex;
+    flex-direction: column;
+    width: 30%;
+}
+.inputDiv input {
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    margin: auto;
+}
+.needsLine{
+    display: inline-flex !important;
+    flex-direction: row !important;
+    justify-content: space-between;
+    align-items: center;
+}
+.listWDays{
+    display: flex;
+    flex-direction: row;
+}
