@@ -168,7 +168,7 @@
         <form class="form-stepper" #form="ngForm" id="formFour">
           <div class=" form2">
             <div class="menu-esq">
-              <div class="inputsForm2">
+              <!-- <div class="inputsForm2">
                 <label class="labelForm" for='txtCid'>CID: </label>
                 <mat-select [(ngModel)]='surgeryCreate.cid' name="cid" id="cid">
                   <mat-option *ngFor="let cid of listCid" [value]='cid.id'>
@@ -176,8 +176,19 @@
                   </mat-option>
                 </mat-select>
                 <br>
+              </div> -->
+              <div class="searchCid">
+                  <h3><i class="fas fa-search"></i>CID: </h3>
+                  <mat-form-field class="searchCid-form">
+                      <input type="text" matInput [formControl]="cidControl" [matAutocomplete]="auto">
+                      <mat-autocomplete #auto="matAutocomplete">
+                        <mat-option *ngFor="let cid of filteredCids | async" [value]="cid.str">
+                          {{cid.str}}
+                        </mat-option>
+                      </mat-autocomplete>
+                    </mat-form-field>
               </div>
-              <div class="esq-baixo">
+              <div class="esq-baixo cont-justif">
                 <label for="explanation">Exame Clínico - Justificativa</label>
                 <textarea [(ngModel)]='surgeryCreate.explanation' type='text' id='explanation' name='explanation' placeholder="Justificativa" #nameVerify="ngModel"></textarea>
               </div>

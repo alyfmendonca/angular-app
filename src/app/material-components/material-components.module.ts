@@ -16,9 +16,9 @@ import { MatNativeDateModule } from '@angular/material';
 import {MatSliderModule} from '@angular/material/slider';
 import { ScrollingModule } from '@angular/cdk/scrolling';
 import {MatSlideToggleModule} from '@angular/material/slide-toggle';
-
+import {MatAutocompleteModule} from '@angular/material/autocomplete';
 import {NgxMaterialTimepickerModule} from 'ngx-material-timepicker';
-import {NgxMaskModule} from 'ngx-mask'
+import {NgxMaskModule} from 'ngx-mask';
 
         
 @NgModule({
@@ -44,6 +44,7 @@ import {NgxMaskModule} from 'ngx-mask'
     ScrollingModule,
     MatSlideToggleModule,
     NgxMaterialTimepickerModule,
+    MatAutocompleteModule,
     NgxMaskModule.forRoot(),
 
   ],
@@ -67,7 +68,7 @@ import {NgxMaskModule} from 'ngx-mask'
     MatSlideToggleModule,
     NgxMaterialTimepickerModule,
     NgxMaskModule,
-
+    MatAutocompleteModule,
   ]
 })
 export class MaterialComponentsModule { }

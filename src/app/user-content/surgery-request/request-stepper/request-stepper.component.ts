@@ -1,10 +1,12 @@
 import { Component, OnInit, ChangeDetectionStrategy, ViewChild } from '@angular/core';
-import {FormBuilder, FormGroup, Validators} from '@angular/forms';
+import {FormBuilder, FormGroup, Validators, FormControl} from '@angular/forms';
 import { OtherService } from 'src/app/services/other-services/other.service';
 import { CdkVirtualScrollViewport } from '@angular/cdk/scrolling';
 import { Router, ActivatedRoute } from '@angular/router';
 import { SurgeryService } from 'src/app/services/surgery-services/surgery.service';
 import { SurgeonService } from 'src/app/services/surgeon-services/surgeon.service';
+import { Observable } from 'rxjs';
+import { startWith, map } from 'rxjs/operators';
 
 
 @Component({
@@ -16,7 +18,7 @@ import { SurgeonService } from 'src/app/services/surgeon-services/surgeon.servic
 export class RequestStepperComponent implements OnInit {
   isLinear = false;
 
-  
+
 
   surgeryCreate: SurgeryCreate = {
     main_tuss: null,
@@ -59,6 +61,10 @@ export class RequestStepperComponent implements OnInit {
   //Cids
   listCid: Cid[] = [];
 
+  cidControl = new FormControl();
+
+  filteredCids: Observable<Cid[]>;
+
   //teste
   selectedTuss: Tuss[]; 
 
@@ -91,6 +97,18 @@ export class RequestStepperComponent implements OnInit {
       accommodations => this.listNecessidades = accommodations
     );
 
+    this.filteredCids = this.cidControl.valueChanges
+      .pipe(
+        startWith(''),
+        map(value => this._filter(value))
+      );
+
+  }
+
+  private _filter(value: string): Cid[] {
+    const filterValue = value.toLowerCase();
+    
+    return this.listCid.filter(cid => cid.str.toLowerCase().includes(filterValue));
   }
 
   chama(param){

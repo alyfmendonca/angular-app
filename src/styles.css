@@ -253,7 +253,3 @@ app-request-stepper .mat-checkbox-input {
 app-request-stepper .mat-checkbox-frame, app-request-stepper .mat-checkbox-background{
     display: none;
 }
-
-app-request-stepper .mat-checkbox-checked .mat-checkbox-inner-container{
-    background: #3fc0c2;
-}
