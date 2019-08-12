@@ -27,7 +27,7 @@ export class RealizadasDetailsComponent implements OnInit {
   taxaDiariaGlobalCTI: string;
   HrClinico: string;
 
-
+  token = localStorage.getItem('token');
 
   id: string;
   surgery: Surgery = {

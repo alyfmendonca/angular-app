@@ -90,6 +90,8 @@ export class ApprovedDetailsComponent implements OnInit {
   selectedComorbs: number[] = [];
   selectedNeeds: number[] = [];
 
+  token = localStorage.getItem('token');
+
   porcentagem: any;
   valueBar: any;
   ngOnInit() {

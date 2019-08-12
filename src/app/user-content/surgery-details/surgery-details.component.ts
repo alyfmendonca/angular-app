@@ -57,6 +57,8 @@ export class SurgeryDetailsComponent implements OnInit {
       }
   };
 
+  token = localStorage.getItem('token');
+  
   listComorb: Comorbiditie[] = [];
   listNeeds: Accommodation[] = [];
 

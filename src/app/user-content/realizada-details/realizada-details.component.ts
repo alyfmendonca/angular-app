@@ -137,6 +137,8 @@ export class RealizadaDetailsComponent implements OnInit {
 
   }
 
+  token = localStorage.getItem('token');
+  
   atribuiSelecteds() {
     this.selectedComorbs = undefined;
     this.selectedNeeds = undefined;
