@@ -105,6 +105,10 @@ export class RequestStepperComponent implements OnInit {
 
   }
 
+  setCid(cid){
+    this.surgeryCreate.cid = cid.id;
+  }
+
   private _filter(value: string): Cid[] {
     const filterValue = value.toLowerCase();
     
@@ -139,6 +143,10 @@ export class RequestStepperComponent implements OnInit {
   testedis= "string";
 
   teste_necessidades = true;
+
+  limpaCid(){
+    this.cidControl.setValue('');
+  }
 
   selectionNeedsClick(accommodations: Accommodation){
     var flag: boolean = false;
@@ -178,12 +186,20 @@ export class RequestStepperComponent implements OnInit {
     var flagDaysUnwrited: boolean = false;
 
         for (let index = 0; index < elements.length; index++) {
-          if(!elements[index].disabled){
+          if(!elements[index].disabled || index == 3){
             daysArray.push(+elements[index].value);
             if(+elements[index].value == 0){
               flagDaysUnwrited = true;
             }
           }
+        }
+
+        if(!this.birth_date){
+          alert('Informe a data de nascimento.');
+          return;
+        }else if(!this.daySurgery){
+          alert('Informe a data da cirurgia.');
+          return;
         }
 
     //datas ------
@@ -240,7 +256,7 @@ export class RequestStepperComponent implements OnInit {
         }
         this.surgeryCreate.secondary_tuss += ']';
 
-
+        console.log(this.listComorbSelected);
         this.surgeryCreate.comorbidities = '[';
         this.listComorbSelected.forEach(comorb => {
           this.surgeryCreate.comorbidities += comorb.id + ',';
@@ -250,7 +266,7 @@ export class RequestStepperComponent implements OnInit {
         }
         this.surgeryCreate.comorbidities += ']';
 
-
+        console.log(this.selectedNeedsDays);
         this.surgeryCreate.accommodations = '[';
         this.selectedNeedsDays.forEach(need => {
           this.surgeryCreate.accommodations += need + ',' ;

@@ -15,4 +15,5 @@ type SurgeryUpdate = {
     main_tuss?:string;
     comorbidities?:string;
     accommodations?:string;
+    accommodations_days?:string;
 }

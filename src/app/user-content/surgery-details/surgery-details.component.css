@@ -195,12 +195,17 @@ textarea{
 }
 
 .listWDays{
-    display: flex;
+    display: flex !important;
     flex-direction: row;
 }
 .lineMedia{
     display: flex;
     flex-wrap: wrap;
+ }
+ .optionsWDays{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
  }
  .singleImage{
     width: 125px;

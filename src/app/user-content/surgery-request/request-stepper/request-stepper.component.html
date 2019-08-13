@@ -78,7 +78,7 @@
                   </mat-checkbox>
                   <mat-selection-list [(ngModel)]="listComorbSelected" #comorb name="ab">
                     <mat-list-option [disabled]="semComorb" name="cboComorbidades" 
-                    *ngFor="let comorbidades of listComorbidades">
+                    *ngFor="let comorbidades of listComorbidades" [value]="comorbidades">
                       {{comorbidades.str}}
                     </mat-list-option>
                   </mat-selection-list>
@@ -167,26 +167,20 @@
       <mat-step [completed]="false" >
         <form class="form-stepper" #form="ngForm" id="formFour">
           <div class=" form2">
-            <div class="menu-esq">
-              <!-- <div class="inputsForm2">
-                <label class="labelForm" for='txtCid'>CID: </label>
-                <mat-select [(ngModel)]='surgeryCreate.cid' name="cid" id="cid">
-                  <mat-option *ngFor="let cid of listCid" [value]='cid.id'>
-                    {{cid.str}}
-                  </mat-option>
-                </mat-select>
-                <br>
-              </div> -->
+            <div class="menu-esq"> 
               <div class="searchCid">
                   <h3><i class="fas fa-search"></i>CID: </h3>
                   <mat-form-field class="searchCid-form">
-                      <input type="text" matInput [formControl]="cidControl" [matAutocomplete]="auto">
+                      <input type="text" matInput [formControl]="cidControl" [matAutocomplete]="auto"> 
+                      <button mat-button class="dark-button-icon" *ngIf="auto.optionSelected" matSuffix (click)="cidControl.setValue('');">
+                      x
+                      </button>
+                  </mat-form-field>
                       <mat-autocomplete #auto="matAutocomplete">
-                        <mat-option *ngFor="let cid of filteredCids | async" [value]="cid.str">
+                        <mat-option (click)="setCid(cid);" *ngFor="let cid of filteredCids | async" [value]="cid.str">
                           {{cid.str}}
                         </mat-option>
                       </mat-autocomplete>
-                    </mat-form-field>
               </div>
               <div class="esq-baixo cont-justif">
                 <label for="explanation">Exame Clínico - Justificativa</label>

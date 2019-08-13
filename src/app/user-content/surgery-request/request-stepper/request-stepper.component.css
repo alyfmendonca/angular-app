@@ -278,6 +278,7 @@ textarea {
 }
 .sectionList {
     display: flex !important;
+    flex-direction: row !important;
 }
 .inputDiv{
     display: flex;
@@ -286,6 +287,8 @@ textarea {
 }
 .optionDiv{
     width: 70%;
+    display: flex;
+    flex-direction: column;
 }
 
 .inputDiv input {
@@ -345,7 +348,12 @@ textarea {
     align-self: center;
     width: 90%;
 }
- 
+
+.searchCid-form{
+    width: 550px !important;
+    font-size: 13px;
+}
+  
 .searchCid h3{
     display: inline;
 }
@@ -354,3 +362,12 @@ textarea {
     margin-top: 2%;
 }
 
+.dark-button-icon{
+    padding: 2px 6px;
+    color: #fff;
+    border: 0;
+    background: rgba(45, 175, 177, 1);
+    cursor: pointer;
+    opacity: 0.8;
+    border-radius: 3px;
+}

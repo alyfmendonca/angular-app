@@ -173,6 +173,26 @@ export class SurgeryDetailsComponent implements OnInit {
       alert('Coloque uma duração válida');
       return;
     }
+
+    //cria arrays de accomodations days e array de dis somente com os que estão habilitados
+    var elements = <HTMLCollectionOf<HTMLInputElement>> document.getElementsByClassName('inputDays');
+    var daysArray: number[] = [];
+    //flag para validar se todos foram preenchidos
+    var flagDaysUnwrited: boolean = false;
+
+        for (let index = 0; index < elements.length; index++) {
+          if(!elements[index].disabled || index == 3){
+            daysArray.push(+elements[index].value);
+            if(+elements[index].value == 0){
+              flagDaysUnwrited = true;
+            }
+          }
+        }
+    
+      if(flagDaysUnwrited){
+        alert('Informe os dias de todas as acomodações');
+        return;
+      }
      
     let aux = this.duracao.split(':');
     
@@ -193,6 +213,7 @@ export class SurgeryDetailsComponent implements OnInit {
       birth_date: birth_dateVar,
       comorbidities:'[' + this.selectedComorbs.toString() + ']',
       accommodations:'[' + this.selectedNeeds.toString() + ']',
+      accommodations_days: '[' + daysArray.toString() + ']'
     }
 
     console.log(surgeryUpdate);
