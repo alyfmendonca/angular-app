@@ -144,10 +144,6 @@ export class RequestStepperComponent implements OnInit {
 
   teste_necessidades = true;
 
-  limpaCid(){
-    this.cidControl.setValue('');
-  }
-
   selectionNeedsClick(accommodations: Accommodation){
     var flag: boolean = false;
     this.selectedNeedsDays.forEach(selected => {
@@ -184,12 +180,13 @@ export class RequestStepperComponent implements OnInit {
     var daysArray: number[] = [];
     //flag para validar se todos foram preenchidos
     var flagDaysUnwrited: boolean = false;
-
+    console.log(elements);
         for (let index = 0; index < elements.length; index++) {
-          if(!elements[index].disabled || index == 3){
+          if(!elements[index].disabled || (index == 3 && +elements[index].value != 0)){
             daysArray.push(+elements[index].value);
             if(+elements[index].value == 0){
-              flagDaysUnwrited = true;
+              console.log(daysArray);
+              flagDaysUnwrited = true; 
             }
           }
         }
