@@ -181,7 +181,7 @@ export class SurgeryDetailsComponent implements OnInit {
     var flagDaysUnwrited: boolean = false;
 
         for (let index = 0; index < elements.length; index++) {
-          if(!elements[index].disabled || index == 3){
+          if(!elements[index].disabled || (index == 3 && +elements[index].value != 0)){
             daysArray.push(+elements[index].value);
             if(+elements[index].value == 0){
               flagDaysUnwrited = true;
