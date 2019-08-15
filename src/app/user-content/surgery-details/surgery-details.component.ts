@@ -30,6 +30,11 @@ export class SurgeryDetailsComponent implements OnInit {
       percentage: null,
       discount: null,
       note: '',
+      media: [{
+        id: 0,
+        media: '',
+        surgery: 0
+      }],
       surgeon: [{
           name:'',
           crm:null,
@@ -229,5 +234,23 @@ export class SurgeryDetailsComponent implements OnInit {
        }, (err) => {
        alert(err.error.message);
      });
+  }
+
+  deleteImage(media){
+    if(confirm('Deseja excluir a imagem da solicitação?')){
+      //pega o clicado
+      var item = this.surgery.media.filter((val) => {
+        return val === media
+      });
+      
+      //remove do array
+      this.surgery.media.splice(this.surgery.media.findIndex((val) => {
+        return val == media
+      }), 1);
+      //requisição
+      
+    }else{
+      //
+    }
   }
 }

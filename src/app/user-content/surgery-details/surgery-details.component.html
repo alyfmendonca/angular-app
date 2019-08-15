@@ -119,8 +119,9 @@
                     
                     <div class="list-scroll-dir singleImage" *ngFor="let media of surgery.media">
                       <a href="http://mysurgery.com.br:8003{{media.media}}/?token={{token}}" target="_blank"><img class="imageMedia" src="http://mysurgery.com.br:8003{{media.media}}/?token={{token}}" /></a>
+                      <button mat-button class="dark-button-icon" matSuffix (click)="deleteImage(media);">x</button>
                     </div>
-                  </div>
+                  </div> 
               </div>
             </div>
 

@@ -115,6 +115,8 @@ export class RequestStepperComponent implements OnInit {
     return this.listCid.filter(cid => cid.str.toLowerCase().includes(filterValue));
   }
 
+  listFilesSave: any[] = [];
+
   chama(param){
     //console.log(document.getElementById('imagesUpload').files.length);
     let listFiles: any[] = [];
@@ -136,7 +138,8 @@ export class RequestStepperComponent implements OnInit {
       listFiles.forEach(element => {
         this.listFilesFinalFinalizar.push(element);
       });
-      return listFiles;
+      this.listFilesSave.push(...listFiles);
+      return this.listFilesSave;
     }) 
   }
 
@@ -174,6 +177,8 @@ export class RequestStepperComponent implements OnInit {
   }
 
   finalizar(){
+
+    console.log(this.listFilesFinalFinalizar);
 
     //cria arrays de accomodations days e array de dis somente com os que estão habilitados
     var elements = <HTMLCollectionOf<HTMLInputElement>> document.getElementsByClassName('inputDays');
@@ -292,6 +297,20 @@ export class RequestStepperComponent implements OnInit {
         );
 
     }
+  }
+
+  deleteImage(media){
+    this.listFilesFinal = new Promise<any[]>((resolve, reject) => {
+      setTimeout(() => {
+        resolve();
+      }, 300);
+    }).then(() => {
+      this.listFilesSave = this.listFilesSave.filter((val) => {
+        return val !== media;
+      })
+      this.listFilesFinalFinalizar = [...this.listFilesSave];
+      return this.listFilesSave;
+    })
   }
 
   gravaMidias(id){

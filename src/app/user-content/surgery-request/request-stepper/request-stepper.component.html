@@ -186,10 +186,11 @@
                 <label for="explanation">Exame Clínico - Justificativa</label>
                 <textarea [(ngModel)]='surgeryCreate.explanation' type='text' id='explanation' name='explanation' placeholder="Justificativa" #nameVerify="ngModel"></textarea>
               </div>
-              <input id="imagesUpload" (change)="chama($event)" type="file" multiple  />
+              <input id="imagesUpload" (input)="chama($event)" type="file" multiple/>
               <div class="divFiles"> 
                 <div *ngFor="let arquivo of listFilesFinal | async" class="divFile"> 
-                  <img class="singleImagePreview" src="{{arquivo}}">
+                  <img class="singleImagePreview" src="{{arquivo}}"> 
+                  <button mat-button class="dark-button-icon" matSuffix (click)="deleteImage(arquivo);">x</button>
                 </div>
               </div>  
             </div>

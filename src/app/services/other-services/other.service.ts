@@ -58,5 +58,15 @@ export class OtherService {
 
     return this.http.get<Cid[]>(`${API_URL}allCid/`, {headers});
   }
+
+  deleteImg(id: number,){
+    let token = localStorage.getItem('token');
+    let headers = new HttpHeaders({
+      'Authorization': `token ${token}`,
+      'Content-Type': 'application/json'
+    });
+
+    return this.http.delete<any>(`${API_URL}surgeryMedia/`, {headers});
+  }
   
 }

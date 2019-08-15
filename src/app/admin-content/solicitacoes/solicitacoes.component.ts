@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { SurgeryService } from '../../services/surgery-services/surgery.service'
 import { Router } from '@angular/router';
 import { SurgeonService } from '../../services/surgeon-services/surgeon.service';
+import { map } from 'rxjs/operators';
 
 @Component({
   selector: 'app-solicitacoes',
@@ -20,12 +21,23 @@ export class SolicitacoesComponent implements OnInit {
   allSurgeons: Surgeon[] = null;
 
   ngOnInit() {
-    this.surgeryService.allSurgery('Waiting').subscribe(response => {
+    /*this.surgeryService.allSurgery('Waiting').subscribe(response => {
       this.allSurgeries = response;
     })
     this.surgeonService.allSurgeons('Waiting').subscribe(response => {
       this.allSurgeons = response;
-    })
+    })*/
+
+    this.surgeryService.allSurgery('Waiting').pipe(
+      map((response) => {
+        this.allSurgeries = response 
+      })
+    )
+    this.surgeonService.allSurgeons('Waiting').pipe(
+      map((response) => {
+        this.allSurgeons = response;
+      })
+    )
     
   }
   clickDetails(id){
