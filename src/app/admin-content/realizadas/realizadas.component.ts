@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { SurgeryService } from '../../services/surgery-services/surgery.service'
 import { Router } from '@angular/router';
-import { map } from 'rxjs/operators';
 
 @Component({
   selector: 'app-realizadas',
@@ -18,11 +17,9 @@ export class RealizadasComponent implements OnInit {
   allSurgeries: SurgeryDone[];
 
   ngOnInit() {
-    this.surgeryService.allSurgery('Done').pipe(
-      map((response) => {
-        this.allSurgeries = response 
-      })
-    )
+    this.surgeryService.allSurgery('Done').subscribe((response) => {
+      this.allSurgeries = response 
+    })
   }
   clickDetails(id){
     console.log(id);

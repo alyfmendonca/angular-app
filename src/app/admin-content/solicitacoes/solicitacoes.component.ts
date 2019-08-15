@@ -28,16 +28,13 @@ export class SolicitacoesComponent implements OnInit {
       this.allSurgeons = response;
     })*/
 
-    this.surgeryService.allSurgery('Waiting').pipe(
-      map((response) => {
-        this.allSurgeries = response 
-      })
-    )
-    this.surgeonService.allSurgeons('Waiting').pipe(
-      map((response) => {
-        this.allSurgeons = response;
-      })
-    )
+    this.surgeryService.allSurgery('Waiting').subscribe((response) => {
+      this.allSurgeries = response 
+    })
+    
+    this.surgeonService.allSurgeons('Waiting').subscribe((response) => {
+      this.allSurgeons = response 
+    })
     
   }
   clickDetails(id){
