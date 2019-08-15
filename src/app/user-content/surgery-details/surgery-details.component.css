@@ -233,5 +233,5 @@ textarea{
     transition: ease-in-out 0.2s all
 }
 .dark-button-icon:hover {
-    transform: scale(1.15);
+    background: #d50505;
 }

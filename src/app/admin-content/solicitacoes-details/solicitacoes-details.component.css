@@ -323,10 +323,11 @@ textarea{
  img.imageMedia {
     position: absolute;
     width: 110%;
+    transition: ease-in-out 0.2s all;
 }
-.singleImage:hover {
-    margin-top: -3px;
-    box-shadow: 0 4px 4px 0 #ccc;
+.singleImage:hover img {
+    width: 125%;
+    margin-left: -5px;
 }
 .optionDiv{
     width: 70%;

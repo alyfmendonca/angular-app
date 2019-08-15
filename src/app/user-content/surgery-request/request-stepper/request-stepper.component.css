@@ -345,7 +345,6 @@ textarea {
     z-index: 9999;
 }
 .searchCid{
-    align-self: center;
     width: 90%;
 }
 
@@ -385,5 +384,5 @@ textarea {
     z-index: 999;
 }
 .divFiles .dark-button-icon:hover {
-    transform: scale(1.15);
+    background: #d50505;
 }
