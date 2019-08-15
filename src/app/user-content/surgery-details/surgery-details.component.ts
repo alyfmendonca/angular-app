@@ -153,6 +153,7 @@ export class SurgeryDetailsComponent implements OnInit {
     for (let index = 0; index < this.selectedNeeds.length; index++) {
       var element = <HTMLInputElement> document.getElementById(`inputNeeds-${this.selectedNeeds[index]}`);
       element.value = ''+this.selectedNeedsDays[index];
+      element.disabled = false;
     }
   }
 
@@ -218,7 +219,7 @@ export class SurgeryDetailsComponent implements OnInit {
       birth_date: birth_dateVar,
       comorbidities:'[' + this.selectedComorbs.toString() + ']',
       accommodations:'[' + this.selectedNeeds.toString() + ']',
-      accommodations_days: '[' + daysArray.toString() + ']'
+      accommodations_days: '[' + daysArray.toString() + ']',
     }
 
     console.log(surgeryUpdate);
@@ -239,7 +240,7 @@ export class SurgeryDetailsComponent implements OnInit {
   deleteImage(media){
     if(confirm('Deseja excluir a imagem da solicitação?')){
       //pega o clicado
-      var item = this.surgery.media.filter((val) => {
+      var item = this.surgery.media.find((val) => {
         return val === media
       });
       
@@ -248,7 +249,11 @@ export class SurgeryDetailsComponent implements OnInit {
         return val == media
       }), 1);
       //requisição
-      
+      this.otherService.deleteImg(item.id).subscribe((res) => {
+        console.log(`imagem deletada`);
+      }, (err) => {
+        console.log(`erro ao deletar`);
+      });
     }else{
       //
     }

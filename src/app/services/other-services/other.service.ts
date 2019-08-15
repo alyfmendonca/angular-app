@@ -66,7 +66,7 @@ export class OtherService {
       'Content-Type': 'application/json'
     });
 
-    return this.http.delete<any>(`${API_URL}surgeryMedia/`, {headers});
+    return this.http.delete<any>(`${API_URL}surgeryMedia/?id=${id}`, {headers});
   }
   
 }
