@@ -116,22 +116,6 @@ export class SolicitacoesDetailsComponent implements OnInit {
     }
 
     desconto: boolean;
-    // onChange(evento: any){
-    //   if(evento.checked){
-    //     this.texto = 'Acréscimo';
-    //     this.desconto = false;
-        
-    //   }else{
-    //     this.texto = 'Desconto';
-    //     this.desconto = true;
-    //   }
-    //   if(this.desconto){
-    //     this.valorTotal = this.objCustos.surgery_cost - (this.objCustos.surgery_cost * this.surgeryAprove.percentage / 100);
-    //   }else{
-    //     this.valorTotal = this.objCustos.surgery_cost + (this.objCustos.surgery_cost * this.surgeryAprove.percentage / 100);
-    //   }
-    //   console.log(this.desconto);
-    // }
     
     onClickNext(custos: any){
       this.objCustos = custos;
@@ -232,19 +216,6 @@ export class SolicitacoesDetailsComponent implements OnInit {
       
     }
     ngOnInit() {
-      // this.id = this.route.snapshot.params.id;
-      // this.surgeryService.getSurgery(this.id).subscribe((response) => {
-      //   console.log(response);
-      //   this.surgery = response;
-      //   this.duracao = response.hours_duration;
-      //   this.duracao += ':';
-      //   this.duracao += response.minutes_duration;
-      // })
-      // if(this.surgery.complicated){
-      //   this.aditional = 20;
-      // }else{
-      //   this.aditional = 0;
-      // }
       this.init();
       
     }
@@ -267,20 +238,6 @@ export class SolicitacoesDetailsComponent implements OnInit {
         this.complexidade = 'false';
         this.aditional = 0;
       }
-      // this.surgery.media.forEach(element => {
-      //   this.surgeryService.getMedia(element.media).subscribe(response =>{
-
-      //     console.log(response);
-
-          
-
-      //     this.testeImagem = response;
-      //   }, err => {
-      //     console.log(err);
-      
-      //     this.testeImagem = err.error.text;
-      //   })
-      // })
       
       console.log(this.surgery.costs_options)
     }
@@ -310,7 +267,34 @@ export class SolicitacoesDetailsComponent implements OnInit {
       for (let index = 0; index < this.selectedNeeds.length; index++) {
         var element = <HTMLInputElement> document.getElementById(`inputNeeds-${this.selectedNeeds[index]}`);
         element.value = ''+this.selectedNeedsDays[index];
+        element.disabled = false;
       }
+    }
+
+    deleteImage(media){
+      if(confirm('Deseja excluir a imagem da solicitação?')){
+        //pega o clicado
+        var item = this.surgery.media.find((val) => {
+          return val === media
+        });
+        
+        //remove do array
+        this.surgery.media.splice(this.surgery.media.findIndex((val) => {
+          return val == media
+        }), 1);
+        //requisição
+        this.otherService.deleteImg(item.id).subscribe((res) => {
+          console.log(`imagem deletada`);
+        }, (err) => {
+          console.log(`erro ao deletar`);
+        });
+      }else{
+        //
+      } 
+    }
+    
+    abreImagem(elemento){
+      window.open(`http://mysurgery.com.br:8003${elemento.media}/?token=${this.token}`)
     }
   
     validaOnlyOne(event){
@@ -322,6 +306,28 @@ export class SolicitacoesDetailsComponent implements OnInit {
     }
   
     btnSalvar(){
+
+      //cria arrays de accomodations days e array de dis somente com os que estão habilitados
+      var elements = <HTMLCollectionOf<HTMLInputElement>> document.getElementsByClassName('inputDays');
+      var daysArray: number[] = [];
+      //flag para validar se todos foram preenchidos
+      var flagDaysUnwrited: boolean = false;
+
+        for (let index = 0; index < elements.length; index++) {
+          if(!elements[index].disabled || (index == 3 && +elements[index].value != 0)){
+            daysArray.push(+elements[index].value);
+            if(+elements[index].value == 0){
+              flagDaysUnwrited = true;
+            }
+          }
+        }
+
+        
+        if(flagDaysUnwrited){
+          alert('Informe os dias de todas as acomodações');
+          return;
+        }
+
       if(this.surgery.patient['name'] == ''){
         alert('Digite o nome do paciente');
         return;
@@ -355,6 +361,7 @@ export class SolicitacoesDetailsComponent implements OnInit {
         birth_date: birth_dateVar,
         comorbidities:'[' + this.selectedComorbs.toString() + ']',
         accommodations:'[' + this.selectedNeeds.toString() + ']',
+        accommodations_days: '[' + daysArray.toString() + ']',
       }
   
       console.log(surgeryUpdate);

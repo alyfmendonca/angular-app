@@ -290,7 +290,8 @@ label{
  }
  img.imageMedia {
     position: absolute;
-    width: 110%;
+    width: 100%;
+    height: 100%;
 }
 .singleImage:hover {
     margin-top: -3px;

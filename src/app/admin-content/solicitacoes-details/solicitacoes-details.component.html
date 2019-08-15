@@ -114,16 +114,17 @@
                           {{surgery.cid.str}} 
                         </mat-list-option>
                       </mat-selection-list>
-                    </div>
+                    </div> 
 
                     <label for='explanation'>Justificativa</label>
                     <textarea [(ngModel)]='surgery.explanation'  type='text' id='explanation' name='explanation' placeholder="Justificativa" #nameVerify="ngModel" required> </textarea>
 
                     <h3 class="light-dark">Imagens: </h3>
-                    <div class="lineMedia">
-                      
+                    <div class="lineMedia"> 
+                       
                       <div class="list-scroll-dir singleImage" *ngFor="let media of surgery.media">
-                        <a href="http://mysurgery.com.br:8003{{media.media}}/?token={{token}}" target="_blank"> <img class="imageMedia" src="http://mysurgery.com.br:8003{{media.media}}/?token={{token}}" /></a>
+                          <img class="imageMedia" (click)="abreImagem(media)" src="http://mysurgery.com.br:8003{{media.media}}/?token={{token}}" />
+                          <button mat-button class="dark-button-icon" matSuffix (click)="deleteImage(media);">x</button>
                       </div>
                     </div>
                     

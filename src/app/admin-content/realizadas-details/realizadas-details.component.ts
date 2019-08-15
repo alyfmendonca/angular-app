@@ -107,26 +107,6 @@ export class RealizadasDetailsComponent implements OnInit {
   valorPorcentOut: number;
 
   ngOnInit() {
-    // this.id = this.route.snapshot.params.id;
-    // this.surgeryService.getSurgery(this.id).subscribe(response => {
-    //   console.log(response);
-    //   this.surgery = response;
-    //   this.objCustos = response.cost;
-    //   this.duracao = response.hours_duration;
-    //   this.duracao += ':';
-    //   this.duracao += response.minutes_duration;
-
-    //   this.verdadeiraDuracao = response.true_hours_duration;
-    //   this.verdadeiraDuracao += ':';
-    //   this.verdadeiraDuracao += response.true_minutes_duration;
-    //   console.log(this.objCustos);
-    //   if(this.surgery.complicated){
-    //     this.aditional = 20;
-    //   }else{
-    //     this.aditional = 0;
-    //   }
-    //   this.porcentagem = response.percentage;
-    // })
     this.init();
   }
 
