@@ -359,6 +359,7 @@ export class SolicitacoesDetailsComponent implements OnInit {
         name: nome,
         cpf: cpfVar,
         birth_date: birth_dateVar,
+        explanation: this.surgery.explanation,
         comorbidities:'[' + this.selectedComorbs.toString() + ']',
         accommodations:'[' + this.selectedNeeds.toString() + ']',
         accommodations_days: '[' + daysArray.toString() + ']',

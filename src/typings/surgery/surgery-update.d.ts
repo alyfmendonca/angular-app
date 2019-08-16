@@ -16,6 +16,7 @@ type SurgeryUpdate = {
     comorbidities?:string;
     accommodations?:string;
     accommodations_days?:string;
+    explanation?: string;
     media?: [{
         id?: number;
         media?: string;
