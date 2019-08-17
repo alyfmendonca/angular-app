@@ -17,6 +17,7 @@ type SurgeryUpdate = {
     accommodations?:string;
     accommodations_days?:string;
     explanation?: string;
+    date_time?: string;
     media?: [{
         id?: number;
         media?: string;

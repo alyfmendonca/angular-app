@@ -27,6 +27,7 @@ export class SurgeryDetailsComponent implements OnInit {
       explanation: '',
       true_hours_duration: null,
       true_minutes_duration: null,
+      date_time: '',
       percentage: null,
       discount: null,
       note: '',
@@ -136,7 +137,8 @@ export class SurgeryDetailsComponent implements OnInit {
     this.duracao = this.surgery.hours_duration;
     this.duracao += ':';
     this.duracao += this.surgery.minutes_duration;
-    
+
+    this.hourSurgery = this.surgery.date_time.substring(this.surgery.date_time.indexOf('T') + 1, this.surgery.date_time.indexOf('T') + 6);
 	
     setTimeout(() => {
       this.selectedComorbs = this.surgery.comorbidities;
@@ -165,7 +167,110 @@ export class SurgeryDetailsComponent implements OnInit {
     }
   }
 
+  hourSurgery: string;
+
+  euSouMuitoCorno(){
+    let dia: string;
+    let mes: string;
+    let ano: string;
+    let hora: string;
+    let minuto: string;
+
+    let dataTotal:string = this.surgery.date_time.toString();
+
+    console.log('------------------');
+    console.log(this.surgery.date_time);
+    console.log(this.hourSurgery);
+    console.log('------------------');
+
+          if(dataTotal.includes(" Jan ")){
+      mes = "1";
+      dia = dataTotal.substring(8, 10);
+      ano = dataTotal.substring(11, 15);
+      hora = this.hourSurgery.substring(0, 2);
+      minuto = this.hourSurgery.substring(3, 5);
+    }else if(dataTotal.includes(" Feb ")){
+      mes = "2"
+      dia = dataTotal.substring(8, 10);
+      ano = dataTotal.substring(11, 15);
+      hora = this.hourSurgery.substring(0, 2);
+      minuto = this.hourSurgery.substring(3, 5);
+    }else if(dataTotal.includes(" Mar ")){
+      mes = "3"
+      dia = dataTotal.substring(8, 10);
+      ano = dataTotal.substring(11, 15);
+      hora = this.hourSurgery.substring(0, 2);
+      minuto = this.hourSurgery.substring(3, 5);
+    }else if(dataTotal.includes(" Apr ")){
+      mes = "4"
+      dia = dataTotal.substring(8, 10);
+      ano = dataTotal.substring(11, 15);
+      hora = this.hourSurgery.substring(0, 2);
+      minuto = this.hourSurgery.substring(3, 5);
+    }else if(dataTotal.includes(" May ")){ 
+      mes = "5"
+      dia = dataTotal.substring(8, 10);
+      ano = dataTotal.substring(11, 15);
+      hora = this.hourSurgery.substring(0, 2);
+      minuto = this.hourSurgery.substring(3, 5);
+    }else if(dataTotal.includes(" Jun ")){
+      mes = "6"
+      dia = dataTotal.substring(8, 10);
+      ano = dataTotal.substring(11, 15);
+      hora = this.hourSurgery.substring(0, 2);
+      minuto = this.hourSurgery.substring(3, 5);
+    }else if(dataTotal.includes(" Jul ")){
+      mes = "7"
+      dia = dataTotal.substring(8, 10);
+      ano = dataTotal.substring(11, 15);
+      hora = this.hourSurgery.substring(0, 2);
+      minuto = this.hourSurgery.substring(3, 5);
+    }else if(dataTotal.includes(" Aug ")){
+      mes = "8"
+      dia = dataTotal.substring(8, 10);
+      ano = dataTotal.substring(11, 15);
+      hora = this.hourSurgery.substring(0, 2);
+      minuto = this.hourSurgery.substring(3, 5);
+    }else if(dataTotal.includes(" Sep ")){
+      mes = "9"
+      dia = dataTotal.substring(8, 10);
+      ano = dataTotal.substring(11, 15);
+      hora = this.hourSurgery.substring(0, 2);
+      minuto = this.hourSurgery.substring(3, 5);
+    }else if(dataTotal.includes(" Oct ")){
+      mes = "10"
+      dia = dataTotal.substring(8, 10);
+      ano = dataTotal.substring(11, 15);
+      hora = this.hourSurgery.substring(0, 2);
+      minuto = this.hourSurgery.substring(3, 5);
+    }else if(dataTotal.includes(" Nov ")){
+      mes = "11"
+      dia = dataTotal.substring(8, 10);
+      ano = dataTotal.substring(11, 15);
+      hora = this.hourSurgery.substring(0, 2);
+      minuto = this.hourSurgery.substring(3, 5);
+    }else if(dataTotal.includes(" Dec ")){
+      mes = "12"
+      dia = dataTotal.substring(8, 10);
+      ano = dataTotal.substring(11, 15);
+      hora = this.hourSurgery.substring(0, 2);
+      minuto = this.hourSurgery.substring(3, 5);
+    }else{
+      return false;
+    }
+    this.surgery.date_time = ano + '-' + mes + '-' + dia + 'T' + hora + ':' + minuto + 'Z';
+    console.log(ano + '-' + mes + '-' + dia + 'T' + hora + ':' + minuto + 'Z');
+    return true;
+
+  }
+
   btnSalvar(){
+
+    if(!this.euSouMuitoCorno() && !this.surgery.date_time.includes('Z')){
+      alert('Data da cirurgia inválida');
+      return;
+    }
+
     if(this.surgery.patient['name'] == ''){
       alert('Digite o nome do paciente');
       return;
@@ -213,7 +318,7 @@ export class SurgeryDetailsComponent implements OnInit {
       id: this.surgery.id,
       complicated: this.complexidade == 'true' ? true : false,
       hours_duration:aux[0],
-      minutes_duration:aux[1],
+      minutes_duration:aux[1], 
       name: nome,
       cpf: cpfVar,
       birth_date: birth_dateVar,
@@ -221,6 +326,7 @@ export class SurgeryDetailsComponent implements OnInit {
       comorbidities:'[' + this.selectedComorbs.toString() + ']',
       accommodations:'[' + this.selectedNeeds.toString() + ']',
       accommodations_days: '[' + daysArray.toString() + ']',
+      date_time: this.surgery.date_time,
     }
 
     console.log(surgeryUpdate);

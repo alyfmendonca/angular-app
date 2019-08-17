@@ -8,6 +8,7 @@ type Surgery = {
     true_minutes_duration: string,
     explanation?: string,
     percentage: number;
+    date_time?: string;
     discount: boolean;
     note: string;
     media?: [{
