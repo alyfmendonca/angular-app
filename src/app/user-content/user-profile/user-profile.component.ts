@@ -13,7 +13,7 @@ export class UserProfileComponent implements OnInit {
   
   surgeonByID: SurgeonById ;
   surgeonUpdate: SurgeonUpdate;
-
+  mascaraCrm = '00-0';
   constructor(public surgeonService: SurgeonService,
               private route: ActivatedRoute) { }
 
@@ -22,7 +22,31 @@ export class UserProfileComponent implements OnInit {
     this.surgeonService.getSurgeon().subscribe((surgeon) => {
       this.surgeonByID = surgeon;
       console.log(surgeon);
+      var aux = "";
+      aux += this.surgeonByID.crm;
+      this.mascaraCrm = "";
+      this.mudaMascara(aux);
+      console.log(this.mascaraCrm);
+      
     });
+    
+  }
+  
+
+  
+  mudaMascara(event){
+    console.log(event.length);
+    //this.mascaraCrm = '000-00'
+    var auxCrm = '';
+    console.log('a');
+    console.log('b');
+    for (let index = 0; index < event.length-1; index++) {
+      auxCrm += '0';
+      console.log('c');
+    }
+    auxCrm += '-09';
+    this.mascaraCrm = auxCrm;
+     
     
   }
 

@@ -27,6 +27,22 @@ export class NewSurgeonComponent implements OnInit {
     tuss: null,
     is_admin: false,
   }
+  mascaraCrm = '00-0';
+  mudaMascara(event){
+    console.log(event.length);
+    //this.mascaraCrm = '000-00'
+    var auxCrm = '';
+    console.log('a');
+    console.log('b');
+    for (let index = 0; index < event.length-1; index++) {
+      auxCrm += '0';
+      console.log('c');
+    }
+    auxCrm += '-09';
+    this.mascaraCrm = auxCrm;
+     
+    
+  }
   
   ngOnInit() {
     this.listProcedimentos = this.route.snapshot.data.allTuss;
