@@ -37,6 +37,7 @@ export class ApprovedDetailsComponent implements OnInit {
       hours_duration: null,
       minutes_duration: null,
       true_hours_duration: null,
+      date_time: '',
       true_minutes_duration: null,
       explanation: '',
       percentage: null,
@@ -99,6 +100,8 @@ export class ApprovedDetailsComponent implements OnInit {
     this.init();
   }
 
+  hourSurgery:string;
+
   public async init() {
     this.id = this.route.snapshot.params.id;
     this.surgeryService.getSurgery(this.id).subscribe(response => {
@@ -138,7 +141,9 @@ export class ApprovedDetailsComponent implements OnInit {
     // this.duracao = this.surgery.hours_duration;
     // this.duracao += ':';
     // this.duracao += this.surgery.minutes_duration;
-    
+
+    this.hourSurgery = this.surgery.date_time.substring(this.surgery.date_time.indexOf('T') + 1, this.surgery.date_time.indexOf('T') + 6);
+
     setTimeout(() => {
       this.selectedComorbs = this.surgery.comorbidities;
       console.log(this.selectedComorbs);
@@ -154,8 +159,10 @@ export class ApprovedDetailsComponent implements OnInit {
     true_minutes_duration: '',
   };
   transfRealiz(){
-    if(this.trueDuration == ""){
-      alert('Informe a duração da cirurgia');
+    console.log(this.trueDuration);
+    if(this.trueDuration == "00:00"){
+      alert('Informe a duração oficial da cirurgia');
+      return;
     }else{
       let aux = this.trueDuration.split(':');
       this.performSurgery.true_hours_duration = aux[0];

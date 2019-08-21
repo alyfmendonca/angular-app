@@ -15,8 +15,7 @@ export class SolicitacoesDetailsComponent implements OnInit {
     public router: Router,
     public route: ActivatedRoute,
     public surgeryService: SurgeryService,
-    private otherService: OtherService,
-    private hospitalService: HospitalService,
+    private otherService: OtherService
     ) { }
     checked = true;
     texto = 'Acréscimo';

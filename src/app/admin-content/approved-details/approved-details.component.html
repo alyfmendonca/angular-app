@@ -42,7 +42,7 @@
                   <h3 class="light-dark">Complexidade</h3>
                   <label for='durCirurgia'>Duração da cirugia</label>
                   
-                  <ngx-timepicker-field id='txtDur' name='txtDur' [(ngModel)]='duracao' [format]="24" [defaultTime]="'00:00'" ></ngx-timepicker-field>
+                  <ngx-timepicker-field disabled id='txtDur' name='txtDur' [(ngModel)]='duracao' [format]="24" [defaultTime]="'00:00'" ></ngx-timepicker-field>
                   
                   <label>Essa cirurgia é de alta complexidade?</label>
                   <div class="list-scroll-esq listForm2">
@@ -63,7 +63,7 @@
                   </mat-form-field>
               
                
-                  <label class="labelForm" for='hourSurgery'>Horário da Cirurgia</label>
+                  <label class="labelForm" for='hourSurgery'>Horário da Cirurgia</label> 
                   <ngx-timepicker-field disabled id='hourSurgery' name='hourSurgery' [(ngModel)]='hourSurgery' [format]="24" [defaultTime]="'00:00'"></ngx-timepicker-field> 
                   <br>
 

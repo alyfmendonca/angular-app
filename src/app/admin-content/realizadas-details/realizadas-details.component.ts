@@ -38,6 +38,7 @@ export class RealizadasDetailsComponent implements OnInit {
       minutes_duration: null,
       true_hours_duration: null,
       true_minutes_duration: null,
+      date_time: '',
       explanation: '',
       percentage: null,
       discount: null,
@@ -110,6 +111,7 @@ export class RealizadasDetailsComponent implements OnInit {
     this.init();
   }
 
+  hourSurgery: string;
   
   public async init() {
     this.id = this.route.snapshot.params.id;
@@ -158,11 +160,12 @@ export class RealizadasDetailsComponent implements OnInit {
  
     this.selectedComorbs = undefined;
     this.selectedNeeds = undefined;
-    
   
     setTimeout(() => {
       this.selectedComorbs = this.surgery.comorbidities;
       this.selectedNeeds = this.surgery.accommodations;
+
+      this.hourSurgery = this.surgery.date_time.substring(this.surgery.date_time.indexOf('T') + 1, this.surgery.date_time.indexOf('T') + 6);
     }, 1);
 
   }
