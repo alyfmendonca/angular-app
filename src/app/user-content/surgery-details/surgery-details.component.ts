@@ -128,6 +128,10 @@ export class SurgeryDetailsComponent implements OnInit {
     }
   }
 
+  atualDate = new Date();
+  minDate = new Date(1900, 0, 1);
+  maxDate = new Date(2100, 0, 1);
+
   atribuiSelecteds() {
  
     this.selectedComorbs = undefined;

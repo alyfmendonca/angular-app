@@ -82,6 +82,10 @@ export class RequestStepperComponent implements OnInit {
   birth_date: Date;
 
   semComorb: boolean = false;
+
+  atualDate = new Date();
+  minDate = new Date(1900, 0, 1);
+  maxDate = new Date(2100, 0, 1);
         
   ngOnInit() {
 

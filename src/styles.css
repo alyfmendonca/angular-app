@@ -253,11 +253,8 @@ app-request-stepper .mat-checkbox-input {
 app-request-stepper .mat-checkbox-frame, app-request-stepper .mat-checkbox-background{
     display: none;
 }
- .cdk-overlay-pane{
+app-request-stepper .mat-datepicker-popup{
     background: #fff;
     width: 550px !important;
     font-size: 10px;
-}
-app-request-stepper .cdk-overlay-pane{
-    width: 300px !important;
 }
