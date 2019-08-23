@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
 import { SurgeryService } from '../../services/surgery-services/surgery.service';
 import { OtherService } from 'src/app/services/other-services/other.service';
+import domtoimage from 'dom-to-image';
+import * as jspdf from 'jspdf';
 
 @Component({
   selector: 'app-approved-details',
@@ -178,6 +180,59 @@ export class ApprovedDetailsComponent implements OnInit {
     }
   }
 
+  clickPDF(){
+    var node = document.getElementById('pdfHtml');
+
+              var img;
+              var filename;
+              var newImage;
+
+
+              domtoimage.toPng(node, { bgcolor: '#fff' })
+
+                .then(function(dataUrl) {
+
+                  img = new Image();
+                  img.src = dataUrl;
+                  newImage = img.src;
+
+                  img.onload = function(){
+
+                  var pdfWidth = img.width;
+                  var pdfHeight = img.height;
+
+                    // FileSaver.saveAs(dataUrl, 'my-pdfimage.png'); // Save as Image
+
+                    var doc;
+
+                    if(pdfWidth > pdfHeight)
+                    {
+                      doc = new jspdf('l', 'px', [pdfWidth , pdfHeight]);
+                    }
+                    else
+                    {
+                      doc = new jspdf('p', 'px', [pdfWidth , pdfHeight]);
+                    }
+
+
+                    var width = doc.internal.pageSize.getWidth();
+                    var height = doc.internal.pageSize.getHeight();
+
+
+                    doc.addImage(newImage, 'PNG',  10, 10, width, height);
+                    filename = 'mySurgery_Custos' + '.pdf';
+                    doc.save(filename);
+
+                  };
+
+
+                })
+                .catch(function(error) {
+
+                 // Error Handling
+
+                });
+  }
   
   
 }

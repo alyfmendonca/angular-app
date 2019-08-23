@@ -142,11 +142,12 @@
           <div>
             <div class="cont-header bottom"> 
               <h3 class="dark">Custo Estabelecido</h3>
-              <img class="image-voltar" src="../../assets/download.png" />
+              <img class="image-voltar" (click)="clickPDF();" style="cursor: pointer" src="../../assets/download.png" />
             </div>
             <div>
               
               <form #form="ngForm">
+                <div id="pdfHtml">
                 <div class="main-line bottom">
                   <div>
                       <label for='txtNomeGroup'>Nome do Grupo</label>
@@ -211,7 +212,7 @@
 
                   </div>
                 </div>
-                
+              </div>
               </form>
               
             </div>

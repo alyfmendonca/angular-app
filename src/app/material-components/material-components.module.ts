@@ -46,7 +46,6 @@ import {NgxMaskModule} from 'ngx-mask';
     NgxMaterialTimepickerModule,
     MatAutocompleteModule,
     NgxMaskModule.forRoot(),
-
   ],
   exports: [
     MatCheckboxModule,
