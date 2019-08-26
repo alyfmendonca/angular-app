@@ -207,11 +207,11 @@ export class ApprovedDetailsComponent implements OnInit {
 
                     if(pdfWidth > pdfHeight)
                     {
-                      doc = new jspdf();
+                      doc = new jspdf("p","mm","a4");
                     }
                     else
                     {
-                      doc = new jspdf();
+                      doc = new jspdf("p","mm","a4");
                     }
 
 
@@ -219,7 +219,7 @@ export class ApprovedDetailsComponent implements OnInit {
                     var height = doc.internal.pageSize.getHeight();
 
 
-                    doc.addImage(newImage, 'PNG',  10, 10, width, height);
+                    doc.addImage(newImage, 'PNG',  -10, -10, width * 1.1, height * 1.05);
                     filename = 'mySurgery_Custos' + '.pdf';
                     doc.save(filename);
 
