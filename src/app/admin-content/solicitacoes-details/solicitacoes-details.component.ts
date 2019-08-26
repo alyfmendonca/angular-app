@@ -407,6 +407,47 @@ export class SolicitacoesDetailsComponent implements OnInit {
       return true;
   
     }
+
+    recuperaMes(data:string): number{
+      if(data.toString().toString().includes(" Jan ")){
+        return 1;
+        
+      }else if(data.toString().includes(" Feb ")){
+        return 2;
+        
+      }else if(data.toString().includes(" Mar ")){
+        return 3;
+        
+      }else if(data.toString().includes(" Apr ")){
+        return 4;
+        
+      }else if(data.toString().includes(" May ")){ 
+        return 5;
+        
+      }else if(data.toString().includes(" Jun ")){
+        return 6;
+        
+      }else if(data.toString().includes(" Jul ")){
+        return 7;
+        
+      }else if(data.toString().includes(" Aug ")){
+        return 8;
+        
+      }else if(data.toString().includes(" Sep ")){
+        return 9;
+        
+      }else if(data.toString().includes(" Oct ")){
+        return 10;
+        
+      }else if(data.toString().includes(" Nov ")){
+        return 11;
+        
+      }else if(data.toString().includes(" Dec ")){
+        return 12;
+      }else{
+        return -1;
+      }
+    }
   
     btnSalvar(){
 
@@ -458,6 +499,15 @@ export class SolicitacoesDetailsComponent implements OnInit {
       var nome: string = this.surgery.patient['name'];
       var cpfVar:string = this.surgery.patient['cpf'].toString();
       var birth_dateVar: string = this.surgery.patient['birth_date'];
+
+      let birthYYYY_MM_DD
+      //Dia do nascimento deve ser yyyy-mm-dd
+      if(birth_dateVar.toString().indexOf('Time') > -1){
+      birthYYYY_MM_DD = birth_dateVar.toString().substring(birth_dateVar.toString().indexOf(':') - 3, birth_dateVar.toString().indexOf(':') - 7)
+       + '-' + this.recuperaMes(birth_dateVar.toString()) + '-' + 
+       birth_dateVar.toString().substring(birth_dateVar.toString().indexOf(':') - 8, birth_dateVar.toString().indexOf(':') - 10);
+      console.log(birthYYYY_MM_DD)
+      }
   
       var surgeryUpdate : SurgeryUpdate = {
         id: this.surgery.id,
@@ -466,7 +516,7 @@ export class SolicitacoesDetailsComponent implements OnInit {
         minutes_duration:aux[1],
         name: nome,
         cpf: cpfVar,
-        birth_date: birth_dateVar,
+        birth_date: birthYYYY_MM_DD,
         explanation: this.surgery.explanation,
         comorbidities:'[' + this.selectedComorbs.toString() + ']',
         accommodations:'[' + this.selectedNeeds.toString() + ']',

@@ -207,11 +207,11 @@ export class ApprovedDetailsComponent implements OnInit {
 
                     if(pdfWidth > pdfHeight)
                     {
-                      doc = new jspdf('l', 'px', [pdfWidth , pdfHeight]);
+                      doc = new jspdf();
                     }
                     else
                     {
-                      doc = new jspdf('p', 'px', [pdfWidth , pdfHeight]);
+                      doc = new jspdf();
                     }
 
 
