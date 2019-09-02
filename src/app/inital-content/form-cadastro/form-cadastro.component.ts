@@ -1,6 +1,9 @@
 import { Component, OnInit, ChangeDetectionStrategy } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { AuthService } from 'src/app/services/auth-services/auth.service';
+import { Observable } from 'rxjs';
+import { FormControl } from '@angular/forms';
+import { startWith, map } from 'rxjs/operators';
 @Component({
   selector: 'app-form-cadastro',
   templateUrl: './form-cadastro.component.html',
@@ -29,7 +32,22 @@ export class FormCadastroComponent implements OnInit {
 
   ngOnInit() {
     this.listProcedimentos = this.route.snapshot.data.allTuss;
+
+    this.filteredTuss = this.tussControl.valueChanges
+      .pipe(
+        startWith(''),
+        map(value => this._filter(value))
+      );
   }
+
+  private _filter(value: string): Tuss[] {
+    const filterValue = value.toLowerCase();
+
+    return this.listProcedimentos.filter(tuss => tuss.str.toLowerCase().includes(filterValue));
+  }
+
+  tussControl = new FormControl();
+  filteredTuss: Observable<Tuss[]>;
 
   submitForm(){
     if(!this.userCreate.name){

@@ -1,6 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { OtherService } from '../../services/other-services/other.service'
 import { ActivatedRoute } from '@angular/router';
+import { FormControl } from '@angular/forms';
+import { startWith, map } from 'rxjs/operators';
+import { Observable } from 'rxjs';
 
 
 
@@ -11,39 +14,13 @@ export interface PeriodicElement {
   symbol: string;
 }
 
-const ELEMENT_DATA: PeriodicElement[] = [
-  {position: 1, name: '31005489', weight: 'Colecistectomia com fistula biliodigestiva', symbol: 'Colecistectomia com fistula biliodigestiva'},
-  {position: 2, name: '31005489', weight: 'Colecistectomia com fistula biliodigestiva', symbol: 'Colecistectomia com fistula biliodigestiva'},
-  {position: 3, name: '31005489', weight: 'Colecistectomia com fistula biliodigestiva', symbol: 'Colecistectomia com fistula biliodigestiva'},
-  {position: 4, name: '31005489', weight: 'Colecistectomia com fistula biliodigestiva', symbol: 'Colecistectomia com fistula biliodigestiva'},
-  {position: 5, name: '31005489', weight: 'Colecistectomia com fistula biliodigestiva', symbol: 'Colecistectomia com fistula biliodigestiva'},
-  {position: 6, name: '31005489', weight: 'Colecistectomia com fistula biliodigestiva', symbol: 'Colecistectomia com fistula biliodigestiva'},
-  {position: 7, name: '31005489', weight: 'Colecistectomia com fistula biliodigestiva', symbol: 'Colecistectomia com fistula biliodigestiva'},
-  {position: 8, name: '31005489', weight: 'Colecistectomia com fistula biliodigestiva', symbol: 'Colecistectomia com fistula biliodigestiva'},
-  {position: 9, name: '31005489', weight: 'Colecistectomia com fistula biliodigestiva', symbol: 'Colecistectomia com fistula biliodigestiva'},
-  {position: 10, name: '31005489', weight: 'Colecistectomia com fistula biliodigestiva', symbol: 'Colecistectomia com fistula biliodigestiva'},
-];
-
 export interface HospitalAssociado {
   name: string;
 }
 
-const ELEMENT_DATA2: HospitalAssociado[] = [
-  {name: 'Casa de Saúde São José'},
-  {name: 'Casa de Saúde São José'},
-  {name: 'Casa de Saúde São José'},
-  {name: 'Casa de Saúde São José'},
-];
-
 export interface SurgeonAssociado {
   name: string;
 }
-
-const ELEMENT_DATA3: SurgeonAssociado[] = [
-  {name: 'Casa de Saúde São José'},
-  {name: 'Casa de Saúde São José'},
-];
-
 
 
 @Component({
@@ -53,7 +30,6 @@ const ELEMENT_DATA3: SurgeonAssociado[] = [
 })
 export class TussTableComponent implements OnInit {
   displayedColumns: string[] = ['procedimento'];
-  dataSource = ELEMENT_DATA;
 
   hospitals: any;
   surgeons: any[];
@@ -65,7 +41,23 @@ export class TussTableComponent implements OnInit {
 
   ngOnInit() {
     this.tussTable = this.route.snapshot.data.allTuss;
+
+    this.filteredTuss = this.tussControl.valueChanges
+      .pipe(
+        startWith(''),
+        map(value => this._filter(value))
+      );
   }
+  
+  filteredTuss: Observable<Tuss[]>;
+  tussControl = new FormControl();
+
+  private _filter(value: string): Tuss[] {
+    const filterValue = value.toLowerCase();
+
+    return this.tussTable.filter(tuss => tuss.str.toLowerCase().includes(filterValue));
+  }
+
   chamaAssociados(id){
     this.tussService.getTuss(id).subscribe(response => {
       this.hospitals = response.hospitals;
@@ -74,5 +66,9 @@ export class TussTableComponent implements OnInit {
       console.log(this.hospitals);
       console.log(this.surgeons);
     })
+  }
+
+  searchTuss(){
+    
   }
 }

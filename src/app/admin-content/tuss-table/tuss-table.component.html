@@ -5,9 +5,14 @@
         <div class="cont-header">
             <h3 class="dark">Tabela TUSS</h3>
         </div>
-        
+        <a (click)="searchTuss();"> 
+        <i style="display: inline; margin-right: 1%; color: #3ec0c2" id="searchTuss" class="fas fa-search"></i>
+        <mat-form-field style="width: 70%">
+          <input class="searchInput" placeholder="" matInput [formControl]="tussControl">
+        </mat-form-field>
+      </a>
         <div class="heigth-table">
-            <table mat-table [dataSource]="tussTable" class="mat-elevation-z8">
+            <table mat-table [dataSource]="filteredTuss" class="mat-elevation-z8">
 
                 <!--- Note that these columns can be defined in any order.
                       The actual rendered columns are set as a property on the row definition" -->

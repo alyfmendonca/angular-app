@@ -533,9 +533,109 @@ export class SolicitacoesDetailsComponent implements OnInit {
            this.selectedNeeds = null;
            this.selectedNeedsAux = null;
            this.selectedTuss = null;
+           this.gravaMidias(this.surgery.id);
            this.router.navigate(['/admin/main/solicitacoes']);
          }, (err) => {
          alert(err.error.message);
        });
     }
+
+    gravaMidias(id){
+      this.listFilesFinalFinalizar.forEach(dataFile => {
+        this.surgeryService.uploadMedia(dataFile, id).subscribe(response => {
+          console.log(response);
+        })
+        console.log(id + " <<< ID --- DATA >>>" + dataFile);
+      });
+  
+    }
+  
+    deleteImagePreview(arquivo){
+      this.listFilesFinal = new Promise<any[]>((resolve, reject) => {
+        setTimeout(() => {
+          resolve();
+        }, 300);
+      }).then(() => {
+        this.listFilesSave = this.listFilesSave.filter((val) => {
+          return val !== arquivo;
+        })
+        this.listFilesFinalFinalizar = [...this.listFilesSave];
+        return this.listFilesSave;
+      })
+    }
+
+    testaCPF(strCPF) {
+      console.log(strCPF);
+      var Soma;
+      var Resto;
+      Soma = 0;
+    if (strCPF == "00000000000") return false;
+    if (strCPF == "11111111111") return false;
+    if (strCPF == "22222222222") return false;
+    if (strCPF == "33333333333") return false;
+    if (strCPF == "44444444444") return false;
+    if (strCPF == "55555555555") return false;
+    if (strCPF == "66666666666") return false;
+    if (strCPF == "77777777777") return false;
+    if (strCPF == "88888888888") return false;
+    if (strCPF == "99999999999") return false;
+    if (strCPF == "") return false;
+    
+
+    for (let i=1; i<=9; i++) Soma = Soma + parseInt(strCPF.substring(i-1, i)) * (11 - i);
+    Resto = (Soma * 10) % 11;
+     
+      if ((Resto == 10) || (Resto == 11))  Resto = 0;
+      if (Resto != parseInt(strCPF.substring(9, 10)) ) return false;
+     
+    Soma = 0;
+      for (let i = 1; i <= 10; i++) Soma = Soma + parseInt(strCPF.substring(i-1, i)) * (12 - i);
+      Resto = (Soma * 10) % 11;
+     
+      if ((Resto == 10) || (Resto == 11))  Resto = 0;
+      if (Resto != parseInt(strCPF.substring(10, 11) ) ) return false;
+      return true;
+    }
+
+    validaCPF(cpf:string){
+      if(!(this.testaCPF(cpf.replace(/\./g, '').replace('-', '')))){
+        alert('CPF inválido.');
+        this.surgery.patient['cpf'] = '';
+      }
+    }
+
+    listFilesFinal: Promise<any[]> = null;
+    listFilesFinalFinalizar: any[] = [];
+    listFilesSave: any[] = [];
+
+    adicionarImagem(param){
+      let listFiles: any[] = [];
+        for (var i = 0; i < param.target.files.length; i++) { //for multiple files          
+          (function(file) {
+              var reader = new FileReader();  
+              reader.onload = (event) => {
+                let fileAny:any = event.target;
+                listFiles.push(fileAny.result);
+              }
+              reader.readAsDataURL(file); 
+          })(param.target.files[i]);  
+      }
+      this.listFilesFinal = new Promise<any[]>((resolve, reject) => {
+        setTimeout(() => {
+          resolve();
+        }, 300);
+      }).then(() => {
+        listFiles.forEach(element => {
+          this.listFilesFinalFinalizar.push(element);
+        });
+        this.listFilesSave.push(...listFiles);
+        return this.listFilesSave;
+      }) 
+    }
+  
+    chamaInputHidden(){
+      let element = document.getElementById('fileImg');
+      element.click();
+    }
+
 }

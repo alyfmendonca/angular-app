@@ -5,7 +5,7 @@ import { InitalContentRoutingModule } from './inital-content-routing.module';
 import { FormLoginComponent } from './form-login/form-login.component';
 import { FormCadastroComponent } from './form-cadastro/form-cadastro.component';
 import { CoreModule } from '../core/core.module';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { NavBarComponent } from './nav-bar/nav-bar.component';
 import { MainContentComponent } from './main-content/main-content.component';
 import {ScrollDispatchModule} from '@angular/cdk/scrolling';
@@ -30,7 +30,8 @@ import { NewPassForgotComponent } from './new-pass-forgot/new-pass-forgot.compon
     CoreModule,
     FormsModule,
     MaterialComponentsModule,
-    ScrollDispatchModule
+    ScrollDispatchModule,
+    ReactiveFormsModule
   ]
 })
 export class InitalContentModule { }

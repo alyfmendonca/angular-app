@@ -57,3 +57,11 @@ table tr:hover td{
 .heigth-table th{
     background: #fff;
 }
+.searchTuss{
+    color: #9f9f9f;
+    font-weight: 500;
+}
+.searchInput{
+    border: 1px solid #9f9f9f;
+    border-radius: 3px;
+}

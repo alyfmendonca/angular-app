@@ -54,7 +54,7 @@
                 <input [(ngModel)]='surgeryCreate.name' type='text' id='txtNome' name='txtNome' placeholder="Alberto Pacheco" #nameVerify="ngModel" required>
                 <br>
                 <label class="labelForm" for='txtCpf'>CPF</label>
-                <input [(ngModel)]='surgeryCreate.cpf' type='text' id='txtCpf' name='txtCpf'
+                <input [(ngModel)]='surgeryCreate.cpf' (blur)="validaCPF($event.target.value)"  type='text' id='txtCpf' name='txtCpf'
                   placeholder="999.999.999-99" mask='000.000.000-00' #nameVerify="ngModel" required>
                 <br>
                 <label class="labelForm" for='dtNasc'>Data de Nascimento</label>
