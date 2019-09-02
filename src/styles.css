@@ -176,7 +176,7 @@ mat-list-option{
     border-color: rgba(0,0,0,.38);
 }
 .mat-calendar-body-selected {
-    background-color: #3f51b5;
+    background-color: #3ec0c2;
     color: #fff;
 }
 
@@ -257,4 +257,19 @@ app-request-stepper .mat-datepicker-popup{
     background: #fff;
     width: 550px !important;
     font-size: 10px;
+}
+
+.clock-face__number > span.active,
+.clock-face__clock-hand,
+.timepicker__header {
+    background-color: #3ec0c2 !important;
+}
+.timepicker-dial__item_active, .timepicker-dial__item{
+    color: #fff !important;
+}
+.clock-face__clock-hand_minute:before{
+    border-color: #3ec0c2 !important;
+}
+.timepicker-button{
+    color: #3ec0c2 !important;
 }
