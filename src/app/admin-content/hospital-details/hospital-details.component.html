@@ -33,11 +33,12 @@
               <div class="menu-esq">
                 <div>
                   <h3 class="light-dark">Procedimentos (TUSS)</h3> 
+                  <i style="display: inline; margin-right: 1%; color: #3ec0c2" class="fas fa-search"></i><input type="text" style="width: 85%" placeholder="" aria-label="Number" matInput [formControl]="tussControl">
                 </div>
                 <div class="list-scroll-esq">
                   <cdk-virtual-scroll-viewport class="virtualScroll" itemSize="8">
                     <mat-selection-list [(ngModel)]="selectedOptions" name="a">
-                      <mat-list-option *ngFor="let procedimento of listProcedimentosMock" (click)='validaOnlyOne($event, procedimento.id);' [value]="procedimento.id">
+                      <mat-list-option *ngFor="let procedimento of listProcedimentos" (click)='validaOnlyOne($event, procedimento.id);' [value]="procedimento.id">
                         {{procedimento.str}}
                       </mat-list-option>
                     </mat-selection-list>
@@ -48,7 +49,7 @@
             
             <!-- Pacote de custos -->
 
-            <div class="pacote-line" >
+            <div class="pacote-line" > 
               <div>
                 <h3 class="light-dark">Pacote de custo: HOSPITAL 1</h3>
               </div>
@@ -60,16 +61,16 @@
             </div>
 
             <app-cost-group [costGroup]='atualCostGroup'></app-cost-group>
-
+ 
 
             <!-- Botão CONCLUIR -->
 
             <div class="btn-line">
-              <button class="dark-button">CONCLUIR</button>
+              <button class="dark-button" (click)="alteraHospital()">CONCLUIR</button>
             </div>
           </form>
           
-        </div>
+        </div> 
 
 
         

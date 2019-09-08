@@ -2,6 +2,9 @@ import { Component, OnInit, ChangeDetectionStrategy } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
 import { HospitalService } from '../../services/hospital-services/hospital.service';
 import { OtherService } from '../../services/other-services/other.service'
+import { map, startWith } from 'rxjs/operators';
+import { FormControl } from '@angular/forms';
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-hospital-details',
@@ -22,9 +25,10 @@ export class HospitalDetailsComponent implements OnInit {
   hospitalDetails: HospitalById;
   allTuss: number[] = [];
   atualCostGroup: CostGroup;
-  listProcedimentosMock: Tuss[] = [];
+  listProcedimentos: Tuss[] = [];
   selectedOptions: number[] = [];
   telMask = '';
+
   ngOnInit() {
     this.route.params.subscribe( parametros => {
         this.id = parametros.id;
@@ -44,13 +48,29 @@ export class HospitalDetailsComponent implements OnInit {
     });
     this.otherServices.getAllTuss().subscribe(
       tuss => {
-        this.listProcedimentosMock = tuss;
+        this.listProcedimentos = tuss;
         this.selectedOptions = this.allTuss;
         
       }
     );
-    
+    this.filteredTuss = this.tussControl.valueChanges
+      .pipe(
+        startWith(''),
+        map(value => this._filter(value))
+      );
   }
+
+  private _filter(value: string): Tuss[] {
+    const filterValue = value.toLowerCase();
+
+    return this.listProcedimentos.filter((tuss) => {
+      return (tuss.str.toLowerCase().includes(filterValue) || this.selectedOptions.find(id => tuss.id == id))
+    });
+  }
+
+  tussControl = new FormControl();
+  filteredTuss: Observable<Tuss[]>;
+
   changeCost(cost: CostGroup){
     console.log(cost);
     this.atualCostGroup = cost;
@@ -62,11 +82,10 @@ export class HospitalDetailsComponent implements OnInit {
       //Não deixa clicar no que já veio clicado
       event.target.click();
     }
+  }
+
+  alteraHospital(){
 
   }
-  
-  
- 
-
 
 }

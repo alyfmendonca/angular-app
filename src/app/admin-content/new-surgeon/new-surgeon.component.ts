@@ -4,6 +4,9 @@ import { OtherService } from 'src/app/services/other-services/other.service';
 import { SurgeonService } from 'src/app/services/surgeon-services/surgeon.service';
 import { formatDate } from '@angular/common';
 import { Md5 } from 'ts-md5';
+import { FormControl } from '@angular/forms';
+import { Observable } from 'rxjs';
+import { startWith, map } from 'rxjs/operators';
 
 @Component({
   selector: 'app-new-surgeon',
@@ -46,7 +49,24 @@ export class NewSurgeonComponent implements OnInit {
   
   ngOnInit() {
     this.listProcedimentos = this.route.snapshot.data.allTuss;
+
+    this.filteredTuss = this.tussControl.valueChanges
+      .pipe(
+        startWith(''),
+        map(value => this._filter(value))
+      );
   } 
+
+  private _filter(value: string): Tuss[] {
+    const filterValue = value.toLowerCase();
+
+    return this.listProcedimentos.filter((tuss) => {
+      return (tuss.str.toLowerCase().includes(filterValue) || this.selectedTuss.find(id => tuss.id == id))
+    });
+  }
+
+  tussControl = new FormControl();
+  filteredTuss: Observable<Tuss[]>;
 
   listProcedimentos: Tuss[] = []; 
 

@@ -43,7 +43,9 @@ export class FormCadastroComponent implements OnInit {
   private _filter(value: string): Tuss[] {
     const filterValue = value.toLowerCase();
 
-    return this.listProcedimentos.filter(tuss => tuss.str.toLowerCase().includes(filterValue));
+    return this.listProcedimentos.filter((tuss) => {
+      return (tuss.str.toLowerCase().includes(filterValue) || this.selectedTuss.find(id => tuss.id == id))
+    });
   }
 
   tussControl = new FormControl();

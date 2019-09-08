@@ -84,7 +84,9 @@ export class NewHospitalComponent implements OnInit {
   private _filter(value: string): Tuss[] {
     const filterValue = value.toLowerCase();
 
-    return this.tussTable.filter(tuss => tuss.str.toLowerCase().includes(filterValue));
+    return this.tussTable.filter((tuss) => {
+      return (tuss.str.toLowerCase().includes(filterValue) || this.selectedTuss.find(id => tuss.id == id.id))
+    });
   }
 
   tussControl = new FormControl();

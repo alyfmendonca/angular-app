@@ -34,11 +34,12 @@
                 <div>
                   <h3 class="light-dark">Procedimentos (TUSS)</h3>
                   <p class="">Selecione os procedimentos que serão realizados na cirurgia</p> 
+                  <i style="display: inline; margin-right: 1%; color: #3ec0c2" class="fas fa-search"></i><input type="text" style="width: 85%" placeholder="" aria-label="Number" matInput [formControl]="tussControl">
                 </div>
                 <div class="list-scroll-esq"> 
                   <cdk-virtual-scroll-viewport class="virtualScroll" itemSize="8"> 
                     <mat-selection-list name="listTuss" #listaTuss [(ngModel)]="selectedTuss">
-                      <mat-list-option [value]="procedimento.id" name="cboProcedimentos" *ngFor="let procedimento of listProcedimentos">
+                      <mat-list-option [value]="procedimento.id" name="cboProcedimentos" *ngFor="let procedimento of filteredTuss | async">
                         {{procedimento.str}}
                       </mat-list-option>
                     </mat-selection-list>
