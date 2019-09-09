@@ -41,6 +41,16 @@ export class HospitalService {
     return this.http.post<Hospital>(`${API_URL}hospital/`, hospital, {headers});
   }
 
+  putHospital(hospital: any){
+    let token = localStorage.getItem('token');
+    let headers = new HttpHeaders({
+      'Authorization': `token ${token}`,
+      'Content-Type': 'application/json'
+    });
+    
+    return this.http.put(`${API_URL}hospital/`, hospital, {headers});
+  }
+
   getCostPackageOptions(tuss: string){
     let token = localStorage.getItem('token');
     let headers = new HttpHeaders({

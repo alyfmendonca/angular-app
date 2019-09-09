@@ -31,20 +31,9 @@
 
             <div class="dir">
               <div class="menu-esq">
-                  <div class="div-new-tuss" *ngIf="this.newTuss">
-                    <p>Inclua o Tuss escolhido à um grupo de custo.</p>
-                    <mat-form-field>
-                      <mat-select [(ngModel)]="selectedGC" name="gcTuss">
-                        <mat-option *ngFor="let gc of hospitalDetails.cost_groups" [value]="gc">
-                          {{gc.name}}
-                        </mat-option>
-                      </mat-select>
-                    </mat-form-field>
-                    <button class="dark-button" (click)="incluirTuss()">Incluir</button>
-                  </div>
                 <div>
                   <h3 class="light-dark">Procedimentos (TUSS)</h3> 
-                  <i style="display: inline; margin-right: 1%; color: #3ec0c2" class="fas fa-search"></i><input type="text" style="width: 85%" placeholder="" aria-label="Number" matInput [formControl]="tussControl">
+                  <!-- <i style="display: inline; margin-right: 1%; color: #3ec0c2" class="fas fa-search"></i><input type="text" style="width: 85%" placeholder="" aria-label="Number" matInput [formControl]="tussControl"> -->
                 </div>
                 <div class="list-scroll-esq">
                   <cdk-virtual-scroll-viewport class="virtualScroll" itemSize="8">
@@ -55,6 +44,20 @@
                     </mat-selection-list>
                   </cdk-virtual-scroll-viewport>
                 </div>
+                <div class="div-new-tuss" *ngIf="this.newTuss">
+                    <p>Inclua o Tuss escolhido no grupo: </p>
+                    <mat-form-field style="    border: 1px solid #ccc;
+                    border-radius: 2px;
+                    padding: 5px;
+                    margin: 10px;">
+                      <mat-select [(ngModel)]="selectedGC" name="gcTuss">
+                        <mat-option *ngFor="let gc of hospitalDetails.cost_groups" [value]="gc">
+                          {{gc.name}}
+                        </mat-option>
+                      </mat-select>
+                    </mat-form-field>
+                    <button class="dark-button" (click)="incluirTuss()">Incluir</button>
+                  </div>
               </div>
             </div>
             <!-- Pacote de custos -->

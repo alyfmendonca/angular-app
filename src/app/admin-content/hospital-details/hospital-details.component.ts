@@ -88,6 +88,7 @@ export class HospitalDetailsComponent implements OnInit {
       event.target.click();
     }else {
       //Novo tuss
+      console.log(this.listCostGroup)
       if(id == this.selectedTuss.id && !this.flagClicked){
         this.selectedTuss = {
           str: '',
@@ -116,13 +117,66 @@ export class HospitalDetailsComponent implements OnInit {
 
   alteraHospital(){
 
+    //Inclui hospital
+
+    let putHospital = {
+      id: this.hospitalDetails.id,
+      name: this.hospitalDetails.name,
+      email: this.hospitalDetails.email,
+      address:this.hospitalDetails.address,
+      phone: this.hospitalDetails.phone,
+      cep: this.hospitalDetails.cep,
+    }
+
+    this.hopitalService.putHospital(putHospital).subscribe((res) => {
+      alert('Hospital alterado com sucesso!');
+    });
+
+      this.listCostGroup.forEach(cg => {
+        let tussGc = '[';
+
+        cg.tuss.forEach(tuss => {
+          tussGc += tuss.id + ','
+        });
+
+        tussGc = tussGc.substr(0, tussGc.length - 1)
+
+        tussGc += ']';
+
+        let costGroupItem : CostGroupItem = {
+          hospital_id: this.hospitalDetails.id,
+          name: cg.name,
+          surgery_tax: Number.parseFloat(cg.surgery_tax),
+          additional_tax: Number.parseFloat(cg.additional_tax),
+          anesthesia_tax: Number.parseFloat(cg.anesthesia_tax),
+          material_tax: Number.parseFloat(cg.material_tax),
+          clinical_fee: Number.parseFloat(cg.clinical_schedule),
+          Semi_intensiva: Number.parseFloat(cg.Semi_intensiva),
+          CTI: Number.parseFloat(cg.CTI),
+          Andar: Number.parseFloat(cg.Andar),
+          Day_Clinic: Number.parseFloat(cg.Day_Clinic),
+          tuss: tussGc
+        };
+
+        this.adminService.addNewCostGroup(costGroupItem).subscribe((res) => {
+          console.log('grupo de custo alterado' + res)
+        })
+
+      });
+
+      this.router.navigateByUrl('admin/main/allHospitals');
+
   }
 
-  selectedGC: any;
+  selectedGC: any = '1';
 
   incluirTuss(){
     console.log(this.selectedGC);
     console.log(this.selectedTuss);
+    if(this.selectedGC == '1'){
+      alert('Selecione o grupo de custo');
+      return;
+    }
     this.newTuss = false;
     this.adminService.addNewCostGroup
     this.allTuss.push(this.selectedTuss.id);
@@ -158,20 +212,6 @@ export class HospitalDetailsComponent implements OnInit {
     this.atualCostGroup.Andar == '' || this.atualCostGroup.Day_Clinic == ''){
       alert('preencha todos os campos do Grupo de custo');
     }else{
-      // let costGroupItem : CostGroupItem = {
-      //   hospital_id: this.hospitalDetails.id,
-      //   name: this.atualCostGroup.name,
-      //   surgery_tax: Number.parseFloat(this.atualCostGroup.surgery_tax),
-      //   additional_tax: Number.parseFloat(this.atualCostGroup.additional_tax),
-      //   anesthesia_tax: Number.parseFloat(this.atualCostGroup.anesthesia_tax),
-      //   material_tax: Number.parseFloat(this.atualCostGroup.material_tax),
-      //   clinical_schedule: Number.parseFloat(this.atualCostGroup.clinical_schedule),
-      //   Semi_intensiva: Number.parseFloat(this.atualCostGroup.Semi_intensiva),
-      //   CTI: Number.parseFloat(this.atualCostGroup.CTI),
-      //   Andar: Number.parseFloat(this.atualCostGroup.Andar),
-      //   Day_Clinic: Number.parseFloat(this.atualCostGroup.Day_Clinic),
-      //   tuss: '[]'
-      // };
       this.atualCostGroup.id = this.hospitalDetails.id;
       this.listCostGroup.push(this.atualCostGroup);
 
