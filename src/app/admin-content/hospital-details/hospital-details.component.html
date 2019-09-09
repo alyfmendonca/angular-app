@@ -35,7 +35,7 @@
                     <p>Inclua o Tuss escolhido à um grupo de custo.</p>
                     <mat-form-field>
                       <mat-select [(ngModel)]="selectedGC" name="gcTuss">
-                        <mat-option *ngFor="let gc of hospitalDetails.cost_groups" [value]="gc.id">
+                        <mat-option *ngFor="let gc of hospitalDetails.cost_groups" [value]="gc">
                           {{gc.name}}
                         </mat-option>
                       </mat-select>

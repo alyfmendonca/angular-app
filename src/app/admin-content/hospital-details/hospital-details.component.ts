@@ -74,6 +74,7 @@ export class HospitalDetailsComponent implements OnInit {
 
   tussControl = new FormControl();
   filteredTuss: Observable<Tuss[]>;
+  flagClicked: boolean = false;
 
   changeCost(cost: CostGroup){
     console.log(cost);
@@ -85,10 +86,20 @@ export class HospitalDetailsComponent implements OnInit {
     })){
       //Não deixa clicar no que já veio clicado
       event.target.click();
-    }else{
+    }else {
       //Novo tuss
-      if(this.newTuss){
+      if(id == this.selectedTuss.id && !this.flagClicked){
+        this.selectedTuss = {
+          str: '',
+          id: 0
+        };
+        this.newTuss = false;
+      }else if(this.newTuss && !this.flagClicked){
         alert(`Favor relacionar a um grupo de custo o Tuss: ${this.selectedTuss.str} `)
+        this.flagClicked = true
+        event.target.click();
+      }else if(this.flagClicked){
+        this.flagClicked = false
       }else{
         console.log(tuss)
         this.selectedTuss = tuss;
@@ -98,7 +109,10 @@ export class HospitalDetailsComponent implements OnInit {
   }
 
   newTuss: boolean = false;
-  selectedTuss: Tuss;
+  selectedTuss: Tuss = {
+    str: '',
+    id: 0
+  };
 
   alteraHospital(){
 
@@ -110,9 +124,11 @@ export class HospitalDetailsComponent implements OnInit {
     console.log(this.selectedGC);
     console.log(this.selectedTuss);
     this.newTuss = false;
-
     this.adminService.addNewCostGroup
+    this.allTuss.push(this.selectedTuss.id);
 
+    this.selectedGC.tuss.push(this.selectedTuss);
+    console.log(this.selectedGC);
   }
 
   bolSalvar: boolean = false;
@@ -130,7 +146,7 @@ export class HospitalDetailsComponent implements OnInit {
       CTI: '',
       Andar: '',
       Day_Clinic: '',
-      tuss: null
+      tuss: []
     };
 
     this.bolSalvar = true;
