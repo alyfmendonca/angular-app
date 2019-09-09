@@ -31,6 +31,17 @@
 
             <div class="dir">
               <div class="menu-esq">
+                  <div class="div-new-tuss" *ngIf="this.newTuss">
+                    <p>Inclua o Tuss escolhido à um grupo de custo.</p>
+                    <mat-form-field>
+                      <mat-select [(ngModel)]="selectedGC" name="gcTuss">
+                        <mat-option *ngFor="let gc of hospitalDetails.cost_groups" [value]="gc.id">
+                          {{gc.name}}
+                        </mat-option>
+                      </mat-select>
+                    </mat-form-field>
+                    <button class="dark-button" (click)="incluirTuss()">Incluir</button>
+                  </div>
                 <div>
                   <h3 class="light-dark">Procedimentos (TUSS)</h3> 
                   <i style="display: inline; margin-right: 1%; color: #3ec0c2" class="fas fa-search"></i><input type="text" style="width: 85%" placeholder="" aria-label="Number" matInput [formControl]="tussControl">
@@ -38,7 +49,7 @@
                 <div class="list-scroll-esq">
                   <cdk-virtual-scroll-viewport class="virtualScroll" itemSize="8">
                     <mat-selection-list [(ngModel)]="selectedOptions" name="a">
-                      <mat-list-option *ngFor="let procedimento of listProcedimentos" (click)='validaOnlyOne($event, procedimento.id);' [value]="procedimento.id">
+                      <mat-list-option *ngFor="let procedimento of listProcedimentos" (click)='validaOnlyOne($event, procedimento.id, procedimento);' [value]="procedimento.id">
                         {{procedimento.str}}
                       </mat-list-option>
                     </mat-selection-list>
@@ -46,21 +57,24 @@
                 </div>
               </div>
             </div>
-            
             <!-- Pacote de custos -->
 
             <div class="pacote-line" > 
               <div>
-                <h3 class="light-dark">Pacote de custo: HOSPITAL 1</h3>
+                <h3 class="light-dark">Pacote de custo: {{hospitalDetails.name}}</h3>
               </div>
               <div class="box-line">
+                  <div class="package-box new-package" (click)="newPackageForm();">
+                      <i class="fas fa-plus"></i>
+                      <p>Novo Pacote</p>
+                    </div>
                 <div class="package-box" (click)="changeCost(group);" *ngFor="let group of hospitalDetails.cost_groups">
                   <p>{{group.name}}</p>
                 </div>
               </div>
             </div>
 
-            <app-cost-group [costGroup]='atualCostGroup'></app-cost-group>
+            <app-cost-group [costGroup]='atualCostGroup' [boolSalvar]="this.bolSalvar" (salvandoGc)="salvarGc($event);"></app-cost-group>
  
 
             <!-- Botão CONCLUIR -->

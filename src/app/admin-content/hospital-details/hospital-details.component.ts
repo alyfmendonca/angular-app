@@ -5,6 +5,7 @@ import { OtherService } from '../../services/other-services/other.service'
 import { map, startWith } from 'rxjs/operators';
 import { FormControl } from '@angular/forms';
 import { Observable } from 'rxjs';
+import { AdminService } from 'src/app/services/admin-services/admin.service';
 
 @Component({
   selector: 'app-hospital-details',
@@ -18,6 +19,7 @@ export class HospitalDetailsComponent implements OnInit {
     private route: ActivatedRoute, 
     public hopitalService: HospitalService,
     public otherServices: OtherService,
+    private adminService: AdminService
     ) { }
   isLinear = false;
   
@@ -74,18 +76,88 @@ export class HospitalDetailsComponent implements OnInit {
   changeCost(cost: CostGroup){
     console.log(cost);
     this.atualCostGroup = cost;
-  }
-  validaOnlyOne(event, id){
+  } 
+  validaOnlyOne(event, id, tuss){
     if(this.allTuss.find((valor) => {
       return valor == id;
     })){
       //Não deixa clicar no que já veio clicado
       event.target.click();
+    }else{
+      //Novo tuss
+      if(this.newTuss){
+        alert(`Favor relacionar a um grupo de custo o Tuss: ${this.selectedTuss.str} `)
+      }else{
+        console.log(tuss)
+        this.selectedTuss = tuss;
+        this.newTuss = true;
+      }
     }
   }
+
+  newTuss: boolean = false;
+  selectedTuss: Tuss;
 
   alteraHospital(){
 
   }
 
+  selectedGC: any;
+
+  incluirTuss(){
+    console.log(this.selectedGC);
+    console.log(this.selectedTuss);
+    this.newTuss = false;
+
+    this.adminService.addNewCostGroup
+
+  }
+
+  bolSalvar: boolean = false;
+
+  newPackageForm(){
+    this.atualCostGroup = {
+      id: 0,
+      name: '',
+      surgery_tax: '',
+      additional_tax: '',
+      anesthesia_tax: '',
+      material_tax: '',
+      clinical_schedule: '',
+      Semi_intensiva: '',
+      CTI: '',
+      Andar: '',
+      Day_Clinic: '',
+      tuss: null
+    };
+
+    this.bolSalvar = true;
+  }
+
+  salvarGc(){
+    if(this.atualCostGroup.name == '' || this.atualCostGroup.surgery_tax == '' || this.atualCostGroup.additional_tax == '' || this.atualCostGroup.anesthesia_tax == '' || 
+    this.atualCostGroup.material_tax == '' || this.atualCostGroup.clinical_schedule == '' || this.atualCostGroup.Semi_intensiva == '' || this.atualCostGroup.CTI == '' || 
+    this.atualCostGroup.Andar == '' || this.atualCostGroup.Day_Clinic == ''){
+      alert('preencha todos os campos do Grupo de custo');
+    }else{
+      let costGroupItem : CostGroupItem = {
+        hospital_id: this.hospitalDetails.id,
+        name: this.atualCostGroup.name,
+        surgery_tax: Number.parseFloat(this.atualCostGroup.surgery_tax),
+        additional_tax: Number.parseFloat(this.atualCostGroup.additional_tax),
+        anesthesia_tax: Number.parseFloat(this.atualCostGroup.anesthesia_tax),
+        material_tax: Number.parseFloat(this.atualCostGroup.material_tax),
+        clinical_schedule: Number.parseFloat(this.atualCostGroup.clinical_schedule),
+        Semi_intensiva: Number.parseFloat(this.atualCostGroup.Semi_intensiva),
+        CTI: Number.parseFloat(this.atualCostGroup.CTI),
+        Andar: Number.parseFloat(this.atualCostGroup.Andar),
+        Day_Clinic: Number.parseFloat(this.atualCostGroup.Day_Clinic),
+        tuss: '[]'
+      };
+
+      this.adminService.addNewCostGroup(costGroupItem).subscribe(response => {
+        console.log(response);
+      })
+    }
+  }
 }

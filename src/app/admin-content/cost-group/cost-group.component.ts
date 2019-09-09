@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 
 @Component({
   selector: 'app-cost-group',
@@ -7,6 +7,14 @@ import { Component, OnInit, Input } from '@angular/core';
 })
 export class CostGroupComponent implements OnInit {
   @Input() costGroup: CostGroup;
+  @Input() boolSalvar: boolean = false;
+  @Input() idHosp: number = null;
+
+  @Output() salvandoGc = new EventEmitter();
+
+  clickSalvar(){
+    this.salvandoGc.emit();
+  }
 
   constructor() { }
   listProcedimentosMock: any[] = 

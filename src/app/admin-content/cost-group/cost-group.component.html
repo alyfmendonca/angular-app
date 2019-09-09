@@ -45,6 +45,8 @@
 
       <label for='HrClinico'>Honorário Clínico</label>
       <input [(ngModel)]='costGroup.clinical_schedule' type='text' id='HrClinico' name='HrClinico' placeholder="R$ 0000,00" #nameVerify="ngModel" required>
+
+      <button style="margin-top: 5px" *ngIf="this.boolSalvar" class="dark-button" (click)="clickSalvar()">Salvar</button>
   </div>
 
 </div>

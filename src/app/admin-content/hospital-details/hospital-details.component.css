@@ -197,3 +197,13 @@ label{
     border-color: #3ec0c2;
     color: #3ec0c2;
 }
+
+.div-new-tuss{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 80%;
+    margin-left: 15%;
+    height: 150px;
+}
