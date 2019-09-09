@@ -25,6 +25,7 @@ export class HospitalDetailsComponent implements OnInit {
   
   id: string;
   hospitalDetails: HospitalById;
+  listCostGroup: CostGroup[];
   allTuss: number[] = [];
   atualCostGroup: CostGroup;
   listProcedimentos: Tuss[] = [];
@@ -38,6 +39,7 @@ export class HospitalDetailsComponent implements OnInit {
     this.hopitalService.getHospital(this.id).subscribe(response => {
       this.hospitalDetails = response;
       this.atualCostGroup = response.cost_groups[0];
+      this.listCostGroup = response.cost_groups;
       if(response.phone.length == 11){
         this.telMask = '(00) 00000-0000';
       }else{
@@ -140,24 +142,39 @@ export class HospitalDetailsComponent implements OnInit {
     this.atualCostGroup.Andar == '' || this.atualCostGroup.Day_Clinic == ''){
       alert('preencha todos os campos do Grupo de custo');
     }else{
-      let costGroupItem : CostGroupItem = {
-        hospital_id: this.hospitalDetails.id,
-        name: this.atualCostGroup.name,
-        surgery_tax: Number.parseFloat(this.atualCostGroup.surgery_tax),
-        additional_tax: Number.parseFloat(this.atualCostGroup.additional_tax),
-        anesthesia_tax: Number.parseFloat(this.atualCostGroup.anesthesia_tax),
-        material_tax: Number.parseFloat(this.atualCostGroup.material_tax),
-        clinical_schedule: Number.parseFloat(this.atualCostGroup.clinical_schedule),
-        Semi_intensiva: Number.parseFloat(this.atualCostGroup.Semi_intensiva),
-        CTI: Number.parseFloat(this.atualCostGroup.CTI),
-        Andar: Number.parseFloat(this.atualCostGroup.Andar),
-        Day_Clinic: Number.parseFloat(this.atualCostGroup.Day_Clinic),
-        tuss: '[]'
-      };
+      // let costGroupItem : CostGroupItem = {
+      //   hospital_id: this.hospitalDetails.id,
+      //   name: this.atualCostGroup.name,
+      //   surgery_tax: Number.parseFloat(this.atualCostGroup.surgery_tax),
+      //   additional_tax: Number.parseFloat(this.atualCostGroup.additional_tax),
+      //   anesthesia_tax: Number.parseFloat(this.atualCostGroup.anesthesia_tax),
+      //   material_tax: Number.parseFloat(this.atualCostGroup.material_tax),
+      //   clinical_schedule: Number.parseFloat(this.atualCostGroup.clinical_schedule),
+      //   Semi_intensiva: Number.parseFloat(this.atualCostGroup.Semi_intensiva),
+      //   CTI: Number.parseFloat(this.atualCostGroup.CTI),
+      //   Andar: Number.parseFloat(this.atualCostGroup.Andar),
+      //   Day_Clinic: Number.parseFloat(this.atualCostGroup.Day_Clinic),
+      //   tuss: '[]'
+      // };
+      this.atualCostGroup.id = this.hospitalDetails.id;
+      this.listCostGroup.push(this.atualCostGroup);
 
-      this.adminService.addNewCostGroup(costGroupItem).subscribe(response => {
-        console.log(response);
-      })
+      this.atualCostGroup = {
+        id: 0,
+        name: '',
+        surgery_tax: '',
+        additional_tax: '',
+        anesthesia_tax: '',
+        material_tax: '',
+        clinical_schedule: '',
+        Semi_intensiva: '',
+        CTI: '',
+        Andar: '',
+        Day_Clinic: '',
+        tuss: null
+      };
+  
+      this.bolSalvar = false; 
     }
   }
 }
