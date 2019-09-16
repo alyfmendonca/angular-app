@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { SurgeonService } from 'src/app/services/surgeon-services/surgeon.service';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
   selector: 'app-user-profile',
@@ -15,7 +15,8 @@ export class UserProfileComponent implements OnInit {
   surgeonUpdate: SurgeonUpdate;
   mascaraCrm = '00-0';
   constructor(public surgeonService: SurgeonService,
-              private route: ActivatedRoute) { }
+              private route: ActivatedRoute,
+              private router: Router) { }
 
   ngOnInit() {
     console.log('teste');
@@ -32,7 +33,29 @@ export class UserProfileComponent implements OnInit {
     
   }
   
-
+  salvar(){
+    if((this.surgeonByID.name || this.surgeonByID.name != '') && (this.surgeonByID.crm || this.surgeonByID.crm != 0) && 
+    (this.surgeonByID.uf || this.surgeonByID.uf != '') && (this.surgeonByID.email || this.surgeonByID.email != '')
+    && (this.surgeonByID.phone || this.surgeonByID.phone != '')){
+      const surgeonUpdate: SurgeonUpdate = {
+        id: this.surgeonByID.id,
+        phone: this.surgeonByID.phone,
+        email: this.surgeonByID.email,
+        name: this.surgeonByID.name,
+        crm: this.surgeonByID.crm,
+        uf: this.surgeonByID.uf,
+      }
+      this.surgeonService.updateSurgeon(surgeonUpdate).subscribe((res) => {
+        alert('Informações atualizadas');
+        this.router.navigate(['user/main/profile']);
+      }, (err) => {
+        alert('Erro ao atualizar informações');
+      })
+    }else{
+      alert('Preencha todos os campos');
+      return false;
+    }
+  }
   
   mudaMascara(event){
     console.log(event.length);
@@ -46,8 +69,5 @@ export class UserProfileComponent implements OnInit {
     }
     auxCrm += '-09';
     this.mascaraCrm = auxCrm;
-     
-    
   }
-
 }

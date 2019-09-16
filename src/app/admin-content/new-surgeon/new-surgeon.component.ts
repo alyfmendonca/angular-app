@@ -92,7 +92,10 @@ export class NewSurgeonComponent implements OnInit {
       this.surgeonCreate.tuss = "[" + this.selectedTuss + "]";
       let now = new Date();
       this.surgeonCreate.approved_token = Md5.hashStr(formatDate(now, 'dd-MM-yyyy hh:mm:ss.S a', 'en-US', '+0530'));
-      this.surgeonService.createSurgeon(this.surgeonCreate).subscribe(res => alert('Cirurgião criado'), err => alert('Erro ao cadastrar cirurgião'));
+      this.surgeonService.createSurgeon(this.surgeonCreate).subscribe((res) => {
+        alert('Cirurgião criado');
+        this.router.navigate(['admin/main/allSurgeons']);
+      }, err => alert('Erro ao cadastrar cirurgião'));
     }
   }
 

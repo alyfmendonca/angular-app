@@ -1,4 +1,4 @@
-<div class="content-background">
+<div id="pdfHtml" class="content-background">
     <mat-tab-group class="main-box">
         <mat-tab label="First"> 
     <div class="content-conteudo page-profile">
@@ -158,7 +158,7 @@
         <div class="conteudo">
           <div class="cont-header bottom"> 
               <h3 class="dark">Custos</h3>
-              <img class="image-voltar" src="../../assets/download.png" />
+              <img class="image-voltar" (click)="clickPDF();" style="cursor: pointer" src="../../assets/download.png" />
           </div>
 
           <div class="custos-line">
@@ -177,7 +177,7 @@
     </div>
   </mat-tab> 
   <mat-tab label="Second">
-      <div class="content-conteudo page-profile">
+      <div id="SeeMore" class="content-conteudo page-profile">
           <div class="conteudo">
             <div>
               <div class="cont-header bottom"> 
@@ -185,7 +185,7 @@
                     <img class="image-voltar" src="../../assets/voltar.png" />
                     <h3 class="dark">Custos</h3>
                   </a>
-                <img class="image-voltar" src="../../assets/download.png" />
+                <img class="image-voltar" (click)="clickPDFMore();" style="cursor: pointer" src="../../assets/download.png" />
               </div>
               <div>
                 

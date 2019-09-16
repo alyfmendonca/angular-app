@@ -3,6 +3,8 @@ import { Router, ActivatedRoute } from '@angular/router';
 import { SurgeryService } from '../../services/surgery-services/surgery.service';
 import { HospitalService } from '../../services/hospital-services/hospital.service';
 import { OtherService } from 'src/app/services/other-services/other.service';
+import domtoimage from 'dom-to-image';
+import * as jspdf from 'jspdf';
 
 @Component({
   selector: 'app-solicitacoes-details',
@@ -636,6 +638,104 @@ export class SolicitacoesDetailsComponent implements OnInit {
     chamaInputHidden(){
       let element = document.getElementById('fileImg');
       element.click();
+    }
+
+    clickPDF(){
+      var node = document.getElementById('pdfHtml');
+  
+                var img;
+                var filename;
+                var newImage;
+  
+  
+                domtoimage.toPng(node, { bgcolor: '#fff' })
+  
+                  .then(function(dataUrl) {
+  
+                    img = new Image();
+                    img.src = dataUrl;
+                    newImage = img.src;
+  
+                    img.onload = function(){
+  
+                    var pdfWidth = img.width;
+                    var pdfHeight = img.height;
+  
+                      // FileSaver.saveAs(dataUrl, 'my-pdfimage.png'); // Save as Image
+  
+                      var doc;
+  
+                      if(pdfWidth > pdfHeight)
+                      {
+                        doc = new jspdf("p","mm","a4");
+                      }
+                      else
+                      {
+                        doc = new jspdf("p","mm","a4");
+                      }
+  
+  
+                      var width = doc.internal.pageSize.getWidth();
+                      var height = doc.internal.pageSize.getHeight();
+  
+  
+                      doc.addImage(newImage, 'PNG',  -10, -10, width * 1.1, height * 1.05);
+                      filename = 'mySurgery_Custos' + '.pdf';
+                      doc.save(filename);
+  
+                    };
+  
+  
+                  })
+                  .catch(function(error) {
+  
+                   // Error Handling
+  
+                  });
+    }
+
+    clickPDFMore(){
+      var node = document.getElementById('SeeMore');
+  
+                var img;
+                var filename;
+                var newImage;
+  
+  
+                domtoimage.toPng(node, { bgcolor: '#fff' })
+  
+                  .then(function(dataUrl) {
+  
+                    img = new Image();
+                    img.src = dataUrl;
+                    newImage = img.src;
+  
+                    img.onload = function(){
+  
+                      // FileSaver.saveAs(dataUrl, 'my-pdfimage.png'); // Save as Image
+  
+                      var doc;
+  
+                      doc = new jspdf("landscape","pt","a4");
+  
+  
+                      var width = doc.internal.pageSize.getWidth();
+                      var height = doc.internal.pageSize.getHeight();
+  
+  
+                      doc.addImage(newImage, 'PNG',  -10, -10, width * 1.1, height * 1.05);
+                      filename = 'mySurgery_Custos' + '.pdf';
+                      doc.save(filename);
+  
+                    };
+  
+  
+                  })
+                  .catch(function(error) {
+  
+                   // Error Handling
+  
+                  });
     }
 
 }
