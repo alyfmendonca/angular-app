@@ -208,11 +208,13 @@ export class SolicitacoesDetailsComponent implements OnInit {
       if(event.value > 0){    
         this.desconto = false;
         this.valorTotal = this.objCustos.surgery_cost + (this.objCustos.surgery_cost * event.value / 100);
+        this.valorTotal = this.valorTotal.toFixed(2);
         this.surgeryAprove.percentage = (event.value);
       }
       if(event.value < 0){
         this.desconto = true;
         this.valorTotal = this.objCustos.surgery_cost - (this.objCustos.surgery_cost * (event.value * -1) / 100);
+        this.valorTotal = this.valorTotal.toFixed(2);
         this.surgeryAprove.percentage = (event.value * -1);
       }
       
