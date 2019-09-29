@@ -16,13 +16,13 @@
               <input [(ngModel)]='surgeonChoosed.name' type='text' id='txtNome' name='txtNome' #nameVerify="ngModel" required>
               
               <label for='txtCrm'>Crm</label>
-              <input [(ngModel)]='surgeonChoosed.crm' type='text' id='txtCrm' name='txtCrm' mask='{{maskCrm}}' #nameVerify="ngModel" required>
+              <input [(ngModel)]='crm' type='text' (change)="mascaraCrm();" maxlength="11" id='txtCrm' name='txtCrm' #nameVerify="ngModel" required>
 
               <label for='txtUf'>Uf</label>
               <input [(ngModel)]='surgeonChoosed.uf' type='text' id='txtUf' name='txtUf' #nameVerify="ngModel" required>
               
               <label for='txtFone'>Telefone</label>
-              <input [(ngModel)]='surgeonChoosed.phone' type='text' mask='{{telMask}}' id='txtFone' name='txtFone' #nameVerify="ngModel" required>
+              <input [(ngModel)]='surgeonChoosed.phone' maxlength = '14' (change)="changePhoneMask();" type='text' mask='{{mascaraPhone}}' id='txtFone' name='txtFone' #nameVerify="ngModel" required>
 
             </div>
 

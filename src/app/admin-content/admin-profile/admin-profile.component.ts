@@ -27,5 +27,13 @@ export class AdminProfileComponent implements OnInit {
     
   }
 
-
+  salvarAdmin(){
+    let infosAdmin: {
+      nome: string,
+      email: string,
+      pass: string,
+      passConfirm: string 
+    }
+  }
+  
 }

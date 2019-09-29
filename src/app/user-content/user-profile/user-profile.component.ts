@@ -13,7 +13,8 @@ export class UserProfileComponent implements OnInit {
   
   surgeonByID: SurgeonById ;
   surgeonUpdate: SurgeonUpdate;
-  mascaraCrm = '00-0';
+  crm: string = "";
+  mascaraPhone = '';
   constructor(public surgeonService: SurgeonService,
               private route: ActivatedRoute,
               private router: Router) { }
@@ -22,19 +23,24 @@ export class UserProfileComponent implements OnInit {
     console.log('teste');
     this.surgeonService.getSurgeon().subscribe((surgeon) => {
       this.surgeonByID = surgeon;
+      this.crm = this.surgeonByID.crm.toString().slice(0, this.surgeonByID.crm.toString().length - 1) + '-' + this.surgeonByID.crm.toString().slice(this.surgeonByID.crm.toString().length - 1);
+      if(this.surgeonByID.phone.length < 11){
+        this.mascaraPhone = '(00)0000-0*'
+      }else{
+        this.mascaraPhone = '(00)00000-0*'
+      }
       console.log(surgeon);
-      var aux = "";
-      aux += this.surgeonByID.crm;
-      this.mascaraCrm = "";
-      this.mudaMascara(aux);
-      console.log(this.mascaraCrm);
-      
     });
     
   }
   
   salvar(){
-    if((this.surgeonByID.name || this.surgeonByID.name != '') && (this.surgeonByID.crm || this.surgeonByID.crm != 0) && 
+    console.log(this.surgeonByID.phone);
+    if(this.crm.replace('-', '').length < 4){
+      alert('CRM deve ter mais de 4 números.');
+      return false;
+    }
+    if((this.surgeonByID.name || this.surgeonByID.name != '') && (this.crm || this.crm != '') && 
     (this.surgeonByID.uf || this.surgeonByID.uf != '') && (this.surgeonByID.email || this.surgeonByID.email != '')
     && (this.surgeonByID.phone || this.surgeonByID.phone != '')){
       const surgeonUpdate: SurgeonUpdate = {
@@ -42,7 +48,7 @@ export class UserProfileComponent implements OnInit {
         phone: this.surgeonByID.phone,
         email: this.surgeonByID.email,
         name: this.surgeonByID.name,
-        crm: this.surgeonByID.crm,
+        crm: +this.crm.replace('-', ''),
         uf: this.surgeonByID.uf,
       }
       this.surgeonService.updateSurgeon(surgeonUpdate).subscribe((res) => {
@@ -56,18 +62,19 @@ export class UserProfileComponent implements OnInit {
       return false;
     }
   }
-  
-  mudaMascara(event){
-    console.log(event.length);
-    //this.mascaraCrm = '000-00'
-    var auxCrm = '';
-    console.log('a');
-    console.log('b');
-    for (let index = 0; index < event.length-1; index++) {
-      auxCrm += '0';
-      console.log('c');
-    }
-    auxCrm += '-09';
-    this.mascaraCrm = auxCrm;
+
+  mascaraCrm(){
+    this.crm = this.crm.replace('-', '');
+    this.crm = this.crm.slice(0, this.crm.length - 1) + '-' + this.crm.slice(this.crm.length - 1);
   }
+
+  changePhoneMask(){
+    if(this.surgeonByID.phone.length > 10){
+      this.mascaraPhone = '(00)00000-0*';
+    }else{
+      this.mascaraPhone = '(00)0000-0*';
+    }
+  }
+
+
 }

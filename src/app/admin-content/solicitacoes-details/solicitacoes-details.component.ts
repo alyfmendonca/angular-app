@@ -218,6 +218,10 @@ export class SolicitacoesDetailsComponent implements OnInit {
         this.surgeryAprove.percentage = (event.value * -1);
       }
       
+      if(event.value == 0){
+        this.valorTotal = this.objCustos.surgery_cost;
+      }
+      
     }
     ngOnInit() {
       this.init();

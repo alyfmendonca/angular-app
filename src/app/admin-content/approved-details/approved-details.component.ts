@@ -161,8 +161,7 @@ export class ApprovedDetailsComponent implements OnInit {
     true_minutes_duration: '',
   };
   transfRealiz(){
-    console.log(this.trueDuration);
-    if(this.trueDuration == "00:00"){
+    if(this.trueDuration == "00:00" || this.trueDuration == undefined){
       alert('Informe a duração oficial da cirurgia');
       return;
     }else{

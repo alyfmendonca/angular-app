@@ -19,26 +19,23 @@ export class SurgeonDetailsComponent implements OnInit {
   id: number;
 
   surgeonChoosed: SurgeonById;
-  maskCrm = '00-0';
-  telMask = '';
   ngOnInit() {
     this.listProcedimentos = this.route.snapshot.data.allTuss;
     this.id = this.route.snapshot.params.id;
 
     this.surgeonService.getSurgeon(this.id).subscribe((surgeon) => {
       this.surgeonChoosed = surgeon;
-      if(surgeon.phone.length == 11){
-        this.telMask = '(00) 00000-0000';
-      }else{
-        this.telMask = '(00) 0000-0000';
-      }
       console.log((this.surgeonChoosed.crm.toString()))
-      this.maskCrm = '';
-      for (let index = 0; index < (this.surgeonChoosed.crm.toString()).length -1; index++) {
-        this.maskCrm += '0';
-      }
-      this.maskCrm += '-0';
       this.selectedTuss = this.tuss;
+
+      this.crm = this.surgeonChoosed.crm.toString().slice(0, this.surgeonChoosed.crm.toString().length - 1) + '-' + this.surgeonChoosed.crm.toString().slice(this.surgeonChoosed.crm.toString().length - 1);
+      console.log(this.crm);
+      if(this.surgeonChoosed.phone.length < 11){
+        this.mascaraPhone = '(00)0000-0*'
+      }else{
+        this.mascaraPhone = '(00)00000-0*'
+      }
+
       this.surgeonChoosed.tuss.forEach(tuss => {
         this.tuss.push(tuss.id);
       });
@@ -53,12 +50,19 @@ export class SurgeonDetailsComponent implements OnInit {
   
   tuss: number[] = [];
 
+  crm: string = '';
+  mascaraPhone = '';
+
   salvar(){
+    if(this.crm.replace('-', '').length < 4){
+      alert('CRM deve ter mais de 4 números.');
+      return false;
+    }
     var surgeonUpdate: SurgeonUpdate = {
       id: this.id,
       phone: this.surgeonChoosed.phone,
       tuss: '[' + this.selectedTuss + ']',
-      crm: this.surgeonChoosed.crm,
+      crm: +this.crm.replace('-', ''),
       uf: this.surgeonChoosed.uf,
       name: this.surgeonChoosed.name,
     }
@@ -69,5 +73,17 @@ export class SurgeonDetailsComponent implements OnInit {
     });
   }
 
+  mascaraCrm(){
+    this.crm = this.crm.replace('-', '');
+    this.crm = this.crm.slice(0, this.crm.length - 1) + '-' + this.crm.slice(this.crm.length - 1);
+  }
+
+  changePhoneMask(){
+    if(this.surgeonChoosed.phone.length > 10){
+      this.mascaraPhone = '(00)00000-0*';
+    }else{
+      this.mascaraPhone = '(00)0000-0*';
+    }
+  }
 
 }

@@ -176,7 +176,7 @@
                       x
                       </button>
                   </mat-form-field>
-                      <mat-autocomplete #auto="matAutocomplete">
+                      <mat-autocomplete style="background-color: #fff" id="autoRequest" class="autoRquestStepper" #auto="matAutocomplete">
                         <mat-option (click)="setCid(cid);" *ngFor="let cid of filteredCids | async" [value]="cid.str">
                           {{cid.str}}
                         </mat-option>

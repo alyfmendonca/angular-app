@@ -16,7 +16,7 @@
               <input [(ngModel)]='surgeonCreate.name' type='text' id='txtNome' name='txtNome' placeholder="Alberto Pacheco" #nameVerify="ngModel" required>
               
               <label for='txtCrm'>Crm</label>
-              <input [(ngModel)]='surgeonCreate.crm' (ngModelChange)="mudaMascara($event);" mask='{{mascaraCrm}}' type='text' id='txtCrm' name='txtCrm' placeholder="2342423" #nameVerify="ngModel" required>
+              <input [(ngModel)]='surgeonCreate.crm' maxlength='11' (ngModelChange)="mudaMascara($event);" mask='{{mascaraCrm}}' type='text' id='txtCrm' name='txtCrm' placeholder="2342423" #nameVerify="ngModel" required>
 
               <label for='txtUf'>Uf</label>
               <input [(ngModel)]='surgeonCreate.uf' type='text' id='txtUf' name='txtUf' placeholder="UF" #nameVerify="ngModel" required>
@@ -48,7 +48,7 @@
               </div>
             </div>
             <div class="btn-line">
-              <button class="dark-button" (click)="concluir();">CONCLUIR</button>
+              <button style="margin-top: 30px" class="dark-button" (click)="concluir();">CONCLUIR</button>
             </div>
           </form>
           

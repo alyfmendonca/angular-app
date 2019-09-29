@@ -386,3 +386,7 @@ textarea {
 .divFiles .dark-button-icon:hover {
     background: #d50505;
 }
+
+::ng-deep .mat-autocomplete-panel{
+    background-color: #fff;
+  }
