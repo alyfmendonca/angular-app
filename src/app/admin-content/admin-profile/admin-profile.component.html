@@ -20,12 +20,14 @@
         <form #form="ngForm">
           <div class="form-dir">
             
+            <label for='txtNome'>Senha Atual</label>
+            <input [(ngModel)]='senhaAtual' type='password' id='txtNovaSenha' name='txtNovaSenha' placeholder="Senha" #nameVerify="ngModel" required>
   
-            <label for='txtNome'>Alterar Senha</label>
-            <input [(ngModel)]='novaSenha' type='password' id='txtNovaSenha' name='txtNovaSenha' placeholder="Senha" #nameVerify="ngModel" required>
+            <label for='txtNome'>Nova Senha</label>
+            <input [(ngModel)]='novaSenha' type='password' id='txtAtualSenha' name='txtAtualSenha' placeholder="Senha Atual" #nameVerify="ngModel" required>
     
             <label for='txtEmail'>Confirmação de Senha</label>
-            <input [(ngModel)]='novaSenha2' type='password' id='txtNovaSenha2' name='txtNovaSenha2' placeholder="Confirmação de Senha" #nameVerify="ngModel" required>
+            <input [(ngModel)]='novaSenhaConf' type='password' id='txtNovaSenha2' name='txtNovaSenha2' placeholder="Confirmação de Senha" #nameVerify="ngModel" required>
           </div>
           <div class="bot-dir">
             <button class="concluir-button" (click)="salvarAdmin();">Salvar</button>

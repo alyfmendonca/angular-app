@@ -44,6 +44,20 @@ export class AuthService {
     return this.http.post<any>(`${API_URL}finishForgotPassword/`, {forgot_token, password});
   }
 
+  putAdmin(old_password: string | Int32Array, new_password: string | Int32Array, new_email: string, name: string){
+    let token = localStorage.getItem('token');
+    let headers = new HttpHeaders({
+      'Authorization': `token ${token}`,
+      'Content-Type': 'application/json'
+    });
+    return this.http.put(`${API_URL}userAdmin/`, {
+      old_password: old_password,
+      new_password: new_password,
+      new_email: new_email, 
+      name: name
+    }, {headers});
+  }
+
   
 
 }
