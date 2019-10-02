@@ -16,7 +16,6 @@ export class AllSurgeonsComponent implements OnInit {
 
   ngOnInit() {
     this.surgeonService.allSurgeons('Approved').subscribe(response => {
-      console.log(response);
       this.surgeons = response;
     })
   }

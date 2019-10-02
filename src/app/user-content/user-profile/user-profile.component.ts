@@ -20,7 +20,6 @@ export class UserProfileComponent implements OnInit {
               private router: Router) { }
 
   ngOnInit() {
-    console.log('teste');
     this.surgeonService.getSurgeon().subscribe((surgeon) => {
       this.surgeonByID = surgeon;
       this.crm = this.surgeonByID.crm.toString().slice(0, this.surgeonByID.crm.toString().length - 1) + '-' + this.surgeonByID.crm.toString().slice(this.surgeonByID.crm.toString().length - 1);
@@ -29,13 +28,11 @@ export class UserProfileComponent implements OnInit {
       }else{
         this.mascaraPhone = '(00)00000-0*'
       }
-      console.log(surgeon);
     });
     
   }
   
   salvar(){
-    console.log(this.surgeonByID.phone);
     if(this.crm.replace('-', '').length < 4){
       alert('CRM deve ter mais de 4 números.');
       return false;

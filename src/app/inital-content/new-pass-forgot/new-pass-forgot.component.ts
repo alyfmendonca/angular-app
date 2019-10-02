@@ -18,11 +18,7 @@ export class NewPassForgotComponent implements OnInit {
   token: string;
   ngOnInit() {
     this.route.queryParams.subscribe( parametros => {
-      
-      console.log(parametros);
       this.token = parametros.token;
-      
-      console.log(this.token);
     }, err =>{
       console.log(err);
     });

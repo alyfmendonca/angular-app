@@ -182,19 +182,15 @@ export class RequestStepperComponent implements OnInit {
 
   finalizar(){
 
-    console.log(this.listFilesFinalFinalizar);
-
     //cria arrays de accomodations days e array de dis somente com os que estão habilitados
     var elements = <HTMLCollectionOf<HTMLInputElement>> document.getElementsByClassName('inputDays');
     var daysArray: number[] = [];
     //flag para validar se todos foram preenchidos
     var flagDaysUnwrited: boolean = false;
-    console.log(elements);
         for (let index = 0; index < elements.length; index++) {
           if(!elements[index].disabled || (index == 3 && +elements[index].value != 0)){
             daysArray.push(+elements[index].value);
             if(+elements[index].value == 0){
-              console.log(daysArray);
               flagDaysUnwrited = true; 
             }
           }
@@ -262,7 +258,6 @@ export class RequestStepperComponent implements OnInit {
         }
         this.surgeryCreate.secondary_tuss += ']';
 
-        console.log(this.listComorbSelected);
         this.surgeryCreate.comorbidities = '[';
         this.listComorbSelected.forEach(comorb => {
           this.surgeryCreate.comorbidities += comorb.id + ',';
@@ -272,7 +267,6 @@ export class RequestStepperComponent implements OnInit {
         }
         this.surgeryCreate.comorbidities += ']';
 
-        console.log(this.selectedNeedsDays);
         this.surgeryCreate.accommodations = '[';
         this.selectedNeedsDays.forEach(need => {
           this.surgeryCreate.accommodations += need + ',' ;
@@ -281,13 +275,11 @@ export class RequestStepperComponent implements OnInit {
           this.surgeryCreate.accommodations = this.surgeryCreate.accommodations.slice(0, this.surgeryCreate.accommodations.length - 1);
         }
         this.surgeryCreate.accommodations += ']';
-        console.log(this.surgeryCreate.accommodations);
 
         this.surgeryCreate.accommodations_days = '['
         this.surgeryCreate.accommodations_days += daysArray.toString();
         this.surgeryCreate.accommodations_days += ']';
 
-        console.log(JSON.stringify(this.surgeryCreate));
         var surgery: Surgery;
         this.surgeryServices.createSurgery(this.surgeryCreate).subscribe(
           (res) => {
@@ -320,15 +312,12 @@ export class RequestStepperComponent implements OnInit {
   gravaMidias(id){
     this.listFilesFinalFinalizar.forEach(dataFile => {
       this.surgeryServices.uploadMedia(dataFile, id).subscribe(response => {
-        console.log(response);
       })
-      console.log(id + " <<< ID --- DATA >>>" + dataFile);
     });
 
   }
 
   testaCPF(strCPF) {
-    console.log(strCPF);
     var Soma;
     var Resto;
     Soma = 0;

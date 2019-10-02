@@ -30,13 +30,10 @@ export class SurgeonService {
       'Authorization': `token ${token}`,
       'Content-Type': 'application/json'
     });
-    console.log(token);
     
     if(id){
-      console.log('erro');
       return this.http.get<SurgeonById>(`${API_URL}surgeon/?id=${id}`, {headers});
     }
-    console.log(headers);
     
     return this.http.get<SurgeonById>(`${API_URL}surgeon/`, {headers});
   }

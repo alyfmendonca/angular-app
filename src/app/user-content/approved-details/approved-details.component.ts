@@ -56,7 +56,6 @@ export class ApprovedDetailsComponent implements OnInit {
   ngOnInit() {
     this.id = this.route.snapshot.params.id;
     this.surgeryService.getSurgery(this.id).subscribe(response => {
-      console.log(response);
       this.surgery = response;
       this.duracao = response.hours_duration;
       this.duracao += ':';

@@ -29,17 +29,12 @@ export class FormLoginComponent implements OnInit {
   remember: boolean;
 
   changeRemember(remember){
-    //console.log(remember);
     this.remember = remember;
   }
 
   submitForm(){
-    console.log(this.txtLogin, Md5.hashStr(this.txtPass));
-
     this.authService.login(this.txtLogin, Md5.hashStr(this.txtPass)).subscribe(response => {
-      console.log(response);
       localStorage.setItem('token', response.token);
-      console.log(this.remember);
       //localStorage.setItem('userId', user._id);
       if(this.remember){
         localStorage.setItem('login', this.txtLogin);
@@ -54,8 +49,6 @@ export class FormLoginComponent implements OnInit {
       
     }, err =>{
       alert('Login ou senha incorretos');
-      console.log(this.remember);
-
     });
     
   }

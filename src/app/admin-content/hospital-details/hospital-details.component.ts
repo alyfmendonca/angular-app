@@ -48,7 +48,6 @@ export class HospitalDetailsComponent implements OnInit {
       response.all_tuss.forEach(element => {
         this.allTuss.push(element.id);
       });
-      console.log(this.allTuss);
     });
     this.otherServices.getAllTuss().subscribe(
       tuss => {
@@ -77,7 +76,6 @@ export class HospitalDetailsComponent implements OnInit {
   flagClicked: boolean = false;
 
   changeCost(cost: CostGroup){
-    console.log(cost);
     this.atualCostGroup = cost;
   } 
   validaOnlyOne(event, id, tuss){
@@ -88,7 +86,6 @@ export class HospitalDetailsComponent implements OnInit {
       event.target.click();
     }else {
       //Novo tuss
-      console.log(this.listCostGroup)
       if(id == this.selectedTuss.id && !this.flagClicked){
         this.selectedTuss = {
           str: '',
@@ -102,7 +99,6 @@ export class HospitalDetailsComponent implements OnInit {
       }else if(this.flagClicked){
         this.flagClicked = false
       }else{
-        console.log(tuss)
         this.selectedTuss = tuss;
         this.newTuss = true;
       }
@@ -159,7 +155,9 @@ export class HospitalDetailsComponent implements OnInit {
         };
 
         this.adminService.addNewCostGroup(costGroupItem).subscribe((res) => {
-          console.log('grupo de custo alterado' + res)
+          //console.log('grupo de custo alterado' + res)
+        }, (err) => {
+          alert('Erro ao alterar grupo de custo, contate um administrador.')
         })
 
       });
@@ -171,8 +169,6 @@ export class HospitalDetailsComponent implements OnInit {
   selectedGC: any = '1';
 
   incluirTuss(){
-    console.log(this.selectedGC);
-    console.log(this.selectedTuss);
     if(this.selectedGC == '1'){
       alert('Selecione o grupo de custo');
       return;
@@ -182,7 +178,6 @@ export class HospitalDetailsComponent implements OnInit {
     this.allTuss.push(this.selectedTuss.id);
 
     this.selectedGC.tuss.push(this.selectedTuss);
-    console.log(this.selectedGC);
   }
 
   bolSalvar: boolean = false;

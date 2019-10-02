@@ -107,7 +107,6 @@ export class ApprovedDetailsComponent implements OnInit {
   public async init() {
     this.id = this.route.snapshot.params.id;
     this.surgeryService.getSurgery(this.id).subscribe(response => {
-      console.log(response);
       if(response.discount){
         this.porcentagem = (response.percentage * -1);
       }else{
@@ -115,7 +114,6 @@ export class ApprovedDetailsComponent implements OnInit {
       }
       this.surgery = response;
       this.objCustos = response.cost;
-      console.log(this.objCustos);
       if(this.surgery.complicated){
         this.aditional = 20;
       }else{
@@ -148,7 +146,6 @@ export class ApprovedDetailsComponent implements OnInit {
 
     setTimeout(() => {
       this.selectedComorbs = this.surgery.comorbidities;
-      console.log(this.selectedComorbs);
       this.selectedNeeds = this.surgery.accommodations;
     }, 1);
 
@@ -171,10 +168,9 @@ export class ApprovedDetailsComponent implements OnInit {
       this.performSurgery.id = this.surgery.id;
       this.performSurgery.note = this.finalNote;
       this.surgeryService.performSurgery(this.performSurgery).subscribe(response => {
-        console.log(response);
         this.router.navigate(['/admin/main/aprovadas']);
       }, err => {
-        console.log(err.error.message);
+        alert(err.error.message);
       })
     }
   }

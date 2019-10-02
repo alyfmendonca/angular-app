@@ -27,11 +27,9 @@ export class AprovadasSolicitadasComponent implements OnInit {
       
     }
     clickSurgeryDetails(id){
-      console.log(id);
       this.router.navigateByUrl(`user/main/surgery/${id}`);
     }
     clickSurgeryDone(id){
-      console.log(id);
       this.router.navigateByUrl(`user/main/realizadaDetails/${id}`);
     }
 

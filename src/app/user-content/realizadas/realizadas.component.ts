@@ -22,7 +22,6 @@ export class RealizadasComponent implements OnInit {
     })
   }
   clickDetails(id){
-    console.log(id);
     this.router.navigateByUrl(`user/main/realizadaDetails/${id}`);
   }
 

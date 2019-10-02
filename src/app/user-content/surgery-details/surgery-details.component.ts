@@ -182,11 +182,6 @@ export class SurgeryDetailsComponent implements OnInit {
 
     let dataTotal:string = this.surgery.date_time.toString();
 
-    console.log('------------------');
-    console.log(this.surgery.date_time);
-    console.log(this.hourSurgery);
-    console.log('------------------');
-
     if(dataTotal.includes(" Jan ")){
       mes = "1";
       dia = dataTotal.substring(8, 10);
@@ -263,7 +258,6 @@ export class SurgeryDetailsComponent implements OnInit {
       return false;
     }
     this.surgery.date_time = ano + '-' + mes + '-' + dia + 'T' + hora + ':' + minuto + 'Z';
-    console.log(ano + '-' + mes + '-' + dia + 'T' + hora + ':' + minuto + 'Z');
     return true;
 
   }
@@ -351,15 +345,10 @@ export class SurgeryDetailsComponent implements OnInit {
       }
      
     let aux = this.duracao.split(':');
-    
-    console.log('comorb [' + this.selectedComorbs.toString() + ']');
-    console.log('need [' + this.selectedNeeds.toString() + ']');
 
     let nome: string = this.surgery.patient['name'];
     let cpfVar:string = this.surgery.patient['cpf'].toString();
-    let birth_dateVar: string = this.surgery.patient['birth_date'];
-
-    console.log(birth_dateVar);   
+    let birth_dateVar: string = this.surgery.patient['birth_date'];  
 
     let birthYYYY_MM_DD
     //Dia do nascimento deve ser yyyy-mm-dd
@@ -367,7 +356,6 @@ export class SurgeryDetailsComponent implements OnInit {
       birthYYYY_MM_DD = birth_dateVar.toString().substring(birth_dateVar.toString().indexOf(':') - 3, birth_dateVar.toString().indexOf(':') - 7)
        + '-' + this.recuperaMes(birth_dateVar.toString()) + '-' + 
        birth_dateVar.toString().substring(birth_dateVar.toString().indexOf(':') - 8, birth_dateVar.toString().indexOf(':') - 10);
-      console.log(birthYYYY_MM_DD)
     }
 
     var surgeryUpdate : SurgeryUpdate = {
@@ -402,9 +390,7 @@ export class SurgeryDetailsComponent implements OnInit {
   gravaMidias(id){
     this.listFilesFinalFinalizar.forEach(dataFile => {
       this.surgeryService.uploadMedia(dataFile, id).subscribe(response => {
-        console.log(response);
       })
-      console.log(id + " <<< ID --- DATA >>>" + dataFile);
     });
 
   }
@@ -436,7 +422,6 @@ export class SurgeryDetailsComponent implements OnInit {
       }), 1);
       //requisição
       this.otherService.deleteImg(item.id).subscribe((res) => {
-        console.log(`imagem deletada`);
       }, (err) => {
         console.log(`erro ao deletar`);
       });
@@ -447,7 +432,6 @@ export class SurgeryDetailsComponent implements OnInit {
 
 
   testaCPF(strCPF) {
-    console.log(strCPF);
     var Soma;
     var Resto;
     Soma = 0;

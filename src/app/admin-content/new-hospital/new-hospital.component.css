@@ -108,6 +108,7 @@ label{
 }
 .virtualScroll{
     height: 100%;
+    overflow-x: hidden;
 }
 .list-scroll-dir{
     overflow-y:scroll;

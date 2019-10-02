@@ -39,13 +39,11 @@ export class AllHospitalsComponent implements OnInit {
 
   ngOnInit() {
     this.hospitalService.getHospitals().subscribe(response => {
-      console.log(response);
       this.hospitals = response;
     })
     
   }
   mostraId(id){
-    //console.log(id);
     this.router.navigateByUrl(`admin/main/hospitalDetails/${id}`);
   }
 

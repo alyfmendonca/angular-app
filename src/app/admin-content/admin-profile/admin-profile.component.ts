@@ -25,7 +25,6 @@ export class AdminProfileComponent implements OnInit {
   ngOnInit() {
     this.adminService.userAdmin().subscribe((admin) => {
       this.admin = admin;
-      console.log(admin);
     });
     
   }
@@ -55,8 +54,6 @@ export class AdminProfileComponent implements OnInit {
 
     infosAdmin.old_password = Md5.hashStr(this.senhaAtual).toString();
     infosAdmin.new_password = Md5.hashStr(this.novaSenha).toString();
-
-    console.log(infosAdmin);
 
     this.authService.putAdmin(infosAdmin.old_password, infosAdmin.new_password, infosAdmin.new_email, infosAdmin.name).subscribe((res) => {
       alert('alterado com sucesso')

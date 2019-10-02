@@ -38,7 +38,6 @@ export class SolicitacoesComponent implements OnInit {
     
   }
   clickDetails(id){
-    console.log(id);
     this.router.navigateByUrl(`admin/main/solicitacoesDetails/${id}`);
   }
 

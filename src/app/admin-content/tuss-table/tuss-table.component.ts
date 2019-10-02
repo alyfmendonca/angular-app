@@ -62,9 +62,6 @@ export class TussTableComponent implements OnInit {
     this.tussService.getTuss(id).subscribe(response => {
       this.hospitals = response.hospitals;
       this.surgeons = response.surgeons;
-      console.log(id);
-      console.log(this.hospitals);
-      console.log(this.surgeons);
     })
   }
 

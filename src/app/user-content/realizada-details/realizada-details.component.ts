@@ -109,7 +109,6 @@ export class RealizadaDetailsComponent implements OnInit {
   public async init() {
     this.id = this.route.snapshot.params.id;
     this.surgeryService.getSurgery(this.id).subscribe(response => {
-      console.log(response);
       this.surgery = response;
       this.objCustos = response.cost;
       this.duracao = response.hours_duration;
@@ -119,7 +118,6 @@ export class RealizadaDetailsComponent implements OnInit {
       this.verdadeiraDuracao = response.true_hours_duration;
       this.verdadeiraDuracao += ':';
       this.verdadeiraDuracao += response.true_minutes_duration;
-      console.log(this.objCustos);
       if(this.surgery.complicated){
         this.aditional = 20;
       }else{
@@ -154,7 +152,6 @@ export class RealizadaDetailsComponent implements OnInit {
     
     setTimeout(() => {
       this.selectedComorbs = this.surgery.comorbidities;
-      console.log(this.selectedComorbs);
       this.selectedNeeds = this.surgery.accommodations;
       this.hourSurgery = this.surgery.date_time.substring(this.surgery.date_time.indexOf('T') + 1, this.surgery.date_time.indexOf('T') + 6);
     }, 1);

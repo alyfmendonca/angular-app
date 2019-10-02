@@ -118,7 +118,6 @@ export class RealizadasDetailsComponent implements OnInit {
   public async init() {
     this.id = this.route.snapshot.params.id;
     this.surgeryService.getSurgery(this.id).subscribe(response => {
-      console.log(response);
       this.surgery = response;
       if(response.discount){
         this.porcentagem = (response.percentage * -1);
@@ -133,7 +132,6 @@ export class RealizadasDetailsComponent implements OnInit {
       this.verdadeiraDuracao = this.surgery.true_hours_duration;
       this.verdadeiraDuracao += ':';
       this.verdadeiraDuracao += this.surgery.true_minutes_duration;
-      console.log(this.objCustos);
       if(this.surgery.complicated){
         this.aditional = 20;
       }else{

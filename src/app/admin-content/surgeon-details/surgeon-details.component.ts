@@ -25,11 +25,9 @@ export class SurgeonDetailsComponent implements OnInit {
 
     this.surgeonService.getSurgeon(this.id).subscribe((surgeon) => {
       this.surgeonChoosed = surgeon;
-      console.log((this.surgeonChoosed.crm.toString()))
       this.selectedTuss = this.tuss;
 
       this.crm = this.surgeonChoosed.crm.toString().slice(0, this.surgeonChoosed.crm.toString().length - 1) + '-' + this.surgeonChoosed.crm.toString().slice(this.surgeonChoosed.crm.toString().length - 1);
-      console.log(this.crm);
       if(this.surgeonChoosed.phone.length < 11){
         this.mascaraPhone = '(00)0000-0*'
       }else{
@@ -66,10 +64,8 @@ export class SurgeonDetailsComponent implements OnInit {
       uf: this.surgeonChoosed.uf,
       name: this.surgeonChoosed.name,
     }
-    console.log(surgeonUpdate);
     this.surgeonService.updateSurgeon(surgeonUpdate).subscribe(res => alert('Cirurgião atualizado!'), (err) => {
       alert('Erro ao atualizar o cirurgião!');
-      console.log(err.error.message);
     });
   }
 
