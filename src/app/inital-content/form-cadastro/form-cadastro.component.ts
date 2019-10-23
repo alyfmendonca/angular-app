@@ -72,7 +72,12 @@ export class FormCadastroComponent implements OnInit {
     this.authService.requestSignIn(this.userCreate).subscribe((res) => {
       alert('Cadastro realizado');
       this.router.navigateByUrl('/home');
-    }, err => console.log(JSON.stringify(this.userCreate), err.error.message));
+    }, err => 
+    {
+      if(err.error.message.email[0] == 'user with this email already exists.'){
+        alert('Já existem um usuário cadastrado com esse email');
+      }
+    });
     }
     
   }
